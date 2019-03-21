@@ -1,0 +1,42 @@
+{
+  "name": "humble",
+  "version": "1.0.0",
+  "description": "Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.",
+  "main": "index.html",
+  "scripts": {
+    "build": "postcss src/humble.css -o dist/humble.min.css",
+    "watch": "postcss src/humble.css -o dist/humble.min.css -w --map"
+  },
+  "keywords": [
+    "humble",
+    "css",
+    "microframework",
+    "postcss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ka215/humble.git"
+  },
+  "author": {
+    "name": "ka2 (Katsuhiko Maeno)",
+    "email": "ka2@ka2.org",
+    "url": "https://ka2.org"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.5.0",
+    "css-declaration-sorter": "^4.0.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "postcss-cli": "^6.1.2",
+    "postcss-reporter": "^6.0.1",
+    "precss": "^4.0.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0"
+  }
+}
