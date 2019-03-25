@@ -1,0 +1,442 @@
+/*!
+Sloth CSS micro framework
+v1.0.0
+Last Updated: 2019-03-21
+Author: Ka2 - https://ka2.org
+*/
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  font-size: 10px;
+  line-height: 1;
+}
+
+body {
+  display: flow-root;
+  margin: 0;
+  background-color: #fff;
+  color: #212529;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: left;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+  margin: 0;
+}
+
+[tabindex="-1"]:focus {
+  outline: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}
+
+blockquote,
+q {
+  margin: 0 0 1rem;
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+a {
+  background-color: transparent;
+  color: #007bff;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+figure {
+  margin: 0 0 1rem;
+}
+
+img {
+  border-style: none;
+  vertical-align: middle;
+}
+
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  -webkit-text-decoration-skip-ink: none;
+  border-bottom: 1px dotted;
+          text-decoration-skip-ink: none;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #6c757d;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  text-align: inherit;
+}
+
+/* change border colour to suit your needs */
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  display: block;
+  height: 1px;
+  margin: 1em 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: middle;
+}
+
+input,
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+select {
+  word-wrap: normal;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+.sloth h1:not(.nons),
+.sloth .h1 {
+  font-size: 2.6rem;
+}
+
+.sloth h2:not(.nons),
+.sloth .h2 {
+  font-size: 2.3rem;
+}
+
+.sloth h3:not(.nons),
+.sloth .h3 {
+  font-size: 2.1rem;
+}
+
+.sloth h4:not(.nons),
+.sloth .h4 {
+  font-size: 1.9rem;
+}
+
+.sloth h5:not(.nons),
+.sloth .h5 {
+  font-size: 1.7rem;
+}
+
+.sloth h6:not(.nons),
+.sloth .h6 {
+  font-size: 1.5rem;
+}
+
+.sloth p:not(.nons) {
+  font-size: 1.4rem;
+}
+
+.sloth .crumbs:not(.nons) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: row;
+      flex-wrap: wrap;
+  margin: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sloth .crumbs:not(.nons) > * {
+  display: inline-block;
+  position: relative;
+  margin-right: 2rem;
+}
+
+.sloth .crumbs:not(.nons) > *:nth-child(n + 2)::before {
+  position: absolute;
+  left: -1.1rem;
+  color: #ccc;
+  content: "\2215";
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 2rem;
+}
+
+.mx-0 {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.mx-1 {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.mx-2 {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.my-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-half {
+  width: 50%;
+}
+
+.w-1-3 {
+  width: calc(100% / 3);
+}
+
+.w-1-4 {
+  width: calc(100% / 4);
+}
+
+.w-1-5 {
+  width: calc(100% / 5);
+}
+
+.min-w-sm {
+  min-width: 380px;
+}
+
+.min-w-md {
+  min-width: 760px;
+}
+
+.min-w-lg {
+  min-width: 980px;
+}
+
+.flx-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: row;
+      flex-wrap: nowrap;
+}
+
+.flx-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: column;
+      flex-wrap: nowrap;
+}
+
+.flx-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
