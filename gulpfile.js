@@ -32,7 +32,7 @@ gulp.task('build', callback => {
             outputStyle: 'expanded'
         }) )
         .pipe( postcss( plugin ) )
-        .pipe( rename('humble.css') )
+        .pipe( rename('sloth.css') )
         .pipe( gulp.dest( 'src/' ) )
         .on('end', () => {
             callback()
@@ -47,7 +47,7 @@ gulp.task('minify', () => {
     return gulp.src('src/*.css')
         .pipe( sourcemaps.init() )
         .pipe( postcss( plugin ) )
-        .pipe( rename('humble.min.css') )
+        .pipe( rename('sloth.min.css') )
         .pipe( sourcemaps.write('.') )
         .pipe( gulp.dest( 'dist/' ) )
 })

@@ -3,15 +3,26 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta charset="utf-8">
-  <title>Humble - Mobile First CSS Micro Framework</title>
+  <title>Sloth - Mobile First CSS Micro Framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="ka2">
-  <meta name="description" content="Humble has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
+  <meta name="description" content="Sloth has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
-<body class="humble">
-<header>
-  <h1 class="no-h">Humble</h1>
+<body class="sloth">
+<header id="introduction">
+  <h1 class="nons">Sloth</h1>
+  <p class="nons">
+    Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
+  </p>
+  <a class="btn-outline" href="https://github.com/ka215/sloth"><i class="fab fa-github"></i> github</a>
 </header>
+<article class="lead-block">
+  <h2>Why Sloth?</h2>
+  <aside>
+    We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.
+  </aside>
+</article>
 <nav>
   <ol class="crumbs">
     <li><a href="#">Top level</a></li>
@@ -75,7 +86,6 @@
     </table>
   </div>
   <section class="w-half">
-    <article>Article in the section</article>
     <aside>Aside in the section</aside>
     <address>
       <a href="mailto:example@humble.com">example@humble.com</a>
@@ -83,10 +93,10 @@
     </address>
   </section>
 </div><!-- /#main -->
-<footer>
-  <p class="txt-center">&copy; <time>2019</time> Monaural Sound ka2.org, Powered by MAGIC METHODS</p>
+<footer id="demo-footer">
+  <p class="txt-center">Crafted with &copy; <time>2019</time> MAGIC METHODS by <a href="https://ka2.org/">ka2</a></p>
 </footer>
-<dialog id="humble-dialog" open>
+<dialog id="sloth-dialog" open>
   dialog box
   <button onclick="javascript:document.getElementById('humble-dialog').removeAttribute('open')">close</button>
 </dialog>
@@ -118,7 +128,11 @@ window.addEventListener('load',function(){
         document.getElementsByTagName('head')[0].appendChild( style )
     }
     
-    loadCSS( './dist/humble.min.css' )
+    let resources = [ 'sloth.min.css', 'sloth.index.css' ]
+    
+    resources.forEach( (file) => {
+        loadCSS( `./dist/${file}` )
+    })
     
     //measureElementSize()
     
