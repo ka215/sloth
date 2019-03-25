@@ -1,21 +1,21 @@
 {
-  "name": "humble",
+  "name": "sloth",
   "version": "1.0.0",
   "description": "Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.",
   "main": "index.html",
   "scripts": {
-    "build": "postcss src/humble.css -o dist/humble.min.css",
-    "watch": "postcss src/humble.css -o dist/humble.min.css -w --map"
+    "build": "postcss src/sloth.css -o dist/sloth.min.css",
+    "watch": "postcss src/sloth.css -o dist/sloth.min.css -w --map"
   },
   "keywords": [
-    "humble",
+    "sloth",
     "css",
     "microframework",
     "postcss"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ka215/humble.git"
+    "url": "git+https://github.com/ka215/sloth.git"
   },
   "author": {
     "name": "ka2 (Katsuhiko Maeno)",

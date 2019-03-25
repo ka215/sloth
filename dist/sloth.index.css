@@ -1,0 +1,38 @@
+#introduction {
+  margin: 0 auto;
+  padding: 4rem;
+  text-align: center;
+}
+#introduction h1 {
+  font-size: 4.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#introduction p {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  margin: 0 auto 1rem;
+  max-width: 480px;
+  text-align: left;
+}
+.lead-block {
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  text-align: center;
+}
+.lead-block h2 {
+  font-size: 3.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#demo-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: max-content;
+  margin: 1rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
