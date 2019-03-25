@@ -21,7 +21,7 @@ html {
   line-height: 1;
 }
 
-body {
+body.humble {
   display: flow-root;
   margin: 0;
   background-color: #fff;
@@ -272,37 +272,68 @@ textarea {
   resize: vertical;
 }
 
-h1,
-.h1 {
+.humble h1:not(.no-h),
+.humble .h1 {
   font-size: 2.6rem;
 }
 
-h2,
-.h2 {
+.humble h2:not(.no-h),
+.humble .h2 {
   font-size: 2.3rem;
 }
 
-h3,
-.h3 {
+.humble h3:not(.no-h),
+.humble .h3 {
   font-size: 2.1rem;
 }
 
-h4,
-.h4 {
+.humble h4:not(.no-h),
+.humble .h4 {
   font-size: 1.9rem;
 }
 
-h5,
-.h5 {
+.humble h5:not(.no-h),
+.humble .h5 {
   font-size: 1.7rem;
 }
 
-h6,
-.h6 {
+.humble h6:not(.no-h),
+.humble .h6 {
   font-size: 1.5rem;
 }
 
-/* Utility */
+.humble p:not(.no-h) {
+  font-size: 1.4rem;
+}
+
+.humble .crumbs:not(.no-h) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: row;
+      flex-wrap: wrap;
+  margin: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.humble .crumbs:not(.no-h) > * {
+  display: inline-block;
+  position: relative;
+  margin-right: 2rem;
+}
+
+.humble .crumbs:not(.no-h) > *:nth-child(n + 2)::before {
+  position: absolute;
+  left: -1.1rem;
+  color: #ccc;
+  content: "\2215";
+}
+
 [hidden] {
   display: none !important;
 }
