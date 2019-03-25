@@ -1,0 +1,43 @@
+.humble {
+  h1:not(#{$not}),
+  .h1 { font-size: $h1; }
+
+  h2:not(#{$not}),
+  .h2 { font-size: $h2; }
+
+  h3:not(#{$not}),
+  .h3 { font-size: $h3; }
+
+  h4:not(#{$not}),
+  .h4 { font-size: $h4; }
+
+  h5:not(#{$not}),
+  .h5 { font-size: $h5; }
+
+  h6:not(#{$not}),
+  .h6 { font-size: $h6; }
+
+  p:not(#{$not}) { font-size: $base; }
+
+  .crumbs:not(#{$not}) {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    padding: 0;
+
+    & > * {
+      position: relative;
+      display: inline-block;
+      margin-right: 2rem;
+
+      &:nth-child(n + 2)::before {
+        content: "\2215";
+        position: absolute;
+        left: -1.1rem;
+        color: #ccc;
+      }
+    }
+  }
+}
