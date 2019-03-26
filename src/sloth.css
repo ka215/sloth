@@ -78,11 +78,17 @@ ul ol {
   margin-bottom: 0;
 }
 
+li {
+  display: list-item;
+  text-align: match-parent;
+}
+
 nav ul {
   list-style: none;
 }
 
 dt {
+  margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
@@ -107,13 +113,13 @@ q::after {
 
 a {
   background-color: transparent;
-  color: #007bff;
+  color: #4183c4;
   text-decoration: none;
   vertical-align: baseline;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #1e70bf;
   text-decoration: underline;
 }
 
@@ -166,9 +172,15 @@ samp {
 }
 
 pre {
+  -ms-overflow-style: scrollbar;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   margin-top: 0;
   margin-bottom: 1rem;
+  padding: 0.5rem;
   overflow: auto;
+  text-align: left;
 }
 
 figure {
@@ -272,38 +284,126 @@ textarea {
   resize: vertical;
 }
 
+.sloth {
+  line-height: 1.1;
+}
+
 .sloth h1:not(.nons),
 .sloth .h1 {
   font-size: 2.6rem;
+  font-weight: 700;
 }
 
 .sloth h2:not(.nons),
 .sloth .h2 {
   font-size: 2.3rem;
+  font-weight: 700;
 }
 
 .sloth h3:not(.nons),
 .sloth .h3 {
   font-size: 2.1rem;
+  font-weight: 700;
 }
 
 .sloth h4:not(.nons),
 .sloth .h4 {
   font-size: 1.9rem;
+  font-weight: 600;
 }
 
 .sloth h5:not(.nons),
 .sloth .h5 {
   font-size: 1.7rem;
+  font-weight: 600;
 }
 
 .sloth h6:not(.nons),
 .sloth .h6 {
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .sloth p:not(.nons) {
   font-size: 1.4rem;
+}
+
+.sloth blockquote:not(.nons) {
+  padding: 1rem 0 1rem 2rem;
+  border-left: solid 3px #d3d3d3;
+}
+
+.sloth blockquote:not(.nons) cite {
+  display: block;
+  margin-top: 0.3rem;
+  color: #7d7d7d;
+  font-size: 90%;
+  text-align: right;
+}
+
+.sloth blockquote:not(.nons) cite::before {
+  color: #7d7d7d;
+  content: "\2014 \00A0";
+}
+
+.sloth a:not(.nons) {
+  -webkit-transition: color 0.2s;
+  -webkit-text-decoration-skip: objects;
+  display: inline-block;
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  transition: color 0.2s;
+}
+
+.sloth a:not(.nons)::before {
+  -webkit-transition: all 0.2s;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: scaleX(0);
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+          transform: scaleX(0);
+          backface-visibility: hidden;
+  background-color: #4183c4;
+  content: '';
+  transition: all 0.2s;
+}
+
+.sloth a:not(.nons):hover {
+  text-decoration: none;
+}
+
+.sloth a:not(.nons):hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.sloth address:not(.nons) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: column;
+      flex-wrap: nowrap;
+          justify-content: flex-start;
+}
+
+.sloth address:not(.nons) > *:not(.nons) {
+  display: inline-block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 0.2rem;
 }
 
 .sloth .crumbs:not(.nons) {
@@ -334,70 +434,190 @@ textarea {
   content: "\2215";
 }
 
+.sloth code:not(.nons) {
+  padding: 0.2rem;
+  border: solid 1px #abb1b5;
+  border-radius: 0.2rem;
+  background-color: rgba(211, 211, 211, 0.3);
+  color: #e8383d;
+  font-size: 90%;
+  word-break: break-word;
+}
+
+.sloth pre:not(.nons) {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  border: solid 1px #abb1b5;
+  border-radius: 0.2rem;
+  background-color: rgba(211, 211, 211, 0.3);
+  font-size: 90%;
+  line-height: 1.8;
+}
+
+.sloth pre:not(.nons) code:not(.nons) {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+  word-break: normal;
+}
+
+.sloth ol:not(.nons),
+.sloth ul:not(.nons) {
+  padding-left: 2rem;
+}
+
+.sloth ol:not(.nons) li:not(.nons),
+.sloth ul:not(.nons) li:not(.nons) {
+  margin-bottom: 0.5rem;
+}
+
+.sloth li > ol:not(.nons),
+.sloth li > ul:not(.nons) {
+  margin-top: 0.5rem;
+}
+
+.sloth ol.unstyled:not(.nons),
+.sloth ul.unstyled:not(.nons) {
+  padding-left: 0;
+  list-style: none;
+}
+
+.sloth .inline:not(.nons) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          flex-direction: row;
+      flex-wrap: wrap;
+  margin: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sloth .inline:not(.nons) > * {
+  display: inline-block;
+  position: relative;
+  margin-right: 1rem;
+}
+
 [hidden] {
   display: none !important;
 }
 
-.m-0 {
+.m0 {
   margin: 0;
 }
 
-.m-1 {
+.m1 {
   margin: 1rem;
 }
 
-.m-2 {
+.m2 {
   margin: 2rem;
 }
 
-.mx-0 {
+.mx0 {
   margin-right: 0;
   margin-left: 0;
 }
 
-.mx-1 {
+.mx1 {
   margin-right: 1rem;
   margin-left: 1rem;
 }
 
-.mx-2 {
+.mx2 {
   margin-right: 2rem;
   margin-left: 2rem;
 }
 
-.my-0 {
+.my0 {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.my-1 {
+.my1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.my-2 {
+.my2 {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
+.p0 {
+  padding: 0;
+}
+
+.p1 {
+  padding: 1rem;
+}
+
+.p2 {
+  padding: 2rem;
+}
+
+.px0 {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.px1 {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.px2 {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.py0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.py1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .w-full {
   width: 100%;
+  max-width: 100%;
 }
 
 .w-half {
   width: 50%;
+  max-width: 50%;
 }
 
 .w-1-3 {
   width: calc(100% / 3);
+  max-width: calc(100% / 3);
 }
 
 .w-1-4 {
   width: calc(100% / 4);
+  max-width: calc(100% / 4);
 }
 
 .w-1-5 {
   width: calc(100% / 5);
+  max-width: calc(100% / 5);
 }
 
 .min-w-sm {
@@ -410,6 +630,24 @@ textarea {
 
 .min-w-lg {
   min-width: 980px;
+}
+
+.h-full {
+  height: 100%;
+  max-height: 100%;
+}
+
+.h-half {
+  height: 50%;
+  max-height: 50%;
+}
+
+.fs-sm {
+  font-size: 0.8em !important;
+}
+
+.fs-lg {
+  font-size: 1.2em !important;
 }
 
 .flx-row {
@@ -439,4 +677,116 @@ textarea {
 .flx-wrap {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.flx-justify {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flx-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-whitesmoke {
+  background-color: #f5f5f5;
+}
+
+.bg-lightgray {
+  background-color: #d3d3d3;
+}
+
+.bg-fog {
+  background-color: #abb1b5;
+}
+
+.bg-gray {
+  background-color: #7d7d7d;
+}
+
+.bg-darkgray {
+  background-color: #594e52;
+}
+
+.txt-white {
+  color: #fff;
+}
+
+.txt-whitesmoke {
+  color: #f5f5f5;
+}
+
+.txt-lightgray {
+  color: #d3d3d3;
+}
+
+.txt-fog {
+  color: #abb1b5;
+}
+
+.muted,
+.txt-gray {
+  color: #7d7d7d;
+}
+
+.txt-darkgray {
+  color: #594e52;
+}
+
+.align-left,
+.txt-left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: left;
+}
+
+.align-center,
+.txt-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.align-right,
+.txt-right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  text-align: right;
+}
+
+.valign-top {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  vertical-align: top;
+}
+
+.valign-middle {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  vertical-align: middle;
+}
+
+.valign-bottom {
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  vertical-align: middle;
+}
+
+.v-center {
+  position: relative;
+  top: calc(50% - 1.5em);
+  height: 100%;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
 }

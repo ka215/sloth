@@ -21,9 +21,9 @@ body {
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1;
-  color: #212529;
+  color: $black;
   text-align: left;
-  background-color: #fff;
+  background-color: $white;
 }
 
 article,
@@ -71,12 +71,18 @@ ul ol {
   margin-bottom: 0;
 }
 
+li {
+  display: list-item;
+  text-align: match-parent;
+}
+
 nav ul {
   list-style: none;
 }
 
 dt {
   font-weight: 600;
+  margin-bottom: 0.3rem;
 }
 
 dd {
@@ -99,14 +105,14 @@ q::after {
 }
 
 a {
-  color: #007bff;
+  color: $blue;
   text-decoration: none;
   vertical-align: baseline;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
+  color: $blue2;
   text-decoration: underline;
 }
 
@@ -155,7 +161,11 @@ samp {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: left;
+  width: max-content;
   overflow: auto;
+  -ms-overflow-style: scrollbar;
 }
 
 figure {

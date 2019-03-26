@@ -9,7 +9,7 @@
   <meta name="description" content="Sloth has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
-<body class="sloth">
+<body id="sloth-docs" class="sloth">
 <header id="introduction">
   <h1 class="nons">Sloth</h1>
   <p class="nons">
@@ -20,79 +20,309 @@
 <article class="lead-block">
   <h2>Why Sloth?</h2>
   <aside>
-    We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.
+    We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.<br>
+    <br>
+    The sloth is lightweight as it saves the effort to rely on the legacy browser. Also, Sloth can use advanced styling technology that utilizes flexbox, grid, dialog, and limited vendor prefixes. It supports SCSS and postCSS, and you can customize your build with the included gulp file.
   </aside>
 </article>
-<nav>
-  <ol class="crumbs">
-    <li><a href="#">Top level</a></li>
-    <li><a href="#">Secondary level</a></li>
-    <li>Current level</li>
-  </ol>
-</nav>
-<div id="main" class="flx-row flx-wrap m-1">
-  <div class="w-1-4">
-    <hgroup>
-      <h1>H1 - 2.6rem</h1>
-      <h2>H2 - 2.3rem</h2>
-      <h3>H3 - 2.1rem</h3>
-      <h4>H4 - 1.9rem</h4>
-      <h5>H5 - 1.7rem</h5>
-      <h6>H6 - 1.5rem</h6>
-    </hgroup>
-    Normal text - 1.4rem<br>
-    <small>Small text - smaller</small>
+<article class="lead-block">
+  <h2>Get Started Sloth!</h2>
+  <aside>
+    Marking up in the Sloth style is very easy. Basically, you can complete most of your work simply by declaring the <code class="fs-sm">.sloth</code> class to the parent element you want to apply style to.
+    <div class="flx-row flx-center fs-sm my1">
+      <pre class="prettyprint"><code>&lt;body class="sloth"&gt;
+<div class="my1 px2"><i class="fas fa-ellipsis-v txt-fog"></i></div>&lt;/body&gt;</code></pre>
+      <div class="mx2"><span class="v-center">OR</span></div>
+      <pre class="prettyprint"><code>&lt;div class="sloth"&gt;
+<div class="my1 px2"><i class="fas fa-ellipsis-v txt-fog"></i></div>&lt;/div&gt;</code></pre>
+    </div>
+    Also, if you do not want to apply a style to a specific element in a Sloth style block, specify the <code class="fs-sm">.nons</code> class in the not sloth style declaration.
+    <div class="flx-row flx-center fs-sm my1">
+      <pre class="prettyprint"><code>&lt;body class="sloth"&gt;
+  &lt;h1 class="nons"&gt;Not Sloth Styled headline&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+  </aside>
+</article>
+<section class="sloth-styles">
+  <h3>Typograpy</h3>
+  <aside>
+    The typography in the Sloth style is shown below. It is not necessary to give a class name for style at markup.
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <hgroup>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </hgroup>
+      <span>Normal Text</span><br>
+      <small>Smaller Text</small>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;hgroup&gt;
+  &lt;h1&gt;Heading 1&lt;/h1&gt;
+  &lt;h2&gt;Heading 2&lt;/h2&gt;
+  &lt;h3&gt;Heading 3&lt;/h3&gt;
+  &lt;h4&gt;Heading 4&lt;/h4&gt;
+  &lt;h5&gt;Heading 5&lt;/h5&gt;
+  &lt;h6&gt;Heading 6&lt;/h6&gt;
+&lt;/hgroup&gt;
+&lt;span&gt;Normal Text&lt;/span&gt;&lt;br&gt;
+&lt;small&gt;Smaller Text&lt;/small&gt;</code></pre>
+    </div>
   </div>
-  <div class="flx-col w-1-4">
-    <p>paragraph</p>
-    <blockquote>
-      blockquote
-      <cite>source here</cite>
-    </blockquote>
-    <em>em</em>
-    <strong>strong</strong>
-    <b>bold</b>
-    <i>italic</i>
-    <hr>
-    <pre>pre</pre>
-    <code>code</code>
+  <hr>
+  <div class="flx-row flx-wrap my1">
+    <div class="w-half">
+      <p>Paragraphs are block-level elements,...</p>
+      <blockquote>
+        Indicates that the enclosed text is an extended quotation.
+        <cite>source here</cite>
+      </blockquote>
+      <hr>
+      Marks text that has stress <em>emphasis</em>.<br>
+      Its contents have <strong>strong</strong> importance.<br>
+      <b>Bring Attention</b> to element.<br>
+      It is typically displayed in <i>italic</i> type.<br>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;p&gt;Paragraphs are block-level elements,...&lt;/p&gt;
+&lt;blockquote&gt;
+  Indicates that the enclosed text is an extended quotation.
+  &lt;cite&gt;source here&lt;/cite&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+Marks text that has stress &lt;em&gt;emphasis&lt;/em&gt;&lt;br&gt;
+Its contents have &lt;strong&gt;strong&lt;/strong&gt; importance.&lt;br&gt;
+&lt;b&gt;Bring Attention&lt;/b&gt; to element.&lt;br&gt;
+It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></pre>
+    </div>
   </div>
-  <div class="w-1-4">
-    <ul><li>ul-item</li><li>ul-item</li></ul>
-    <ol><li>ol-item</li><li>ol-item</li></ul>
-    <dd>
-      <dt>dd-dt</dt><dl>dd-dl</dl>
-      <dt>dd-dt</dt><dl>dd-dl</dl>
-    </dd>
+  <hr>
+  <div class="flx-row flx-wrap my1">
+    <div class="w-half">
+      <p>The <code>push()</code> method adds one or more elements...</p>
+      <pre>
+  L          TE
+    A       A
+      C    V
+       R A</pre>
+      <pre><code>const example = () => {
+  let me = "&lt;div&gt;&lt;/div&gt;"
+  return me
+}
+</code></pre>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;p&gt;The &lt;code&gt;push()&lt;/code&gt; method adds one or more elements...&lt;/p&gt;
+&lt;pre&gt;
+  L          TE
+    A       A
+      C    V
+       R A&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;const example = () => {
+  let me = "&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;"
+  return me
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+    </div>
   </div>
-  <div class="flx-row w-full my-1">
-    <form>
-      <label>label</label>
-      <input type="text" placeholder="placeholder">
-      <input type="checkbox">checkbox
-      <input type="radio">radio
-      <input type="range">
-      <input type="submit" value="submit">
-      <select><option>option</option></select>
-      <textarea>textarea</textarea>
-      <button type="button" onclick="javascript:document.getElementById('humble-dialog').showModal()">button</button>
-    </form>
+</section>
+<section class="sloth-styles">
+  <h3>List</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <h6 class="muted">Ordered</h6>
+      <ol>
+        <li>Ordered Item</li>
+        <li>Ordered Item</li>
+      </ol>
+      <h6 class="muted">Unordered</h6>
+      <ul>
+        <li>Unordered Item 1</li>
+        <li>Unordered Item 2
+          <ul>
+            <li>Nested Item 1</li>
+            <li>Nested Item 2</li>
+          </ul>
+        </li>
+      </ul>
+      <h6 class="muted">Unstyled</h6>
+      <ul class="unstyled">
+        <li>Unstyled Item 1</li>
+        <li>Unstyled Item 2</li>
+      </ul>
+      <h6 class="muted">Description list</h6>
+      <dl>
+        <dt>Mathematical constant</dt>
+        <dd>the base of the natural logarithm</dd>
+        <dt>Ramanujan constant</dt>
+        <dd>a number that occurs in a theorem stating</dd>
+      </dl>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;ol&gt;
+  &lt;li&gt;Ordered Item&lt;/li&gt;
+  &lt;li&gt;Ordered Item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unordered Item 1&lt;/li&gt;
+  &lt;li&gt;Unordered Item 2
+    &lt;ul&gt;
+      &lt;li&gt;Nested Item 1&lt;/li&gt;
+      &lt;li&gt;Nested Item 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="unstyled"&gt;
+  &lt;li&gt;Unstyled Item 1&lt;/li&gt;
+  &lt;li&gt;Unstyled Item 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;dl&gt;
+  &lt;dt&gt;Mathematical constant&lt;/dt&gt;
+  &lt;dd&gt;the base of the natural logarithm&lt;/dd&gt;
+  &lt;dt&gt;Ramanujan constant&lt;/dt&gt;
+  &lt;dd&gt;a number that occurs in a theorem stating&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+    </div>
   </div>
-  <div class="w-half">
-    <table>
-      <thead><th>thead-th</th><th>thead-td</th><td>thead-td</td></thead>
-      <tbody><th>tbody-th</th><td>tbody-td</td><td>tbody-td</td></tbody>
-      <tfoot><th>tfoot-th</th><td>tfoot-td</td><td>tbody-td</td></tfoot>
-    </table>
+  <hr>
+  <div class="flx-col my1">
+    <h5 class="muted">Inline list</h5>
+    <div>
+      <ul class="inline">
+        <li>taxonomy-item-1</li>
+        <li>taxonomy-item-2</li>
+        <li>taxonomy-item-3</li>
+      </ul>
+    </div>
+    <h5 class="muted" id="bc">Breadcrumbs</h5>
+    <div>
+      <nav>
+        <ol class="crumbs">
+          <li><a href="#bc">Top level</a></li>
+          <li><a href="#bc">Secondary level</a></li>
+          <li>Current level</li>
+        </ol>
+      </nav>
+    </div>
+    <div>
+      <pre class="prettyprint"><code>&lt;ul class="inline">
+  &lt;li>taxonomy-item-1&lt;/li>
+  &lt;li>taxonomy-item-2&lt;/li>
+  &lt;li>taxonomy-item-3&lt;/li>
+&lt;/ul>
+&lt;nav>
+  &lt;ol class="crumbs">
+    &lt;li>&lt;a href="#">Top level&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">Secondary level&lt;/a>&lt;/li>
+    &lt;li>Current level&lt;/li>
+  &lt;/ol>
+&lt;/nav></code></pre>
+    </div>
   </div>
-  <section class="w-half">
-    <aside>Aside in the section</aside>
-    <address>
-      <a href="mailto:example@humble.com">example@humble.com</a>
-      <a href="tel:+123-456-7890">+123-456-7890</a>
-    </address>
-  </section>
-</div><!-- /#main -->
+</section>
+<section class="sloth-styles">
+  <h3 id="head-in-page">Links</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <a href="https://github.com/ka215/sloth">Normal link</a><br>
+      <a href="#head-in-page">Link in page</a><br>
+      <a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link</a><br>
+      <hr>
+      <address>
+        <a href="mailto:example@sloth.link">mailto@sloth.link</a>
+        <a href="tel:+123-456-7890">+123-456-7890</a>
+      </address>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;a href="https://github.com/ka215/sloth">Normal link&lt;/a>&lt;br>
+&lt;a href="#head-in-page">Link in page&lt;/a>&lt;br>
+&lt;a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link&lt;/a>&lt;br>
+&lt;hr>
+&lt;address>
+  &lt;a href="mailto:example@sloth.link">mailto@sloth.link&lt;/a>
+  &lt;a href="tel:+123-456-7890">+123-456-7890&lt;/a>
+&lt;/address></code></pre>
+    </div>
+  </div>
+</section>
+<section class="sloth-styles">
+  <h3>Forms</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <label>label</label>
+        <input type="text" placeholder="placeholder">
+        <input type="checkbox">checkbox
+        <input type="radio">radio
+        <input type="range">
+        <select><option>option</option></select>
+        <textarea>textarea</textarea>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+    <div class="w-half">
+    </div>
+  </div>
+</section>
+<section class="sloth-styles">
+  <h3>Buttons</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <button type="button" class="btn" onclick="javascript:document.getElementById('humble-dialog').showModal()">button</button>
+      <button type="button" class="btn">button</button>
+      <button type="button" class="btn">button</button>
+    </div>
+    <div class="w-half">
+    </div>
+  </div>
+</section>
+<section class="sloth-styles">
+  <h3>Tables</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <table>
+        <thead><th>thead-th</th><th>thead-td</th><td>thead-td</td></thead>
+        <tbody><th>tbody-th</th><td>tbody-td</td><td>tbody-td</td></tbody>
+        <tfoot><th>tfoot-th</th><td>tfoot-td</td><td>tbody-td</td></tfoot>
+      </table>
+    </div>
+    <div class="w-half">
+    </div>
+  </div>
+</section>
+<section class="sloth-styles">
+  <h3>Others</h3>
+  <aside>
+    
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+    </div>
+    <div class="w-half">
+    </div>
+  </div>
+</section>
 <footer id="demo-footer">
   <p class="txt-center">Crafted with &copy; <time>2019</time> MAGIC METHODS by <a href="https://ka2.org/">ka2</a></p>
 </footer>
@@ -100,6 +330,7 @@
   dialog box
   <button onclick="javascript:document.getElementById('humble-dialog').removeAttribute('open')">close</button>
 </dialog>
+<script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script>
 window.addEventListener('load',function(){
     
