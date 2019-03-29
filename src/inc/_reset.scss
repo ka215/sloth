@@ -225,13 +225,12 @@ th {
   text-align: inherit;
 }
 
-/* change border colour to suit your needs */
 hr {
   box-sizing: content-box;
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid $light-gray;
   margin: 1em 0;
   padding: 0;
 }

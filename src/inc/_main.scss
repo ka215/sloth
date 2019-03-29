@@ -1,5 +1,7 @@
 .sloth {
-  line-height: 1.1;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 
   h1:not(#{$not}),
   .h1 {
@@ -37,11 +39,12 @@
     font-weight: 500;
   }
 
-  p:not(#{$not}) { font-size: $base; }
+  p:not(#{$not}) { font-size: inherit; }
 
   blockquote:not(#{$not}) {
     padding: 1rem 0 1rem 2rem;
     border-left: solid 3px $light-gray;
+    font-size: 80%;
 
     cite {
       display: block;
@@ -57,8 +60,27 @@
     }
   }
 
+  hr:not(#{$not}) {
+    &.dotted { border-style: dotted; }
+    &.dashed { border-style: dashed; }
+
+    &.double,
+    &.doubled {
+      border-top: 3px double $light-gray;
+      margin: 0.9em 0;
+    }
+  }
+
+  ruby:not(#{$not}) {
+    font-size: inherit;
+
+    & > rt {
+      font-family: monospace, serif;
+      font-size: 50%;
+    }
+  }
+
   a:not(#{$not}) {
-    display: inline-block;
     position: relative;
     overflow: hidden;
     transition: color 0.2s;
@@ -85,6 +107,19 @@
 
       &::before {
         transform: scaleX(1);
+      }
+    }
+
+    &[target="_blank"],
+    &[rel="external"] {
+      padding-right: 1.5rem;
+
+      &::after {
+        position: absolute;
+        top: -0.1rem;
+        right: 0;
+        content: "\1f5d7";
+        font-style: normal;
       }
     }
   }
@@ -119,14 +154,22 @@
         content: "\2215";
         position: absolute;
         left: -1.1rem;
-        color: #ccc;
+        color: $light-gray;
+      }
+    }
+
+    &.arrows > * {
+      &:nth-child(n + 2)::before {
+        content: $crumbs-arrow;
+        left: $crumbs-left;
       }
     }
   }
 
   code:not(#{$not}) {
-    padding: 0.2rem;
-    font-size: 90%;
+    padding: 0.2rem 0.5rem;
+    font-size: 86.5%;
+    font-weight: 400;
     color: $signal-red;
     border: solid 1px $fog;
     border-radius: 0.2rem;
@@ -138,7 +181,8 @@
     display: block;
     width: 100%;
     padding: 0.5rem 1rem;
-    font-size: 90%;
+    font-size: 86.5%;
+    font-weight: 400;
     line-height: 1.8;
     border: solid 1px $fog;
     border-radius: 0.2rem;
@@ -187,6 +231,114 @@
       position: relative;
       display: inline-block;
       margin-right: 1rem;
+    }
+  }
+
+  label.floating {
+    position: relative;
+    display: inline-block;
+    margin: 1rem auto 0.5rem;
+    width: 100%;
+
+    .label {
+      position: absolute;
+      top: 16px;
+      left: 0;
+      font-size: 16px;
+      color: #9098a9;
+      font-weight: 500;
+      transform-origin: 0 0;
+      transition: all 0.2s ease;
+    }
+
+    .border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background: #07f;
+      transform: scaleX(0);
+      transform-origin: 0 0;
+      transition: all 0.15s ease;
+    }
+
+    input {
+      -webkit-appearance: none;
+      width: 100%;
+      border: 0;
+      font-family: inherit;
+      padding: 12px 0;
+      height: 48px;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 2px solid #c8ccd4;
+      background: none;
+      border-radius: 0;
+      color: #223254;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background: rgba(#223254, 0.03);
+      }
+
+      &:not(:placeholder-shown) + span {
+        color: #5a667f;
+        transform: translateY(-26px) scale(0.75);
+      }
+
+      &:focus {
+        background: none;
+        outline: none;
+
+        & + span {
+          color: #07f;
+          transform: translateY(-26px) scale(0.75);
+
+          & + .border {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+
+    textarea {
+      -webkit-appearance: none;
+      width: 100%;
+      border: 0;
+      font-family: inherit;
+      padding: 12px 0;
+      height: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 2px solid #c8ccd4;
+      background: none;
+      border-radius: 0;
+      color: #223254;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background: rgba(#223254, 0.03);
+      }
+
+      &:not(:placeholder-shown) + span {
+        color: #5a667f;
+        transform: translateY(-26px) scale(0.75);
+      }
+
+      &:focus {
+        background: none;
+        outline: none;
+
+        & + span {
+          color: #07f;
+          transform: translateY(-26px) scale(0.75);
+
+          & + .border {
+            transform: scaleX(1);
+          }
+        }
+      }
     }
   }
 }

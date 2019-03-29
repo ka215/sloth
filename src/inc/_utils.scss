@@ -107,8 +107,8 @@
   max-height: 50%;
 }
 
-.fs-sm { font-size: 0.8em !important; }
-.fs-lg { font-size: 1.2em !important; }
+.fs-sm { font-size: 80% !important; }
+.fs-lg { font-size: 120% !important; }
 
 .flx-row {
   display: flex;
@@ -180,4 +180,18 @@
   height: 100%;
   max-height: max-content;
   top: calc(50% - 1.5em);
+}
+
+.note {
+  position: relative;
+  padding-left: 1.5rem;
+  color: $gray;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0.2rem;
+    content: $note-prefix;
+    color: inherit;
+  }
 }
