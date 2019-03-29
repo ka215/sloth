@@ -83,7 +83,6 @@
         Indicates that the enclosed text is an extended quotation.
         <cite>source here</cite>
       </blockquote>
-      <hr>
       Marks text that has stress <em>emphasis</em>.<br>
       Its contents have <strong>strong</strong> importance.<br>
       <b>Bring Attention</b> to element.<br>
@@ -95,7 +94,6 @@
   Indicates that the enclosed text is an extended quotation.
   &lt;cite&gt;source here&lt;/cite&gt;
 &lt;/blockquote&gt;
-&lt;hr&gt;
 Marks text that has stress &lt;em&gt;emphasis&lt;/em&gt;&lt;br&gt;
 Its contents have &lt;strong&gt;strong&lt;/strong&gt; importance.&lt;br&gt;
 &lt;b&gt;Bring Attention&lt;/b&gt; to element.&lt;br&gt;
@@ -103,6 +101,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <hr>
+  <h6 class="muted">Codes</h6>
   <div class="flx-row flx-wrap my1">
     <div class="w-half">
       <p>The <code>push()</code> method adds one or more elements...</p>
@@ -131,11 +130,60 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;/code&gt;&lt;/pre&gt;</code></pre>
     </div>
   </div>
+  <hr>
+  <h6 class="muted">Hairlines</h6>
+  <div class="flx-row flx-wrap my1">
+    <div class="w-half">
+      <hr>
+      <hr class="dotted">
+      <hr class="dashed">
+      <hr class="double">
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;hr>
+&lt;hr class="dotted">
+&lt;hr class="dashed">
+&lt;hr class="double"></code></pre>
+    </div>
+  </div>
+  <hr>
+  <h6 class="muted">Ruby</h6>
+  <blockquote>
+    <p>Ruby characters are small, annotative glosses that are usually placed above or to the right of Chinese characters when writing languages with logographic characters such as Chinese, Japanese or Korean to show the pronunciation.</p>
+    <cite><a href="https://en.wikipedia.org/wiki/Ruby_character" target="_blank">Wikipedia</a></cite>
+  </blockquote>
+  <div class="flx-row flx-wrap my1">
+    <div class="w-half">
+      <ruby>
+        東京<rp>(</rp><rt>Tōkyō</rt><rp>)</rp>
+      </ruby><br>
+      <ruby>
+        北<rp>(</rp><rt>Běi</rt><rp>)</rp>
+        京<rp>(</rp><rt>jīng</rt><rp>)</rp>
+      </ruby>
+      <p hidden>
+        Slothのスタイリングでは、ルビを<ruby>含<rp>(</rp><rt>ふく</rt><rp>)</rp></ruby>む<ruby>文章<rp>(</rp><rt>ぶんしょう</rt><rp>)</rp></ruby>は
+        <ruby>親要素<rp>(</rp><rt>おやようそ</rt><rp>)</rp></ruby>にexpandクラスを<ruby>付与<rp>(</rp><rt>ふよ</rt><rp>)</rp></ruby>して
+        <ruby>行間<rp>(</rp><rt>ぎょうかん</rt><rp>)</rp></ruby>サイズを<ruby>調整<rp>(</rp><rt>ちょうせい</rt><rp>)</rp></ruby>することを
+        <ruby>推奨<rp>(</rp><rt>すいしょう</rt><rp>)</rp></ruby>します。
+      </p>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;ruby>
+  東京&lt;rp>(&lt;/rp>&lt;rt>Tōkyō&lt;/rt>&lt;rp>)&lt;/rp>
+&lt;/ruby>&lt;br>
+&lt;ruby>
+  北&lt;rp>(&lt;/rp>&lt;rt>Běi&lt;/rt>&lt;rp>)&lt;/rp>
+  京&lt;rp>(&lt;/rp>&lt;rt>jīng&lt;/rt>&lt;rp>)&lt;/rp>
+&lt;/ruby>
+</code></pre>
+    </div>
+  </div>
 </section>
 <section class="sloth-styles">
-  <h3>List</h3>
+  <h3>Lists</h3>
   <aside>
-    
+    In addition to below common styles, Sloth lists have list as components grouped together. It will be mentioned later.
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
@@ -203,40 +251,54 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         <li>taxonomy-item-3</li>
       </ul>
     </div>
-    <h5 class="muted" id="bc">Breadcrumbs</h5>
-    <div>
-      <nav>
-        <ol class="crumbs">
-          <li><a href="#bc">Top level</a></li>
-          <li><a href="#bc">Secondary level</a></li>
-          <li>Current level</li>
-        </ol>
-      </nav>
-    </div>
     <div>
       <pre class="prettyprint"><code>&lt;ul class="inline">
   &lt;li>taxonomy-item-1&lt;/li>
   &lt;li>taxonomy-item-2&lt;/li>
   &lt;li>taxonomy-item-3&lt;/li>
-&lt;/ul>
-&lt;nav>
-  &lt;ol class="crumbs">
-    &lt;li>&lt;a href="#">Top level&lt;/a>&lt;/li>
-    &lt;li>&lt;a href="#">Secondary level&lt;/a>&lt;/li>
-    &lt;li>Current level&lt;/li>
-  &lt;/ol>
-&lt;/nav></code></pre>
+&lt;/ul></code></pre>
+    </div>
+    <h5 class="muted">Breadcrumbs</h5>
+    <div>
+      <ol id="bc-1" class="crumbs">
+        <li><a href="#bc-1">Top level</a></li>
+        <li><a href="#bc-1">Secondary level</a></li>
+        <li>Current level</li>
+      </ol>
+    </div>
+    <div>
+      <pre class="prettyprint"><code>&lt;ol class="crumbs">
+  &lt;li>&lt;a href="#">Top level&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="#">Secondary level&lt;/a>&lt;/li>
+  &lt;li>Current level&lt;/li>
+&lt;/ol></code></pre>
+    </div>
+    <div>
+      <ul id="bc-2" class="crumbs arrows">
+        <li><a href="#bc-2"><i class="fas fa-home"></i></a></li>
+        <li><a href="#bc-2">Secondary level</a></li>
+        <li>Current level</li>
+      </ul>
+    </div>
+    <div>
+      <pre class="prettyprint"><code>&lt;ul class="crumbs arrows">
+  &lt;li>&lt;a href="#">&lt;i class="fas fa-home">&lt;/i>&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="#">Secondary level&lt;/a>&lt;/li>
+  &lt;li>Current level&lt;/li>
+&lt;/ul></code></pre>
+      <small class="note">The above icon uses powered by the <a rel="external" href="https://fontawesome.com/">Font awesome</a>.</small>
     </div>
   </div>
 </section>
 <section class="sloth-styles">
   <h3 id="head-in-page">Links</h3>
   <aside>
-    
+    The style for link to external is applied if the <code>&lt;a&gt;</code> tag has attribute of <code>rel="external"</code> or <code>target="_blank"</code>.
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
       <a href="https://github.com/ka215/sloth">Normal link</a><br>
+      <a rel="external" href="https://github.com/ka215/sloth">Link to external</a><br>
       <a href="#head-in-page">Link in page</a><br>
       <a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link</a><br>
       <hr>
@@ -247,6 +309,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;a href="https://github.com/ka215/sloth">Normal link&lt;/a>&lt;br>
+&lt;a rel="external" href="https://github.com/ka215/sloth">Link to external&lt;/a>&lt;br>
 &lt;a href="#head-in-page">Link in page&lt;/a>&lt;br>
 &lt;a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link&lt;/a>&lt;br>
 &lt;hr>
@@ -276,6 +339,39 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       </form>
     </div>
     <div class="w-half">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
+  <hr>
+  <h5 class="muted">Floating label</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <label for="field-1" class="floating">
+          <input type="text" id="field-1" placeholder="&nbsp;">
+          <span class="label">Name</span>
+          <span class="border"></span>
+        </label>
+        <label for="field-2" class="floating">
+          <input type="password" id="field-2" placeholder="&nbsp;">
+          <span class="label">Password</span>
+          <span class="border"></span>
+        </label>
+        <label for="field-3" class="floating">
+          <textarea id="field-3" placeholder="&nbsp;"></textarea>
+          <span class="label">Content</span>
+          <span class="border"></span>
+        </label>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;label for="field-1" class="floating">
+  &lt;input type="text" id="field-1" placeholder="&amp;nbsp;">
+  &lt;span class="label">Name&lt;/span>
+  &lt;span class="border">&lt;/span>
+&lt;/label>
+</code></pre>
     </div>
   </div>
 </section>

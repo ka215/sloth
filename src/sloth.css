@@ -1,9 +1,11 @@
+@charset "UTF-8";
 /*!
 Sloth CSS micro framework
 v1.0.0
 Last Updated: 2019-03-21
 Author: Ka2 - https://ka2.org
 */
+/* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
 *,
 *::before,
 *::after {
@@ -241,7 +243,6 @@ th {
   text-align: inherit;
 }
 
-/* change border colour to suit your needs */
 hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -250,7 +251,7 @@ hr {
   margin: 1em 0;
   padding: 0;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #d3d3d3;
 }
 
 input,
@@ -285,7 +286,12 @@ textarea {
 }
 
 .sloth {
-  line-height: 1.1;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+          text-size-adjust: 100%;
 }
 
 .sloth h1:not(.nons),
@@ -325,12 +331,13 @@ textarea {
 }
 
 .sloth p:not(.nons) {
-  font-size: 1.4rem;
+  font-size: inherit;
 }
 
 .sloth blockquote:not(.nons) {
   padding: 1rem 0 1rem 2rem;
   border-left: solid 3px #d3d3d3;
+  font-size: 80%;
 }
 
 .sloth blockquote:not(.nons) cite {
@@ -346,10 +353,31 @@ textarea {
   content: "\2014 \00A0";
 }
 
+.sloth hr:not(.nons).dotted {
+  border-style: dotted;
+}
+
+.sloth hr:not(.nons).dashed {
+  border-style: dashed;
+}
+
+.sloth hr:not(.nons).double, .sloth hr:not(.nons).doubled {
+  margin: 0.9em 0;
+  border-top: 3px double #d3d3d3;
+}
+
+.sloth ruby:not(.nons) {
+  font-size: inherit;
+}
+
+.sloth ruby:not(.nons) > rt {
+  font-family: monospace, serif;
+  font-size: 50%;
+}
+
 .sloth a:not(.nons) {
   -webkit-transition: color 0.2s;
   -webkit-text-decoration-skip: objects;
-  display: inline-block;
   z-index: 0;
   position: relative;
   overflow: hidden;
@@ -381,6 +409,18 @@ textarea {
 .sloth a:not(.nons):hover::before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
+}
+
+.sloth a:not(.nons)[target="_blank"], .sloth a:not(.nons)[rel="external"] {
+  padding-right: 1.5rem;
+}
+
+.sloth a:not(.nons)[target="_blank"]::after, .sloth a:not(.nons)[rel="external"]::after {
+  position: absolute;
+  top: -0.1rem;
+  right: 0;
+  font-style: normal;
+  content: "\1f5d7";
 }
 
 .sloth address:not(.nons) {
@@ -430,17 +470,23 @@ textarea {
 .sloth .crumbs:not(.nons) > *:nth-child(n + 2)::before {
   position: absolute;
   left: -1.1rem;
-  color: #ccc;
+  color: #d3d3d3;
   content: "\2215";
 }
 
+.sloth .crumbs:not(.nons).arrows > *:nth-child(n + 2)::before {
+  left: -1.1rem;
+  content: "›";
+}
+
 .sloth code:not(.nons) {
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
   border: solid 1px #abb1b5;
   border-radius: 0.2rem;
   background-color: rgba(211, 211, 211, 0.3);
   color: #e8383d;
-  font-size: 90%;
+  font-size: 86.5%;
+  font-weight: 400;
   word-break: break-word;
 }
 
@@ -452,7 +498,8 @@ textarea {
   border: solid 1px #abb1b5;
   border-radius: 0.2rem;
   background-color: rgba(211, 211, 211, 0.3);
-  font-size: 90%;
+  font-size: 86.5%;
+  font-weight: 400;
   line-height: 1.8;
 }
 
@@ -505,6 +552,127 @@ textarea {
   display: inline-block;
   position: relative;
   margin-right: 1rem;
+}
+
+.sloth label.floating {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: 1rem auto 0.5rem;
+}
+
+.sloth label.floating .label {
+  -webkit-transform-origin: 0 0;
+  -webkit-transition: all 0.2s ease;
+  position: absolute;
+  top: 16px;
+  left: 0;
+          transform-origin: 0 0;
+  color: #9098a9;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sloth label.floating .border {
+  -webkit-transform: scaleX(0);
+  -webkit-transform-origin: 0 0;
+  -webkit-transition: all 0.15s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+          transform: scaleX(0);
+          transform-origin: 0 0;
+  background: #07f;
+  transition: all 0.15s ease;
+}
+
+.sloth label.floating input {
+  -webkit-appearance: none;
+  -webkit-transition: all 0.15s ease;
+  width: 100%;
+  height: 48px;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 2px solid #c8ccd4;
+  border-radius: 0;
+  background: none;
+  color: #223254;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.sloth label.floating input:hover {
+  background: rgba(34, 50, 84, 0.03);
+}
+
+.sloth label.floating input:not(:placeholder-shown) + span {
+  -webkit-transform: translateY(-26px) scale(0.75);
+          transform: translateY(-26px) scale(0.75);
+  color: #5a667f;
+}
+
+.sloth label.floating input:focus {
+  outline: none;
+  background: none;
+}
+
+.sloth label.floating input:focus + span {
+  -webkit-transform: translateY(-26px) scale(0.75);
+          transform: translateY(-26px) scale(0.75);
+  color: #07f;
+}
+
+.sloth label.floating input:focus + span + .border {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.sloth label.floating textarea {
+  -webkit-appearance: none;
+  -webkit-transition: all 0.15s ease;
+  width: 100%;
+  height: 100px;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 2px solid #c8ccd4;
+  border-radius: 0;
+  background: none;
+  color: #223254;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.sloth label.floating textarea:hover {
+  background: rgba(34, 50, 84, 0.03);
+}
+
+.sloth label.floating textarea:not(:placeholder-shown) + span {
+  -webkit-transform: translateY(-26px) scale(0.75);
+          transform: translateY(-26px) scale(0.75);
+  color: #5a667f;
+}
+
+.sloth label.floating textarea:focus {
+  outline: none;
+  background: none;
+}
+
+.sloth label.floating textarea:focus + span {
+  -webkit-transform: translateY(-26px) scale(0.75);
+          transform: translateY(-26px) scale(0.75);
+  color: #07f;
+}
+
+.sloth label.floating textarea:focus + span + .border {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 [hidden] {
@@ -643,11 +811,11 @@ textarea {
 }
 
 .fs-sm {
-  font-size: 0.8em !important;
+  font-size: 80% !important;
 }
 
 .fs-lg {
-  font-size: 1.2em !important;
+  font-size: 120% !important;
 }
 
 .flx-row {
@@ -789,4 +957,18 @@ textarea {
   max-height: -webkit-max-content;
   max-height: -moz-max-content;
   max-height: max-content;
+}
+
+.note {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #7d7d7d;
+}
+
+.note::before {
+  position: absolute;
+  top: 0;
+  left: 0.2rem;
+  color: inherit;
+  content: "🛈";
 }
