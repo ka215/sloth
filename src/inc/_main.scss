@@ -80,6 +80,22 @@
     }
   }
 
+  [data-ruby]:not(#{$not}) {
+    position: relative;
+
+    &::after {
+      content: attr(data-ruby);
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      top: -0.9rem;
+      width: 100%;
+      font-family: monospace, serif;
+      font-size: 50%;
+      text-align: center;
+    }
+  }
+
   a:not(#{$not}) {
     position: relative;
     overflow: hidden;
@@ -223,7 +239,8 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
     margin: 0.5rem;
     padding: 0;
 
@@ -231,10 +248,175 @@
       position: relative;
       display: inline-block;
       margin-right: 1rem;
+      margin-bottom: 0.3rem;
+      vertical-align: middle;
+    }
+
+    input:not([type]),
+    input[type=date],
+    input[type=datetime-local],
+    input[type=email],
+    input[type=file],
+    input[type=number],
+    input[type=password],
+    input[type=search],
+    input[type=tel],
+    input[type=text],
+    input[type=time],
+    input[type=url],
+    button,
+    select,
+    textarea {
+      width: auto !important;
     }
   }
 
-  label.floating {
+  .checkbox {
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+    font-size: inherit;
+
+    .indicator {
+      position: absolute;
+      top: 0.2rem;
+      left: 0.2rem;
+      height: 1.5rem;
+      width: 1.5rem;
+      background: $light-gray;
+      border-radius: 0.2rem;
+
+      &::after {
+        content: '';
+        position: absolute;
+        display: none;
+        left: 0.5rem;
+        top: 0.1rem;
+        width: 0.5rem;
+        height: 1rem;
+        border: solid $white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover input ~ .indicator {
+      background: $light-gray;
+    }
+
+    input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+
+      &:focus ~ .indicator {
+        background: $light-gray;
+      }
+
+      &:checked ~ .indicator {
+        background: $blue;
+
+        &::after {
+          display: block;
+        }
+      }
+
+      &:disabled ~ .indicator {
+        background: $light-gray;
+        opacity: 0.6;
+        pointer-events: none;
+
+        &::after {
+          border-color: $gray;
+        }
+      }
+
+      &:checked:focus ~ .indicator {
+        background: $blue2;
+      }
+    }
+
+    &:hover input:not([disabled]):checked ~ .indicator {
+      background: $blue2;
+    }
+  }
+
+  .radio {
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+    font-size: inherit;
+
+    .indicator {
+      position: absolute;
+      top: 0.2rem;
+      left: 0.2rem;
+      height: 1.4rem;
+      width: 1.4rem;
+      background: $light-gray;
+      border-radius: 50%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        display: none;
+        left: 0.4rem;
+        top: 0.4rem;
+        height: 0.6rem;
+        width: 0.6rem;
+        border-radius: 50%;
+        background: $white;
+      }
+    }
+
+    &:hover input ~ .indicator {
+      background: $light-gray;
+    }
+
+    input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+
+      &:focus ~ .indicator {
+        background: $light-gray;
+      }
+
+      &:checked ~ .indicator {
+        background: $blue;
+
+        &::after {
+          display: block;
+        }
+      }
+
+      &:disabled ~ .indicator {
+        background: $light-gray;
+        opacity: 0.6;
+        pointer-events: none;
+
+        &::after {
+          background: $gray;
+        }
+      }
+
+      &:checked:focus ~ .indicator {
+        background: $blue2;
+      }
+    }
+
+    &:hover input:not([disabled]):checked ~ .indicator {
+      background: $blue2;
+    }
+  }
+
+  .floating {
     position: relative;
     display: inline-block;
     margin: 1rem auto 0.5rem;
@@ -242,10 +424,10 @@
 
     .label {
       position: absolute;
-      top: 16px;
+      top: 1.4rem;
       left: 0;
-      font-size: 16px;
-      color: #9098a9;
+      font-size: 1.4rem;
+      color: $gray;
       font-weight: 500;
       transform-origin: 0 0;
       transition: all 0.2s ease;
@@ -255,89 +437,227 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
+      height: 1px;
       width: 100%;
-      background: #07f;
+      background: $blue;
       transform: scaleX(0);
       transform-origin: 0 0;
       transition: all 0.15s ease;
     }
 
     input {
-      -webkit-appearance: none;
+      appearance: none;
       width: 100%;
       border: 0;
       font-family: inherit;
-      padding: 12px 0;
-      height: 48px;
-      font-size: 16px;
-      font-weight: 500;
-      border-bottom: 2px solid #c8ccd4;
+      padding: 1.5rem 0.3rem 1rem;
+      height: calc(1.4rem * 2.5);
+      font-size: inherit;
+      font-weight: 400;
+      border-bottom: 1px solid $light-gray;
       background: none;
       border-radius: 0;
-      color: #223254;
+      color: $black;
       transition: all 0.15s ease;
 
       &:hover {
-        background: rgba(#223254, 0.03);
+        background: rgba($blue, 0.03);
       }
 
-      &:not(:placeholder-shown) + span {
-        color: #5a667f;
-        transform: translateY(-26px) scale(0.75);
+      &:not(:placeholder-shown) ~ .label {
+        color: $blue;
+        transform: translateY(-2.2rem) scale(0.75);
       }
 
       &:focus {
         background: none;
         outline: none;
 
-        & + span {
-          color: #07f;
-          transform: translateY(-26px) scale(0.75);
+        & ~ label,
+        & ~ .label {
+          color: $blue;
+          transform: translateY(-2.2rem) scale(0.75);
+        }
 
-          & + .border {
-            transform: scaleX(1);
-          }
+        & ~ .border {
+          transform: scaleX(1);
         }
       }
     }
 
     textarea {
-      -webkit-appearance: none;
+      appearance: none;
       width: 100%;
       border: 0;
       font-family: inherit;
-      padding: 12px 0;
-      height: 100px;
-      font-size: 16px;
-      font-weight: 500;
-      border-bottom: 2px solid #c8ccd4;
+      padding: 1.5rem 0.3rem 1rem;
+      min-height: calc(1.4rem * 2.5);
+      font-size: inherit;
+      font-weight: 400;
+      border-bottom: 1px solid $light-gray;
       background: none;
       border-radius: 0;
-      color: #223254;
+      color: $black;
       transition: all 0.15s ease;
 
       &:hover {
-        background: rgba(#223254, 0.03);
+        background: rgba($blue, 0.03);
       }
 
-      &:not(:placeholder-shown) + span {
-        color: #5a667f;
-        transform: translateY(-26px) scale(0.75);
+      &:not(:placeholder-shown) {
+        & ~ label,
+        & ~ .label {
+          color: $blue;
+          transform: translateY(-2.2rem) scale(0.75);
+        }
       }
 
       &:focus {
         background: none;
         outline: none;
 
-        & + span {
-          color: #07f;
-          transform: translateY(-26px) scale(0.75);
-
-          & + .border {
-            transform: scaleX(1);
-          }
+        & ~ label,
+        & ~ .label {
+          color: $blue;
+          transform: translateY(-2.2rem) scale(0.75);
         }
+
+        & ~ .border {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  select,
+  textarea {
+    appearance: none;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.3rem;
+    padding: 0.3em 0.5em;
+    font-size: inherit;
+    background: none $white;
+    border: 1px solid rgba($black, 0.15);
+    color: $black;
+    border-radius: 0.2857rem;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent inset;
+    transition: color 0.1s ease, border-color 0.1s ease;
+
+    &:focus {
+      color: rgba($black, 0.95);
+      border-color: $blue2;
+      border-radius: 0.2857rem;
+      background: $white;
+      box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
+
+      &::-webkit-input-placeholder { color: $gray; }
+      &::-moz-placeholder { color: $gray; }
+      &:-ms-input-placeholder { color: $gray; }
+    }
+  }
+
+  select {
+    appearance: button;
+    text-indent: 0.01rem;
+    text-overflow: '';
+    vertical-align: middle;
+    width: max-content;
+
+    option {
+      background: $white;
+      color: $black;
+    }
+
+    &::-ms-expand { display: none; }
+
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 $blue2;
+    }
+  }
+
+  .dropdown {
+    position: relative;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 90%;
+    font-weight: 500;
+    color: $gray;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      right: 1rem;
+      bottom: 1.5rem;
+      height: 0.8rem;
+      width: 0.8rem;
+      background: transparent;
+      border: solid $fog;
+      border-width: 0 0.2rem 0.2rem 0;
+      pointer-events: none;
+      transform: rotate(45deg);
+    }
+
+    &:hover::after {
+      border-color: $blue;
+    }
+
+    select {
+      width: 100%;
+      margin-top: 0.3rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown) {
+    display: inline-block;
+    width: max-content;
+    font-size: 90%;
+    font-weight: 500;
+    color: $gray;
+
+    & ~ input:not([type]),
+    & ~ input[type=date],
+    & ~ input[type=datetime-local],
+    & ~ input[type=email],
+    & ~ input[type=file],
+    & ~ input[type=number],
+    & ~ input[type=password],
+    & ~ input[type=search],
+    & ~ input[type=tel],
+    & ~ input[type=text],
+    & ~ input[type=time],
+    & ~ input[type=url],
+    & ~ button,
+    & ~ select,
+    & ~ textarea {
+      appearance: none;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 0.3rem;
+      padding: 0.3em 0.5em;
+      font-size: inherit;
+      background: $white;
+      border: 1px solid rgba($black, 0.15);
+      color: rgba($black, 0.87);
+      border-radius: 0.2857rem;
+      outline: 0;
+      box-shadow: 0 0 0 0 transparent inset;
+      transition: color 0.1s ease, border-color 0.1s ease;
+
+      &:focus {
+        color: rgba($black, 0.95);
+        border-color: $blue2;
+        border-radius: 0.2857rem;
+        background: $white;
+        box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
+
+        &::-webkit-input-placeholder { color: $gray; }
+        &::-moz-placeholder { color: $gray; }
+        &:-ms-input-placeholder { color: $gray; }
       }
     }
   }

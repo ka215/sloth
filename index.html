@@ -179,6 +179,22 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 </code></pre>
     </div>
   </div>
+  <aside>
+    The following markup is available as a unique ruby ​​description on the Sloth styling.
+  </aside>
+  <div class="flx-row flx-wrap my1">
+    <div class="w-half">
+      <p>
+        <span data-ruby="Kyōto">京都</span>
+      </p>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;p>
+  &lt;span data-ruby="Kyōto">京都&lt;/span>
+&lt;/p>
+</code></pre>
+    </div>
+  </div>
 </section>
 <section class="sloth-styles">
   <h3>Lists</h3>
@@ -328,14 +344,175 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-row my1">
     <div class="w-half">
       <form>
-        <label>label</label>
-        <input type="text" placeholder="placeholder">
-        <input type="checkbox">checkbox
-        <input type="radio">radio
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email address">
+        <label for="passwd">Password</label>
+        <input type="password" id="passwd" placeholder="Enter your password">
+        <label for="bio">Biography</label>
+        <textarea id="bio" placeholder="Tell us about yourself"></textarea>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;form>
+  &lt;label for="email">Email&lt;/label>
+  &lt;input type="email" id="email" placeholder="Enter your email address">
+  &lt;label for="passwd">Password&lt;/label>
+  &lt;input type="password" id="passwd" placeholder="Enter your password">
+  &lt;label for="bio">Biography&lt;/label>
+  &lt;textarea id="bio" placeholder="Tell us about yourself">&lt;/textarea>
+&lt;/form></code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Inline forms</h5>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <form class="inline">
+        <label>Name</label>
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </form>
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;form class="inline">
+  &lt;label>Name&lt;/label>
+  &lt;input type="text" placeholder="First Name">
+  &lt;input type="text" placeholder="Last Name">
+&lt;/form></code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Checkboxes</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <label class="checkbox">Unchecked
+          <input type="checkbox">
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox">Checked
+          <input type="checkbox" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox">Disabled
+          <input type="checkbox" disabled>
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox">Disabled & Checked
+          <input type="checkbox" checked="checked" disabled>
+          <span class="indicator"></span>
+        </label>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;label class="checkbox">Unchecked
+  &lt;input type="checkbox">
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="checkbox">Checked
+  &lt;input type="checkbox" checked="checked">
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="checkbox">Disabled
+  &lt;input type="checkbox" disabled>
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="checkbox">Disabled &amp; Checked
+  &lt;input type="checkbox" checked="checked" disabled>
+  &lt;span class="indicator">&lt;/span>
+&lt;/label></code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Radio buttons</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <label class="radio">Unchecked
+          <input type="radio">
+          <span class="indicator"></span>
+        </label>
+        <label class="radio">Checked
+          <input type="radio" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="radio">Disabled
+          <input type="radio" disabled>
+          <span class="indicator"></span>
+        </label>
+        <label class="radio">Disabled & Checked
+          <input type="radio" checked="checked" disabled>
+          <span class="indicator"></span>
+        </label>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;label class="radio">Unchecked
+  &lt;input type="radio">
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="radio">Checked
+  &lt;input type="radio" checked="checked">
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="radio">Disabled
+  &lt;input type="radio" disabled>
+  &lt;span class="indicator">&lt;/span>
+&lt;/label>
+&lt;label class="radio">Disabled &amp; Checked
+  &lt;input type="radio" checked="checked" disabled>
+  &lt;span class="indicator">&lt;/span>
+&lt;/label></code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Select boxes</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <select>
+          <option>Dropdown Item 1</option>
+          <option>Dropdown Item 2</option>
+          <option>Dropdown Item 3</option>
+        </select>
+        <label class="dropdown">Dropdown Component
+          <select>
+            <option>Dropdown Item 1</option>
+            <option>Dropdown Item 2</option>
+            <option>Dropdown Item 3</option>
+          </select>
+        </label>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;select>
+  &lt;option>Dropdown Item 1&lt;/option>
+  &lt;option>Dropdown Item 2&lt;/option>
+  &lt;option>Dropdown Item 3&lt;/option>
+&lt;/select>
+&lt;label class="dropdown">
+  &lt;select>
+    &lt;option>Dropdown Item 1&lt;/option>
+    &lt;option>Dropdown Item 2&lt;/option>
+    &lt;option>Dropdown Item 3&lt;/option>
+  &lt;/select>
+&lt;/label>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Datalist</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Range bar</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
         <input type="range">
-        <select><option>option</option></select>
-        <textarea>textarea</textarea>
-        <input type="submit" value="submit">
+        <input type="submit" value="submit" onclick="return false;">
       </form>
     </div>
     <div class="w-half">
@@ -368,7 +545,17 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;label for="field-1" class="floating">
   &lt;input type="text" id="field-1" placeholder="&amp;nbsp;">
-  &lt;span class="label">Name&lt;/span>
+  &lt;label>Name&lt;/label>
+  &lt;span class="border">&lt;/span>
+&lt;/label>
+&lt;label for="field-2" class="floating">
+  &lt;input type="password" id="field-2" placeholder="&amp;nbsp;">
+  &lt;span class="label">Password&lt;/span>
+  &lt;span class="border">&lt;/span>
+&lt;/label>
+&lt;label for="field-3" class="floating">
+  &lt;textarea id="field-3" placeholder="&amp;nbsp;">&lt;/textarea>
+  &lt;label>Content&lt;/label>
   &lt;span class="border">&lt;/span>
 &lt;/label>
 </code></pre>
