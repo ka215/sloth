@@ -9,6 +9,7 @@
         'include', 'content', 'return', 'function'
       ]
     }],
-    "no-invalid-double-slash-comments": null
+    "no-invalid-double-slash-comments": null,
+    "no-descending-specificity": null
   }
 }
