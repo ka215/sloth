@@ -661,4 +661,300 @@
       }
     }
   }
+
+  input[type=submit]:not(#{$not}),
+  input[type=button]:not(#{$not}),
+  button:not(#{$not}) {
+    appearance: none;
+    display: inline-block;
+    background: $blue;
+    color: $white;
+    font-size: inherit;
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: 0.01rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem 0.6rem;
+    border: 0;
+    border-radius: 0.3rem;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 2px 2px 0 rgba($dark-gray, 0.14), 0 1px 5px 0 rgba($dark-gray, 0.12), 0 3px 1px -2px rgba($dark-gray, 0.2);
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease-out;
+
+    &:not([type=submit]) {
+      background: $light-gray;
+      color: $dark-gray;
+    }
+
+    &:hover {
+      background: rgba($blue2, 0.9);
+      box-shadow: 0 3px 3px 0 rgba($black, 0.14), 0 1px 7px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2);
+    }
+
+    &:not([type=submit]):hover {
+      background: rgba($gray, 0.5);
+      box-shadow: 0 3px 3px 0 rgba($black, 0.14), 0 1px 7px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2);
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: 0 3px 3px 0 rgba($black, 0.14), 0 1px 7px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2);
+    }
+
+    &.clr-prim {
+      background: $blue;
+      color: $white;
+
+      &:hover { background: rgba($blue2, 0.9); }
+    }
+
+    &.clr-sec {
+      background: $green;
+      color: $white;
+
+      &:hover { background: rgba($green2, 0.9); }
+    }
+
+    &.clr-tert {
+      background: $signal-red;
+      color: $white;
+
+      &:hover { background: rgba($red, 0.9); }
+    }
+
+    &.clr-quat {
+      background: $orange;
+      color: $white;
+
+      &:hover { background: rgba($orange2, 0.98); }
+    }
+
+    &.clr-quin {
+      background: $yellow3;
+      color: $white;
+
+      &:hover { background: rgba($pumpkin, 0.86); }
+    }
+
+    &.flat {
+      background: none transparent;
+      color: $blue;
+      margin: 0.6rem;
+      margin-left: 0;
+      padding: 0 0.7rem;
+      min-height: 36px;
+      border-radius: 0;
+      text-transform: uppercase;
+      box-shadow: 0 0 0 0 transparent inset;
+
+      &:hover {
+        background: rgba($blue, 0.12);
+        box-shadow: 0 0 0 0 transparent inset;
+      }
+
+      &:not([type=submit]) {
+        color: $dark-gray;
+
+        &:hover { background: rgba($gray, 0.12); }
+      }
+
+      &.clr-prim {
+        color: $blue;
+
+        &:hover { background: rgba($blue, 0.12); }
+      }
+
+      &.clr-sec {
+        color: $green;
+
+        &:hover { background: rgba($green, 0.12); }
+      }
+
+      &.clr-tert {
+        color: $signal-red;
+
+        &:hover { background: rgba($signal-red, 0.12); }
+      }
+
+      &.clr-quat {
+        color: $orange;
+
+        &:hover { background: rgba($orange, 0.12); }
+      }
+
+      &.clr-quin {
+        color: $pumpkin;
+
+        &:hover { background: rgba($yellow, 0.12); }
+      }
+    }
+
+    &.outline {
+      background: none transparent;
+      color: $blue;
+      border: solid 1px $fog;
+      border-radius: 0.3rem;
+      box-shadow: 0 0 0 0 transparent inset;
+
+      &:hover {
+        background: rgba($blue, 0.12);
+        box-shadow: 0 0 0 0 transparent inset;
+      }
+
+      &:not([type=submit]) {
+        color: $dark-gray;
+
+        &:hover {
+          background: rgba($gray, 0.12);
+        }
+      }
+
+      &.clr-prim {
+        color: $blue;
+
+        &:hover { background: rgba($blue, 0.12); }
+      }
+
+      &.clr-sec {
+        color: $green;
+
+        &:hover { background: rgba($green, 0.12); }
+      }
+
+      &.clr-tert {
+        color: $signal-red;
+
+        &:hover { background: rgba($signal-red, 0.12); }
+      }
+
+      &.clr-quat {
+        color: $orange;
+
+        &:hover { background: rgba($orange, 0.12); }
+      }
+
+      &.clr-quin {
+        color: $pumpkin;
+
+        &:hover { background: rgba($yellow, 0.12); }
+      }
+    }
+  }
+
+  table:not(#{$not}) {
+    display: table;
+    width: 100%;
+    background: $white;
+    margin: 1rem 0;
+    border: 1px solid rgba($black, 0.15);
+    box-shadow: none;
+    border-radius: 0.2857rem;
+    text-align: left;
+    color: rgba($black, 0.87);
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: inherit;
+
+    thead {
+      th {
+        cursor: auto;
+        background: rgba($white-smoke, 0.87);
+        text-align: inherit;
+        color: rgba($black, 0.87);
+        padding: 0.5rem 0.8rem;
+        vertical-align: inherit;
+        font-style: none;
+        font-weight: 700;
+        text-transform: none;
+        border-bottom: 1px solid rgba($black, 0.1);
+        border-left: 1px solid rgba($black, 0.1);
+      }
+
+      tr:first-child {
+        th:first-child {
+          border-top-left-radius: 0.2857rem;
+          border-left: none;
+        }
+        th:last-child { border-top-right-radius: 0.2857rem; }
+      }
+    }
+
+    tbody {
+      th,
+      td {
+        text-align: inherit;
+        color: rgba($black, 0.87);
+        padding: 0.5rem 0.8rem;
+        vertical-align: inherit;
+        font-style: none;
+        font-weight: 400;
+        text-transform: none;
+        border-top: 1px solid rgba($black, 0.1);
+        border-left: 1px solid rgba($black, 0.1);
+        transition: background 0.1s ease, color 0.1s ease;
+      }
+
+      th {
+        cursor: auto;
+        background: rgba($white-smoke, 0.5);
+        font-weight: 700;
+      }
+
+      tr {
+        &:first-child th,
+        &:first-child td {
+          border-top: none;
+        }
+
+        th:first-child,
+        td:first-child {
+          border-left: none;
+        }
+
+        &:nth-child(even) td {
+          background: rgba($white-smoke, 0.15);
+        }
+      }
+    }
+
+    tfoot {
+      th,
+      td {
+        cursor: auto;
+        background: rgba($white-smoke, 0.87);
+        text-align: inherit;
+        color: rgba($black, 0.87);
+        padding: 0.5rem 0.8rem;
+        vertical-align: inherit;
+        font-style: none;
+        font-weight: 400;
+        text-transform: none;
+        border-top: 1px solid rgba($black, 0.1);
+        border-left: 1px solid rgba($black, 0.1);
+      }
+
+      th { font-weight: 700; }
+
+      tr:first-child {
+        th:first-child,
+        td:first-child {
+          border-bottom-left-radius: 0.2857rem;
+          border-left: none;
+        }
+
+        th:last-child,
+        td:last-child {
+          border-bottom-right-radius: 0.2857rem;
+        }
+      }
+    }
+
+    &.slim {
+      font-size: 87.5%;
+    }
+  }
 }

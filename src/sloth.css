@@ -1109,6 +1109,428 @@ textarea {
   color: #7d7d7d;
 }
 
+.sloth input[type=submit]:not(.nons),
+.sloth input[type=button]:not(.nons),
+.sloth button:not(.nons) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: all 0.2s ease-out;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem 0.6rem;
+  border: 0;
+  border-radius: 0.3rem;
+  outline: none;
+  background: #4183c4;
+          box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
+  color: #fff;
+  font-size: inherit;
+  letter-spacing: 0.01rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+          user-select: none;
+}
+
+.sloth input[type=submit]:not(.nons):not([type=submit]),
+.sloth input[type=button]:not(.nons):not([type=submit]),
+.sloth button:not(.nons):not([type=submit]) {
+  background: #d3d3d3;
+  color: #594e52;
+}
+
+.sloth input[type=submit]:not(.nons):hover,
+.sloth input[type=button]:not(.nons):hover,
+.sloth button:not(.nons):hover {
+  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+  background: rgba(30, 112, 191, 0.9);
+          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+}
+
+.sloth input[type=submit]:not(.nons):not([type=submit]):hover,
+.sloth input[type=button]:not(.nons):not([type=submit]):hover,
+.sloth button:not(.nons):not([type=submit]):hover {
+  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+  background: rgba(125, 125, 125, 0.5);
+          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+}
+
+.sloth input[type=submit]:not(.nons):active, .sloth input[type=submit]:not(.nons):focus,
+.sloth input[type=button]:not(.nons):active,
+.sloth input[type=button]:not(.nons):focus,
+.sloth button:not(.nons):active,
+.sloth button:not(.nons):focus {
+  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+}
+
+.sloth input[type=submit]:not(.nons).clr-prim,
+.sloth input[type=button]:not(.nons).clr-prim,
+.sloth button:not(.nons).clr-prim {
+  background: #4183c4;
+  color: #fff;
+}
+
+.sloth input[type=submit]:not(.nons).clr-prim:hover,
+.sloth input[type=button]:not(.nons).clr-prim:hover,
+.sloth button:not(.nons).clr-prim:hover {
+  background: rgba(30, 112, 191, 0.9);
+}
+
+.sloth input[type=submit]:not(.nons).clr-sec,
+.sloth input[type=button]:not(.nons).clr-sec,
+.sloth button:not(.nons).clr-sec {
+  background: #00a968;
+  color: #fff;
+}
+
+.sloth input[type=submit]:not(.nons).clr-sec:hover,
+.sloth input[type=button]:not(.nons).clr-sec:hover,
+.sloth button:not(.nons).clr-sec:hover {
+  background: rgba(0, 152, 84, 0.9);
+}
+
+.sloth input[type=submit]:not(.nons).clr-tert,
+.sloth input[type=button]:not(.nons).clr-tert,
+.sloth button:not(.nons).clr-tert {
+  background: #e8383d;
+  color: #fff;
+}
+
+.sloth input[type=submit]:not(.nons).clr-tert:hover,
+.sloth input[type=button]:not(.nons).clr-tert:hover,
+.sloth button:not(.nons).clr-tert:hover {
+  background: rgba(215, 0, 53, 0.9);
+}
+
+.sloth input[type=submit]:not(.nons).clr-quat,
+.sloth input[type=button]:not(.nons).clr-quat,
+.sloth button:not(.nons).clr-quat {
+  background: #ee7800;
+  color: #fff;
+}
+
+.sloth input[type=submit]:not(.nons).clr-quat:hover,
+.sloth input[type=button]:not(.nons).clr-quat:hover,
+.sloth button:not(.nons).clr-quat:hover {
+  background: rgba(237, 109, 53, 0.98);
+}
+
+.sloth input[type=submit]:not(.nons).clr-quin,
+.sloth input[type=button]:not(.nons).clr-quin,
+.sloth button:not(.nons).clr-quin {
+  background: #e9bc00;
+  color: #fff;
+}
+
+.sloth input[type=submit]:not(.nons).clr-quin:hover,
+.sloth input[type=button]:not(.nons).clr-quin:hover,
+.sloth button:not(.nons).clr-quin:hover {
+  background: rgba(229, 163, 35, 0.86);
+}
+
+.sloth input[type=submit]:not(.nons).flat,
+.sloth input[type=button]:not(.nons).flat,
+.sloth button:not(.nons).flat {
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  min-height: 36px;
+  margin: 0.6rem;
+  margin-left: 0;
+  padding: 0 0.7rem;
+  border-radius: 0;
+  background: none transparent;
+          box-shadow: 0 0 0 0 transparent inset;
+  color: #4183c4;
+  text-transform: uppercase;
+}
+
+.sloth input[type=submit]:not(.nons).flat:hover,
+.sloth input[type=button]:not(.nons).flat:hover,
+.sloth button:not(.nons).flat:hover {
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  background: rgba(65, 131, 196, 0.12);
+          box-shadow: 0 0 0 0 transparent inset;
+}
+
+.sloth input[type=submit]:not(.nons).flat:not([type=submit]),
+.sloth input[type=button]:not(.nons).flat:not([type=submit]),
+.sloth button:not(.nons).flat:not([type=submit]) {
+  color: #594e52;
+}
+
+.sloth input[type=submit]:not(.nons).flat:not([type=submit]):hover,
+.sloth input[type=button]:not(.nons).flat:not([type=submit]):hover,
+.sloth button:not(.nons).flat:not([type=submit]):hover {
+  background: rgba(125, 125, 125, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-prim,
+.sloth input[type=button]:not(.nons).flat.clr-prim,
+.sloth button:not(.nons).flat.clr-prim {
+  color: #4183c4;
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-prim:hover,
+.sloth input[type=button]:not(.nons).flat.clr-prim:hover,
+.sloth button:not(.nons).flat.clr-prim:hover {
+  background: rgba(65, 131, 196, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-sec,
+.sloth input[type=button]:not(.nons).flat.clr-sec,
+.sloth button:not(.nons).flat.clr-sec {
+  color: #00a968;
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-sec:hover,
+.sloth input[type=button]:not(.nons).flat.clr-sec:hover,
+.sloth button:not(.nons).flat.clr-sec:hover {
+  background: rgba(0, 169, 104, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-tert,
+.sloth input[type=button]:not(.nons).flat.clr-tert,
+.sloth button:not(.nons).flat.clr-tert {
+  color: #e8383d;
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-tert:hover,
+.sloth input[type=button]:not(.nons).flat.clr-tert:hover,
+.sloth button:not(.nons).flat.clr-tert:hover {
+  background: rgba(232, 56, 61, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-quat,
+.sloth input[type=button]:not(.nons).flat.clr-quat,
+.sloth button:not(.nons).flat.clr-quat {
+  color: #ee7800;
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-quat:hover,
+.sloth input[type=button]:not(.nons).flat.clr-quat:hover,
+.sloth button:not(.nons).flat.clr-quat:hover {
+  background: rgba(238, 120, 0, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-quin,
+.sloth input[type=button]:not(.nons).flat.clr-quin,
+.sloth button:not(.nons).flat.clr-quin {
+  color: #e5a323;
+}
+
+.sloth input[type=submit]:not(.nons).flat.clr-quin:hover,
+.sloth input[type=button]:not(.nons).flat.clr-quin:hover,
+.sloth button:not(.nons).flat.clr-quin:hover {
+  background: rgba(252, 200, 0, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline,
+.sloth input[type=button]:not(.nons).outline,
+.sloth button:not(.nons).outline {
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  border: solid 1px #abb1b5;
+  border-radius: 0.3rem;
+  background: none transparent;
+          box-shadow: 0 0 0 0 transparent inset;
+  color: #4183c4;
+}
+
+.sloth input[type=submit]:not(.nons).outline:hover,
+.sloth input[type=button]:not(.nons).outline:hover,
+.sloth button:not(.nons).outline:hover {
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  background: rgba(65, 131, 196, 0.12);
+          box-shadow: 0 0 0 0 transparent inset;
+}
+
+.sloth input[type=submit]:not(.nons).outline:not([type=submit]),
+.sloth input[type=button]:not(.nons).outline:not([type=submit]),
+.sloth button:not(.nons).outline:not([type=submit]) {
+  color: #594e52;
+}
+
+.sloth input[type=submit]:not(.nons).outline:not([type=submit]):hover,
+.sloth input[type=button]:not(.nons).outline:not([type=submit]):hover,
+.sloth button:not(.nons).outline:not([type=submit]):hover {
+  background: rgba(125, 125, 125, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-prim,
+.sloth input[type=button]:not(.nons).outline.clr-prim,
+.sloth button:not(.nons).outline.clr-prim {
+  color: #4183c4;
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-prim:hover,
+.sloth input[type=button]:not(.nons).outline.clr-prim:hover,
+.sloth button:not(.nons).outline.clr-prim:hover {
+  background: rgba(65, 131, 196, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-sec,
+.sloth input[type=button]:not(.nons).outline.clr-sec,
+.sloth button:not(.nons).outline.clr-sec {
+  color: #00a968;
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-sec:hover,
+.sloth input[type=button]:not(.nons).outline.clr-sec:hover,
+.sloth button:not(.nons).outline.clr-sec:hover {
+  background: rgba(0, 169, 104, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-tert,
+.sloth input[type=button]:not(.nons).outline.clr-tert,
+.sloth button:not(.nons).outline.clr-tert {
+  color: #e8383d;
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-tert:hover,
+.sloth input[type=button]:not(.nons).outline.clr-tert:hover,
+.sloth button:not(.nons).outline.clr-tert:hover {
+  background: rgba(232, 56, 61, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-quat,
+.sloth input[type=button]:not(.nons).outline.clr-quat,
+.sloth button:not(.nons).outline.clr-quat {
+  color: #ee7800;
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-quat:hover,
+.sloth input[type=button]:not(.nons).outline.clr-quat:hover,
+.sloth button:not(.nons).outline.clr-quat:hover {
+  background: rgba(238, 120, 0, 0.12);
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-quin,
+.sloth input[type=button]:not(.nons).outline.clr-quin,
+.sloth button:not(.nons).outline.clr-quin {
+  color: #e5a323;
+}
+
+.sloth input[type=submit]:not(.nons).outline.clr-quin:hover,
+.sloth input[type=button]:not(.nons).outline.clr-quin:hover,
+.sloth button:not(.nons).outline.clr-quin:hover {
+  background: rgba(252, 200, 0, 0.12);
+}
+
+.sloth table:not(.nons) {
+  -webkit-box-shadow: none;
+  display: table;
+  width: 100%;
+  margin: 1rem 0;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  border-radius: 0.2857rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+          box-shadow: none;
+  color: rgba(33, 37, 41, 0.87);
+  font-size: inherit;
+  text-align: left;
+}
+
+.sloth table:not(.nons) thead th {
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid rgba(33, 37, 41, 0.1);
+  border-left: 1px solid rgba(33, 37, 41, 0.1);
+  background: rgba(245, 245, 245, 0.87);
+  color: rgba(33, 37, 41, 0.87);
+  font-style: none;
+  font-weight: 700;
+  text-align: inherit;
+  text-transform: none;
+  vertical-align: inherit;
+  cursor: auto;
+}
+
+.sloth table:not(.nons) thead tr:first-child th:first-child {
+  border-left: none;
+  border-top-left-radius: 0.2857rem;
+}
+
+.sloth table:not(.nons) thead tr:first-child th:last-child {
+  border-top-right-radius: 0.2857rem;
+}
+
+.sloth table:not(.nons) tbody th,
+.sloth table:not(.nons) tbody td {
+  -webkit-transition: background 0.1s ease, color 0.1s ease;
+  padding: 0.5rem 0.8rem;
+  border-top: 1px solid rgba(33, 37, 41, 0.1);
+  border-left: 1px solid rgba(33, 37, 41, 0.1);
+  color: rgba(33, 37, 41, 0.87);
+  font-style: none;
+  font-weight: 400;
+  text-align: inherit;
+  text-transform: none;
+  vertical-align: inherit;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.sloth table:not(.nons) tbody th {
+  background: rgba(245, 245, 245, 0.5);
+  font-weight: 700;
+  cursor: auto;
+}
+
+.sloth table:not(.nons) tbody tr:first-child th,
+.sloth table:not(.nons) tbody tr:first-child td {
+  border-top: none;
+}
+
+.sloth table:not(.nons) tbody tr th:first-child,
+.sloth table:not(.nons) tbody tr td:first-child {
+  border-left: none;
+}
+
+.sloth table:not(.nons) tbody tr:nth-child(even) td {
+  background: rgba(245, 245, 245, 0.15);
+}
+
+.sloth table:not(.nons) tfoot th,
+.sloth table:not(.nons) tfoot td {
+  padding: 0.5rem 0.8rem;
+  border-top: 1px solid rgba(33, 37, 41, 0.1);
+  border-left: 1px solid rgba(33, 37, 41, 0.1);
+  background: rgba(245, 245, 245, 0.87);
+  color: rgba(33, 37, 41, 0.87);
+  font-style: none;
+  font-weight: 400;
+  text-align: inherit;
+  text-transform: none;
+  vertical-align: inherit;
+  cursor: auto;
+}
+
+.sloth table:not(.nons) tfoot th {
+  font-weight: 700;
+}
+
+.sloth table:not(.nons) tfoot tr:first-child th:first-child,
+.sloth table:not(.nons) tfoot tr:first-child td:first-child {
+  border-left: none;
+  border-bottom-left-radius: 0.2857rem;
+}
+
+.sloth table:not(.nons) tfoot tr:first-child th:last-child,
+.sloth table:not(.nons) tfoot tr:first-child td:last-child {
+  border-bottom-right-radius: 0.2857rem;
+}
+
+.sloth table:not(.nons).slim {
+  font-size: 87.5%;
+}
+
 [hidden] {
   display: none !important;
 }
