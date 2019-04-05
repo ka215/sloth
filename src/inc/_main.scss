@@ -39,7 +39,11 @@
     font-weight: 500;
   }
 
-  p:not(#{$not}) { font-size: inherit; }
+  p:not(#{$not}) {
+    font-size: inherit;
+    hyphens: auto;
+    line-break: auto;
+  }
 
   blockquote:not(#{$not}) {
     padding: 1rem 0 1rem 2rem;
@@ -580,13 +584,28 @@
 
   .dropdown {
     position: relative;
-    display: block;
+    display: inline-block;
     margin-bottom: 0.3rem;
     font-size: 90%;
     font-weight: 500;
     color: $gray;
 
-    &::after {
+    &.caret::after {
+      content: "\23F4\23F5";
+      position: absolute;
+      padding-bottom: 0.3em;
+      z-index: 1;
+      right: 0.25em;
+      bottom: 0.5em;
+      color: $fog;
+      background: transparent;
+      border: solid 1px $fog;
+      border-width: 0 0 1px 0;
+      pointer-events: none;
+      transform: rotate(90deg);
+    }
+
+    &:not(.caret)::after {
       content: '';
       position: absolute;
       z-index: 1;
@@ -602,17 +621,455 @@
     }
 
     &:hover::after {
+      color: $blue;
+    }
+
+    &:not(.caret):hover::after {
       border-color: $blue;
     }
 
     select {
       width: 100%;
+      width: -webkit-fill-available;
       margin-top: 0.3rem;
       font-size: 1.4rem;
     }
   }
 
-  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown) {
+  .combo-box:not(#{$not}) {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    vertical-align: middle;
+    font-size: 90%;
+    font-weight: 500;
+    color: $gray;
+
+    input[list] {
+      appearance: none;
+      display: inline-block;
+      width: auto;
+      width: max-content;
+      margin-bottom: 0 auto;
+      padding: 0.3em 0.5em;
+      font-size: inherit;
+      background: $white;
+      border: 1px solid rgba($black, 0.15);
+      color: rgba($black, 0.87);
+      border-radius: 0.2857rem;
+      outline: 0;
+      box-shadow: 0 0 0 0 transparent inset;
+      transition: color 0.1s ease, border-color 0.1s ease;
+
+      ~ .indicator {
+        position: absolute;
+        display: inline-block;
+        top: calc(50% - 0.5em);
+        right: 1.5rem;
+        line-height: 1em;
+
+        &::after {
+          content: '';
+          position: absolute;
+          z-index: 1;
+          top: 0.2em;
+          left: 0;
+          height: 0.5em;
+          width: 0.5em;
+          background: transparent;
+          border: solid $fog;
+          border-width: 0 0.2rem 0.2rem 0;
+          pointer-events: none;
+          transform: rotate(45deg);
+        }
+      }
+
+      &:focus {
+        color: rgba($black, 0.95);
+        border-color: $blue2;
+        border-radius: 0.2857rem;
+        background: $white;
+        box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
+
+        ~ .indicator {
+          &::after {
+            z-index: 0;
+            border-color: rgba($fog, 0.3);
+          }
+        }
+
+        &::-webkit-input-placeholder { color: $gray; }
+        &::-moz-placeholder { color: $gray; }
+        &:-ms-input-placeholder { color: $gray; }
+      }
+
+      &:hover {
+        ~ .indicator {
+          &::after {
+            border-color: $blue;
+          }
+        }
+      }
+    }
+
+    input::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+
+  .tgl:not(#{$not}) {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 4.5em;
+    min-height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+
+    input[type="checkbox"] {
+      display: none;
+
+      &,
+      &::after,
+      &::before,
+      & *,
+      & *::after,
+      & *::before,
+      & ~ .tgl-btn {
+        box-sizing: border-box;
+
+        &::selection { background: none; }
+      }
+
+      + .tgl-btn {
+        outline: 0;
+        display: block;
+        width: 4em;
+        height: 2em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        user-select: none;
+
+        /* theme */
+        background: rgba($light-gray, 0.5);
+        border-radius: 2em;
+        padding: 3px;
+        transition: all 0.4s ease;
+
+        &::after,
+        &::before {
+          position: relative;
+          display: block;
+          content: '';
+          width: 50%;
+          height: 100%;
+        }
+
+        &::after {
+          left: 0;
+
+          /* theme */
+          border-radius: 50%;
+          background: $white;
+          transition: all 0.2s ease;
+        }
+
+        &::before { display: none; }
+      }
+
+      &:checked + .tgl-btn {
+        /* theme */
+        background: $blue;
+
+        &::after {
+          left: 50%;
+        }
+      }
+    }
+
+    &.clr-prim {
+      input[type="checkbox"] {
+        &:checked + .tgl-btn {
+          background: $blue;
+        }
+      }
+    }
+
+    &.clr-sec {
+      input[type="checkbox"] {
+        &:checked + .tgl-btn {
+          background: $green;
+        }
+      }
+    }
+
+    &.clr-tert {
+      input[type="checkbox"] {
+        &:checked + .tgl-btn {
+          background: $signal-red;
+        }
+      }
+    }
+
+    &.clr-quat {
+      input[type="checkbox"] {
+        &:checked + .tgl-btn {
+          background: $orange;
+        }
+      }
+    }
+
+    &.clr-quin {
+      input[type="checkbox"] {
+        &:checked + .tgl-btn {
+          background: $yellow3;
+        }
+      }
+    }
+
+    &.flat {
+      input[type="checkbox"] {
+        + .tgl-btn {
+          padding: 3px;
+          background: transparent;
+          border: 4px solid $light-gray;
+          transition: all 0.2s ease;
+
+          &::after {
+            width: calc(50% - 4px);
+            background: $light-gray;
+            border-radius: 50%;
+          }
+        }
+
+        &:checked + .tgl-btn {
+          background: transparent;
+          border: 4px solid $blue;
+
+          &::after {
+            left: calc(50% + 4px);
+            background: $blue;
+          }
+        }
+      }
+
+      &.clr-prim {
+        input[type="checkbox"] {
+          &:checked + .tgl-btn {
+            background: transparent;
+            border-color: $blue;
+
+            &::after {
+              background: $blue;
+            }
+          }
+        }
+      }
+
+      &.clr-sec {
+        input[type="checkbox"] {
+          &:checked + .tgl-btn {
+            background: transparent;
+            border-color: $green;
+
+            &::after {
+              background: $green;
+            }
+          }
+        }
+      }
+
+      &.clr-tert {
+        input[type="checkbox"] {
+          &:checked + .tgl-btn {
+            background: transparent;
+            border-color: $signal-red;
+
+            &::after {
+              background: $signal-red;
+            }
+          }
+        }
+      }
+
+      &.clr-quat {
+        input[type="checkbox"] {
+          &:checked + .tgl-btn {
+            background: transparent;
+            border-color: $orange;
+
+            &::after {
+              background: $orange;
+            }
+          }
+        }
+      }
+
+      &.clr-quin {
+        input[type="checkbox"] {
+          &:checked + .tgl-btn {
+            background: transparent;
+            border-color: $yellow3;
+
+            &::after {
+              background: $yellow3;
+            }
+          }
+        }
+      }
+    }
+
+    &.flip {
+      input[type="checkbox"] {
+        + .tgl-btn {
+          padding: 3px;
+          background: transparent;
+          font-family: inherit;
+          perspective: 10rem;
+
+          &::after,
+          &::before {
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-weight: 600;
+            color: $white;
+            line-height: 2em;
+            text-align: center;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            transition: background 0.4s ease, transform 0.4s ease, content 0.4s ease;
+          }
+
+          &::after {
+            content: attr(data-tgl-on);
+            background: $blue;
+            transform: rotateY(-180deg);
+          }
+
+          &::before {
+            content: attr(data-tgl-off);
+            background: $fog;
+          }
+
+          &:active::before {
+            transform: rotateY(-20deg);
+          }
+        }
+
+        &:checked + .tgl-btn {
+          &::before {
+            transform: rotateY(180deg);
+          }
+
+          &::after {
+            transform: rotateY(0);
+            left: 0;
+            background: $blue;
+          }
+
+          &:active::after {
+            transform: rotateY(20deg);
+          }
+        }
+      }
+
+      &.clr-prim {
+        input[type="checkbox"] {
+          + .tgl-btn {
+            &::after {
+              background: $blue;
+            }
+          }
+
+          &:checked + .tgl-btn {
+            background: transparent;
+
+            &::after {
+              background: $blue;
+            }
+          }
+        }
+      }
+
+      &.clr-sec {
+        input[type="checkbox"] {
+          + .tgl-btn {
+            &::after {
+              background: $green;
+            }
+          }
+
+          &:checked + .tgl-btn {
+            background: transparent;
+
+            &::after {
+              background: $green;
+            }
+          }
+        }
+      }
+
+      &.clr-tert {
+        input[type="checkbox"] {
+          + .tgl-btn {
+            &::after {
+              background: $signal-red;
+            }
+          }
+
+          &:checked + .tgl-btn {
+            background: transparent;
+
+            &::after {
+              background: $signal-red;
+            }
+          }
+        }
+      }
+
+      &.clr-quat {
+        input[type="checkbox"] {
+          + .tgl-btn {
+            &::after {
+              background: $orange;
+            }
+          }
+
+          &:checked + .tgl-btn {
+            background: transparent;
+
+            &::after {
+              background: $orange;
+            }
+          }
+        }
+      }
+
+      &.clr-quin {
+        input[type="checkbox"] {
+          + .tgl-btn {
+            &::after {
+              background: $yellow3;
+            }
+          }
+
+          &:checked + .tgl-btn {
+            background: transparent;
+
+            &::after {
+              background: $yellow3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
     display: inline-block;
     width: max-content;
     font-size: 90%;
@@ -631,6 +1088,7 @@
     & ~ input[type=text],
     & ~ input[type=time],
     & ~ input[type=url],
+    & ~ input[list],
     & ~ button,
     & ~ select,
     & ~ textarea {
@@ -845,6 +1303,75 @@
     }
   }
 
+  .btn-fab:not(#{$not}) {
+    display: block;
+    width: 5.6rem;
+    height: 5.6rem;
+    background: none $white-smoke;
+    color: $dark-gray;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba($black, 0.12), 0 2px 2px 0 rgba($black, 0.24);
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background: rgba($light-gray, 0.5);
+      box-shadow: 0 4px 5px 0 rgba($black, 0.14), 0 1px 10px 0 rgba($black, 0.12), 0 2px 4px -1px rgba($black, 0.2);
+
+      &::before,
+      &::after {
+        background-color: transparent;
+      }
+    }
+
+    i,
+    span,
+    [class^="fa"],
+    [class^="icon"] {
+      color: inherit;
+      line-height: 5.6rem;
+      vertical-align: middle;
+      font-style: normal;
+      font-size: 1.8rem;
+    }
+
+    &.clr-prim {
+      background: $blue;
+      color: $white;
+
+      &:hover { background: rgba($blue2, 0.9); }
+    }
+
+    &.clr-sec {
+      background: $green;
+      color: $white;
+
+      &:hover { background: rgba($green2, 0.9); }
+    }
+
+    &.clr-tert {
+      background: $signal-red;
+      color: $white;
+
+      &:hover { background: rgba($red, 0.9); }
+    }
+
+    &.clr-quat {
+      background: $orange;
+      color: $white;
+
+      &:hover { background: rgba($orange2, 0.98); }
+    }
+
+    &.clr-quin {
+      background: $yellow3;
+      color: $white;
+
+      &:hover { background: rgba($pumpkin, 0.86); }
+    }
+  }
+
   table:not(#{$not}) {
     display: table;
     width: 100%;
@@ -955,6 +1482,31 @@
 
     &.slim {
       font-size: 87.5%;
+    }
+
+    &.nobrd,
+    &.nobordered {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+
+      thead,
+      tfoot {
+        th,
+        td {
+          background: transparent;
+          border-left: 0;
+          border-radius: 0;
+        }
+      }
+
+      tbody {
+        th,
+        td {
+          background: transparent;
+          border-left: 0;
+        }
+      }
     }
   }
 }

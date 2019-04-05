@@ -345,7 +345,11 @@ textarea {
 }
 
 .sloth p:not(.nons) {
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
   font-size: inherit;
+          hyphens: auto;
+  line-break: auto;
 }
 
 .sloth blockquote:not(.nons) {
@@ -954,7 +958,7 @@ textarea {
 }
 
 .sloth .dropdown {
-  display: block;
+  display: inline-block;
   position: relative;
   margin-bottom: 0.3rem;
   color: #7d7d7d;
@@ -962,7 +966,23 @@ textarea {
   font-weight: 500;
 }
 
-.sloth .dropdown::after {
+.sloth .dropdown.caret::after {
+  -webkit-transform: rotate(90deg);
+  z-index: 1;
+  position: absolute;
+  right: 0.25em;
+  bottom: 0.5em;
+  padding-bottom: 0.3em;
+          transform: rotate(90deg);
+  border: solid 1px #abb1b5;
+  border-width: 0 0 1px 0;
+  background: transparent;
+  color: #abb1b5;
+  content: "\23F4\23F5";
+  pointer-events: none;
+}
+
+.sloth .dropdown:not(.caret)::after {
   -webkit-transform: rotate(45deg);
   z-index: 1;
   position: absolute;
@@ -979,16 +999,403 @@ textarea {
 }
 
 .sloth .dropdown:hover::after {
+  color: #4183c4;
+}
+
+.sloth .dropdown:not(.caret):hover::after {
   border-color: #4183c4;
 }
 
 .sloth .dropdown select {
   width: 100%;
+  width: -webkit-fill-available;
   margin-top: 0.3rem;
   font-size: 1.4rem;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) {
+.sloth .combo-box:not(.nons) {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0.5rem;
+  color: #7d7d7d;
+  font-size: 90%;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.sloth .combo-box:not(.nons) input[list] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+  display: inline-block;
+  width: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 0 auto;
+  padding: 0.3em 0.5em;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  border-radius: 0.2857rem;
+  outline: 0;
+  background: #fff;
+          box-shadow: 0 0 0 0 transparent inset;
+  color: rgba(33, 37, 41, 0.87);
+  font-size: inherit;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.sloth .combo-box:not(.nons) input[list] ~ .indicator {
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 0.5em);
+  right: 1.5rem;
+  line-height: 1em;
+}
+
+.sloth .combo-box:not(.nons) input[list] ~ .indicator::after {
+  -webkit-transform: rotate(45deg);
+  z-index: 1;
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  width: 0.5em;
+  height: 0.5em;
+          transform: rotate(45deg);
+  border: solid #abb1b5;
+  border-width: 0 0.2rem 0.2rem 0;
+  background: transparent;
+  content: '';
+  pointer-events: none;
+}
+
+.sloth .combo-box:not(.nons) input[list]:focus {
+  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  border-radius: 0.2857rem;
+  border-color: #1e70bf;
+  background: #fff;
+          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  color: rgba(33, 37, 41, 0.95);
+}
+
+.sloth .combo-box:not(.nons) input[list]:focus ~ .indicator::after {
+  z-index: 0;
+  border-color: rgba(171, 177, 181, 0.3);
+}
+
+.sloth .combo-box:not(.nons) input[list]:focus::-webkit-input-placeholder {
+  color: #7d7d7d;
+}
+
+.sloth .combo-box:not(.nons) input[list]:focus::-moz-placeholder {
+  color: #7d7d7d;
+}
+
+.sloth .combo-box:not(.nons) input[list]:focus:-ms-input-placeholder {
+  color: #7d7d7d;
+}
+
+.sloth .combo-box:not(.nons) input[list]:hover ~ .indicator::after {
+  border-color: #4183c4;
+}
+
+.sloth .combo-box:not(.nons) input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.sloth .tgl:not(.nons) {
+  position: relative;
+  min-height: 2em;
+  margin-bottom: 0.5rem;
+  padding-left: 4.5em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"] {
+  display: none;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"], .sloth .tgl:not(.nons) input[type="checkbox"]::after, .sloth .tgl:not(.nons) input[type="checkbox"]::before,
+.sloth .tgl:not(.nons) input[type="checkbox"] *,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::after,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::before,
+.sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"]::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::after::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::before::selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::after::selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::before::selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::selection {
+  background: none;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+  -webkit-transition: all 0.4s ease;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4em;
+  height: 2em;
+  padding: 3px;
+  border-radius: 2em;
+  outline: 0;
+  /* theme */
+  background: rgba(211, 211, 211, 0.5);
+  cursor: pointer;
+  transition: all 0.4s ease;
+          user-select: none;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn::after, .sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn::before {
+  display: block;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  content: '';
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn::after {
+  -webkit-transition: all 0.2s ease;
+  left: 0;
+  /* theme */
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn::before {
+  display: none;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"]:checked + .tgl-btn {
+  /* theme */
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"]:checked + .tgl-btn::after {
+  left: 50%;
+}
+
+.sloth .tgl:not(.nons).clr-prim input[type="checkbox"]:checked + .tgl-btn {
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).clr-sec input[type="checkbox"]:checked + .tgl-btn {
+  background: #00a968;
+}
+
+.sloth .tgl:not(.nons).clr-tert input[type="checkbox"]:checked + .tgl-btn {
+  background: #e8383d;
+}
+
+.sloth .tgl:not(.nons).clr-quat input[type="checkbox"]:checked + .tgl-btn {
+  background: #ee7800;
+}
+
+.sloth .tgl:not(.nons).clr-quin input[type="checkbox"]:checked + .tgl-btn {
+  background: #e9bc00;
+}
+
+.sloth .tgl:not(.nons).flat input[type="checkbox"] + .tgl-btn {
+  -webkit-transition: all 0.2s ease;
+  padding: 3px;
+  border: 4px solid #d3d3d3;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.sloth .tgl:not(.nons).flat input[type="checkbox"] + .tgl-btn::after {
+  width: calc(50% - 4px);
+  border-radius: 50%;
+  background: #d3d3d3;
+}
+
+.sloth .tgl:not(.nons).flat input[type="checkbox"]:checked + .tgl-btn {
+  border: 4px solid #4183c4;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat input[type="checkbox"]:checked + .tgl-btn::after {
+  left: calc(50% + 4px);
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).flat.clr-prim input[type="checkbox"]:checked + .tgl-btn {
+  border-color: #4183c4;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat.clr-prim input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).flat.clr-sec input[type="checkbox"]:checked + .tgl-btn {
+  border-color: #00a968;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat.clr-sec input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #00a968;
+}
+
+.sloth .tgl:not(.nons).flat.clr-tert input[type="checkbox"]:checked + .tgl-btn {
+  border-color: #e8383d;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat.clr-tert input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #e8383d;
+}
+
+.sloth .tgl:not(.nons).flat.clr-quat input[type="checkbox"]:checked + .tgl-btn {
+  border-color: #ee7800;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat.clr-quat input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #ee7800;
+}
+
+.sloth .tgl:not(.nons).flat.clr-quin input[type="checkbox"]:checked + .tgl-btn {
+  border-color: #e9bc00;
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flat.clr-quin input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #e9bc00;
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn {
+  -webkit-perspective: 10rem;
+  padding: 3px;
+  background: transparent;
+  font-family: inherit;
+          perspective: 10rem;
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::after, .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::before {
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: background 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 4px;
+          backface-visibility: hidden;
+  color: #fff;
+  font-weight: 600;
+  line-height: 2em;
+  text-align: center;
+  transition: background 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
+  transition: background 0.4s ease, transform 0.4s ease, content 0.4s ease;
+  transition: background 0.4s ease, transform 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::after {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  background: #4183c4;
+  content: attr(data-tgl-on);
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::before {
+  background: #abb1b5;
+  content: attr(data-tgl-off);
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn:active::before {
+  -webkit-transform: rotateY(-20deg);
+          transform: rotateY(-20deg);
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn::before {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn::after {
+  -webkit-transform: rotateY(0);
+  left: 0;
+          transform: rotateY(0);
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn:active::after {
+  -webkit-transform: rotateY(20deg);
+          transform: rotateY(20deg);
+}
+
+.sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"] + .tgl-btn::after {
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"]:checked + .tgl-btn {
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #4183c4;
+}
+
+.sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"] + .tgl-btn::after {
+  background: #00a968;
+}
+
+.sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"]:checked + .tgl-btn {
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #00a968;
+}
+
+.sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"] + .tgl-btn::after {
+  background: #e8383d;
+}
+
+.sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"]:checked + .tgl-btn {
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #e8383d;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"] + .tgl-btn::after {
+  background: #ee7800;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"]:checked + .tgl-btn {
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #ee7800;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"] + .tgl-btn::after {
+  background: #e9bc00;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"]:checked + .tgl-btn {
+  background: transparent;
+}
+
+.sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"]:checked + .tgl-btn::after {
+  background: #e9bc00;
+}
+
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
   display: inline-block;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -998,21 +1405,22 @@ textarea {
   font-weight: 500;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input:not([type]),
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=date],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=datetime-local],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=email],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=file],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=number],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=password],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=search],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=tel],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=text],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=time],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=url],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ button,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ select,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ textarea {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]),
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -1032,21 +1440,22 @@ textarea {
   transition: color 0.1s ease, border-color 0.1s ease;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input:not([type]):focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=date]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=datetime-local]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=email]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=file]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=number]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=password]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=search]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=tel]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=text]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=time]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=url]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ button:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ select:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ textarea:focus {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus {
   -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
   border-color: #1e70bf;
@@ -1055,57 +1464,60 @@ textarea {
   color: rgba(33, 37, 41, 0.95);
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input:not([type]):focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=date]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=datetime-local]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=email]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=file]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=number]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=password]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=search]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=tel]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=text]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=time]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=url]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ button:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ select:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ textarea:focus::-webkit-input-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-webkit-input-placeholder {
   color: #7d7d7d;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input:not([type]):focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=date]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=datetime-local]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=email]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=file]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=number]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=password]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=search]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=tel]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=text]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=time]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=url]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ button:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ select:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ textarea:focus::-moz-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-moz-placeholder {
   color: #7d7d7d;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input:not([type]):focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=date]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=datetime-local]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=email]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=file]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=number]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=password]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=search]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=tel]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=text]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=time]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ input[type=url]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ button:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ select:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown) ~ textarea:focus:-ms-input-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus:-ms-input-placeholder {
   color: #7d7d7d;
 }
 
@@ -1423,6 +1835,87 @@ textarea {
   background: rgba(252, 200, 0, 0.12);
 }
 
+.sloth .btn-fab:not(.nons) {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
+  -webkit-transition: all 0.3s ease-out;
+  display: block;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  background: none #f5f5f5;
+          box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
+  color: #594e52;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.3s ease-out;
+}
+
+.sloth .btn-fab:not(.nons):hover {
+  -webkit-box-shadow: 0 4px 5px 0 rgba(33, 37, 41, 0.14), 0 1px 10px 0 rgba(33, 37, 41, 0.12), 0 2px 4px -1px rgba(33, 37, 41, 0.2);
+  background: rgba(211, 211, 211, 0.5);
+          box-shadow: 0 4px 5px 0 rgba(33, 37, 41, 0.14), 0 1px 10px 0 rgba(33, 37, 41, 0.12), 0 2px 4px -1px rgba(33, 37, 41, 0.2);
+}
+
+.sloth .btn-fab:not(.nons):hover::before, .sloth .btn-fab:not(.nons):hover::after {
+  background-color: transparent;
+}
+
+.sloth .btn-fab:not(.nons) i,
+.sloth .btn-fab:not(.nons) span,
+.sloth .btn-fab:not(.nons) [class^="fa"],
+.sloth .btn-fab:not(.nons) [class^="icon"] {
+  color: inherit;
+  font-size: 1.8rem;
+  font-style: normal;
+  line-height: 5.6rem;
+  vertical-align: middle;
+}
+
+.sloth .btn-fab:not(.nons).clr-prim {
+  background: #4183c4;
+  color: #fff;
+}
+
+.sloth .btn-fab:not(.nons).clr-prim:hover {
+  background: rgba(30, 112, 191, 0.9);
+}
+
+.sloth .btn-fab:not(.nons).clr-sec {
+  background: #00a968;
+  color: #fff;
+}
+
+.sloth .btn-fab:not(.nons).clr-sec:hover {
+  background: rgba(0, 152, 84, 0.9);
+}
+
+.sloth .btn-fab:not(.nons).clr-tert {
+  background: #e8383d;
+  color: #fff;
+}
+
+.sloth .btn-fab:not(.nons).clr-tert:hover {
+  background: rgba(215, 0, 53, 0.9);
+}
+
+.sloth .btn-fab:not(.nons).clr-quat {
+  background: #ee7800;
+  color: #fff;
+}
+
+.sloth .btn-fab:not(.nons).clr-quat:hover {
+  background: rgba(237, 109, 53, 0.98);
+}
+
+.sloth .btn-fab:not(.nons).clr-quin {
+  background: #e9bc00;
+  color: #fff;
+}
+
+.sloth .btn-fab:not(.nons).clr-quin:hover {
+  background: rgba(229, 163, 35, 0.86);
+}
+
 .sloth table:not(.nons) {
   -webkit-box-shadow: none;
   display: table;
@@ -1529,6 +2022,31 @@ textarea {
 
 .sloth table:not(.nons).slim {
   font-size: 87.5%;
+}
+
+.sloth table:not(.nons).nobrd, .sloth table:not(.nons).nobordered {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.sloth table:not(.nons).nobrd thead th,
+.sloth table:not(.nons).nobrd thead td,
+.sloth table:not(.nons).nobrd tfoot th,
+.sloth table:not(.nons).nobrd tfoot td, .sloth table:not(.nons).nobordered thead th,
+.sloth table:not(.nons).nobordered thead td,
+.sloth table:not(.nons).nobordered tfoot th,
+.sloth table:not(.nons).nobordered tfoot td {
+  border-left: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.sloth table:not(.nons).nobrd tbody th,
+.sloth table:not(.nons).nobrd tbody td, .sloth table:not(.nons).nobordered tbody th,
+.sloth table:not(.nons).nobordered tbody td {
+  border-left: 0;
+  background: transparent;
 }
 
 [hidden] {
