@@ -1,0 +1,25 @@
+[class^="icon-"],
+[data-icon] {
+  speak: none;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-variant: inherit;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-icon]::before {
+  content: attr(data-icon);
+}
+
+.icon-plus::before { content: "\1F7A5"; }
+.icon-star::before { content: "\2729"; }
+.icon-heart::before { content: "\2665"; }
+.icon-pencil::before { content: "\1F589"; }
+.icon-go::before { content: "\2BAB"; }
+.icon-em-dash::before { content: "\2E3A"; }
+.icon-vertical-ellipsis::before { content: "\22EE"; }
+.icon-asterism::before { content: "\2042"; }

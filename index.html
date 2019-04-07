@@ -11,9 +11,9 @@
 </head>
 <body id="sloth-docs" class="sloth">
 <header id="introduction">
-  <h1 class="nons">Sloth</h1>
+  <h1 class="nons"><img src="docs/assets/sloth.svg" height="58" style="margin-right:1rem;">Sloth</h1>
   <p class="nons">
-    Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
+    Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
 </header>
@@ -22,8 +22,8 @@
   <aside>
     We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.<br>
     <br>
-    The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also the Sloth can use advanced styling technology that utilizes flexbox, grid, dialog, and limited vendor prefixes.<br>
-    That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at a distributed css file only.
+    The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, dialog, and limited vendor prefixes.<br>
+    That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at a distributed css file only <small>(The file size after gzip compression is 7.25KB)</small>.
   </aside>
 </article>
 <article class="lead-block">
@@ -729,21 +729,21 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col my1">
     <h5 class="muted">Floating Action Button</h5>
-    <div class="w-full flx-row my1">
+    <div class="w-full flx-row flx-wrap my1">
       <a class="btn-fab mx1" href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
-      <a class="btn-fab clr-prim mx1" href="javascript:_void(this.textContent)"><span>&#x1F7A5;</span></a>
-      <a class="btn-fab clr-sec mx1"  href="javascript:_void(this.textContent)"><span>&#x2729;</span></a>
-      <a class="btn-fab clr-tert mx1" href="javascript:_void(this.textContent)"><span>&#x2665;</span></a>
-      <a class="btn-fab clr-quat mx1" href="javascript:_void(this.textContent)"><span>&#x1F589;</span></a>
-      <a class="btn-fab clr-quin mx1" href="javascript:_void(this.textContent)"><span>&#x2BAB;</span></a>
+      <a class="btn-fab clr-prim mx1" href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
+      <a class="btn-fab clr-sec mx1"  href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
+      <a class="btn-fab clr-tert mx1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
+      <a class="btn-fab clr-quat mx1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn-fab clr-quin mx1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;a class="btn-fab" href="#">&lt;i class="fas fa-home">&lt;/i>&lt;/a>
-&lt;a class="btn-fab clr-prim" href="#">&lt;span>&amp;#x1F7A5;&lt;/span>&lt;/a>
-&lt;a class="btn-fab clr-sec"  href="#">&lt;span>&amp;#x2729;&lt;/span>&lt;/a>
-&lt;a class="btn-fab clr-tert" href="#">&lt;span>&amp;#x2665;&lt;/span>&lt;/a>
-&lt;a class="btn-fab clr-quat" href="#">&lt;span>&amp;#x1F589;&lt;/span>&lt;/a>
-&lt;a class="btn-fab clr-quin" href="#">&lt;span>&amp;#x2BAB;&lt;/span>&lt;/a>
+&lt;a class="btn-fab clr-prim" href="#">&lt;i class="fas fa-plus">&lt;/i>&lt;/a>
+&lt;a class="btn-fab clr-sec"  href="#">&lt;i class="fas fa-star">&lt;/i>&lt;/a>
+&lt;a class="btn-fab clr-tert" href="#">&lt;i class="fas fa-heart">&lt;/i>&lt;/a>
+&lt;a class="btn-fab clr-quat" href="#">&lt;i class="fas fa-pencil-alt">&lt;/i>&lt;/a>
+&lt;a class="btn-fab clr-quin" href="#">&lt;i class="fas fa-share">&lt;/i>&lt;/a>
 </code></pre>
       <small class="note">The above icon uses powered by the <a rel="external" href="https://fontawesome.com/">Font awesome</a>.</small>
     </div>
@@ -821,15 +821,120 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
 </section>
 <section class="sloth-styles">
-  <h3>Grids</h3>
+  <h3>Grid Systems</h3>
+  <h5 class="muted">Flex boxes</h5>
   <aside>
-    
+    The grid representation in Sloth is basically done in flexbox (<code>display: flex</code>). It is realized by including a block element with sizes class according to the number of grids to be divided in the container element which applied <code>.flx-row</code> class.<br>
+    In addition, it corresponds to the grid of six divisions.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my1">
+    <div class="w-full">
+      <div class="flx-row flx-wrap">
+        <div class="w-full mb1 p1 brd">.w-full</div>
+        <div class="w-half mb1 p1 brd">.w-half</div>
+        <div class="w-half mb1 p1 brd">.w-half</div>
+        <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
+        <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
+        <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
+        <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+      </div>
     </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;div class="flx-row flx-wrap">
+  &lt;div class="w-full mb1 p1 brd">.w-full&lt;/div>
+  &lt;div class="w-half mb1 p1 brd">.w-half&lt;/div>
+  &lt;div class="w-half mb1 p1 brd">.w-half&lt;/div>
+  &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
+  &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
+  &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
+  &lt;div class="w-1-4 mb1 p1 brd">.w-1-4&lt;/div>
+    &#x22EE;
+  &lt;div class="w-1-5 mb1 p1 brd">.w-1-5&lt;/div>
+    &#x22EE;
+  &lt;div class="w-1-6 mb1 p1 brd">.w-1-6&lt;/div>
+    &#x22EE;
+&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">CSS Grid</h5>
+  <aside>
+    You can also use CSS grid (<code>display: grid</code>) in Sloth style. But don't forget that some browsers are not compatible with this advanced style.
+  </aside>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <div class="grid">
+        <div class="p1 brd">Row of fullspan</div>
+      </div>
+      <div class="grid grd-2">
+        <div class="p1 brd">Half column</div>
+        <div class="p1 brd">Half column</div>
+      </div>
+      <div class="grid grd-3">
+        <div class="p1 brd">1/3 column</div>
+        <div class="p1 brd">1/3 column</div>
+        <div class="p1 brd">1/3 column</div>
+      </div>
+      <div class="grid grd-4">
+        <div class="p1 brd">1/4 column</div>
+        <div class="p1 brd">1/4 column</div>
+        <div class="p1 brd">1/4 column</div>
+        <div class="p1 brd">1/4 column</div>
+      </div>
+      <div class="grid grd-5">
+        <div class="p1 brd">1/5 col</div>
+        <div class="p1 brd">1/5 col</div>
+        <div class="p1 brd">1/5 col</div>
+        <div class="p1 brd">1/5 col</div>
+        <div class="p1 brd">1/5 col</div>
+      </div>
+      <div class="grid grd-6">
+        <div class="p1 brd">1/6 col</div>
+        <div class="p1 brd">1/6 col</div>
+        <div class="p1 brd">1/6 col</div>
+        <div class="p1 brd">1/6 col</div>
+        <div class="p1 brd">1/6 col</div>
+        <div class="p1 brd">1/6 col</div>
+      </div>
+    </div>
+    <div class="w-full mt1">
+      <pre class="prettyprint"><code>&lt;div class="grid">
+  &lt;div class="p1 brd">Row of fullspan&lt;/div>
+&lt;/div>
+&lt;div class="grid grd-2">
+  &lt;div class="p1 brd">Half column&lt;/div>
+  &lt;div class="p1 brd">Half column&lt;/div>
+&lt;/div>
+&lt;div class="grid grd-3">
+  &lt;div class="p1 brd">1/3 column&lt;/div>
+    &#x22EE;
+&lt;/div>
+&lt;div class="grid grd-4">
+  &lt;div class="p1 brd">1/4 column&lt;/div>
+    &#x22EE;
+&lt;/div>
+&lt;div class="grid grd-5">
+  &lt;div class="p1 brd">1/5 col&lt;/div>
+    &#x22EE;
+&lt;/div>
+&lt;div class="grid grd-6">
+  &lt;div class="p1 brd">1/6 col&lt;/div>
+    &#x22EE;
+&lt;/div>
 </code></pre>
     </div>
   </div>
@@ -841,6 +946,16 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
+      It's <span class="icon-plus"></span> and ...
+      <span class="icon-star"></span>
+      <span class="icon-heart"></span>
+      <span class="icon-pencil"></span>
+      <span class="icon-go"></span>
+      <span class="icon-em-dash"></span>
+      <span class="icon-vertical-ellipsis"></span>
+      <span class="icon-asterism"></span>
+      <span data-icon="★"></span>
+      
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>

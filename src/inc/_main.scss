@@ -136,10 +136,28 @@
 
       &::after {
         position: absolute;
-        top: -0.1rem;
-        right: 0;
-        content: "\1f5d7";
+        display: inline-block;
+        top: 0.3rem;
+        right: 0.2rem;
+        width: 1em;
+        height: 1em;
+        line-height: 1;
+        content: "\2197";
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         font-style: normal;
+        font-size: 0.87em;
+        font-weight: 600;
+        color: $blue;
+        text-align: left;
+        vertical-align: middle;
+        border: solid 1px $blue;
+        border-radius: 2px;
+      }
+
+      &:hover::after {
+        color: $white;
+        background: rgba($blue2, 0.9);
+        border: solid 1px rgba($blue2, 0.9);
       }
     }
   }
@@ -591,12 +609,14 @@
     color: $gray;
 
     &.caret::after {
-      content: "\23F4\23F5";
+      content: "\2039   \203A";
       position: absolute;
       padding-bottom: 0.3em;
       z-index: 1;
       right: 0.25em;
-      bottom: 0.5em;
+      bottom: 0.3em;
+      font-size: 1.2em;
+      font-weight: 700;
       color: $fog;
       background: transparent;
       border: solid 1px $fog;
