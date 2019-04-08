@@ -1,5 +1,10 @@
 $not: '.nons';
 
+$small-font-size:  10px;
+$middle-font-size: 12px;
+$large-font-size:  14px;
+$xlarge-font-size: 16px;
+
 $h1:     2.6rem;
 $h2:     2.3rem;
 $h3:     2.1rem;
@@ -84,5 +89,12 @@ $feedly:             #6cc655;
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
 $crumbs-arrow: "\203A";
 $crumbs-left:  -1.1rem;
+
+$external-link-content: "\2197";
+$external-link-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$external-link-background: rgba($blue2, 0.9);
+$external-link-border: solid 1px $blue;
+
+$navi-height: 56px;
 
 $note-prefix: "\1F6C8";

@@ -10,6 +10,32 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body id="sloth-docs" class="sloth">
+<header class="navi-menu" hidden>
+  <div class="w-half flx-row">
+    <label class="toggle">
+      <input type="checkbox">
+      <div class="backdrop"></div>
+      <div class="menu">
+        <ul class="unstyled">
+          <li class="pr1"><a href="javascript:;"><i class="fas fa-home mr1"></i>HOME</a></li>
+          <li class="pr1"><a href="javascript:;"><i class="fab fa-gripfire mr1"></i>Soaring</a></li>
+          <li class="pr1"><a href="javascript:;"><i class="far fa-clock mr1"></i>Latest</a></li>
+        </ul>
+        <hr>
+        <ul class="unstyled">
+          <li class="pr1"><a href="javascript:;"><i class="fas fa-book-reader mr1"></i>Category 1</a></li>
+          <li class="pr1"><a href="javascript:;"><i class="fas fa-folder mr1"></i>Category 2</a></li>
+          <li class="pr1"><a href="javascript:;"><i class="fab fa-gratipay mr1"></i>Category 3</a></li>
+          <li class="pr1"><a href="javascript:;"><i class="fas fa-film mr1"></i>Category 4</a></li>
+        </ul>
+      </div>
+    </label>
+    <a href="javascript:;" class="brand"><img src="docs/assets/sloth.svg" height="36"> Sloth</a>
+  </div>
+  <div class="w-half flx-row txt-right">
+    <div>Right side contents...</div>
+  </div>
+</header>
 <header id="introduction">
   <h1 class="nons"><img src="docs/assets/sloth.svg" height="58" style="margin-right:1rem;">Sloth</h1>
   <p class="nons">
@@ -81,9 +107,9 @@
     </div>
   </div>
   <hr>
-  <div class="flx-row flx-wrap my1">
-    <div class="w-half">
-      <p>Paragraphs are block-level elements,...</p>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <p>Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag.</p>
       <blockquote>
         Indicates that the enclosed text is an extended quotation.
         <cite>source here</cite>
@@ -93,8 +119,8 @@
       <b>Bring Attention</b> to element.<br>
       It is typically displayed in <i>italic</i> type.<br>
     </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>&lt;p&gt;Paragraphs are block-level elements,...&lt;/p&gt;
+    <div class="w-full mt1">
+      <pre class="prettyprint"><code>&lt;p&gt;Paragraphs are block-level elements, and notably...&lt;/p&gt;
 &lt;blockquote&gt;
   Indicates that the enclosed text is an extended quotation.
   &lt;cite&gt;source here&lt;/cite&gt;
@@ -340,6 +366,23 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;/address></code></pre>
     </div>
   </div>
+  <h5 class="muted">Change icon for external link</h5>
+  <aside>
+    You can change an icon of external link with using CSS custom properties (variables). For that you should custom stylings override to the Sloth style as below:
+  </aside>
+  <div class="flx-col">
+    <div class="w-full">
+      <pre class="prettyprint"><code>:root {
+  --external-link-content: "\f35d";
+  --external-link-font: "Font Awesome 5 Free";
+  --external-link-background: transparent;
+  --external-link-border: 0;
+  --external-link-hover-color: #4183c4;
+}
+</code></pre>
+    </div>
+    <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
+  </div>
 </section>
 <section class="sloth-styles">
   <h3>Forms</h3>
@@ -373,8 +416,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <div class="w-full">
       <form class="inline">
         <label>Name</label>
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
+        <input type="text" placeholder="First Name" size="12">
+        <input type="text" placeholder="Last Name" size="12">
       </form>
     </div>
     <div class="w-full">
@@ -403,6 +446,23 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         </label>
         <label class="checkbox">Disabled & Checked
           <input type="checkbox" checked="checked" disabled>
+          <span class="indicator"></span>
+        </label>
+        <hr>
+        <label class="checkbox clr-sec">.checkbox.clr-sec
+          <input type="checkbox" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox clr-tert">.checkbox.clr-tert
+          <input type="checkbox" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox clr-quat">.checkbox.clr-quat
+          <input type="checkbox" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="checkbox clr-quin">.checkbox.clr-quin
+          <input type="checkbox" checked="checked">
           <span class="indicator"></span>
         </label>
       </form>
@@ -444,6 +504,23 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         </label>
         <label class="radio">Disabled & Checked
           <input type="radio" checked="checked" disabled>
+          <span class="indicator"></span>
+        </label>
+        <hr>
+        <label class="radio clr-sec">.radio.clr-sec
+          <input type="radio" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="radio clr-tert">.radio.clr-tert
+          <input type="radio" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="radio clr-quat">.radio.clr-quat
+          <input type="radio" checked="checked">
+          <span class="indicator"></span>
+        </label>
+        <label class="radio clr-quin">.radio.clr-quin
+          <input type="radio" checked="checked">
           <span class="indicator"></span>
         </label>
       </form>
@@ -836,21 +913,29 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
         <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
         <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
+        <div class="w-1-3 mb1 p1 brd">.w-1-3</div>
+        <div class="w-2-3 mb1 p1 brd">.w-2-3</div>
         <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
         <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
         <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
         <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-1-4 mb1 p1 brd">.w-1-4</div>
+        <div class="w-3-4 mb1 p1 brd">.w-3-4</div>
         <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
         <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
         <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
         <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
         <div class="w-1-5 mb1 p1 brd">.w-1-5</div>
+        <div class="w-2-5 mb1 p1 brd">.w-2-5</div>
+        <div class="w-3-5 mb1 p1 brd">.w-3-5</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
         <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-1-6 mb1 p1 brd">.w-1-6</div>
+        <div class="w-5-6 mb1 p1 brd">.w-5-6</div>
       </div>
     </div>
     <div class="w-full">
@@ -859,14 +944,18 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;div class="w-half mb1 p1 brd">.w-half&lt;/div>
   &lt;div class="w-half mb1 p1 brd">.w-half&lt;/div>
   &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
-  &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
-  &lt;div class="w-1-3 mb1 p1 brd">.w-1-3&lt;/div>
+    &#x22EE;
+  &lt;div class="w-2-3 mb1 p1 brd">.w-2-3&lt;/div>
   &lt;div class="w-1-4 mb1 p1 brd">.w-1-4&lt;/div>
     &#x22EE;
+  &lt;div class="w-3-4 mb1 p1 brd">.w-3-4&lt;/div>
   &lt;div class="w-1-5 mb1 p1 brd">.w-1-5&lt;/div>
     &#x22EE;
+  &lt;div class="w-2-5 mb1 p1 brd">.w-2-5&lt;/div>
+  &lt;div class="w-3-5 mb1 p1 brd">.w-3-5&lt;/div>
   &lt;div class="w-1-6 mb1 p1 brd">.w-1-6&lt;/div>
     &#x22EE;
+  &lt;div class="w-5-6 mb1 p1 brd">.w-5-6&lt;/div>
 &lt;/div>
 </code></pre>
     </div>
@@ -940,25 +1029,95 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
 </section>
 <section class="sloth-styles">
-  <h3>Unicode Icons</h3>
+  <h3>Components</h3>
   <aside>
-    The Sloth style has an icon class for using Unicode characters as icons without including external icon fonts.
+    The sloth style has several stylized component styles to easily express rich content.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
-      It's <span class="icon-plus"></span> and ...
-      <span class="icon-star"></span>
-      <span class="icon-heart"></span>
-      <span class="icon-pencil"></span>
-      <span class="icon-go"></span>
-      <span class="icon-em-dash"></span>
-      <span class="icon-vertical-ellipsis"></span>
-      <span class="icon-asterism"></span>
-      <span data-icon="★"></span>
-      
+  <h5 class="muted">vCard</h5>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <div class="vcard">
+        <figure>
+          <img src="docs/assets/noimage-300x300.png" width="144" height="144">
+          <figcaption>Sloth Style</figcaption>
+        </figure>
+        <dl>
+          <dt>Sloth Style</dt>
+          <dd>Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.</dd>
+          <dd class="footer">
+            <a href="javascript:;" class="nons"><i class="fab fa-twitter"></i></a>
+            <a href="javascript:;" class="nons"><i class="fab fa-github"></i></a>
+          </dd>
+        </dl>
+      </div>
+      <div class="vcard">
+        <figure>
+          <img src="docs/assets/noimage-300x300.png" width="96" height="96">
+          <figcaption>Sloth Style</figcaption>
+        </figure>
+        <dl>
+          <dt>Sloth Style</dt>
+          <dd>Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.</dd>
+        </dl>
+      </div>
+      <div class="vcard">
+        <figure>
+          <img src="docs/assets/noimage-300x300.png" width="80" height="80">
+          <figcaption hidden>Sloth Style</figcaption>
+        </figure>
+        <dl>
+          <dt>Sloth Style</dt>
+          <dd>Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.</dd>
+        </dl>
+      </div>
     </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;div class="vcard">
+  &lt;figure>
+    &lt;img src="images/noimage.png" width="144" height="144">
+    &lt;figcaption>Sloth Style&lt;/figcaption>
+  &lt;/figure>
+  &lt;dl>
+    &lt;dt>Sloth Style&lt;/dt>
+    &lt;dd>Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.&lt;/dd>
+    &lt;dd class="footer">
+      &lt;a href="javascript:;" class="nons">&lt;i class="fab fa-twitter">&lt;/i>&lt;/a>
+      &lt;a href="javascript:;" class="nons">&lt;i class="fab fa-github">&lt;/i>&lt;/a>
+    &lt;/dd>
+  &lt;/dl>
+&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Navigation Menu</h5>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;div class="vcard">&lt;header class="navi-menu">
+  &lt;div class="w-half flx-row">
+    &lt;label class="toggle">
+      &lt;input type="checkbox">
+      &lt;div class="backdrop">&lt;/div>
+      &lt;div class="menu">
+        &lt;ul class="unstyled">
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-home mr1">&lt;/i>HOME&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fab fa-gripfire mr1">&lt;/i>Soaring&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="far fa-clock mr1">&lt;/i>Latest&lt;/a>&lt;/li>
+        &lt;/ul>
+        &lt;hr>
+        &lt;ul class="unstyled">
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-book-reader mr1">&lt;/i>Category 1&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-folder mr1">&lt;/i>Category 2&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fab fa-gratipay mr1">&lt;/i>Category 3&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-film mr1">&lt;/i>Category 4&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/label>
+    &lt;a href="javascript:;" class="brand">&lt;img src="docs/assets/sloth.svg" height="36"> Sloth&lt;/a>
+  &lt;/div>
+  &lt;div class="w-half flx-row txt-right">
+    &lt;div>Right side contents...&lt;/div>
+  &lt;/div>
+&lt;/header>
 </code></pre>
     </div>
   </div>

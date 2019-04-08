@@ -109,9 +109,19 @@
   max-width: calc(100% / 3);
 }
 
+.w-2-3 {
+  width: calc(100% / 3 * 2);
+  max-width: calc(100% / 3 * 2);
+}
+
 .w-1-4 {
   width: calc(100% / 4);
   max-width: calc(100% / 4);
+}
+
+.w-3-4 {
+  width: calc(100% / 4 * 3);
+  max-width: calc(100% / 4 * 3);
 }
 
 .w-1-5 {
@@ -119,9 +129,24 @@
   max-width: calc(100% / 5);
 }
 
+.w-2-5 {
+  width: calc(100% / 5 * 2);
+  max-width: calc(100% / 5 * 2);
+}
+
+.w-3-5 {
+  width: calc(100% / 5 * 3);
+  max-width: calc(100% / 5 * 3);
+}
+
 .w-1-6 {
   width: calc(100% / 6);
   max-width: calc(100% / 6);
+}
+
+.w-5-6 {
+  width: calc(100% / 6 * 5);
+  max-width: calc(100% / 6 * 5);
 }
 
 .min-w-sm { min-width: 380px; }
@@ -239,8 +264,8 @@
 
   &::before {
     position: absolute;
-    top: 0.2rem;
-    left: 0.1rem;
+    top: 0.2em;
+    left: 0.1em;
     content: '';
     width: 1em;
     height: 1em;
@@ -252,8 +277,8 @@
   &::after {
     position: absolute;
     display: inline-block;
-    top: 0.4rem;
-    left: 0.2rem;
+    top: calc(0.3em + 1px);
+    left: 0.3em;
     width: 1em;
     height: 1em;
     content: 'i';
@@ -265,5 +290,33 @@
     color: $gray;
     text-align: center;
     vertical-align: middle;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .note {
+    &::before {
+      top: 0.3em;
+      left: 0.1rem;
+    }
+
+    &::after {
+      top: calc(0.5em + 1px);
+      left: 0.3em;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .note {
+    &::before {
+      top: 0.2em;
+      left: 0.1em;
+    }
+
+    &::after {
+      top: calc(0.3em + 2px);
+      left: 0.3em;
+    }
   }
 }
