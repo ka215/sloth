@@ -1,0 +1,211 @@
+.sloth {
+  .vcard:not(#{$not}) {
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    figure {
+      display: flex;
+      flex-flow: column;
+      padding: 4px;
+      width: max-content;
+      margin: 0 auto;
+      border: solid 1px $fog;
+
+      img {
+        max-width: inherit;
+        max-height: auto;
+      }
+
+      figcaption {
+        padding: 0.2rem 0.3rem;
+        font-family: inherit;
+        font-style: normal;
+        font-size: 0.75em;
+        font-weight: 300;
+        color: $white;
+        text-align: center;
+        background: none $dark-gray;
+      }
+
+      + * {
+        position: relative;
+        margin-left: 1rem;
+
+        > .footer {
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          margin-right: 1rem;
+          font-size: inherit;
+          text-align: right;
+
+          > * {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .navi-menu {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: $navi-height;
+    height: var(--navi-height-sm, $navi-height);
+    background: none $white;
+    border-bottom: solid 1px rgba($light-gray, 0.87);
+    box-shadow: 0 1px 3px 0 rgba($light-gray, 0.76);
+    z-index: 1002;
+
+    .toggle {
+      position: relative;
+      margin: auto 0;
+      padding-left: 5rem;
+      font-size: inherit;
+      cursor: pointer;
+      z-index: 1002;
+
+      .backdrop {
+        display: none;
+        position: fixed;
+        top: $navi-height;
+        top: var(--navi-height-sm, $navi-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - #{$navi-height});
+        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+        background: none $dark-gray;
+        opacity: 0;
+        z-index: 1000;
+        transition: all 0.2s;
+      }
+
+      .menu {
+        position: fixed;
+        top: $navi-height;
+        top: var(--navi-height-sm, $navi-height);
+        left: -50%;
+        width: max-content;
+        max-width: 50% !important;
+        height: calc(100vh - #{$navi-height});
+        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+        padding: 1.5rem;
+        background-color: $white;
+        border-right: solid 1px rgba($light-gray, 0.87);
+        box-shadow: 1px 2px 3px 0 rgba($light-gray, 0.76);
+        z-index: 1001;
+        transition: left 0.2s, right 0.3s;
+      }
+
+      input[type=checkbox] {
+        display: none;
+
+        &:checked ~ .backdrop {
+          display: block;
+          opacity: 0.4;
+        }
+
+        &:checked ~ .menu {
+          /* pointer-events: none; */
+          left: 0;
+        }
+      }
+
+      ~ * {
+        margin: auto 0;
+
+        &.brand {
+          font-style: normal;
+          font-size: $h2;
+          font-weight: 600;
+          color: $black;
+
+          &:hover,
+          &:active,
+          &:focus {
+            text-decoration: none;
+
+            &::before,
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &::before {
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 2rem;
+        content: '';
+        width: 1.5rem;
+        height: calc(14px / 2);
+        border-bottom: solid 2px $gray;
+        z-index: 1001;
+      }
+
+      &::after {
+        position: absolute;
+        top: -2px;
+        left: 2rem;
+        content: '';
+        width: 1.5rem;
+        height: calc(14px - 2px);
+        border-top: solid 2px $gray;
+        border-bottom: solid 2px $gray;
+        z-index: 1001;
+        z-index: 1002;
+      }
+    }
+
+    > *:nth-child(n + 1) {
+      > * {
+        margin: auto 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .sloth {
+    .navi-menu {
+      height: var(--navi-height-md, $navi-height);
+
+      .backdrop {
+        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+      }
+
+      .menu {
+        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sloth {
+    .navi-menu {
+      height: var(--navi-height-lg, $navi-height);
+
+      .backdrop {
+        height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+      }
+
+      .menu {
+        height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+      }
+    }
+  }
+}

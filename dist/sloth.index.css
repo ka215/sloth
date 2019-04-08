@@ -1,19 +1,53 @@
-@media screen and (min-width: 48rem) {
-  html {
-    font-size: 14px;
+:root {
+/*
+  --external-link-content: "\f35d";
+  --external-link-font: "Font Awesome 5 Free";
+  --external-link-background: transparent;
+  --external-link-border: 0;
+  --external-link-hover-color: #4183c4;
+  --external-link-padding-left: 1em;
+*/
+  --navi-height-sm: 56px;
+  --navi-height-md: 56px;
+  --navi-height-lg: 56px;
+}
+@media screen and (min-width: 576px) {
+  /* >= 576px */
+  body > *:not(.navi-menu) {
+    max-width: 48rem;
+  }
+
+  #introduction {
+    padding: 4rem 0;
+  }
+
+  .lead-block {
+    padding: 2rem 0;
+  }
+
+  .sloth-styles {
+    padding: 2rem 0;
   }
 }
-body > * {
+@media screen and (min-width: 768px ) {
+  /* >= 768px */
+  body > *:not(.navi-menu) {
+    max-width: 54.8rem;
+  }
+}
+body > *:not(.navi-menu) {
   position: relative;
   max-width: 48rem;
   margin: 0 auto;
 }
 #sloth-docs {
+  margin: 0;
+  padding: 0;
   background-color: #f5f5f5;
   color: #16160e;
 }
 #introduction {
-  padding: 4rem 0;
+  padding: 4rem 2rem;
   max-width: 100%;
   text-align: center;
   background-color: #fff;
@@ -32,7 +66,7 @@ body > * {
 }
 .lead-block {
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
   text-align: center;
 }
 .lead-block h2 {
@@ -50,14 +84,16 @@ body > * {
 .sloth-styles {
   position: relative;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
   max-width: 100%;
   text-align: left;
   background-color: #fafafa;
+  z-index: 1;
 }
 .sloth-styles > * {
   max-width: 48rem;
   margin: 1rem auto;
+  z-index: 1;
 }
 .sloth-styles:nth-child(2n+1) {
   background-color: transparent;
