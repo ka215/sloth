@@ -10,30 +10,37 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body id="sloth-docs" class="sloth">
-<header class="navi-menu" hidden>
+<header id="demo-navi" class="navi-menu" hidden>
   <div class="w-half flx-row">
     <label class="toggle">
       <input type="checkbox">
       <div class="backdrop"></div>
       <div class="menu">
         <ul class="unstyled">
-          <li class="pr1"><a href="javascript:;"><i class="fas fa-home mr1"></i>HOME</a></li>
-          <li class="pr1"><a href="javascript:;"><i class="fab fa-gripfire mr1"></i>Soaring</a></li>
-          <li class="pr1"><a href="javascript:;"><i class="far fa-clock mr1"></i>Latest</a></li>
+          <li class="pr1"><a href="#introduction"><i class="fas fa-home mr1"></i>HOME</a></li>
+          <li class="pr1"><a href="#why-sloth"><i class="fas fa-question mr1"></i> Why Sloth?</a></li>
+          <li class="pr1"><a href="#get-started-sloth"><i class="fab fa-gripfire mr1"></i> Get Started Sloth!</a></li>
+          <li class="pr1"><a href="#basic-structures"><i class="fas fa-chalkboard mr1"></i> Basic Structures</a></li>
         </ul>
         <hr>
         <ul class="unstyled">
-          <li class="pr1"><a href="javascript:;"><i class="fas fa-book-reader mr1"></i>Category 1</a></li>
-          <li class="pr1"><a href="javascript:;"><i class="fas fa-folder mr1"></i>Category 2</a></li>
-          <li class="pr1"><a href="javascript:;"><i class="fab fa-gratipay mr1"></i>Category 3</a></li>
-          <li class="pr1"><a href="javascript:;"><i class="fas fa-film mr1"></i>Category 4</a></li>
+          <li class="pr1"><a href="#typograpy"><i class="fas fa-font mr1"></i> Typograpy</a></li>
+          <li class="pr1"><a href="#lists"><i class="fas fa-list-ul mr1"></i> Lists</a></li>
+          <li class="pr1"><a href="#links"><i class="fas fa-link mr1"></i> Links</a></li>
+          <li class="pr1"><a href="#forms"><i class="fas fa-edit mr1"></i> Forms</a></li>
+          <li class="pr1"><a href="#buttons"><i class="fas fa-toggle-on mr1"></i> Buttons</a></li>
+          <li class="pr1"><a href="#tables"><i class="fas fa-table mr1"></i> Tables</a></li>
+          <li class="pr1"><a href="#grid-systems"><i class="fas fa-th mr1"></i> Grid Systems</a></li>
+          <li class="pr1"><a href="#components"><i class="far fa-address-card mr1"></i> Components</a></li>
+          <li class="pr1"><a href="#colors"><i class="fas fa-palette mr1"></i> Colors</a></li>
+          <li class="pr1"><a href="#utilities"><i class="fas fa-toolbox mr1"></i> Utilities</a></li>
         </ul>
       </div>
     </label>
-    <a href="javascript:;" class="brand"><img src="docs/assets/sloth.svg" height="36"> Sloth</a>
+    <a href="#sloth-docs" class="brand"><img src="docs/assets/sloth.svg" height="36"> Sloth</a>
   </div>
-  <div class="w-half flx-row txt-right">
-    <div>Right side contents...</div>
+  <div class="w-half flx-row flx-end pr2">
+    <button id="close-navi" type="button" class="outline mb0"><i class="fas fa-times"></i> Close Navi</button>
   </div>
 </header>
 <header id="introduction">
@@ -42,17 +49,20 @@
     Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
+  <div>
+    <small class="muted">Latest Version: 1.0.0</small>
+  </div>
 </header>
-<article class="lead-block">
+<article id="why-sloth" class="lead-block">
   <h2>Why Sloth?</h2>
   <aside>
     We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.<br>
     <br>
-    The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, dialog, and limited vendor prefixes.<br>
+    The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, CSS variables, and limited vendor prefixes.<br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at a distributed css file only <small>(The file size after gzip compression is 7.25KB)</small>.
   </aside>
 </article>
-<article class="lead-block">
+<article id="get-started-sloth" class="lead-block">
   <h2>Get Started Sloth!</h2>
   <aside>
     In order to wake up the sloth, it is necessary to read the built distribution CSS file.
@@ -75,7 +85,40 @@
     </div>
   </aside>
 </article>
-<section class="sloth-styles">
+<article id="basic-structures" class="lead-block">
+  <h2>Basic Structures</h2>
+  <aside>
+    The sloth style is styled with mobile first. The basic font size changes according to the screen size of the device that is the breakpoint as below.
+    <table class="fixed slim cell-center">
+      <thead>
+        <tr><th></th><th>Small</th><th>Medium</th><th>Large</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Screen Width</th><td>&lt; 576px</td><td>&gt;= 576px</td><td>&gt;= 768px</td>
+        </tr>
+        <tr>
+          <th>1rem =</th><td>10px</td><td>12px</td><td>14px</td>
+        </tr>
+        <tr>
+          <th>Base Font-size</th><td>1.4rem<br><small>(=14px)</small></td><td>1.1667rem<br><small>(≒14px)</small></td><td>1.1429rem<br><small>(≒16px)</small></td>
+        </tr>
+      </tbody>
+    </table>
+    Also, you can override custom base font-size via CSS variables as below.
+    <div class="flx-col flx-center fs-sm my1">
+      <pre class="prettyprint"><code>:root {
+  /* Set same sizes on all device screen */
+  --base-font-size-sm: 1.4rem;    /* = 14px */ 
+  --base-font-size-md: 1.1667rem; /* = 14px */
+  --base-font-size-lg: 1rem;      /* = 14px */
+}
+</code></pre>
+      <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
+    </div>
+  </aside>
+</article>
+<section id="typograpy" class="sloth-styles">
   <h3>Typograpy</h3>
   <aside>
     The typography in the Sloth style is shown below. It is not necessary to give a class name for style at markup.
@@ -192,12 +235,6 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         北<rp>(</rp><rt>Běi</rt><rp>)</rp>
         京<rp>(</rp><rt>jīng</rt><rp>)</rp>
       </ruby>
-      <p hidden>
-        Slothのスタイリングでは、ルビを<ruby>含<rp>(</rp><rt>ふく</rt><rp>)</rp></ruby>む<ruby>文章<rp>(</rp><rt>ぶんしょう</rt><rp>)</rp></ruby>は
-        <ruby>親要素<rp>(</rp><rt>おやようそ</rt><rp>)</rp></ruby>にexpandクラスを<ruby>付与<rp>(</rp><rt>ふよ</rt><rp>)</rp></ruby>して
-        <ruby>行間<rp>(</rp><rt>ぎょうかん</rt><rp>)</rp></ruby>サイズを<ruby>調整<rp>(</rp><rt>ちょうせい</rt><rp>)</rp></ruby>することを
-        <ruby>推奨<rp>(</rp><rt>すいしょう</rt><rp>)</rp></ruby>します。
-      </p>
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;ruby>
@@ -227,7 +264,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="lists" class="sloth-styles">
   <h3>Lists</h3>
   <aside>
     In addition to below common styles, Sloth lists have list as components grouped together. It will be mentioned later.
@@ -337,7 +374,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="links" class="sloth-styles">
   <h3 id="head-in-page">Links</h3>
   <aside>
     The style for link to external is applied if the <code>&lt;a&gt;</code> tag has attribute of <code>rel="external"</code> or <code>target="_blank"</code>.
@@ -384,7 +421,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="forms" class="sloth-styles">
   <h3>Forms</h3>
   <aside>
     There are a wide variety of form parts provided by the Sloth style. However, please note that some parts are not compatible with older browsers.
@@ -729,7 +766,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <small class="note">In the styling of floating label, there are used <code>:placeholder-shown</code> pseudo-class, therefore it does not working on the browsers that is not supported as like edge.</small>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="buttons" class="sloth-styles">
   <h3>Buttons</h3>
   <aside>
     In the Sloth, the "submit" button is styled in the primary color. Add <code>.clr-prim</code> class if you want to explicitly style the primary color.
@@ -807,12 +844,12 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-col my1">
     <h5 class="muted">Floating Action Button</h5>
     <div class="w-full flx-row flx-wrap my1">
-      <a class="btn-fab mx1" href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
-      <a class="btn-fab clr-prim mx1" href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
-      <a class="btn-fab clr-sec mx1"  href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
-      <a class="btn-fab clr-tert mx1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
-      <a class="btn-fab clr-quat mx1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
-      <a class="btn-fab clr-quin mx1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
+      <a class="btn-fab mr1" href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
+      <a class="btn-fab clr-prim mr1" href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
+      <a class="btn-fab clr-sec mr1"  href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
+      <a class="btn-fab clr-tert mr1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
+      <a class="btn-fab clr-quat mr1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn-fab clr-quin mr1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;a class="btn-fab" href="#">&lt;i class="fas fa-home">&lt;/i>&lt;/a>
@@ -826,10 +863,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="tables" class="sloth-styles">
   <h3>Tables</h3>
   <aside>
-    It can shrink the size of the whole table by adding the <code>.slim</code> class to the table tag.
+    The Sloth styled table has several option classes.<br>
+    The <code>.slim</code> class can shrink the size of the whole table, the <code>.fixed</code> class can justify horizontal cell width, and the <code>.cell-center</code> or <code>.cell-right</code> classes can align text in all cells.
   </aside>
   <div class="flx-col my1">
     <div class="w-full">
@@ -897,7 +935,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="grid-systems" class="sloth-styles">
   <h3>Grid Systems</h3>
   <h5 class="muted">Flex boxes</h5>
   <aside>
@@ -1028,7 +1066,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
 </section>
-<section class="sloth-styles">
+<section id="components" class="sloth-styles">
   <h3>Components</h3>
   <aside>
     The sloth style has several stylized component styles to easily express rich content.
@@ -1092,71 +1130,268 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <h5 class="muted">Navigation Menu</h5>
   <div class="flx-col my1">
     <div class="w-full">
-      <pre class="prettyprint"><code>&lt;div class="vcard">&lt;header class="navi-menu">
+      <p>This component is header navigation with sliding left side menu that fit on the mobile page. If you want to see demo of below codes on this page, try to switch a toggle.</p>
+      <form class="m1">
+        <label class="tgl">Show navigation menu demo.
+          <input type="checkbox" id="toggle-navi-menu">
+          <span class="tgl-btn"></span>
+        </label>
+      </form>
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;header class="navi-menu">
   &lt;div class="w-half flx-row">
     &lt;label class="toggle">
       &lt;input type="checkbox">
       &lt;div class="backdrop">&lt;/div>
       &lt;div class="menu">
         &lt;ul class="unstyled">
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-home mr1">&lt;/i>HOME&lt;/a>&lt;/li>
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fab fa-gripfire mr1">&lt;/i>Soaring&lt;/a>&lt;/li>
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="far fa-clock mr1">&lt;/i>Latest&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="#introduction">&lt;i class="fas fa-home mr1">&lt;/i>HOME&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="#why-sloth">&lt;i class="fas fa-question mr1">&lt;/i>Why Sloth?&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="#get-started-sloth">&lt;i class="fab fa-gripfire mr1">&lt;/i>Get Started Sloth!&lt;/a>&lt;/li>
+          &lt;li class="pr1">&lt;a href="#basic-structures">&lt;i class="fas fa-chalkboard mr1">&lt;/i> Basic Structures&lt;/a>&lt;/li>
         &lt;/ul>
         &lt;hr>
-        &lt;ul class="unstyled">
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-book-reader mr1">&lt;/i>Category 1&lt;/a>&lt;/li>
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-folder mr1">&lt;/i>Category 2&lt;/a>&lt;/li>
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fab fa-gratipay mr1">&lt;/i>Category 3&lt;/a>&lt;/li>
-          &lt;li class="pr1">&lt;a href="javascript:;">&lt;i class="fas fa-film mr1">&lt;/i>Category 4&lt;/a>&lt;/li>
-        &lt;/ul>
+          &#x22EE;
       &lt;/div>
     &lt;/label>
-    &lt;a href="javascript:;" class="brand">&lt;img src="docs/assets/sloth.svg" height="36"> Sloth&lt;/a>
+    &lt;a href="#sloth-docs" class="brand">&lt;img src="images/sloth.svg" height="36"> Sloth&lt;/a>
   &lt;/div>
-  &lt;div class="w-half flx-row txt-right">
-    &lt;div>Right side contents...&lt;/div>
+  &lt;div class="w-half flx-row flx-end pr2">
+    &lt;button type="button" class="outline mb0">&lt;i class="fas fa-times">&lt;/i> Close Navi&lt;/button>
   &lt;/div>
 &lt;/header>
 </code></pre>
     </div>
-  </div>
-</section>
-<section class="sloth-styles">
-  <h3>Others</h3>
-  <aside>
-    
-  </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+    <small class="note">The above icon uses powered by the <a rel="external" href="https://fontawesome.com/">Font awesome</a>.</small>
+    <div class="w-full my1">
+      <p>Also, you can override the height of the horizontal navigation block and the width of the sliding side menu by using CSS variables (<code>var()</code>).</p>
     </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>
+    <div class="w-full">
+      <pre class="prettyprint"><code>:root {
+  --navi-height-sm: 56px; /* for mobile screen */
+  --navi-height-md: 64px; /* for tablet screen */
+  --navi-height-lg: 72px; /* for pc screen */
+  --menu-width-sm: 180px; /* for mobile screen */
+  --menu-width-md: 200px; /* for tablet screen */
+  --menu-width-lg: 240px; /* for pc screen */
+}
 </code></pre>
     </div>
+    <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
-</section>
-<section class="sloth-styles">
-  <h3>Utilities</h3>
-  <aside>
-    
-  </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
-    </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>
-</code></pre>
-    </div>
-  </div>
-</section>
-<footer id="demo-footer">
-  <p class="txt-center">Crafted with &copy; <time>2019</time> MAGIC METHODS by <a href="https://ka2.org/">ka2</a></p>
-</footer>
+<!-- /*
+  <h5 class="muted">Dialog</h5>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <p></p>
 <dialog id="sloth-dialog" open>
   dialog box
   <button onclick="javascript:document.getElementById('humble-dialog').removeAttribute('open')">close</button>
 </dialog>
+    </div>
+  </div>
+  <div class="flx-col my1">
+    <div class="w-full">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
+*/ -->
+</section>
+<section id="colors" class="sloth-styles">
+  <h3>Colors</h3>
+  <aside>
+    section discription
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
+</section>
+<!-- /*
+<section id="others" class="sloth-styles" hidden>
+  <h3>Others</h3>
+  <aside>
+    section discription
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
+</section>
+*/ -->
+<section id="utilities" class="sloth-styles">
+  <h3>Utilities</h3>
+  <aside>
+    Utility classes are shorthanded CSS properties that can be used with or without the <code>.sloth</code> class.
+  </aside>
+  <h5 class="muted">Margin</h5>
+  <p>Allowed margin values ​​are 0 to 2 and units are "rem".</p>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <div class="brd bg-lightgray"><div class="m0 bg-white">.m0</div></div>
+      <div class="brd bg-lightgray"><div class="m1 bg-white">.m1</div></div>
+      <div class="brd bg-lightgray"><div class="m2 bg-white">.m2</div></div>
+      <div class="brd bg-lightgray"><div class="mx1 bg-white">.mx1 (left & right)</div></div>
+      <div class="brd bg-lightgray"><div class="my1 bg-white">.my1 (top & bottom)</div></div>
+      <div class="brd bg-lightgray"><div class="mt1 bg-white">.mt1 (top only)</div></div>
+      <div class="brd bg-lightgray"><div class="mr1 bg-white">.mr1 (right only)</div></div>
+      <div class="brd bg-lightgray"><div class="mb1 bg-white">.mb1 (bottom only)</div></div>
+      <div class="brd bg-lightgray"><div class="ml1 bg-white">.ml1 (left only)</div></div>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;div class="m0">.m0&lt;/div>
+&lt;div class="m1">.m1&lt;/div>
+&lt;div class="m2">.m2&lt;/div>
+&lt;div class="mx1">.mx1 (left & right)&lt;/div>
+&lt;div class="my1">.my1 (top & bottom)&lt;/div>
+&lt;div class="mt1">.mt1 (top only)&lt;/div>
+&lt;div class="mr1">.mr1 (right only)&lt;/div>
+&lt;div class="mb1">.mb1 (bottom only)&lt;/div>
+&lt;div class="ml1">.ml1 (left only)&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Padding</h5>
+  <p>Allowed padding values ​​are 0 to 2 and units are "rem".</p>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <div class="brd bg-lightgray p0"><div class="bg-white">.p0</div></div>
+      <div class="brd bg-lightgray p1"><div class="bg-white">.p1</div></div>
+      <div class="brd bg-lightgray p2"><div class="bg-white">.p2</div></div>
+      <div class="brd bg-lightgray px1"><div class="bg-white">.px1 (left & right)</div></div>
+      <div class="brd bg-lightgray py1"><div class="bg-white">.py1 (top & bottom)</div></div>
+      <div class="brd bg-lightgray pt1"><div class="bg-white">.pt1 (top only)</div></div>
+      <div class="brd bg-lightgray pr1"><div class="bg-white">.pr1 (right only)</div></div>
+      <div class="brd bg-lightgray pb1"><div class="bg-white">.pb1 (bottom only)</div></div>
+      <div class="brd bg-lightgray pl1"><div class="bg-white">.pl1 (left only)</div></div>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;div class="p0">.p0&lt;/div>
+&lt;div class="p1">.p1&lt;/div>
+&lt;div class="p2">.p2&lt;/div>
+&lt;div class="px1">.px1 (left & right)&lt;/div>
+&lt;div class="py1">.py1 (top & bottom)&lt;/div>
+&lt;div class="pt1">.pt1 (top only)&lt;/div>
+&lt;div class="pr1">.pr1 (right only)&lt;/div>
+&lt;div class="pb1">.pb1 (bottom only)&lt;/div>
+&lt;div class="pl1">.pl1 (left only)&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Width</h5>
+  <p>This is able to specify block width as like the width 100% is <code>.w-1</code> or <code>.w-full</code>, 50% is <code>.w-1-2</code> or <code>.w-half</code>. Refer to section of flexboxes on the <a href="#grid-systems">Grid Systems</a>.</p>
+  <h5 class="muted">Height</h5>
+  <p>This is able to specify block height as like the height 100% is <code>.h-full</code> and 50% is <code>.h-half</code>. It has only two classes about height as utility class.</p>
+  <h5 class="muted">Border</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <div class="brd mb1">.brd</div>
+      <div class="brd-prim mb1">.brd-prim</div>
+      <div class="brd-sec mb1" >.brd-sec</div>
+      <div class="brd-tert mb1">.brd-tert</div>
+      <div class="brd-quat mb1">.brd-quat</div>
+      <div class="brd-quin mb1">.brd-quin</div>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;div class="brd">.brd&lt;/div>
+&lt;div class="brd-prim">.brd-prim&lt;/div>
+&lt;div class="brd-sec" >.brd-sec&lt;div>
+&lt;div class="brd-tert">.brd-tert&lt;/div>
+&lt;div class="brd-quat">.brd-quat&lt;/div>
+&lt;div class="brd-quin">.brd-quin&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Background & Text Color</h5>
+  <p>It is also possible to use <code>.muted</code> as a shorthand only for <code>.txt-gray</code>.</p>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <div class="bg-white txt-black">.bg-white.txt-black</div>
+      <div class="bg-whitesmoke txt-darkgray">.bg-whitesmoke.txt-darkgray</div>
+      <div class="bg-lightgray txt-gray" >.bg-lightgray.txt-gray</div>
+      <div class="bg-fog txt-fog">.bg-fog.txt-fog</div>
+      <div class="bg-gray txt-lightgray">.bg-gray.txt-lightgray</div>
+      <div class="bg-darkgray txt-whitesmoke">.bg-darkgray.txt-whitesmoke</div>
+      <div class="bg-black txt-white">.bg-darkgray.txt-white</div>
+      <hr>
+      <div class="bg-prim txt-quin">.bg-prim.txt-quin</div>
+      <div class="bg-sec txt-quat" >.bg-sec.txt-quat</div>
+      <div class="bg-tert txt-tert">.bg-tert.txt-tert</div>
+      <div class="bg-quat txt-sec" >.bg-quat.txt-sec</div>
+      <div class="bg-quin txt-prim">.bg-quin.txt-prim</div>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;div class="bg-white txt-black">.bg-white.txt-black&lt;/div>
+&lt;div class="bg-whitesmoke txt-darkgray">.bg-whitesmoke.txt-darkgray&lt;/div>
+&lt;div class="bg-lightgray txt-gray" >.bg-lightgray.txt-gray&lt;/div>
+&lt;div class="bg-fog txt-fog">.bg-fog.txt-fog&lt;/div>
+&lt;div class="bg-gray txt-lightgray">.bg-gray.txt-lightgray&lt;/div>
+&lt;div class="bg-darkgray txt-whitesmoke">.bg-darkgray.txt-whitesmoke&lt;/div>
+&lt;div class="bg-black txt-white">.bg-darkgray.txt-white&lt;/div>
+&lt;hr>
+&lt;div class="bg-prim txt-quin">.bg-prim.txt-quin&lt;/div>
+&lt;div class="bg-sec txt-quat" >.bg-sec.txt-quat&lt;/div>
+&lt;div class="bg-tert txt-tert">.bg-tert.txt-tert&lt;/div>
+&lt;div class="bg-quat txt-sec" >.bg-quat.txt-sec&lt;/div>
+&lt;div class="bg-quin txt-prim">.bg-quin.txt-prim&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Alignment</h5>
+  <p></p>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <div class="brd txt-left">.txt-left</div>
+      <div class="brd txt-center">.txt-center</div>
+      <div class="brd txt-right">.txt-right</div>
+      <table class="nons brd exam1">
+        <tbody>
+          <tr>
+            <td class="v-top">.v-top</td>
+            <td class="v-middle">.v-middle</td>
+            <td class="v-bottom">.v-bottom</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="brd flx-row" style="height:3em">
+        <div class="txt-top"><span>.txt-top</span></div>
+        <div class="txt-middle"><span>.txt-middle</span></div>
+        <div class="txt-bottom"><span>.txt-bottom</span></div>
+      </div>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;div class="brd txt-left">.txt-left&lt;/div>
+&lt;div class="brd txt-center">.txt-center&lt;/div>
+&lt;div class="brd txt-right">.txt-right&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Note as helper text</h5>
+  <p>An information icon is displayed at the beginning of an element that has a <code>.note</code> class.</p>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <small class="note">Notice: text of supplementary sentence etc.</small>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;small class="note">Notice: text of supplementary sentence etc.&lt;/small>
+</code></pre>
+    </div>
+  </div>
+
+</section>
+<footer id="demo-footer">
+  <p class="txt-center">Crafted with &copy; <time>2019</time> MAGIC METHODS by <a href="https://ka2.org/">ka2</a></p>
+</footer>
 <script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script>
 window.addEventListener('load',function(){
@@ -1176,6 +1411,41 @@ window.addEventListener('load',function(){
     resources.forEach( (file) => {
         loadCSS( `./dist/${file}` )
     })
+    
+    let el1 = document.getElementById('toggle-navi-menu'),
+        el2 = document.getElementById('close-navi')
+    
+    function toggleNaviMenu( show ) {
+      let navi = document.getElementById('demo-navi'),
+          tglbtn = document.getElementById('toggle-navi-menu')
+      if ( show ) {
+        navi.removeAttribute('hidden')
+        tglbtn.checked = true
+      } else {
+        navi.setAttribute('hidden',true)
+        tglbtn.checked = false
+      }
+    }
+    
+    el1.addEventListener('change', event => {
+      toggleNaviMenu( event.target.checked )
+    }, false)
+    el2.addEventListener('click', () => {
+      toggleNaviMenu( false )
+    }, false)
+    
+    let paramStr = location.search.substring(1),
+        params = paramStr ? paramStr.split('&') : null,
+        paramArray = []
+    if ( params ) {
+      params.forEach( v => {
+        let item = v.split('=')
+        paramArray[item[0]] = item[1]
+      })
+      if ( paramArray.navi === '1' ) {
+        toggleNaviMenu( true )
+      }
+    }
     
 },false)
 

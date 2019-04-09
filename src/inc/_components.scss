@@ -53,8 +53,8 @@
     }
   }
 
-  .navi-menu {
-    position: sticky;
+  .navi-menu:not(#{$not}) {
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -97,8 +97,11 @@
         top: $navi-height;
         top: var(--navi-height-sm, $navi-height);
         left: -50%;
+        left: calc(-1 * var(--menu-width-sm, 50%));
         width: max-content;
-        max-width: 50% !important;
+        width: var(--menu-width-sm, max-content);
+        max-width: 50%;
+        max-width: var(--menu-width-sm, 50%);
         height: calc(100vh - #{$navi-height});
         height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
         padding: 1.5rem;
@@ -176,35 +179,45 @@
       }
     }
   }
-}
 
-@media screen and (min-width: 576px) {
-  .sloth {
-    .navi-menu {
+  @media screen and (min-width: 576px) {
+    .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);
 
-      .backdrop {
-        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
-      }
+      .toggle {
+        .backdrop {
+          top: var(--navi-height-md, $navi-height);
+          height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+        }
 
-      .menu {
-        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+        .menu {
+          top: var(--navi-height-md, $navi-height);
+          left: calc(-1 * var(--menu-width-md, 50%));
+          width: var(--menu-width-md, max-content);
+          max-width: var(--menu-width-md, 50%);
+          height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+        }
       }
     }
   }
-}
 
-@media screen and (min-width: 768px) {
-  .sloth {
-    .navi-menu {
+  @media screen and (min-width: 768px) {
+    .navi-menu:not(#{$not}) {
       height: var(--navi-height-lg, $navi-height);
 
-      .backdrop {
-        height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
-      }
+      .toggle {
+        .backdrop {
+          top: var(--navi-height-lg, $navi-height);
+          height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+        }
 
-      .menu {
-        height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+        .menu {
+          top: var(--navi-height-lg, $navi-height);
+          left: calc(-1 * var(--menu-width-lg, 50%));
+          width: var(--menu-width-lg, max-content);
+          max-width: var(--menu-width-lg, 50%);
+          height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+        }
       }
     }
   }

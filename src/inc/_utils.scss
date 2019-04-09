@@ -94,12 +94,14 @@
 .pr1 { padding-right: 1rem; }
 .pr2 { padding-right: 2rem; }
 
-.w-full {
+.w-full,
+.w-1 {
   width: 100%;
   max-width: 100%;
 }
 
-.w-half {
+.w-half,
+.w-1-2 {
   width: 50%;
   max-width: 50%;
 }
@@ -179,8 +181,10 @@
 }
 
 .flx-wrap { flex-wrap: wrap; }
+.flx-start { justify-content: flex-start; }
 .flx-justify { justify-content: space-between; }
 .flx-center { justify-content: center; }
+.flx-end { justify-content: flex-end; }
 
 .grid {
   display: grid;
@@ -207,6 +211,12 @@
 .bg-fog { background-color: $fog; }
 .bg-gray { background-color: $gray; }
 .bg-darkgray { background-color: $dark-gray; }
+.bg-black { background-color: $black; }
+.bg-prim { background-color: $blue; }
+.bg-sec { background-color: $green; }
+.bg-tert { background-color: $signal-red; }
+.bg-quat { background-color: $orange; }
+.bg-quin { background-color: $yellow3; }
 
 .txt-white { color: $white; }
 .txt-whitesmoke { color: $white-smoke; }
@@ -216,39 +226,66 @@
 .muted,
 .txt-gray { color: $gray; }
 .txt-darkgray { color: $dark-gray; }
+.txt-black { color: $black; }
 
-.align-left,
+.txt-prim { color: $blue; }
+.txt-sec { color: $green; }
+.txt-tert { color: $signal-red; }
+.txt-quat { color: $orange; }
+.txt-quin { color: $yellow3; }
+
 .txt-left {
   text-align: left;
-  justify-content: flex-start;
 }
 
-.align-center,
 .txt-center {
   text-align: center;
-  justify-content: center;
 }
 
-.align-right,
 .txt-right {
   text-align: right;
-  justify-content: flex-end;
 }
 
-.valign-top {
-  vertical-align: top;
-  align-content: flex-start;
+.txt-top {
+  position: relative;
+  width: 100%;
+  height: inherit;
+
+  > * {
+    position: absolute;
+    left: auto;
+    top: 0;
+  }
 }
 
-.valign-middle {
-  vertical-align: middle;
-  align-content: center;
+.txt-middle {
+  position: relative;
+  width: 100%;
+  height: inherit;
+
+  > * {
+    position: absolute;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-.valign-bottom {
-  vertical-align: middle;
-  align-content: flex-end;
+.txt-bottom {
+  position: relative;
+  width: 100%;
+  height: inherit;
+
+  > * {
+    position: absolute;
+    left: auto;
+    bottom: 0;
+  }
 }
+
+.v-top { vertical-align: top; }
+.v-middle { vertical-align: middle; }
+.v-bottom { vertical-align: bottom; }
 
 .v-center {
   position: relative;
