@@ -1481,6 +1481,7 @@
     box-shadow: none;
     border-radius: 0.2857rem;
     text-align: left;
+    vertical-align: middle;
     color: rgba($black, 0.87);
     border-collapse: separate;
     border-spacing: 0;
@@ -1581,7 +1582,25 @@
     }
 
     &.slim {
-      font-size: 87.5%;
+      font-size: smaller;
+
+      thead th,
+      tbody th,
+      tfoot th {
+        font-weight: 600;
+      }
+    }
+
+    &.fixed { table-layout: fixed; }
+
+    &.cell-center {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    &.cell-right {
+      text-align: right;
+      vertical-align: middle;
     }
 
     &.nobrd,

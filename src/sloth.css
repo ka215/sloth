@@ -8,19 +8,6 @@ Author: Ka2 - https://ka2.org
 /* like spectrum blue */
 /* like cobalt-blue */
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
-/*
-:root {
-  --external-link-content: $external-link-content;
-  --external-link-font: $external-link-font;
-  --external-link-background: $external-link-background;
-  --external-link-border: $external-link-border;
-  --external-link-hover-color: $white;
-
-  --navi-height-sm: $navi-height;
-  --navi-height-md: $navi-height;
-  --navi-height-lg: $navi-height;
-}
-*/
 *,
 *::before,
 *::after {
@@ -31,20 +18,25 @@ Author: Ka2 - https://ka2.org
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 100vw;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-family: sans-serif;
   font-size: 10px;
   line-height: 1;
+  scroll-behavior: smooth;
 }
 
 body {
   display: flow-root;
+  width: 100%;
   margin: 0;
+  overflow-x: hidden;
   background: none transparent;
   color: #212529;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.4rem;
+  font-size: var(--base-font-size-sm, 1.4rem);
   font-weight: 400;
   line-height: 1;
   text-align: left;
@@ -308,6 +300,15 @@ textarea {
 
 :-ms-input-placeholder {
   color: #abb1b5;
+}
+
+:target::before {
+  display: block;
+  height: 0;
+  height: var(--navi-height-sm, 0);
+  margin: 0;
+  margin-top: calc(-1 * var(--navi-height-sm, 0));
+  content: '';
 }
 
 .sloth {
@@ -2065,6 +2066,7 @@ textarea {
   color: rgba(33, 37, 41, 0.87);
   font-size: inherit;
   text-align: left;
+  vertical-align: middle;
 }
 
 .sloth table:not(.nons) thead th {
@@ -2156,7 +2158,27 @@ textarea {
 }
 
 .sloth table:not(.nons).slim {
-  font-size: 87.5%;
+  font-size: smaller;
+}
+
+.sloth table:not(.nons).slim thead th,
+.sloth table:not(.nons).slim tbody th,
+.sloth table:not(.nons).slim tfoot th {
+  font-weight: 600;
+}
+
+.sloth table:not(.nons).fixed {
+  table-layout: fixed;
+}
+
+.sloth table:not(.nons).cell-center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sloth table:not(.nons).cell-right {
+  text-align: right;
+  vertical-align: middle;
 }
 
 .sloth table:not(.nons).nobrd, .sloth table:not(.nons).nobordered {
@@ -2263,7 +2285,7 @@ textarea {
   margin-left: 1rem;
 }
 
-.sloth .navi-menu {
+.sloth .navi-menu:not(.nons) {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
   -ms-flex-line-pack: center;
@@ -2274,8 +2296,7 @@ textarea {
   display: -ms-flexbox;
   display: flex;
   z-index: 1002;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
       align-content: center;
@@ -2289,7 +2310,7 @@ textarea {
           box-shadow: 0 1px 3px 0 rgba(211, 211, 211, 0.76);
 }
 
-.sloth .navi-menu .toggle {
+.sloth .navi-menu:not(.nons) .toggle {
   z-index: 1002;
   position: relative;
   margin: auto 0;
@@ -2298,7 +2319,7 @@ textarea {
   cursor: pointer;
 }
 
-.sloth .navi-menu .toggle .backdrop {
+.sloth .navi-menu:not(.nons) .toggle .backdrop {
   -webkit-transition: all 0.2s;
   display: none;
   z-index: 1000;
@@ -2314,7 +2335,7 @@ textarea {
   transition: all 0.2s;
 }
 
-.sloth .navi-menu .toggle .menu {
+.sloth .navi-menu:not(.nons) .toggle .menu {
   -webkit-box-shadow: 1px 2px 3px 0 rgba(211, 211, 211, 0.76);
   -webkit-transition: left 0.2s, right 0.3s;
   z-index: 1001;
@@ -2322,10 +2343,15 @@ textarea {
   top: 56px;
   top: var(--navi-height-sm, 56px);
   left: -50%;
+  left: calc(-1 * var(--menu-width-sm, 50%));
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  max-width: 50% !important;
+  width: var(--menu-width-sm, -webkit-max-content);
+  width: var(--menu-width-sm, -moz-max-content);
+  width: var(--menu-width-sm, max-content);
+  max-width: 50%;
+  max-width: var(--menu-width-sm, 50%);
   height: calc(100vh - 56px);
   height: calc(100vh - var(--navi-height-sm, 56px));
   padding: 1.5rem;
@@ -2335,40 +2361,40 @@ textarea {
   transition: left 0.2s, right 0.3s;
 }
 
-.sloth .navi-menu .toggle input[type=checkbox] {
+.sloth .navi-menu:not(.nons) .toggle input[type=checkbox] {
   display: none;
 }
 
-.sloth .navi-menu .toggle input[type=checkbox]:checked ~ .backdrop {
+.sloth .navi-menu:not(.nons) .toggle input[type=checkbox]:checked ~ .backdrop {
   display: block;
   opacity: 0.4;
 }
 
-.sloth .navi-menu .toggle input[type=checkbox]:checked ~ .menu {
+.sloth .navi-menu:not(.nons) .toggle input[type=checkbox]:checked ~ .menu {
   /* pointer-events: none; */
   left: 0;
 }
 
-.sloth .navi-menu .toggle ~ * {
+.sloth .navi-menu:not(.nons) .toggle ~ * {
   margin: auto 0;
 }
 
-.sloth .navi-menu .toggle ~ *.brand {
+.sloth .navi-menu:not(.nons) .toggle ~ *.brand {
   color: #212529;
   font-size: 2.3rem;
   font-style: normal;
   font-weight: 600;
 }
 
-.sloth .navi-menu .toggle ~ *.brand:hover, .sloth .navi-menu .toggle ~ *.brand:active, .sloth .navi-menu .toggle ~ *.brand:focus {
+.sloth .navi-menu:not(.nons) .toggle ~ *.brand:hover, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:active, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:focus {
   text-decoration: none;
 }
 
-.sloth .navi-menu .toggle ~ *.brand:hover::before, .sloth .navi-menu .toggle ~ *.brand:hover::after, .sloth .navi-menu .toggle ~ *.brand:active::before, .sloth .navi-menu .toggle ~ *.brand:active::after, .sloth .navi-menu .toggle ~ *.brand:focus::before, .sloth .navi-menu .toggle ~ *.brand:focus::after {
+.sloth .navi-menu:not(.nons) .toggle ~ *.brand:hover::before, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:hover::after, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:active::before, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:active::after, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:focus::before, .sloth .navi-menu:not(.nons) .toggle ~ *.brand:focus::after {
   display: none;
 }
 
-.sloth .navi-menu .toggle::before {
+.sloth .navi-menu:not(.nons) .toggle::before {
   z-index: 1001;
   position: absolute;
   top: calc(50% - 2px);
@@ -2379,7 +2405,7 @@ textarea {
   content: '';
 }
 
-.sloth .navi-menu .toggle::after {
+.sloth .navi-menu:not(.nons) .toggle::after {
   z-index: 1001;
   z-index: 1002;
   position: absolute;
@@ -2392,7 +2418,7 @@ textarea {
   content: '';
 }
 
-.sloth .navi-menu > *:nth-child(n + 1) > * {
+.sloth .navi-menu:not(.nons) > *:nth-child(n + 1) > * {
   margin: auto 0;
 }
 
@@ -2580,12 +2606,14 @@ textarea {
   padding-right: 2rem;
 }
 
-.w-full {
+.w-full,
+.w-1 {
   width: 100%;
   max-width: 100%;
 }
 
-.w-half {
+.w-half,
+.w-1-2 {
   width: 50%;
   max-width: 50%;
 }
@@ -2694,6 +2722,12 @@ textarea {
       flex-wrap: wrap;
 }
 
+.flx-start {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
 .flx-justify {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -2704,6 +2738,12 @@ textarea {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.flx-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .grid {
@@ -2780,6 +2820,30 @@ textarea {
   background-color: #594e52;
 }
 
+.bg-black {
+  background-color: #212529;
+}
+
+.bg-prim {
+  background-color: #4183c4;
+}
+
+.bg-sec {
+  background-color: #00a968;
+}
+
+.bg-tert {
+  background-color: #e8383d;
+}
+
+.bg-quat {
+  background-color: #ee7800;
+}
+
+.bg-quin {
+  background-color: #e9bc00;
+}
+
 .txt-white {
   color: #fff;
 }
@@ -2805,46 +2869,90 @@ textarea {
   color: #594e52;
 }
 
-.align-left,
+.txt-black {
+  color: #212529;
+}
+
+.txt-prim {
+  color: #4183c4;
+}
+
+.txt-sec {
+  color: #00a968;
+}
+
+.txt-tert {
+  color: #e8383d;
+}
+
+.txt-quat {
+  color: #ee7800;
+}
+
+.txt-quin {
+  color: #e9bc00;
+}
+
 .txt-left {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   text-align: left;
 }
 
-.align-center,
 .txt-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   text-align: center;
 }
 
-.align-right,
 .txt-right {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   text-align: right;
 }
 
-.valign-top {
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
+.txt-top {
+  position: relative;
+  width: 100%;
+  height: inherit;
+}
+
+.txt-top > * {
+  position: absolute;
+  top: 0;
+  left: auto;
+}
+
+.txt-middle {
+  position: relative;
+  width: 100%;
+  height: inherit;
+}
+
+.txt-middle > * {
+  -webkit-transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: auto;
+          transform: translateY(-50%);
+}
+
+.txt-bottom {
+  position: relative;
+  width: 100%;
+  height: inherit;
+}
+
+.txt-bottom > * {
+  position: absolute;
+  bottom: 0;
+  left: auto;
+}
+
+.v-top {
   vertical-align: top;
 }
 
-.valign-middle {
-  -ms-flex-line-pack: center;
-      align-content: center;
+.v-middle {
   vertical-align: middle;
 }
 
-.valign-bottom {
-  -ms-flex-line-pack: end;
-      align-content: flex-end;
-  vertical-align: middle;
+.v-bottom {
+  vertical-align: bottom;
 }
 
 .v-center {
@@ -2896,17 +3004,31 @@ textarea {
   html {
     font-size: 12px;
   }
+  body {
+    font-size: var(--base-font-size-md, 1.1667rem);
+  }
+  :target::before {
+    height: var(--navi-height-md, 0);
+    margin-top: calc(-1 * var(--navi-height-md, 0));
+  }
   a:not(.nons)[target="_blank"]::after, a:not(.nons)[rel="external"]::after {
     vertical-align: middle;
   }
-  .sloth .navi-menu {
+  .sloth .navi-menu:not(.nons) {
     height: var(--navi-height-md, 56px);
   }
-  .sloth .navi-menu .backdrop {
-    height: calc(100vh - var(--navi-height-sm, 56px));
+  .sloth .navi-menu:not(.nons) .toggle .backdrop {
+    top: var(--navi-height-md, 56px);
+    height: calc(100vh - var(--navi-height-md, 56px));
   }
-  .sloth .navi-menu .menu {
-    height: calc(100vh - var(--navi-height-sm, 56px));
+  .sloth .navi-menu:not(.nons) .toggle .menu {
+    top: var(--navi-height-md, 56px);
+    left: calc(-1 * var(--menu-width-md, 50%));
+    width: var(--menu-width-md, -webkit-max-content);
+    width: var(--menu-width-md, -moz-max-content);
+    width: var(--menu-width-md, max-content);
+    max-width: var(--menu-width-md, 50%);
+    height: calc(100vh - var(--navi-height-md, 56px));
   }
   .note::before {
     top: 0.3em;
@@ -2922,16 +3044,30 @@ textarea {
   html {
     font-size: 14px;
   }
+  body {
+    font-size: var(--base-font-size-lg, 1.1429rem);
+  }
+  :target::before {
+    height: var(--navi-height-md, 0);
+    margin-top: calc(-1 * var(--navi-height-md, 0));
+  }
   a:not(.nons)[target="_blank"]::after, a:not(.nons)[rel="external"]::after {
     vertical-align: middle;
   }
-  .sloth .navi-menu {
+  .sloth .navi-menu:not(.nons) {
     height: var(--navi-height-lg, 56px);
   }
-  .sloth .navi-menu .backdrop {
+  .sloth .navi-menu:not(.nons) .toggle .backdrop {
+    top: var(--navi-height-lg, 56px);
     height: calc(100vh - var(--navi-height-lg, 56px));
   }
-  .sloth .navi-menu .menu {
+  .sloth .navi-menu:not(.nons) .toggle .menu {
+    top: var(--navi-height-lg, 56px);
+    left: calc(-1 * var(--menu-width-lg, 50%));
+    width: var(--menu-width-lg, -webkit-max-content);
+    width: var(--menu-width-lg, -moz-max-content);
+    width: var(--menu-width-lg, max-content);
+    max-width: var(--menu-width-lg, 50%);
     height: calc(100vh - var(--navi-height-lg, 56px));
   }
   .note::before {
