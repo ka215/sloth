@@ -58,7 +58,7 @@
       text-align: right;
 
       &::before {
-        content: "\2014 \00A0";
+        content: $cite-bar;
         color: $gray;
       }
     }
@@ -80,7 +80,8 @@
 
     & > rt {
       font-family: monospace, serif;
-      font-size: 50%;
+      font-size: $ruby-size;
+      font-weight: 200;
     }
   }
 
@@ -92,10 +93,11 @@
       position: absolute;
       display: inline-block;
       left: 0;
-      top: -0.9rem;
+      top: calc(-2 * #{$ruby-size});
       width: 100%;
       font-family: monospace, serif;
-      font-size: 50%;
+      font-size: $ruby-size;
+      font-weight: 200;
       text-align: center;
     }
   }
@@ -117,6 +119,7 @@
       width: 100%;
       height: 1px;
       background-color: $blue;
+      background-color: var(--color-primary, $blue);
       content: '';
       transition: all 0.2s;
       backface-visibility: hidden;
@@ -152,6 +155,7 @@
         font-size: 0.75em;
         font-weight: 600;
         color: $blue;
+        color: var(--color-primary, $blue);
         text-align: left;
         vertical-align: top;
         border: $external-link-border;
@@ -164,7 +168,8 @@
         color: var(--external-link-hover-color, $white);
         background: $external-link-background;
         background: var(--external-link-background, $external-link-background);
-        border-color: rgba($blue2, 0.9);
+        border-color: darken($blue, 5%);
+        border-color: var(--color-primary-active, darken($blue, 5%));
       }
     }
   }
@@ -196,7 +201,7 @@
       margin-right: 2rem;
 
       &:nth-child(n + 2)::before {
-        content: "\2215";
+        content: $crumbs-default;
         position: absolute;
         left: -1.1rem;
         color: $light-gray;
@@ -347,6 +352,7 @@
 
       &:checked ~ .indicator {
         background: $blue;
+        background: var(--color-primary, $blue);
 
         &::after {
           display: block;
@@ -364,12 +370,14 @@
       }
 
       &:checked:focus ~ .indicator {
-        background: $blue2;
+        background: darken($blue, 5%);
+        background: var(--color-primary-active, darken($blue, 5%));
       }
     }
 
     &:hover input:not([disabled]):checked ~ .indicator {
-      background: $blue2;
+      background: darken($blue, 5%);
+      background: var(--color-primary-active, darken($blue, 5%));
     }
 
     &.clr-sec {
@@ -455,6 +463,7 @@
 
       &:checked ~ .indicator {
         background: $blue;
+        background: var(--color-primary, $blue);
 
         &::after {
           display: block;
@@ -472,12 +481,14 @@
       }
 
       &:checked:focus ~ .indicator {
-        background: $blue2;
+        background: darken($blue, 5%);
+        background: var(--color-primary-active, darken($blue, 5%));
       }
     }
 
     &:hover input:not([disabled]):checked ~ .indicator {
-      background: $blue2;
+      background: darken($blue, 5%);
+      background: var(--color-primary-active, darken($blue, 5%));
     }
 
     &.clr-sec {
@@ -541,6 +552,7 @@
       height: 1px;
       width: 100%;
       background: $blue;
+      background: var(--color-primary, $blue);
       transform: scaleX(0);
       transform-origin: 0 0;
       transition: all 0.15s ease;
@@ -559,14 +571,18 @@
       background: none;
       border-radius: 0;
       color: $black;
+      caret-color: $blue;
+      caret-color: var(--color-primary, $blue);
       transition: all 0.15s ease;
 
       &:hover {
-        background: rgba($blue, 0.03);
+        background: rgba(lighten($blue, 15%), 0.1);
+        background: var(--color-primary-active-light, rgba(lighten($blue, 15%), 0.1));
       }
 
       &:not(:placeholder-shown) ~ .label {
         color: $blue;
+        color: var(--color-primary, $blue);
         transform: translateY(-2.2rem) scale(0.75);
       }
 
@@ -577,6 +593,7 @@
         & ~ label,
         & ~ .label {
           color: $blue;
+          color: var(--color-primary, $blue);
           transform: translateY(-2.2rem) scale(0.75);
         }
 
@@ -600,16 +617,20 @@
       background: none;
       border-radius: 0;
       color: $black;
+      caret-color: $blue;
+      caret-color: var(--color-primary, $blue);
       transition: all 0.15s ease;
 
       &:hover {
-        background: rgba($blue, 0.03);
+        background: rgba(lighten($blue, 15%), 0.1);
+        background: var(--color-primary-active-light, rgba(lighten($blue, 15%), 0.1));
       }
 
       &:not(:placeholder-shown) {
         & ~ label,
         & ~ .label {
           color: $blue;
+          color: var(--color-primary, $blue);
           transform: translateY(-2.2rem) scale(0.75);
         }
       }
@@ -621,6 +642,7 @@
         & ~ label,
         & ~ .label {
           color: $blue;
+          color: var(--color-primary, $blue);
           transform: translateY(-2.2rem) scale(0.75);
         }
 
@@ -642,6 +664,8 @@
     background: none $white;
     border: 1px solid rgba($black, 0.15);
     color: $black;
+    caret-color: $blue;
+    caret-color: var(--color-primary, $blue);
     border-radius: 0.2857rem;
     outline: 0;
     box-shadow: 0 0 0 0 transparent inset;
@@ -649,7 +673,8 @@
 
     &:focus {
       color: rgba($black, 0.95);
-      border-color: $blue2;
+      border-color: darken($blue, 5%);
+      border-color: var(--color-primary-active, darken($blue, 5%));
       border-radius: 0.2857rem;
       background: $white;
       box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
@@ -676,7 +701,8 @@
 
     &:-moz-focusring {
       color: transparent;
-      text-shadow: 0 0 0 $blue2;
+      text-shadow: 0 0 0 darken($blue, 5%);
+      text-shadow: 0 0 0 var(--color-primary-active, darken($blue, 5%));
     }
   }
 
@@ -693,7 +719,7 @@
       position: absolute;
       padding-bottom: 0.3em;
       z-index: 1;
-      right: 0.25em;
+      right: 0.3em;
       bottom: 0.3em;
       font-size: 1.2em;
       font-weight: 700;
@@ -709,10 +735,10 @@
       content: '';
       position: absolute;
       z-index: 1;
-      right: 1rem;
-      bottom: 1.5rem;
-      height: 0.8rem;
-      width: 0.8rem;
+      right: 1em;
+      bottom: calc(1em + 0.3rem);
+      height: 0.75em;
+      width: 0.75em;
       background: transparent;
       border: solid $fog;
       border-width: 0 0.2rem 0.2rem 0;
@@ -722,17 +748,19 @@
 
     &:hover::after {
       color: $blue;
+      color: var(--color-primary, $blue);
     }
 
     &:not(.caret):hover::after {
       border-color: $blue;
+      border-color: var(--color-primary, $blue);
     }
 
     select {
       width: 100%;
       width: -webkit-fill-available;
       margin-top: 0.3rem;
-      font-size: 1.4rem;
+      font-size: 111.11%;
     }
   }
 
@@ -752,10 +780,12 @@
       width: max-content;
       margin-bottom: 0 auto;
       padding: 0.3em 0.5em;
-      font-size: inherit;
+      font-size: 111.11%;
       background: $white;
       border: 1px solid rgba($black, 0.15);
       color: rgba($black, 0.87);
+      caret-color: $blue;
+      caret-color: var(--color-primary, $blue);
       border-radius: 0.2857rem;
       outline: 0;
       box-shadow: 0 0 0 0 transparent inset;
@@ -764,8 +794,8 @@
       ~ .indicator {
         position: absolute;
         display: inline-block;
-        top: calc(50% - 0.5em);
-        right: 1.5rem;
+        top: calc(0.5em + 0.3em);
+        right: 1em;
         line-height: 1em;
 
         &::after {
@@ -786,7 +816,8 @@
 
       &:focus {
         color: rgba($black, 0.95);
-        border-color: $blue2;
+        border-color: darken($blue, 5%);
+        border-color: var(--color-primary-active, darken($blue, 5%));
         border-radius: 0.2857rem;
         background: $white;
         box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
@@ -807,6 +838,7 @@
         ~ .indicator {
           &::after {
             border-color: $blue;
+            border-color: var(--color-primary, $blue);
           }
         }
       }
@@ -881,6 +913,7 @@
       &:checked + .tgl-btn {
         /* theme */
         background: $blue;
+        background: var(--color-primary, $blue);
 
         &::after {
           left: 50%;
@@ -892,6 +925,7 @@
       input[type="checkbox"] {
         &:checked + .tgl-btn {
           background: $blue;
+          background: var(--color-primary, $blue);
         }
       }
     }
@@ -946,10 +980,12 @@
         &:checked + .tgl-btn {
           background: transparent;
           border: 4px solid $blue;
+          border: 4px solid var(--color-primary, $blue);
 
           &::after {
             left: calc(50% + 4px);
             background: $blue;
+            background: var(--color-primary, $blue);
           }
         }
       }
@@ -959,9 +995,11 @@
           &:checked + .tgl-btn {
             background: transparent;
             border-color: $blue;
+            border-color: var(--color-primary, $blue);
 
             &::after {
               background: $blue;
+              background: var(--color-primary, $blue);
             }
           }
         }
@@ -1047,6 +1085,7 @@
           &::after {
             content: attr(data-tgl-on);
             background: $blue;
+            background: var(--color-primary, $blue);
             transform: rotateY(-180deg);
           }
 
@@ -1069,6 +1108,7 @@
             transform: rotateY(0);
             left: 0;
             background: $blue;
+            background: var(--color-primary, $blue);
           }
 
           &:active::after {
@@ -1082,6 +1122,7 @@
           + .tgl-btn {
             &::after {
               background: $blue;
+              background: var(--color-primary, $blue);
             }
           }
 
@@ -1090,6 +1131,7 @@
 
             &::after {
               background: $blue;
+              background: var(--color-primary, $blue);
             }
           }
         }
@@ -1189,7 +1231,6 @@
     & ~ input[type=time],
     & ~ input[type=url],
     & ~ input[list],
-    & ~ button,
     & ~ select,
     & ~ textarea {
       appearance: none;
@@ -1201,6 +1242,8 @@
       background: $white;
       border: 1px solid rgba($black, 0.15);
       color: rgba($black, 0.87);
+      caret-color: $blue;
+      caret-color: var(--color-primary, $blue);
       border-radius: 0.2857rem;
       outline: 0;
       box-shadow: 0 0 0 0 transparent inset;
@@ -1208,7 +1251,8 @@
 
       &:focus {
         color: rgba($black, 0.95);
-        border-color: $blue2;
+        border-color: darken($blue, 5%);
+        border-color: var(--color-primary-active, darken($blue, 5%));
         border-radius: 0.2857rem;
         background: $white;
         box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
@@ -1225,17 +1269,18 @@
   button:not(#{$not}) {
     appearance: none;
     display: inline-block;
-    background: $blue;
-    color: $white;
+    background: $light-gray;
+    color: $dark-gray;
     font-size: inherit;
+    font-weight: 500;
     line-height: 1;
     text-decoration: none;
     letter-spacing: 0.01rem;
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
-    padding: 0.5rem 1rem 0.6rem;
+    padding: 0.6em 1em calc(0.6em + 1px);
     border: 0;
-    border-radius: 0.3rem;
+    border-radius: 3px;
     outline: none;
     cursor: pointer;
     user-select: none;
@@ -1243,19 +1288,20 @@
     -webkit-tap-highlight-color: transparent;
     transition: all 0.2s ease-out;
 
-    &:not([type=submit]) {
-      background: $light-gray;
-      color: $dark-gray;
+    &[type=submit] {
+      background: $blue;
+      background: var(--color-primary, $blue);
+      color: $white;
     }
 
     &:hover {
-      background: rgba($blue2, 0.9);
+      background: darken($light-gray, 5%);
       box-shadow: 0 3px 3px 0 rgba($black, 0.14), 0 1px 7px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2);
     }
 
-    &:not([type=submit]):hover {
-      background: rgba($gray, 0.5);
-      box-shadow: 0 3px 3px 0 rgba($black, 0.14), 0 1px 7px 0 rgba($black, 0.12), 0 3px 1px -2px rgba($black, 0.2);
+    &[type=submit]:hover {
+      background: darken($blue, 5%);
+      background: var(--color-primary-active, darken($blue, 5%));
     }
 
     &:active,
@@ -1265,9 +1311,13 @@
 
     &.clr-prim {
       background: $blue;
+      background: var(--color-primary, $blue);
       color: $white;
 
-      &:hover { background: rgba($blue2, 0.9); }
+      &:hover {
+        background: darken($blue, 5%);
+        background: var(--color-primary-active, darken($blue, 5%));
+      }
     }
 
     &.clr-sec {
@@ -1300,30 +1350,27 @@
 
     &.flat {
       background: none transparent;
-      color: $blue;
+      color: $dark-gray;
       margin: 0.6rem;
       margin-left: 0;
-      padding: 0 0.7rem;
       min-height: 36px;
       border-radius: 0;
-      text-transform: uppercase;
       box-shadow: 0 0 0 0 transparent inset;
 
       &:hover {
-        background: rgba($blue, 0.12);
+        background: rgba(lighten($light-gray, 1%), 0.3);
         box-shadow: 0 0 0 0 transparent inset;
       }
 
-      &:not([type=submit]) {
-        color: $dark-gray;
-
-        &:hover { background: rgba($gray, 0.12); }
-      }
-
+      &[type=submit],
       &.clr-prim {
         color: $blue;
+        color: var(--color-primary, $blue);
 
-        &:hover { background: rgba($blue, 0.12); }
+        &:hover {
+          background: rgba(saturate($blue, 15%), 0.2);
+          background: var(--color-primary-active-light, rgba(saturate($blue, 15%), 0.2));
+        }
       }
 
       &.clr-sec {
@@ -1354,12 +1401,14 @@
     &.outline {
       background: none transparent;
       color: $blue;
+      color: var(--color-primary, $blue);
       border: solid 1px $fog;
       border-radius: 0.3rem;
       box-shadow: 0 0 0 0 transparent inset;
 
       &:hover {
-        background: rgba($blue, 0.12);
+        background: darken($blue, 5%);
+        background: var(--color-primary, darken($blue, 5%));
         box-shadow: 0 0 0 0 transparent inset;
       }
 
@@ -1373,8 +1422,12 @@
 
       &.clr-prim {
         color: $blue;
+        color: var(--color-primary, $blue);
 
-        &:hover { background: rgba($blue, 0.12); }
+        &:hover {
+          background: darken($blue, 5%);
+          background: var(--color-primary, darken($blue, 5%));
+        }
       }
 
       &.clr-sec {
@@ -1407,8 +1460,10 @@
     display: block;
     width: 5.6rem;
     height: 5.6rem;
+    padding: 0;
     background: none $white-smoke;
     color: $dark-gray;
+    font-weight: 400;
     text-align: center;
     white-space: nowrap;
     border-radius: 50%;
@@ -1433,14 +1488,18 @@
       line-height: 5.6rem;
       vertical-align: middle;
       font-style: normal;
-      font-size: 1.8rem;
+      font-size: 1.5em;
     }
 
     &.clr-prim {
       background: $blue;
+      background: var(--color-primary, $blue);
       color: $white;
 
-      &:hover { background: rgba($blue2, 0.9); }
+      &:hover {
+        background: darken($blue, 5%);
+        background: var(--color-primary-active, darken($blue, 5%));
+      }
     }
 
     &.clr-sec {
@@ -1589,18 +1648,6 @@
       tfoot th {
         font-weight: 600;
       }
-    }
-
-    &.fixed { table-layout: fixed; }
-
-    &.cell-center {
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    &.cell-right {
-      text-align: right;
-      vertical-align: middle;
     }
 
     &.nobrd,

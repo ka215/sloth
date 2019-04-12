@@ -34,19 +34,20 @@
           <li class="pr1"><a href="#components"><i class="far fa-address-card mr1"></i> Components</a></li>
           <li class="pr1"><a href="#colors"><i class="fas fa-palette mr1"></i> Colors</a></li>
           <li class="pr1"><a href="#utilities"><i class="fas fa-toolbox mr1"></i> Utilities</a></li>
+          <li class="pr1"><a href="#overriding-properties"><i class="far fa-edit mr1"></i> Overriding Properties</a></li>
         </ul>
       </div>
     </label>
-    <a href="#sloth-docs" class="brand"><img src="docs/assets/sloth.svg" height="36"> Sloth</a>
+    <a href="#sloth-docs" class="brand"><img src="assets/sloth.svg" height="36"> Sloth</a>
   </div>
   <div class="w-half flx-row flx-end pr2">
     <button id="close-navi" type="button" class="outline mb0"><i class="fas fa-times"></i> Close Navi</button>
   </div>
 </header>
 <header id="introduction">
-  <h1 class="nons"><img src="docs/assets/sloth.svg" height="58" style="margin-right:1rem;">Sloth</h1>
+  <h1 class="nons"><img src="assets/sloth.svg" height="58" style="margin-right:1rem;">Sloth</h1>
   <p class="nons">
-    Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
+    Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
@@ -56,7 +57,7 @@
 <article id="why-sloth" class="lead-block">
   <h2>Why Sloth?</h2>
   <aside>
-    We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. CSS should be simpler and better. This framework was developed for those who want to shirk neglect one's duties.<br>
+    We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. The markuping for styling should be simpler and better. This framework was developed for those who want to shirk neglect one's duties, and take the easy way out.<br>
     <br>
     The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, CSS variables, and limited vendor prefixes.<br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at a distributed css file only <small>(The file size after gzip compression is 7.25KB)</small>.
@@ -66,19 +67,19 @@
   <h2>Get Started Sloth!</h2>
   <aside>
     In order to wake up the sloth, it is necessary to read the built distribution CSS file.
-    <div class="flx-row flx-center fs-sm my1">
+    <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;link rel="stylesheet" href="dist/sloth.min.css"&gt;</code></pre>
     </div>
-    Marking up in the Sloth style is very easy. Basically, you can complete most of your work simply by declaring the <code class="fs-sm">.sloth</code> class to the parent element you want to apply style to.
-    <div class="flx-row flx-center fs-sm my1">
+    Marking up in the Sloth style is very easy. Basically, you can complete most of your work simply by declaring the <code class="fnt-sm">.sloth</code> class to the parent element you want to apply style to.
+    <div class="flx-row fnt-sm my1">
       <pre class="prettyprint"><code>&lt;body class="sloth"&gt;
 <div class="my1 px2">&#x22EE;</div>&lt;/body&gt;</code></pre>
-      <div class="mx2"><span class="v-center">OR</span></div>
+      <div class="mx2 mya">OR</div>
       <pre class="prettyprint"><code>&lt;div class="sloth"&gt;
 <div class="my1 px2">&#x22EE;</div>&lt;/div&gt;</code></pre>
     </div>
-    Also, if you do not want to apply a style to a specific element in a Sloth style block, specify the <code class="fs-sm">.nons</code> class in the not sloth style declaration.
-    <div class="flx-row flx-center fs-sm my1">
+    Also, if you do not want to apply a style to a specific element in a Sloth style block, specify the <code class="fnt-sm">.nons</code> class in the not sloth style declaration.
+    <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;body class="sloth"&gt;
   &lt;h1 class="nons"&gt;Not Sloth Styled headline&lt;/h1&gt;
 &lt;/body&gt;</code></pre>
@@ -106,7 +107,7 @@
       </tbody>
     </table>
     Also, you can override custom base font-size via CSS variables as below.
-    <div class="flx-col flx-center fs-sm my1">
+    <div class="flx-col flx-center fnt-sm my1">
       <pre class="prettyprint"><code>:root {
   /* Set same sizes on all device screen */
   --base-font-size-sm: 1.4rem;    /* = 14px */ 
@@ -396,7 +397,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;a rel="external" href="https://github.com/ka215/sloth">Link to external&lt;/a>&lt;br>
 &lt;a href="#head-in-page">Link in page&lt;/a>&lt;br>
 &lt;a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link&lt;/a>&lt;br>
-&lt;hr>
+&#x2E3B;
 &lt;address>
   &lt;a href="mailto:example@sloth.link">mailto@sloth.link&lt;/a>
   &lt;a href="tel:+123-456-7890">+123-456-7890&lt;/a>
@@ -408,6 +409,9 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     You can change an icon of external link with using CSS custom properties (variables). For that you should custom stylings override to the Sloth style as below:
   </aside>
   <div class="flx-col">
+    <div class="w-full mb1">
+      <a class="override-demo" href="https://github.com/ka215/sloth" target="_blank">Example link to external</a>
+    </div>
     <div class="w-full">
       <pre class="prettyprint"><code>:root {
   --external-link-content: "\f35d";
@@ -629,7 +633,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <h5 class="muted">Datalist</h5>
   <div class="flx-col my1">
-    <div class="w-full">
+    <div class="w-full mb1">
       <form>
         <label class="combo-box">Combo box
           <input type="text" name="datalist_field" list="item-list" placeholder="Choose a candidate or enter" size="27">
@@ -658,24 +662,24 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <h5 class="muted">Toggle switch</h5>
   <div class="flx-col my1">
-    <div class="w-full">
+    <div class="w-full mb1">
       <form>
         <label class="tgl">Normal type of toggle switch, firstly.
           <input type="checkbox">
           <span class="tgl-btn"></span>
-        </label>
+        </label><br>
         <label class="tgl flat">Flat type of toggle switch, nextly.
           <input type="checkbox">
           <span class="tgl-btn"></span>
-        </label>
+        </label><br>
         <label class="tgl flip">Flip type of toggle switch, finaly.
           <input type="checkbox">
           <span class="tgl-btn" data-tgl-off="Off" data-tgl-on="On"></span>
-        </label>
+        </label><br>
         <label class="tgl clr-sec">Also changeable the active color of toggle switch.
           <input type="checkbox" checked>
           <span class="tgl-btn"></span>
-        </label>
+        </label><br>
         <!-- /*
         <hr>
         <label class="tgl"><input type="checkbox" disabled><span class="tgl-btn"></span></label>
@@ -772,7 +776,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     In the Sloth, the "submit" button is styled in the primary color. Add <code>.clr-prim</code> class if you want to explicitly style the primary color.
   </aside>
   <div class="flx-col my1">
-    <div class="w-full">
+    <div class="w-full mb1">
       <input type="submit" value="Input Submit" onclick="_void(this.value)">
       <input type="button" value="Input Button" onclick="_void(this.value)">
       <button type="submit" onclick="_void(this.textContent)">Button Submit</button>
@@ -789,7 +793,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col my1">
     <h5 class="muted">Color Variations</h5>
-    <div class="w-full">
+    <div class="w-full mb1">
       <button type="button" class="clr-prim" onclick="_void(this.textContent)">Primary</button>
       <button type="button" class="clr-sec"  onclick="_void(this.textContent)">Secondary</button>
       <button type="button" class="clr-tert" onclick="_void(this.textContent)">Tertiary</button>
@@ -807,7 +811,9 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col my1">
     <h5 class="muted">Outline butons</h5>
-    <div class="w-full">
+    <div class="w-full mb1">
+      <button type="submit" class="outline" onclick="_void(this.textContent)">Submit</button>
+      <button type="button" class="outline"  onclick="_void(this.textContent)">Default</button>
       <button type="button" class="outline clr-prim" onclick="_void(this.textContent)">Primary</button>
       <button type="button" class="outline clr-sec"  onclick="_void(this.textContent)">Secondary</button>
       <button type="button" class="outline clr-tert" onclick="_void(this.textContent)">Tertiary</button>
@@ -825,7 +831,9 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col my1">
     <h5 class="muted">Flat butons</h5>
-    <div class="w-full">
+    <div class="w-full mb1">
+      <button type="submit" class="flat" onclick="_void(this.textContent)">Submit</button>
+      <button type="button" class="flat" onclick="_void(this.textContent)">Default</button>
       <button type="button" class="flat clr-prim" onclick="_void(this.textContent)">Primary</button>
       <button type="button" class="flat clr-sec" onclick="_void(this.textContent)">Secondary</button>
       <button type="button" class="flat clr-tert" onclick="_void(this.textContent)">Tertiary</button>
@@ -843,13 +851,13 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col my1">
     <h5 class="muted">Floating Action Button</h5>
-    <div class="w-full flx-row flx-wrap my1">
-      <a class="btn-fab mr1" href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
-      <a class="btn-fab clr-prim mr1" href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
-      <a class="btn-fab clr-sec mr1"  href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
-      <a class="btn-fab clr-tert mr1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
-      <a class="btn-fab clr-quat mr1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
-      <a class="btn-fab clr-quin mr1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
+    <div class="w-full flx-row flx-wrap mt1">
+      <a class="btn-fab mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
+      <a class="btn-fab clr-prim mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
+      <a class="btn-fab clr-sec mr1 mb1"  href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
+      <a class="btn-fab clr-tert mr1 mb1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
+      <a class="btn-fab clr-quat mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn-fab clr-quin mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;a class="btn-fab" href="#">&lt;i class="fas fa-home">&lt;/i>&lt;/a>
@@ -920,17 +928,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;table class="nobrd">
-  &lt;thead>
-    &lt;tr>&lt;th>Name&lt;/th>&lt;th>Character&lt;/th>&lt;th>Born&lt;/th>&lt;/tr>
-  &lt;/thead>
-  &lt;tbody>
-    &lt;tr>&lt;td>Ryan&lt;/td>&lt;td>Deadpool&lt;/td>&lt;td>1991&lt;/td>&lt;/tr>
-    &lt;tr>&lt;td>Josh&lt;/td>&lt;td>Cable&lt;/td>&lt;td>1990&lt;/td>&lt;/tr>
-    &lt;tr>&lt;td>Zazie&lt;/td>&lt;td>Domino&lt;/td>&lt;td>1992&lt;/td>&lt;/tr>
-  &lt;/tbody>
-  &lt;tfoot>
-    &lt;tr>&lt;td colspan="3">3 People&lt;/td>&lt;/tr>
-  &lt;/tfoot>
+  &#x22EE;
 &lt;/table></code></pre>
     </div>
   </div>
@@ -1004,32 +1002,32 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </aside>
   <div class="flx-col my1">
     <div class="w-full">
-      <div class="grid">
+      <div class="grid mb1">
         <div class="p1 brd">Row of fullspan</div>
       </div>
-      <div class="grid grd-2">
+      <div class="grid grd-2 mb1">
         <div class="p1 brd">Half column</div>
         <div class="p1 brd">Half column</div>
       </div>
-      <div class="grid grd-3">
+      <div class="grid grd-3 mb1">
         <div class="p1 brd">1/3 column</div>
         <div class="p1 brd">1/3 column</div>
         <div class="p1 brd">1/3 column</div>
       </div>
-      <div class="grid grd-4">
+      <div class="grid grd-4 mb1">
         <div class="p1 brd">1/4 column</div>
         <div class="p1 brd">1/4 column</div>
         <div class="p1 brd">1/4 column</div>
         <div class="p1 brd">1/4 column</div>
       </div>
-      <div class="grid grd-5">
+      <div class="grid grd-5 mb1">
         <div class="p1 brd">1/5 col</div>
         <div class="p1 brd">1/5 col</div>
         <div class="p1 brd">1/5 col</div>
         <div class="p1 brd">1/5 col</div>
         <div class="p1 brd">1/5 col</div>
       </div>
-      <div class="grid grd-6">
+      <div class="grid grd-6 mb1">
         <div class="p1 brd">1/6 col</div>
         <div class="p1 brd">1/6 col</div>
         <div class="p1 brd">1/6 col</div>
@@ -1076,7 +1074,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <div class="w-full">
       <div class="vcard">
         <figure>
-          <img src="docs/assets/noimage-300x300.png" width="144" height="144">
+          <img src="assets/noimage-300x300.png" width="144" height="144">
           <figcaption>Sloth Style</figcaption>
         </figure>
         <dl>
@@ -1090,7 +1088,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       </div>
       <div class="vcard">
         <figure>
-          <img src="docs/assets/noimage-300x300.png" width="96" height="96">
+          <img src="assets/noimage-300x300.png" width="96" height="96">
           <figcaption>Sloth Style</figcaption>
         </figure>
         <dl>
@@ -1100,7 +1098,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       </div>
       <div class="vcard">
         <figure>
-          <img src="docs/assets/noimage-300x300.png" width="80" height="80">
+          <img src="assets/noimage-300x300.png" width="80" height="80">
           <figcaption hidden>Sloth Style</figcaption>
         </figure>
         <dl>
@@ -1128,9 +1126,9 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <h5 class="muted">Navigation Menu</h5>
-  <div class="flx-col my1">
+  <aside>This component is header navigation with sliding left side menu that fit on the mobile page. If you want to see demo of below codes on this page, try to switch a toggle.</aside>
+  <div class="flx-col mb1">
     <div class="w-full">
-      <p>This component is header navigation with sliding left side menu that fit on the mobile page. If you want to see demo of below codes on this page, try to switch a toggle.</p>
       <form class="m1">
         <label class="tgl">Show navigation menu demo.
           <input type="checkbox" id="toggle-navi-menu">
@@ -1165,7 +1163,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
     <small class="note">The above icon uses powered by the <a rel="external" href="https://fontawesome.com/">Font awesome</a>.</small>
     <div class="w-full my1">
-      <p>Also, you can override the height of the horizontal navigation block and the width of the sliding side menu by using CSS variables (<code>var()</code>).</p>
+      <aside>Also, you can override the height of the horizontal navigation block and the width of the sliding side menu by using CSS variables.</aside>
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>:root {
@@ -1202,51 +1200,81 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 <section id="colors" class="sloth-styles">
   <h3>Colors</h3>
   <aside>
-    section discription
+    There are 5 color presets available by default for the Sloth style. These preset colors can also override custom colors via CSS variables.
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
+      <table class="nobrd">
+        <tbody><tr>
+            <th>Primary</th><td><code>.*-prim</code></td><td><div class="bg-prim txt-white txt-center upper">#4183c4</div></td>
+          </tr><tr>
+            <th>Secondary</th><td><code>.*-sec</code></td><td><div class="bg-sec txt-white txt-center upper">#00a968</div></td>
+          </tr><tr>
+            <th>Tertiary</th><td><code>.*-tert</code></td><td><div class="bg-tert txt-white txt-center upper">#e8383d</div></td>
+          </tr><tr>
+            <th>Quaternary</th><td><code>.*-quat</code></td><td><div class="bg-quat txt-white txt-center upper">#ee7800</div></td>
+          </tr><tr>
+            <th>Quinary</th><td><code>.*-quin</code></td><td><div class="bg-quin txt-white txt-center upper">#e9bc00</div></td>
+        </tr></tbody>
+      </table>
     </div>
     <div class="w-half">
-      <pre class="prettyprint"><code>
+      <pre class="prettyprint"><code>:root {
+  --color-primary: #4183c4;
+  --color-primary-active: #1e70bf;
+  --color-secondary: #00a968;
+  --color-secondary-active: #009854;
+  --color-tertiary: #e8383d;
+  --color-tertiary-active: #d70035;
+  --color-quaternary: #ee7800;
+  --color-quaternary-active: #ed6d35;
+  --color-quinary: #e9bc00;
+  --color-quinary-active: #e5a323;
+}
 </code></pre>
     </div>
   </div>
-</section>
-<!-- /*
-<section id="others" class="sloth-styles" hidden>
-  <h3>Others</h3>
-  <aside>
-    section discription
-  </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
-    </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>
-</code></pre>
-    </div>
+  <div class="flx-col mb1">
+    <h6 class="muted">Demo to override color</h6>
+    <form class="flx-row flx-evenly">
+      <label class="w-1-3">
+        <select id="override-color">
+          <option value="--color-primary">--color-primary</option>
+          <option value="--color-secondary">--color-secondary</option>
+          <option value="--color-tertiary">--color-tertiary</option>
+          <option value="--color-quaternary">--color-quaternary</option>
+          <option value="--color-quinary">--color-quinary</option>
+        </select>
+      </label>
+      <input type="text" id="color-code" class="w-1-3" placeholder="Enter color value">
+      <button type="button" id="btn-change-color" class="w-1-3 clr-prim">Execute</button>
+    </form>
+    <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
+  </div>
+  <h5 class="muted">Other colors</h5>
+  <div class="flx-col my1">
   </div>
 </section>
-*/ -->
 <section id="utilities" class="sloth-styles">
   <h3>Utilities</h3>
   <aside>
     Utility classes are shorthanded CSS properties that can be used with or without the <code>.sloth</code> class.
   </aside>
   <h5 class="muted">Margin</h5>
-  <p>Allowed margin values ​​are 0 to 2 and units are "rem".</p>
+  <aside>
+    Allowed margin values ​​are 0 to 2 and units are "rem". Also, there are provided the <code>.ma</code> as auto all margin, the <code>.mxa</code> as horizontal auto margin, the <code>.mya</code> as vertical auto margin.
+  </aside>
   <div class="flx-row my1">
-    <div class="w-half">
-      <div class="brd bg-lightgray"><div class="m0 bg-white">.m0</div></div>
-      <div class="brd bg-lightgray"><div class="m1 bg-white">.m1</div></div>
-      <div class="brd bg-lightgray"><div class="m2 bg-white">.m2</div></div>
-      <div class="brd bg-lightgray"><div class="mx1 bg-white">.mx1 (left & right)</div></div>
-      <div class="brd bg-lightgray"><div class="my1 bg-white">.my1 (top & bottom)</div></div>
-      <div class="brd bg-lightgray"><div class="mt1 bg-white">.mt1 (top only)</div></div>
-      <div class="brd bg-lightgray"><div class="mr1 bg-white">.mr1 (right only)</div></div>
-      <div class="brd bg-lightgray"><div class="mb1 bg-white">.mb1 (bottom only)</div></div>
-      <div class="brd bg-lightgray"><div class="ml1 bg-white">.ml1 (left only)</div></div>
+    <div class="w-half flx-col">
+      <div class="bg-lightgray"><div class="m0 brd bg-white">.m0</div></div>
+      <div class="bg-lightgray"><div class="m1 brd bg-white">.m1</div></div>
+      <div class="bg-lightgray"><div class="m2 brd bg-white">.m2</div></div>
+      <div class="bg-lightgray"><div class="mx1 brd bg-white">.mx1 (left + right)</div></div>
+      <div class="bg-lightgray"><div class="my1 brd bg-white">.my1 (top + bottom)</div></div>
+      <div class="bg-lightgray"><div class="mt1 brd bg-white">.mt1 (top only)</div></div>
+      <div class="bg-lightgray"><div class="mr1 brd bg-white">.mr1 (right only)</div></div>
+      <div class="bg-lightgray"><div class="mb1 brd bg-white">.mb1 (bottom only)</div></div>
+      <div class="bg-lightgray"><div class="ml1 brd bg-white">.ml1 (left only)</div></div>
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;div class="m0">.m0&lt;/div>
@@ -1262,7 +1290,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <h5 class="muted">Padding</h5>
-  <p>Allowed padding values ​​are 0 to 2 and units are "rem".</p>
+  <aside>Allowed padding values ​​are 0 to 2 and units are "rem".</aside>
   <div class="flx-row my1">
     <div class="w-half">
       <div class="brd bg-lightgray p0"><div class="bg-white">.p0</div></div>
@@ -1289,9 +1317,9 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <h5 class="muted">Width</h5>
-  <p>This is able to specify block width as like the width 100% is <code>.w-1</code> or <code>.w-full</code>, 50% is <code>.w-1-2</code> or <code>.w-half</code>. Refer to section of flexboxes on the <a href="#grid-systems">Grid Systems</a>.</p>
+  <aside>This is able to specify block width as like the width 100% is <code>.w-1</code> or <code>.w-full</code>, 50% is <code>.w-1-2</code> or <code>.w-half</code>. Refer to section of flexboxes on the <a href="#grid-systems">Grid Systems</a>.</aside>
   <h5 class="muted">Height</h5>
-  <p>This is able to specify block height as like the height 100% is <code>.h-full</code> and 50% is <code>.h-half</code>. It has only two classes about height as utility class.</p>
+  <aside>This is able to specify block height as like the height 100% is <code>.h-full</code> and 50% is <code>.h-half</code>. It has only two classes about height as utility class.</aside>
   <h5 class="muted">Border</h5>
   <div class="flx-row my1">
     <div class="w-half">
@@ -1313,7 +1341,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <h5 class="muted">Background & Text Color</h5>
-  <p>It is also possible to use <code>.muted</code> as a shorthand only for <code>.txt-gray</code>.</p>
+  <aside>It is also possible to use <code>.muted</code> as a shorthand only for <code>.txt-gray</code>.</aside>
   <div class="flx-row my1">
     <div class="w-half">
       <div class="bg-white txt-black">.bg-white.txt-black</div>
@@ -1338,7 +1366,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;div class="bg-gray txt-lightgray">.bg-gray.txt-lightgray&lt;/div>
 &lt;div class="bg-darkgray txt-whitesmoke">.bg-darkgray.txt-whitesmoke&lt;/div>
 &lt;div class="bg-black txt-white">.bg-darkgray.txt-white&lt;/div>
-&lt;hr>
+&#x2E3B;
 &lt;div class="bg-prim txt-quin">.bg-prim.txt-quin&lt;/div>
 &lt;div class="bg-sec txt-quat" >.bg-sec.txt-quat&lt;/div>
 &lt;div class="bg-tert txt-tert">.bg-tert.txt-tert&lt;/div>
@@ -1348,13 +1376,20 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
   </div>
   <h5 class="muted">Alignment</h5>
-  <p></p>
+  <aside>
+    The horizontal alignment classes (<code>.txt-*</code>) are able to apply a "text-align" property to inline elements or incontents. On the other hand the vertical alignment classes (<code>.v-*</code>) would apply a "vertical-align" property to only inline element as like the table-cell and an image tag.
+  </aside>
   <div class="flx-row my1">
     <div class="w-half">
-      <div class="brd txt-left">.txt-left</div>
-      <div class="brd txt-center">.txt-center</div>
-      <div class="brd txt-right">.txt-right</div>
-      <table class="nons brd exam1">
+      <h6 class="muted">Horizontal alignment</h6>
+      <div class="brd">
+        <p class="txt-left">.txt-left</p>
+        <p class="txt-center">.txt-center</p>
+        <p class="txt-right">.txt-right</p>
+        <p class="txt-justify">.txt-justify for using to context that has some words.</p>
+      </div>
+      <h6 class="muted">Vertical alignment</h6>
+      <table class="nons fixed brd exam1">
         <tbody>
           <tr>
             <td class="v-top">.v-top</td>
@@ -1363,31 +1398,251 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
           </tr>
         </tbody>
       </table>
-      <div class="brd flx-row" style="height:3em">
-        <div class="txt-top"><span>.txt-top</span></div>
-        <div class="txt-middle"><span>.txt-middle</span></div>
-        <div class="txt-bottom"><span>.txt-bottom</span></div>
-      </div>
     </div>
     <div class="w-half">
-      <pre class="prettyprint"><code>&lt;div class="brd txt-left">.txt-left&lt;/div>
-&lt;div class="brd txt-center">.txt-center&lt;/div>
-&lt;div class="brd txt-right">.txt-right&lt;/div>
+      <pre class="prettyprint"><code>&lt;div class="brd">
+  &lt;p class="txt-left">.txt-left&lt;/p>
+  &lt;p class="txt-center">.txt-center&lt;/p>
+  &lt;p class="txt-right">.txt-right&lt;/p>
+  &lt;p class="txt-justify">.txt-justify for using to context that has some words.&lt;/p>
+&lt;/div>
+&#x2E3B;
+&lt;table class="nons fixed brd">
+  &lt;tbody>&lt;tr>
+    &lt;td class="v-top">.v-top&lt;/td>
+    &lt;td class="v-middle">.v-middle&lt;/td>
+    &lt;td class="v-bottom">.v-bottom&lt;/td>
+  &lt;/tr>&lt;/tbody>
+&lt;/table>
+</code></pre>
+    </div>
+  </div>
+  <aside>
+    There are the alignment classes for flexbox as below. Also, it has defaults to <code>flex-wrap: nowrap</code> in the <code>.flx-row</code> and <code>.flx-col</code> classes. If you want to styling to the wrappable flexbox, you should apply with <code>.flx-wrap</code> together.
+  </aside>
+  <div class="flx-col my1">
+    <h6 class="muted">Case of ".flx-row" <small>(<code>flex-direction: row</code>)</small></h6>
+    <div class="w-full">
+      <div>.flx-row.flx-start<br>
+        <div class="flx-row flx-start brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div>.flx-row.flx-center<br>
+        <div class="flx-row flx-center brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div>.flx-row.flx-justify<br>
+        <div class="flx-row flx-justify brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div>.flx-row.flx-around<br>
+        <div class="flx-row flx-around brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div>.flx-row.flx-evenly<br>
+        <div class="flx-row flx-evenly brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div>.flx-row.flx-end<br>
+        <div class="flx-row flx-end brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="flx-row flx-evenly">
+        <div class="w-1-3 mx1">.flx-row.item-start<br>
+          <div class="flx-row flx-evenly item-start brd bg-lightgray mb1 exam1">
+            <div class="brd bg-white px1">Inner Item</div>
+          </div>
+        </div>
+        <div class="w-1-3 mx1">.flx-row.item-center<br>
+          <div class="flx-row flx-evenly item-center brd bg-lightgray mb1 exam1">
+            <div class="brd bg-white px1">Inner Item</div>
+          </div>
+        </div>
+        <div class="w-1-3 mx1">.flx-row.item-end<br>
+          <div class="flx-row flx-evenly item-end brd bg-lightgray mb1 exam1">
+            <div class="brd bg-white px1">Inner Item</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;div class="flx-row flx-start">
+  &lt;div>Inner Item 1&lt;/div>
+  &lt;div>Inner Item 2&lt;/div>
+  &lt;div>Inner Item 3&lt;/div>
+&lt;/div>
+&lt;div class="flx-row item-start">
+  &#x22EE;
+&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h6 class="muted">Case of ".flx-col" <small>(<code>flex-direction: column</code>)</small></h6>
+  <div class="flx-col my1">
+    <div class="flx-row flx-wrap flx-evenly w-full">
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-start<br>
+        <div class="flx-col flx-wrap flx-start brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-center<br>
+        <div class="flx-col flx-wrap flx-center brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-justify<br>
+        <div class="flx-col flx-wrap flx-justify brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-around<br>
+        <div class="flx-col flx-wrap flx-around brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-evenly<br>
+        <div class="flx-col flx-wrap flx-evenly brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-1-3 pr1 mb1">.flx-col.flx-end<br>
+        <div class="flx-col flx-wrap flx-end brd bg-lightgray exam2">
+          <div class="brd bg-white px1">Inner Item 1</div>
+          <div class="brd bg-white px1">Inner Item 2</div>
+          <div class="brd bg-white px1">Inner Item 3</div>
+        </div>
+      </div>
+      <div class="w-full">.flx-col.item-start<br>
+        <div class="flx-col item-start brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item</div>
+        </div>
+      </div>
+      <div class="w-full">.flx-col.item-center<br>
+        <div class="flx-col item-center brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item</div>
+        </div>
+      </div>
+      <div class="w-full">.flx-col.item-end<br>
+        <div class="flx-col item-end brd bg-lightgray mb1">
+          <div class="brd bg-white px1">Inner Item</div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;div class="flx-col flx-start">
+  &lt;div>Inner Item 1&lt;/div>
+  &lt;div>Inner Item 2&lt;/div>
+  &lt;div>Inner Item 3&lt;/div>
+&lt;/div>
+&lt;div class="flx-col item-start">
+  &#x22EE;
+&lt;/div>
+</code></pre>
+    </div>
+  </div>
+  <h5 class="muted">Text decorations</h5>
+  <aside>
+    It has several utility classes to decorate text in context.
+  </aside>
+  <h6 class="muted">Font sizes</h6>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <p>
+        The font size can change to <span class="fnt-xl">xlarge (144%)</span>, <span class="fnt-lg">large (120%)</span>, <span class="fnt-sm">small (80%)</span>, <span class="fnt-xs">xsmall (64%)</span> from inherit size on element.
+      </p>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;span class="fnt-xl">xLarge (144%)&lt;/span>
+&lt;span class="fnt-lg">Large  (120%)&lt;/span>
+&lt;span class="fnt-sm">Small  ( 80%)&lt;/span>
+&lt;span class="fnt-xs">xSmall ( 64%)&lt;/span>
+</code></pre>
+    </div>
+  </div>
+  <h6 class="muted">Text transforms</h6>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <p>
+        <span class="upper">This is uppercase.</span><br>
+        <span class="lower">This is LOWERCASE.</span><br>
+        <span class="capital">This is capitalize.</span>
+      </p>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;span class="upper">This is uppercase.&lt;/span>
+&lt;span class="lower">This is LOWERCASE.&lt;/span>
+&lt;span class="capital">This is capitalize.&lt;/span>
 </code></pre>
     </div>
   </div>
   <h5 class="muted">Note as helper text</h5>
-  <p>An information icon is displayed at the beginning of an element that has a <code>.note</code> class.</p>
-  <div class="flx-row my1">
-    <div class="w-half">
-      <small class="note">Notice: text of supplementary sentence etc.</small>
+  <aside>An information icon is displayed at the beginning of an element that has a <code>.note</code> class.</aside>
+  <div class="flx-col my1">
+    <div class="w-full mb1">
+      <p class="note">You would prefer to be used this utility class for displaying text of supplementary sentence etc.</p>
     </div>
-    <div class="w-half">
-      <pre class="prettyprint"><code>&lt;small class="note">Notice: text of supplementary sentence etc.&lt;/small>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;p class="note">You would prefer to be used this utility class ...&lt;/p>
 </code></pre>
     </div>
   </div>
-
+</section>
+<section id="overriding-properties" class="sloth-styles">
+  <h3>Overriding Properties</h3>
+  <aside>
+    On the sloth style, we can override some styling properties via CSS variables without rebuild custom css. Currently overridable properties are as follows.
+  </aside>
+  <div class="flx-col my1">
+    <div class="w-full">
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+    <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
+  </div>
+</section>
+<section id="template" class="sloth-styles" hidden>
+  <h3>Others</h3>
+  <aside>
+    section discription
+  </aside>
+  <div class="flx-row my1">
+    <div class="w-half">
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>
+</code></pre>
+    </div>
+  </div>
 </section>
 <footer id="demo-footer">
   <p class="txt-center">Crafted with &copy; <time>2019</time> MAGIC METHODS by <a href="https://ka2.org/">ka2</a></p>
@@ -1406,10 +1661,10 @@ window.addEventListener('load',function(){
         document.getElementsByTagName('head')[0].appendChild( style )
     }
     
-    let resources = [ 'sloth.min.css', 'sloth.index.css' ]
+    let resources = [ '../dist/sloth.min.css', 'assets/sloth.index.min.css' ]
     
     resources.forEach( (file) => {
-        loadCSS( `./dist/${file}` )
+        loadCSS( file )
     })
     
     let el1 = document.getElementById('toggle-navi-menu'),
@@ -1446,6 +1701,17 @@ window.addEventListener('load',function(){
         toggleNaviMenu( true )
       }
     }
+    
+    let btn1 = document.getElementById('btn-change-color')
+    btn1.addEventListener('click', () => {
+        const root = document.documentElement
+        let varName = document.getElementById('override-color').value,
+            color = document.getElementById('color-code').value
+        if ( varName && color ) {
+console.log( varName, color, root.style.getPropertyValue( varName ) )
+          root.style.setProperty( varName, color )
+        }
+    })
     
 },false)
 

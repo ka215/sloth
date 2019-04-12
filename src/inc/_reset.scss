@@ -111,6 +111,7 @@ q::after {
 
 a {
   color: $blue;
+  color: var(--color-primary, $blue);
   text-decoration: none;
   vertical-align: baseline;
   background-color: transparent;
@@ -118,6 +119,7 @@ a {
 
 a:hover {
   color: $blue2;
+  color: var(--color-primary-active, $blue2);
   text-decoration: underline;
 }
 
