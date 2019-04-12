@@ -7,7 +7,9 @@ Author: Ka2 - https://ka2.org
 */
 /* like spectrum blue */
 /* like cobalt-blue */
+/* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A", three-emdash: "\2E3B" and no-break-space: "\00A0" */
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
+/* North East Arrow */
 *,
 *::before,
 *::after {
@@ -123,12 +125,14 @@ q::after {
 a {
   background-color: transparent;
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
   text-decoration: none;
   vertical-align: baseline;
 }
 
 a:hover {
   color: #1e70bf;
+  color: var(--color-primary-active, #1e70bf);
   text-decoration: underline;
 }
 
@@ -380,7 +384,7 @@ textarea {
 
 .sloth blockquote:not(.nons) cite::before {
   color: #7d7d7d;
-  content: "\2014 \00A0";
+  content: "⸺ ";
 }
 
 .sloth hr:not(.nons).dotted {
@@ -402,7 +406,8 @@ textarea {
 
 .sloth ruby:not(.nons) > rt {
   font-family: monospace, serif;
-  font-size: 50%;
+  font-size: 0.65em;
+  font-weight: 200;
 }
 
 .sloth [data-ruby]:not(.nons) {
@@ -412,11 +417,12 @@ textarea {
 .sloth [data-ruby]:not(.nons)::after {
   display: inline-block;
   position: absolute;
-  top: -0.9rem;
+  top: calc(-2 * 0.65em);
   left: 0;
   width: 100%;
   font-family: monospace, serif;
-  font-size: 50%;
+  font-size: 0.65em;
+  font-weight: 200;
   text-align: center;
   content: attr(data-ruby);
 }
@@ -445,6 +451,7 @@ textarea {
           transform: scaleX(0);
           backface-visibility: hidden;
   background-color: #4183c4;
+  background-color: var(--color-primary, #4183c4);
   content: '';
   transition: all 0.2s;
 }
@@ -474,6 +481,7 @@ textarea {
   border: var(--external-link-background, solid 1px #4183c4);
   border-radius: 2px;
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-family: var(--external-link-font, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
   font-size: 0.75em;
@@ -487,7 +495,8 @@ textarea {
 }
 
 .sloth a:not(.nons)[target="_blank"]:hover::after, .sloth a:not(.nons)[rel="external"]:hover::after {
-  border-color: rgba(30, 112, 191, 0.9);
+  border-color: #3876b4;
+  border-color: var(--color-primary-active, #3876b4);
   background: rgba(30, 112, 191, 0.9);
   background: var(--external-link-background, rgba(30, 112, 191, 0.9));
   color: #fff;
@@ -542,7 +551,7 @@ textarea {
   position: absolute;
   left: -1.1rem;
   color: #d3d3d3;
-  content: "\2215";
+  content: "∕";
 }
 
 .sloth .crumbs:not(.nons).arrows > *:nth-child(n + 2)::before {
@@ -698,6 +707,7 @@ textarea {
 
 .sloth .checkbox input:checked ~ .indicator {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .checkbox input:checked ~ .indicator::after {
@@ -715,11 +725,13 @@ textarea {
 }
 
 .sloth .checkbox input:checked:focus ~ .indicator {
-  background: #1e70bf;
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth .checkbox:hover input:not([disabled]):checked ~ .indicator {
-  background: #1e70bf;
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth .checkbox.clr-sec input:checked ~ .indicator {
@@ -818,6 +830,7 @@ textarea {
 
 .sloth .radio input:checked ~ .indicator {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .radio input:checked ~ .indicator::after {
@@ -835,11 +848,13 @@ textarea {
 }
 
 .sloth .radio input:checked:focus ~ .indicator {
-  background: #1e70bf;
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth .radio:hover input:not([disabled]):checked ~ .indicator {
-  background: #1e70bf;
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth .radio.clr-sec input:checked ~ .indicator {
@@ -922,6 +937,7 @@ textarea {
           transform: scaleX(0);
           transform-origin: 0 0;
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
   transition: all 0.15s ease;
 }
 
@@ -938,6 +954,8 @@ textarea {
   border-radius: 0;
   background: none;
   color: #212529;
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
@@ -945,13 +963,15 @@ textarea {
 }
 
 .sloth .floating input:hover {
-  background: rgba(65, 131, 196, 0.03);
+  background: rgba(123, 169, 214, 0.1);
+  background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
 }
 
 .sloth .floating input:not(:placeholder-shown) ~ .label {
   -webkit-transform: translateY(-2.2rem) scale(0.75);
           transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating input:focus {
@@ -964,6 +984,7 @@ textarea {
   -webkit-transform: translateY(-2.2rem) scale(0.75);
           transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating input:focus ~ .border {
@@ -985,6 +1006,8 @@ textarea {
   border-radius: 0;
   background: none;
   color: #212529;
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
@@ -992,7 +1015,8 @@ textarea {
 }
 
 .sloth .floating textarea:hover {
-  background: rgba(65, 131, 196, 0.03);
+  background: rgba(123, 169, 214, 0.1);
+  background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
 }
 
 .sloth .floating textarea:not(:placeholder-shown) ~ label,
@@ -1000,6 +1024,7 @@ textarea {
   -webkit-transform: translateY(-2.2rem) scale(0.75);
           transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating textarea:focus {
@@ -1012,6 +1037,7 @@ textarea {
   -webkit-transform: translateY(-2.2rem) scale(0.75);
           transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating textarea:focus ~ .border {
@@ -1036,6 +1062,8 @@ textarea {
   background: none #fff;
           box-shadow: 0 0 0 0 transparent inset;
   color: #212529;
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
   font-size: inherit;
   transition: color 0.1s ease, border-color 0.1s ease;
 }
@@ -1044,7 +1072,8 @@ textarea {
 .sloth textarea:focus {
   -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
-  border-color: #1e70bf;
+  border-color: #3876b4;
+  border-color: var(--color-primary-active, #3876b4);
   background: #fff;
           box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
@@ -1088,7 +1117,8 @@ textarea {
 
 .sloth select:-moz-focusring {
   color: transparent;
-  text-shadow: 0 0 0 #1e70bf;
+  text-shadow: 0 0 0 #3876b4;
+  text-shadow: 0 0 0 var(--color-primary-active, #3876b4);
 }
 
 .sloth .dropdown {
@@ -1104,7 +1134,7 @@ textarea {
   -webkit-transform: rotate(90deg);
   z-index: 1;
   position: absolute;
-  right: 0.25em;
+  right: 0.3em;
   bottom: 0.3em;
   padding-bottom: 0.3em;
           transform: rotate(90deg);
@@ -1122,10 +1152,10 @@ textarea {
   -webkit-transform: rotate(45deg);
   z-index: 1;
   position: absolute;
-  right: 1rem;
-  bottom: 1.5rem;
-  width: 0.8rem;
-  height: 0.8rem;
+  right: 1em;
+  bottom: calc(1em + 0.3rem);
+  width: 0.75em;
+  height: 0.75em;
           transform: rotate(45deg);
   border: solid #abb1b5;
   border-width: 0 0.2rem 0.2rem 0;
@@ -1136,17 +1166,19 @@ textarea {
 
 .sloth .dropdown:hover::after {
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth .dropdown:not(.caret):hover::after {
   border-color: #4183c4;
+  border-color: var(--color-primary, #4183c4);
 }
 
 .sloth .dropdown select {
   width: 100%;
   width: -webkit-fill-available;
   margin-top: 0.3rem;
-  font-size: 1.4rem;
+  font-size: 111.11%;
 }
 
 .sloth .combo-box:not(.nons) {
@@ -1178,15 +1210,17 @@ textarea {
   background: #fff;
           box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
-  font-size: inherit;
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
+  font-size: 111.11%;
   transition: color 0.1s ease, border-color 0.1s ease;
 }
 
 .sloth .combo-box:not(.nons) input[list] ~ .indicator {
   display: inline-block;
   position: absolute;
-  top: calc(50% - 0.5em);
-  right: 1.5rem;
+  top: calc(0.5em + 0.3em);
+  right: 1em;
   line-height: 1em;
 }
 
@@ -1209,7 +1243,8 @@ textarea {
 .sloth .combo-box:not(.nons) input[list]:focus {
   -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
-  border-color: #1e70bf;
+  border-color: #3876b4;
+  border-color: var(--color-primary-active, #3876b4);
   background: #fff;
           box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
@@ -1234,6 +1269,7 @@ textarea {
 
 .sloth .combo-box:not(.nons) input[list]:hover ~ .indicator::after {
   border-color: #4183c4;
+  border-color: var(--color-primary, #4183c4);
 }
 
 .sloth .combo-box:not(.nons) input::-webkit-calendar-picker-indicator {
@@ -1315,6 +1351,7 @@ textarea {
 .sloth .tgl:not(.nons) input[type="checkbox"]:checked + .tgl-btn {
   /* theme */
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons) input[type="checkbox"]:checked + .tgl-btn::after {
@@ -1323,6 +1360,7 @@ textarea {
 
 .sloth .tgl:not(.nons).clr-prim input[type="checkbox"]:checked + .tgl-btn {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).clr-sec input[type="checkbox"]:checked + .tgl-btn {
@@ -1357,21 +1395,25 @@ textarea {
 
 .sloth .tgl:not(.nons).flat input[type="checkbox"]:checked + .tgl-btn {
   border: 4px solid #4183c4;
+  border: 4px solid var(--color-primary, #4183c4);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat input[type="checkbox"]:checked + .tgl-btn::after {
   left: calc(50% + 4px);
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flat.clr-prim input[type="checkbox"]:checked + .tgl-btn {
   border-color: #4183c4;
+  border-color: var(--color-primary, #4183c4);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat.clr-prim input[type="checkbox"]:checked + .tgl-btn::after {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flat.clr-sec input[type="checkbox"]:checked + .tgl-btn {
@@ -1441,6 +1483,7 @@ textarea {
   -webkit-transform: rotateY(-180deg);
           transform: rotateY(-180deg);
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
   content: attr(data-tgl-on);
 }
 
@@ -1464,6 +1507,7 @@ textarea {
   left: 0;
           transform: rotateY(0);
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn:active::after {
@@ -1473,6 +1517,7 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"] + .tgl-btn::after {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"]:checked + .tgl-btn {
@@ -1481,6 +1526,7 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"]:checked + .tgl-btn::after {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"] + .tgl-btn::after {
@@ -1554,7 +1600,6 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time],
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url],
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea {
   -webkit-appearance: none;
@@ -1572,6 +1617,8 @@ textarea {
   background: #fff;
           box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
   font-size: inherit;
   transition: color 0.1s ease, border-color 0.1s ease;
 }
@@ -1589,12 +1636,12 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus {
   -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
-  border-color: #1e70bf;
+  border-color: #3876b4;
+  border-color: var(--color-primary-active, #3876b4);
   background: #fff;
           box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
@@ -1613,7 +1660,6 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-webkit-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-webkit-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus::-webkit-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-webkit-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-webkit-input-placeholder {
   color: #7d7d7d;
@@ -1632,7 +1678,6 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-moz-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-moz-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus::-moz-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-moz-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-moz-placeholder {
   color: #7d7d7d;
@@ -1651,7 +1696,6 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus:-ms-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus:-ms-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ button:focus:-ms-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus:-ms-input-placeholder,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus:-ms-input-placeholder {
   color: #7d7d7d;
@@ -1672,14 +1716,15 @@ textarea {
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem 0.6rem;
+  padding: 0.6em 1em calc(0.6em + 1px);
   border: 0;
-  border-radius: 0.3rem;
+  border-radius: 3px;
   outline: none;
-  background: #4183c4;
+  background: #d3d3d3;
           box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
-  color: #fff;
+  color: #594e52;
   font-size: inherit;
+  font-weight: 500;
   letter-spacing: 0.01rem;
   line-height: 1;
   text-decoration: none;
@@ -1688,27 +1733,27 @@ textarea {
           user-select: none;
 }
 
-.sloth input[type=submit]:not(.nons):not([type=submit]),
-.sloth input[type=button]:not(.nons):not([type=submit]),
-.sloth button:not(.nons):not([type=submit]) {
-  background: #d3d3d3;
-  color: #594e52;
+.sloth input[type=submit]:not(.nons)[type=submit],
+.sloth input[type=button]:not(.nons)[type=submit],
+.sloth button:not(.nons)[type=submit] {
+  background: #4183c4;
+  background: var(--color-primary, #4183c4);
+  color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons):hover,
 .sloth input[type=button]:not(.nons):hover,
 .sloth button:not(.nons):hover {
   -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
-  background: rgba(30, 112, 191, 0.9);
+  background: #c6c6c6;
           box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
 }
 
-.sloth input[type=submit]:not(.nons):not([type=submit]):hover,
-.sloth input[type=button]:not(.nons):not([type=submit]):hover,
-.sloth button:not(.nons):not([type=submit]):hover {
-  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
-  background: rgba(125, 125, 125, 0.5);
-          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+.sloth input[type=submit]:not(.nons)[type=submit]:hover,
+.sloth input[type=button]:not(.nons)[type=submit]:hover,
+.sloth button:not(.nons)[type=submit]:hover {
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth input[type=submit]:not(.nons):active, .sloth input[type=submit]:not(.nons):focus,
@@ -1724,13 +1769,15 @@ textarea {
 .sloth input[type=button]:not(.nons).clr-prim,
 .sloth button:not(.nons).clr-prim {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
   color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons).clr-prim:hover,
 .sloth input[type=button]:not(.nons).clr-prim:hover,
 .sloth button:not(.nons).clr-prim:hover {
-  background: rgba(30, 112, 191, 0.9);
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth input[type=submit]:not(.nons).clr-sec,
@@ -1792,44 +1839,36 @@ textarea {
   min-height: 36px;
   margin: 0.6rem;
   margin-left: 0;
-  padding: 0 0.7rem;
   border-radius: 0;
   background: none transparent;
           box-shadow: 0 0 0 0 transparent inset;
-  color: #4183c4;
-  text-transform: uppercase;
+  color: #594e52;
 }
 
 .sloth input[type=submit]:not(.nons).flat:hover,
 .sloth input[type=button]:not(.nons).flat:hover,
 .sloth button:not(.nons).flat:hover {
   -webkit-box-shadow: 0 0 0 0 transparent inset;
-  background: rgba(65, 131, 196, 0.12);
+  background: rgba(214, 214, 214, 0.3);
           box-shadow: 0 0 0 0 transparent inset;
 }
 
-.sloth input[type=submit]:not(.nons).flat:not([type=submit]),
-.sloth input[type=button]:not(.nons).flat:not([type=submit]),
-.sloth button:not(.nons).flat:not([type=submit]) {
-  color: #594e52;
-}
-
-.sloth input[type=submit]:not(.nons).flat:not([type=submit]):hover,
-.sloth input[type=button]:not(.nons).flat:not([type=submit]):hover,
-.sloth button:not(.nons).flat:not([type=submit]):hover {
-  background: rgba(125, 125, 125, 0.12);
-}
-
-.sloth input[type=submit]:not(.nons).flat.clr-prim,
+.sloth input[type=submit]:not(.nons).flat[type=submit], .sloth input[type=submit]:not(.nons).flat.clr-prim,
+.sloth input[type=button]:not(.nons).flat[type=submit],
 .sloth input[type=button]:not(.nons).flat.clr-prim,
+.sloth button:not(.nons).flat[type=submit],
 .sloth button:not(.nons).flat.clr-prim {
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
-.sloth input[type=submit]:not(.nons).flat.clr-prim:hover,
+.sloth input[type=submit]:not(.nons).flat[type=submit]:hover, .sloth input[type=submit]:not(.nons).flat.clr-prim:hover,
+.sloth input[type=button]:not(.nons).flat[type=submit]:hover,
 .sloth input[type=button]:not(.nons).flat.clr-prim:hover,
+.sloth button:not(.nons).flat[type=submit]:hover,
 .sloth button:not(.nons).flat.clr-prim:hover {
-  background: rgba(65, 131, 196, 0.12);
+  background: rgba(46, 131, 215, 0.2);
+  background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-sec,
@@ -1889,13 +1928,15 @@ textarea {
   background: none transparent;
           box-shadow: 0 0 0 0 transparent inset;
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth input[type=submit]:not(.nons).outline:hover,
 .sloth input[type=button]:not(.nons).outline:hover,
 .sloth button:not(.nons).outline:hover {
   -webkit-box-shadow: 0 0 0 0 transparent inset;
-  background: rgba(65, 131, 196, 0.12);
+  background: #3876b4;
+  background: var(--color-primary, #3876b4);
           box-shadow: 0 0 0 0 transparent inset;
 }
 
@@ -1915,12 +1956,14 @@ textarea {
 .sloth input[type=button]:not(.nons).outline.clr-prim,
 .sloth button:not(.nons).outline.clr-prim {
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-prim:hover,
 .sloth input[type=button]:not(.nons).outline.clr-prim:hover,
 .sloth button:not(.nons).outline.clr-prim:hover {
-  background: rgba(65, 131, 196, 0.12);
+  background: #3876b4;
+  background: var(--color-primary, #3876b4);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-sec,
@@ -1977,10 +2020,12 @@ textarea {
   display: block;
   width: 5.6rem;
   height: 5.6rem;
+  padding: 0;
   border-radius: 50%;
   background: none #f5f5f5;
           box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
   color: #594e52;
+  font-weight: 400;
   text-align: center;
   white-space: nowrap;
   transition: all 0.3s ease-out;
@@ -2001,7 +2046,7 @@ textarea {
 .sloth .btn-fab:not(.nons) [class^="fa"],
 .sloth .btn-fab:not(.nons) [class^="icon"] {
   color: inherit;
-  font-size: 1.8rem;
+  font-size: 1.5em;
   font-style: normal;
   line-height: 5.6rem;
   vertical-align: middle;
@@ -2009,11 +2054,13 @@ textarea {
 
 .sloth .btn-fab:not(.nons).clr-prim {
   background: #4183c4;
+  background: var(--color-primary, #4183c4);
   color: #fff;
 }
 
 .sloth .btn-fab:not(.nons).clr-prim:hover {
-  background: rgba(30, 112, 191, 0.9);
+  background: #3876b4;
+  background: var(--color-primary-active, #3876b4);
 }
 
 .sloth .btn-fab:not(.nons).clr-sec {
@@ -2165,20 +2212,6 @@ textarea {
 .sloth table:not(.nons).slim tbody th,
 .sloth table:not(.nons).slim tfoot th {
   font-weight: 600;
-}
-
-.sloth table:not(.nons).fixed {
-  table-layout: fixed;
-}
-
-.sloth table:not(.nons).cell-center {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.sloth table:not(.nons).cell-right {
-  text-align: right;
-  vertical-align: middle;
 }
 
 .sloth table:not(.nons).nobrd, .sloth table:not(.nons).nobordered {
@@ -2426,6 +2459,10 @@ textarea {
   display: none !important;
 }
 
+.ma {
+  margin: auto;
+}
+
 .m0 {
   margin: 0;
 }
@@ -2436,6 +2473,11 @@ textarea {
 
 .m2 {
   margin: 2rem;
+}
+
+.mxa {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .mx0 {
@@ -2451,6 +2493,11 @@ textarea {
 .mx2 {
   margin-right: 2rem;
   margin-left: 2rem;
+}
+
+.mya {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .my0 {
@@ -2685,12 +2732,32 @@ textarea {
   max-height: 50%;
 }
 
-.fs-sm {
+.fnt-xl {
+  font-size: 144% !important;
+}
+
+.fnt-lg {
+  font-size: 120% !important;
+}
+
+.fnt-sm {
   font-size: 80% !important;
 }
 
-.fs-lg {
-  font-size: 120% !important;
+.fnt-xs {
+  font-size: 64% !important;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.lower {
+  text-transform: lowercase;
+}
+
+.capital {
+  text-transform: capitalize;
 }
 
 .flx-row {
@@ -2728,22 +2795,57 @@ textarea {
           justify-content: flex-start;
 }
 
-.flx-justify {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .flx-center {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
+.flx-justify {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flx-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.flx-evenly {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 .flx-end {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.item-stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.item-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.item-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.item-end {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
 }
 
 .grid {
@@ -2905,42 +3007,8 @@ textarea {
   text-align: right;
 }
 
-.txt-top {
-  position: relative;
-  width: 100%;
-  height: inherit;
-}
-
-.txt-top > * {
-  position: absolute;
-  top: 0;
-  left: auto;
-}
-
-.txt-middle {
-  position: relative;
-  width: 100%;
-  height: inherit;
-}
-
-.txt-middle > * {
-  -webkit-transform: translateY(-50%);
-  position: absolute;
-  top: 50%;
-  left: auto;
-          transform: translateY(-50%);
-}
-
-.txt-bottom {
-  position: relative;
-  width: 100%;
-  height: inherit;
-}
-
-.txt-bottom > * {
-  position: absolute;
-  bottom: 0;
-  left: auto;
+.txt-justify {
+  text-align: justify;
 }
 
 .v-top {
@@ -2953,15 +3021,6 @@ textarea {
 
 .v-bottom {
   vertical-align: bottom;
-}
-
-.v-center {
-  position: relative;
-  top: calc(50% - 1.5em);
-  height: 100%;
-  max-height: -webkit-max-content;
-  max-height: -moz-max-content;
-  max-height: max-content;
 }
 
 .note {
@@ -2998,6 +3057,20 @@ textarea {
   text-align: center;
   vertical-align: middle;
   content: 'i';
+}
+
+table.fixed {
+  table-layout: fixed;
+}
+
+table.cell-center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table.cell-right {
+  text-align: right;
+  vertical-align: middle;
 }
 
 @media screen and (min-width: 576px) {

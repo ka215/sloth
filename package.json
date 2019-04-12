@@ -1,26 +1,38 @@
 {
   "name": "sloth",
+  "description": "Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM, and through more simplified naming conventions than OOCSS.",
   "version": "1.0.0",
-  "description": "Mobile First CSS Micro Framework. It has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.",
-  "main": "index.html",
-  "scripts": {
-    "build": "postcss src/sloth.css -o dist/sloth.min.css",
-    "watch": "postcss src/sloth.css -o dist/sloth.min.css -w --map"
-  },
+  "version_short": "1.0",
   "keywords": [
-    "sloth",
     "css",
-    "microframework",
-    "postcss"
+    "sass",
+    "postcss",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ka215/sloth.git"
-  },
+  "homepage": "https://ka2.org/sloth/",
   "author": {
     "name": "ka2 (Katsuhiko Maeno)",
     "email": "ka2@ka2.org",
     "url": "https://ka2.org"
+  },
+  "scripts": {
+    "demo-build": "postcss docs/assets/sloth.index.scss -o docs/assets/sloth.index.min.css",
+    "build": "postcss src/sloth.css -o dist/sloth.min.css",
+    "watch": "postcss src/sloth.css -o dist/sloth.min.css -w --map"
+  },
+  "style": "src/sloth.css",
+  "sass": "src/index.scss",
+  "main": "dist/sloth.min.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ka215/sloth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ka215/sloth/issues"
   },
   "license": "MIT",
   "devDependencies": {
@@ -38,5 +50,12 @@
     "precss": "^4.0.0",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0"
-  }
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "dist/**/*.{css,map}",
+    "src/**/*.{scss,css}"
+  ]
 }
