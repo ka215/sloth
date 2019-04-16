@@ -62,7 +62,7 @@ Also, by using the `.nons` class in the element to which the Sloth style is appl
 </body>
 ```
 
-## Documentation
+## Documentation & Demo
 
 You would prefer to see the following URL for a list of all elements and components expressed in the Sloth style.
 
