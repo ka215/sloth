@@ -167,6 +167,21 @@ body > *:not(.navi-menu) {
 .prettyprint {
   font-size: 13px !important;
 }
+#demo-navi {
+  .menu {
+    li a {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      [class^="fa"] {
+        width: 1em;
+        max-width: 1em;
+        margin-right: 1em;
+      }
+    }
+  }
+}
 #demo-footer {
   left: 0;
   bottom: 0;

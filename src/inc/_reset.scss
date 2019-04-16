@@ -118,8 +118,8 @@ a {
 }
 
 a:hover {
-  color: $blue2;
-  color: var(--color-primary-active, $blue2);
+  color: darken($blue, 5%);
+  color: var(--color-primary-active, darken($blue, 5%));
   text-decoration: underline;
 }
 

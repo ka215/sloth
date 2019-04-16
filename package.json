@@ -20,7 +20,7 @@
     "url": "https://ka2.org"
   },
   "scripts": {
-    "demo-build": "postcss docs/assets/sloth.index.scss -o docs/assets/sloth.index.min.css",
+    "demo": "postcss docs/assets/sloth.index.scss -o docs/assets/sloth.index.min.css",
     "build": "postcss src/sloth.css -o dist/sloth.min.css",
     "watch": "postcss src/sloth.css -o dist/sloth.min.css -w --map"
   },
