@@ -17,7 +17,7 @@ bower install --save sloth
 
 Or, you can install via npm:
 ```sh
-npm install --save sloth
+npm install --save sloth-css
 ```
 
 Or, you can clone the source:
