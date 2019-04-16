@@ -12,7 +12,7 @@ The Sloth supports SCSS and postCSS, and you can customize your build with the i
 
 You can install via bower:
 ```sh
-bower install --save sloth
+bower install --save sloth-css
 ```
 
 Or, you can install via npm:
