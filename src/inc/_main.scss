@@ -128,6 +128,8 @@
 
     &:hover {
       text-decoration: none;
+      color: darken($blue, 5%);
+      color: var(--color-primary-active, darken($blue, 5%));
 
       &::before {
         transform: scaleX(1);
@@ -221,6 +223,7 @@
     font-size: 86.5%;
     font-weight: 400;
     color: $signal-red;
+    color: var(--color-code-text, $signal-red);
     border: solid 1px $fog;
     border-radius: 0.2rem;
     background-color: rgba($light-gray, 0.3);
@@ -305,6 +308,50 @@
     }
   }
 
+  input:not([type]),
+  input[type=date],
+  input[type=datetime-local],
+  input[type=email],
+  input[type=file],
+  input[type=number],
+  input[type=password],
+  input[type=search],
+  input[type=tel],
+  input[type=text],
+  input[type=time],
+  input[type=url],
+  input[list],
+  select,
+  textarea {
+    appearance: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0.3em 0.5em;
+    font-size: inherit;
+    background: $white;
+    border: 1px solid rgba($black, 0.15);
+    color: rgba($black, 0.87);
+    caret-color: $blue;
+    caret-color: var(--color-primary, $blue);
+    border-radius: 0.2857rem;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent inset;
+    transition: color 0.1s ease, border-color 0.1s ease;
+
+    &:focus {
+      color: rgba($black, 0.95);
+      border-color: darken($blue, 5%);
+      border-color: var(--color-primary-active, darken($blue, 5%));
+      border-radius: 0.2857rem;
+      background: $white;
+      box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
+
+      &::-webkit-input-placeholder { color: $gray; }
+      &::-moz-placeholder { color: $gray; }
+      &:-ms-input-placeholder { color: $gray; }
+    }
+  }
+
   .checkbox {
     display: block;
     position: relative;
@@ -382,38 +429,78 @@
 
     &.clr-sec {
       input {
-        &:checked ~ .indicator { background: $green; }
-        &:checked:focus ~ .indicator { background: $green2; }
+        &:checked ~ .indicator {
+          background: $green;
+          background: var(--color-secondary, $green);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($green, 5%);
+          background: var(--color-secondary-active, darken($green, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $green2; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($green, 5%);
+        background: var(--color-secondary-active, darken($green, 5%));
+      }
     }
 
     &.clr-tert {
       input {
-        &:checked ~ .indicator { background: $signal-red; }
-        &:checked:focus ~ .indicator { background: $red; }
+        &:checked ~ .indicator {
+          background: $signal-red;
+          background: var(--color-tertiary, $signal-red);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($signal-red, 5%);
+          background: var(--color-tertiary-active, darken($signal-red, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $red; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($signal-red, 5%);
+        background: var(--color-tertiary-active, darken($signal-red, 5%));
+      }
     }
 
     &.clr-quat {
       input {
-        &:checked ~ .indicator { background: $orange; }
-        &:checked:focus ~ .indicator { background: $orange2; }
+        &:checked ~ .indicator {
+          background: $orange;
+          background: var(--color-quaternary, $orange);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($orange, 5%);
+          background: var(--color-quaternary-active, darken($orange, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $orange2; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($orange, 5%);
+        background: var(--color-quaternary-active, darken($orange, 5%));
+      }
     }
 
     &.clr-quin {
       input {
-        &:checked ~ .indicator { background: $yellow3; }
-        &:checked:focus ~ .indicator { background: $pumpkin; }
+        &:checked ~ .indicator {
+          background: $yellow;
+          background: var(--color-quinary, $yellow);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($yellow, 5%);
+          background: var(--color-quinary-active, darken($yellow, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $pumpkin; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($yellow, 5%);
+        background: var(--color-quinary-active, darken($yellow, 5%));
+      }
     }
   }
 
@@ -493,38 +580,78 @@
 
     &.clr-sec {
       input {
-        &:checked ~ .indicator { background: $green; }
-        &:checked:focus ~ .indicator { background: $green2; }
+        &:checked ~ .indicator {
+          background: $green;
+          background: var(--color-secondary, $green);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($green, 5%);
+          background: var(--color-secondary-active, darken($green, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $green2; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($green, 5%);
+        background: var(--color-secondary-active, darken($green, 5%));
+      }
     }
 
     &.clr-tert {
       input {
-        &:checked ~ .indicator { background: $signal-red; }
-        &:checked:focus ~ .indicator { background: $red; }
+        &:checked ~ .indicator {
+          background: $signal-red;
+          background: var(--color-tertiary, $signal-red);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($signal-red, 5%);
+          background: var(--color-tertiary-active, darken($signal-red, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $red; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($signal-red, 5%);
+        background: var(--color-tertiary-active, darken($signal-red, 5%));
+      }
     }
 
     &.clr-quat {
       input {
-        &:checked ~ .indicator { background: $orange; }
-        &:checked:focus ~ .indicator { background: $orange2; }
+        &:checked ~ .indicator {
+          background: $orange;
+          background: var(--color-quaternary, $orange);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($orange, 5%);
+          background: var(--color-quaternary-active, darken($orange, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $orange2; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($orange, 5%);
+        background: var(--color-quaternary-active, darken($orange, 5%));
+      }
     }
 
     &.clr-quin {
       input {
-        &:checked ~ .indicator { background: $yellow3; }
-        &:checked:focus ~ .indicator { background: $pumpkin; }
+        &:checked ~ .indicator {
+          background: $yellow;
+          background: var(--color-quinary, $yellow);
+        }
+
+        &:checked:focus ~ .indicator {
+          background: darken($yellow, 5%);
+          background: var(--color-quinary-active, darken($yellow, 5%));
+        }
       }
 
-      &:hover input:not([disabled]):checked ~ .indicator { background: $pumpkin; }
+      &:hover input:not([disabled]):checked ~ .indicator {
+        background: darken($yellow, 5%);
+        background: var(--color-quinary-active, darken($yellow, 5%));
+      }
     }
   }
 
@@ -767,9 +894,8 @@
   .combo-box:not(#{$not}) {
     position: relative;
     display: inline-block;
-    margin-bottom: 0.5rem;
     vertical-align: middle;
-    font-size: 90%;
+    font-size: 100%;
     font-weight: 500;
     color: $gray;
 
@@ -780,7 +906,7 @@
       width: max-content;
       margin-bottom: 0 auto;
       padding: 0.3em 0.5em;
-      font-size: 111.11%;
+      font-size: inherit; /* 90% * 111.11% = 1em */
       background: $white;
       border: 1px solid rgba($black, 0.15);
       color: rgba($black, 0.87);
@@ -934,6 +1060,7 @@
       input[type="checkbox"] {
         &:checked + .tgl-btn {
           background: $green;
+          background: var(--color-secondary, $green);
         }
       }
     }
@@ -942,6 +1069,7 @@
       input[type="checkbox"] {
         &:checked + .tgl-btn {
           background: $signal-red;
+          background: var(--color-tertiary, $signal-red);
         }
       }
     }
@@ -950,6 +1078,7 @@
       input[type="checkbox"] {
         &:checked + .tgl-btn {
           background: $orange;
+          background: var(--color-quaternary, $orange);
         }
       }
     }
@@ -957,7 +1086,8 @@
     &.clr-quin {
       input[type="checkbox"] {
         &:checked + .tgl-btn {
-          background: $yellow3;
+          background: $yellow;
+          background: var(--color-quinary, $yellow);
         }
       }
     }
@@ -1010,9 +1140,11 @@
           &:checked + .tgl-btn {
             background: transparent;
             border-color: $green;
+            border-color: var(--color-secondary, $green);
 
             &::after {
               background: $green;
+              background: var(--color-secondary, $green);
             }
           }
         }
@@ -1023,9 +1155,11 @@
           &:checked + .tgl-btn {
             background: transparent;
             border-color: $signal-red;
+            border-color: var(--color-tertiary, $signal-red);
 
             &::after {
               background: $signal-red;
+              background: var(--color-tertiary, $signal-red);
             }
           }
         }
@@ -1036,9 +1170,11 @@
           &:checked + .tgl-btn {
             background: transparent;
             border-color: $orange;
+            border-color: var(--color-quaternary, $orange);
 
             &::after {
               background: $orange;
+              background: var(--color-quaternary, $orange);
             }
           }
         }
@@ -1048,10 +1184,12 @@
         input[type="checkbox"] {
           &:checked + .tgl-btn {
             background: transparent;
-            border-color: $yellow3;
+            border-color: $yellow;
+            border-color: var(--color-quinary, $yellow);
 
             &::after {
-              background: $yellow3;
+              background: $yellow;
+              background: var(--color-quinary, $yellow);
             }
           }
         }
@@ -1142,6 +1280,7 @@
           + .tgl-btn {
             &::after {
               background: $green;
+              background: var(--color-secondary, $green);
             }
           }
 
@@ -1150,6 +1289,7 @@
 
             &::after {
               background: $green;
+              background: var(--color-secondary, $green);
             }
           }
         }
@@ -1160,6 +1300,7 @@
           + .tgl-btn {
             &::after {
               background: $signal-red;
+              background: var(--color-tertiary, $signal-red);
             }
           }
 
@@ -1168,6 +1309,7 @@
 
             &::after {
               background: $signal-red;
+              background: var(--color-tertiary, $signal-red);
             }
           }
         }
@@ -1178,6 +1320,7 @@
           + .tgl-btn {
             &::after {
               background: $orange;
+              background: var(--color-quaternary, $orange);
             }
           }
 
@@ -1186,6 +1329,7 @@
 
             &::after {
               background: $orange;
+              background: var(--color-quaternary, $orange);
             }
           }
         }
@@ -1195,7 +1339,8 @@
         input[type="checkbox"] {
           + .tgl-btn {
             &::after {
-              background: $yellow3;
+              background: $yellow;
+              background: var(--color-quinary, $yellow);
             }
           }
 
@@ -1203,7 +1348,8 @@
             background: transparent;
 
             &::after {
-              background: $yellow3;
+              background: $yellow;
+              background: var(--color-quinary, $yellow);
             }
           }
         }
@@ -1214,29 +1360,30 @@
   label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
     display: inline-block;
     width: max-content;
-    font-size: 90%;
+    margin: auto 1em auto 0;
+    font-size: 100%;
     font-weight: 500;
     color: $gray;
 
-    & ~ input:not([type]),
-    & ~ input[type=date],
-    & ~ input[type=datetime-local],
-    & ~ input[type=email],
-    & ~ input[type=file],
-    & ~ input[type=number],
-    & ~ input[type=password],
-    & ~ input[type=search],
-    & ~ input[type=tel],
-    & ~ input[type=text],
-    & ~ input[type=time],
-    & ~ input[type=url],
-    & ~ input[list],
-    & ~ select,
-    & ~ textarea {
+    ~ input:not([type]),
+    ~ input[type=date],
+    ~ input[type=datetime-local],
+    ~ input[type=email],
+    ~ input[type=file],
+    ~ input[type=number],
+    ~ input[type=password],
+    ~ input[type=search],
+    ~ input[type=tel],
+    ~ input[type=text],
+    ~ input[type=time],
+    ~ input[type=url],
+    ~ input[list],
+    ~ select,
+    ~ textarea {
       appearance: none;
       display: inline-block;
       width: 100%;
-      margin-bottom: 0.3rem;
+      margin: auto 1em auto 0;
       padding: 0.3em 0.5em;
       font-size: inherit;
       background: $white;
@@ -1262,6 +1409,24 @@
         &:-ms-input-placeholder { color: $gray; }
       }
     }
+
+    + input:not([type]),
+    + input[type=date],
+    + input[type=datetime-local],
+    + input[type=email],
+    + input[type=file],
+    + input[type=number],
+    + input[type=password],
+    + input[type=search],
+    + input[type=tel],
+    + input[type=text],
+    + input[type=time],
+    + input[type=url],
+    + input[list],
+    + select,
+    + textarea {
+      margin-left: 0;
+    }
   }
 
   input[type=submit]:not(#{$not}),
@@ -1278,7 +1443,7 @@
     letter-spacing: 0.01rem;
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
-    padding: 0.6em 1em calc(0.6em + 1px);
+    padding: 0.6em 1em;
     border: 0;
     border-radius: 3px;
     outline: none;
@@ -1322,30 +1487,46 @@
 
     &.clr-sec {
       background: $green;
+      background: var(--color-secondary, $green);
       color: $white;
 
-      &:hover { background: rgba($green2, 0.9); }
+      &:hover {
+        background: darken($green, 5%);
+        background: var(--color-secondary-active, darken($green, 5%));
+      }
     }
 
     &.clr-tert {
       background: $signal-red;
+      background: var(--color-tertiary, $signal-red);
       color: $white;
 
-      &:hover { background: rgba($red, 0.9); }
+      &:hover {
+        background: darken($signal-red, 5%);
+        background: var(--color-tertiary-active, darken($signal-red, 5%));
+      }
     }
 
     &.clr-quat {
       background: $orange;
+      background: var(--color-quaternary, $orange);
       color: $white;
 
-      &:hover { background: rgba($orange2, 0.98); }
+      &:hover {
+        background: darken($orange, 5%);
+        background: var(--color-quaternary-active, darken($orange, 5%));
+      }
     }
 
     &.clr-quin {
-      background: $yellow3;
+      background: $yellow;
+      background: var(--color-quinary, $yellow);
       color: $white;
 
-      &:hover { background: rgba($pumpkin, 0.86); }
+      &:hover {
+        background: darken($yellow, 5%);
+        background: var(--color-quinary-active, darken($yellow, 5%));
+      }
     }
 
     &.flat {
@@ -1375,26 +1556,42 @@
 
       &.clr-sec {
         color: $green;
+        color: var(--color-secondary, $green);
 
-        &:hover { background: rgba($green, 0.12); }
+        &:hover {
+          background: rgba(saturate($green, 15%), 0.2);
+          background: var(--color-secondary-active-light, rgba(saturate($green, 15%), 0.2));
+        }
       }
 
       &.clr-tert {
         color: $signal-red;
+        color: var(--color-tertiary, $signal-red);
 
-        &:hover { background: rgba($signal-red, 0.12); }
+        &:hover {
+          background: rgba(saturate($signal-red, 15%), 0.2);
+          background: var(--color-tertiary-active-light, rgba(saturate($signal-red, 15%), 0.2));
+        }
       }
 
       &.clr-quat {
         color: $orange;
+        color: var(--color-quaternary, $orange);
 
-        &:hover { background: rgba($orange, 0.12); }
+        &:hover {
+          background: rgba(saturate($orange, 15%), 0.2);
+          background: var(--color-quaternary-active-light, rgba(saturate($orange, 15%), 0.2));
+        }
       }
 
       &.clr-quin {
         color: $pumpkin;
+        color: var(--color-quinary, $yellow);
 
-        &:hover { background: rgba($yellow, 0.12); }
+        &:hover {
+          background: rgba(saturate($yellow, 15%), 0.2);
+          background: var(--color-quinary-active-light, rgba(saturate($yellow, 15%), 0.2));
+        }
       }
     }
 
@@ -1407,8 +1604,8 @@
       box-shadow: 0 0 0 0 transparent inset;
 
       &:hover {
-        background: darken($blue, 5%);
-        background: var(--color-primary, darken($blue, 5%));
+        background: rgba(saturate($blue, 15%), 0.2);
+        background: var(--color-primary-active-light, rgba(saturate($blue, 15%), 0.2));
         box-shadow: 0 0 0 0 transparent inset;
       }
 
@@ -1425,33 +1622,50 @@
         color: var(--color-primary, $blue);
 
         &:hover {
-          background: darken($blue, 5%);
-          background: var(--color-primary, darken($blue, 5%));
+          background: rgba(saturate($blue, 15%), 0.2);
+          background: var(--color-primary-active-light, rgba(saturate($blue, 15%), 0.2));
         }
       }
 
       &.clr-sec {
         color: $green;
+        color: var(--color-secondary, $green);
 
-        &:hover { background: rgba($green, 0.12); }
+        &:hover {
+          background: rgba(saturate($green, 15%), 0.2);
+          background: var(--color-primary-active-light, rgba(saturate($green, 15%), 0.2));
+        }
       }
 
       &.clr-tert {
         color: $signal-red;
+        color: var(--color-tertiary, $signal-red);
 
-        &:hover { background: rgba($signal-red, 0.12); }
+        &:hover {
+          background: rgba(saturate($signal-red, 15%), 0.2);
+          background: var(--color-tertiary-active-light, rgba(saturate($signal-red, 15%), 0.2));
+        }
       }
 
       &.clr-quat {
         color: $orange;
+        color: var(--color-quaternary, $orange);
 
-        &:hover { background: rgba($orange, 0.12); }
+        &:hover {
+          background: rgba(saturate($orange, 15%), 0.2);
+          background: var(--color-quaternary-active-light, rgba(saturate($orange, 15%), 0.2));
+        }
       }
 
       &.clr-quin {
-        color: $pumpkin;
+        color: $yellow;
+        color: var(--color-quinary, $yellow);
 
-        &:hover { background: rgba($yellow, 0.12); }
+        &:hover {
+          background: rgba($yellow, 0.12);
+          background: rgba(saturate($yellow, 15%), 0.2);
+          background: var(--color-quinary-active-light, rgba(saturate($yellow, 15%), 0.2));
+        }
       }
     }
   }
@@ -1504,30 +1718,46 @@
 
     &.clr-sec {
       background: $green;
+      background: var(--color-secondary, $green);
       color: $white;
 
-      &:hover { background: rgba($green2, 0.9); }
+      &:hover {
+        background: darken($green, 5%);
+        background: var(--color-secondary-active, darken($green, 5%));
+      }
     }
 
     &.clr-tert {
       background: $signal-red;
+      background: var(--color-tertiary, $signal-red);
       color: $white;
 
-      &:hover { background: rgba($red, 0.9); }
+      &:hover {
+        background: darken($signal-red, 5%);
+        background: var(--color-tertiary-active, darken($signal-red, 5%));
+      }
     }
 
     &.clr-quat {
       background: $orange;
+      background: var(--color-quaternary, $orange);
       color: $white;
 
-      &:hover { background: rgba($orange2, 0.98); }
+      &:hover {
+        background: darken($orange, 5%);
+        background: var(--color-quaternary-active, darken($orange, 5%));
+      }
     }
 
     &.clr-quin {
       background: $yellow3;
+      background: var(--color-quinary, $yellow);
       color: $white;
 
-      &:hover { background: rgba($pumpkin, 0.86); }
+      &:hover {
+        background: darken($yellow, 5%);
+        background: var(--color-quinary-active, darken($yellow, 5%));
+      }
     }
   }
 

@@ -18,30 +18,30 @@
       <div class="menu">
         <ul class="unstyled">
           <li class="pr1"><a href="#introduction"><i class="fas fa-home mr1"></i>HOME</a></li>
-          <li class="pr1"><a href="#why-sloth"><i class="fas fa-question mr1"></i> Why Sloth?</a></li>
-          <li class="pr1"><a href="#get-started-sloth"><i class="fab fa-gripfire mr1"></i> Get Started Sloth!</a></li>
-          <li class="pr1"><a href="#basic-structures"><i class="fas fa-chalkboard mr1"></i> Basic Structures</a></li>
+          <li class="pr1"><a href="#why-sloth"><i class="fas fa-question mr1"></i>Why Sloth?</a></li>
+          <li class="pr1"><a href="#get-started-sloth"><i class="fab fa-gripfire mr1"></i>Get Started Sloth!</a></li>
+          <li class="pr1"><a href="#basic-structures"><i class="fas fa-chalkboard mr1"></i>Basic Structures</a></li>
         </ul>
         <hr>
         <ul class="unstyled">
-          <li class="pr1"><a href="#typograpy"><i class="fas fa-font mr1"></i> Typograpy</a></li>
-          <li class="pr1"><a href="#lists"><i class="fas fa-list-ul mr1"></i> Lists</a></li>
-          <li class="pr1"><a href="#links"><i class="fas fa-link mr1"></i> Links</a></li>
-          <li class="pr1"><a href="#forms"><i class="fas fa-edit mr1"></i> Forms</a></li>
-          <li class="pr1"><a href="#buttons"><i class="fas fa-toggle-on mr1"></i> Buttons</a></li>
-          <li class="pr1"><a href="#tables"><i class="fas fa-table mr1"></i> Tables</a></li>
-          <li class="pr1"><a href="#grid-systems"><i class="fas fa-th mr1"></i> Grid Systems</a></li>
-          <li class="pr1"><a href="#components"><i class="far fa-address-card mr1"></i> Components</a></li>
-          <li class="pr1"><a href="#colors"><i class="fas fa-palette mr1"></i> Colors</a></li>
-          <li class="pr1"><a href="#utilities"><i class="fas fa-toolbox mr1"></i> Utilities</a></li>
-          <li class="pr1"><a href="#overriding-properties"><i class="far fa-edit mr1"></i> Overriding Properties</a></li>
+          <li class="pr1"><a href="#typograpy"><i class="fas fa-font mr1"></i>Typograpy</a></li>
+          <li class="pr1"><a href="#lists"><i class="fas fa-list-ul mr1"></i>Lists</a></li>
+          <li class="pr1"><a href="#links"><i class="fas fa-link mr1"></i>Links</a></li>
+          <li class="pr1"><a href="#forms"><i class="fas fa-edit mr1"></i>Forms</a></li>
+          <li class="pr1"><a href="#buttons"><i class="fas fa-toggle-on mr1"></i>Buttons</a></li>
+          <li class="pr1"><a href="#tables"><i class="fas fa-table mr1"></i>Tables</a></li>
+          <li class="pr1"><a href="#grid-systems"><i class="fas fa-th mr1"></i>Grid Systems</a></li>
+          <li class="pr1"><a href="#components"><i class="far fa-address-card mr1"></i>Components</a></li>
+          <li class="pr1"><a href="#colors"><i class="fas fa-palette mr1"></i>Colors</a></li>
+          <li class="pr1"><a href="#utilities"><i class="fas fa-toolbox mr1"></i>Utilities</a></li>
+          <li class="pr1"><a href="#overriding-properties"><i class="far fa-edit mr1"></i>Overriding Properties</a></li>
         </ul>
       </div>
     </label>
     <a href="#sloth-docs" class="brand"><img src="assets/sloth.svg" height="36"> Sloth</a>
   </div>
   <div class="w-half flx-row flx-end pr2">
-    <button id="close-navi" type="button" class="outline mb0"><i class="fas fa-times"></i> Close Navi</button>
+    <button id="close-navi" type="button" class="outline"><i class="fas fa-times"></i> Close Navi</button>
   </div>
 </header>
 <header id="introduction">
@@ -60,7 +60,10 @@
     We're tired of complicating the HTML hierarchy to apply the preferred style and marking up several class names broken up into features. The markuping for styling should be simpler and better. This framework was developed for those who want to shirk neglect one's duties, and take the easy way out.<br>
     <br>
     The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, CSS variables, and limited vendor prefixes.<br>
-    That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at a distributed css file only <small>(The file size after gzip compression is 7.25KB)</small>.
+    <br>
+    That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
+    <br>
+    Finally that file size after gzip compression is <em>10.08kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -664,23 +667,23 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-col my1">
     <div class="w-full mb1">
       <form>
-        <label class="tgl">Normal type of toggle switch, firstly.
+        <label class="tgl mb1">Normal type of toggle switch, firstly.
           <input type="checkbox">
           <span class="tgl-btn"></span>
         </label><br>
-        <label class="tgl flat">Flat type of toggle switch, nextly.
+        <label class="tgl flat mb1">Flat type of toggle switch nextly.
           <input type="checkbox">
           <span class="tgl-btn"></span>
         </label><br>
-        <label class="tgl flip">Flip type of toggle switch, finaly.
+        <label class="tgl flip mb1">Flip type of toggle switch finally.
           <input type="checkbox">
           <span class="tgl-btn" data-tgl-off="Off" data-tgl-on="On"></span>
         </label><br>
-        <label class="tgl clr-sec">Also changeable the active color of toggle switch.
+        <label class="tgl clr-sec mb1">Also changeable the active color of toggle switch.
           <input type="checkbox" checked>
           <span class="tgl-btn"></span>
         </label><br>
-        <!-- /*
+<!-- /*        */ -- >
         <hr>
         <label class="tgl"><input type="checkbox" disabled><span class="tgl-btn"></span></label>
         <label class="tgl clr-prim"><input type="checkbox" checked><span class="tgl-btn"></span></label>
@@ -702,7 +705,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         <label class="tgl flip clr-tert"><input type="checkbox" checked><span class="tgl-btn" data-tgl-off="Nope" data-tgl-on="Yeah!"></span></label>
         <label class="tgl flip clr-quat"><input type="checkbox" checked><span class="tgl-btn" data-tgl-off="Nope" data-tgl-on="Yeah!"></span></label>
         <label class="tgl flip clr-quin"><input type="checkbox" checked><span class="tgl-btn" data-tgl-off="Nope" data-tgl-on="Yeah!"></span></label>
-        */ -->
+<!-- /*        */ -->
       </form>
     </div>
     <div class="w-full">
@@ -812,7 +815,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-col my1">
     <h5 class="muted">Outline butons</h5>
     <div class="w-full mb1">
-      <button type="submit" class="outline" onclick="_void(this.textContent)">Submit</button>
+      <!-- button type="submit" class="outline" onclick="_void(this.textContent)">Submit</button -->
       <button type="button" class="outline"  onclick="_void(this.textContent)">Default</button>
       <button type="button" class="outline clr-prim" onclick="_void(this.textContent)">Primary</button>
       <button type="button" class="outline clr-sec"  onclick="_void(this.textContent)">Secondary</button>
@@ -821,7 +824,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <button type="button" class="outline clr-quin" onclick="_void(this.textContent)">Quinary</button>
     </div>
     <div class="w-full">
-      <pre class="prettyprint"><code>&lt;button type="button" class="outline clr-prim">Primary&lt;/button>
+      <pre class="prettyprint"><code>&lt;button type="button" class="outline">Default&lt;/button>
+&lt;button type="button" class="outline clr-prim">Primary&lt;/button>
 &lt;button type="button" class="outline clr-sec" >Secondary&lt;/button>
 &lt;button type="button" class="outline clr-tert">Tertiary&lt;/button>
 &lt;button type="button" class="outline clr-quat">Quaternary&lt;/button>
@@ -832,7 +836,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-col my1">
     <h5 class="muted">Flat butons</h5>
     <div class="w-full mb1">
-      <button type="submit" class="flat" onclick="_void(this.textContent)">Submit</button>
+      <!-- button type="submit" class="flat" onclick="_void(this.textContent)">Submit</button -->
       <button type="button" class="flat" onclick="_void(this.textContent)">Default</button>
       <button type="button" class="flat clr-prim" onclick="_void(this.textContent)">Primary</button>
       <button type="button" class="flat clr-sec" onclick="_void(this.textContent)">Secondary</button>
@@ -841,7 +845,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <button type="button" class="flat clr-quin" onclick="_void(this.textContent)">Quinary</button>
     </div>
     <div class="w-full">
-      <pre class="prettyprint"><code>&lt;button type="button" class="flat clr-prim">Primary&lt;/button>
+      <pre class="prettyprint"><code>&lt;button type="button" class="flat">Default&lt;/button>
+&lt;button type="button" class="flat clr-prim">Primary&lt;/button>
 &lt;button type="button" class="flat clr-sec" >Secondary&lt;/button>
 &lt;button type="button" class="flat clr-tert">Tertiary&lt;/button>
 &lt;button type="button" class="flat clr-quat">Quaternary&lt;/button>
@@ -1236,24 +1241,34 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </div>
   <div class="flx-col mb1">
     <h6 class="muted">Demo to override color</h6>
-    <form class="flx-row flx-evenly">
-      <label class="w-1-3">
-        <select id="override-color">
-          <option value="--color-primary">--color-primary</option>
-          <option value="--color-secondary">--color-secondary</option>
-          <option value="--color-tertiary">--color-tertiary</option>
-          <option value="--color-quaternary">--color-quaternary</option>
-          <option value="--color-quinary">--color-quinary</option>
-        </select>
-      </label>
-      <input type="text" id="color-code" class="w-1-3" placeholder="Enter color value">
-      <button type="button" id="btn-change-color" class="w-1-3 clr-prim">Execute</button>
+    <form class="inline" _class="flx-row flx-evenly">
+      <select id="override-color">
+        <option value="--color-primary">--color-primary</option>
+        <option value="--color-primary-active">--color-primary-active</option>
+        <option value="--color-primary-active-light">--color-primary-active-light</option>
+        <option value="--color-secondary">--color-secondary</option>
+        <option value="--color-secondary-active">--color-secondary-active</option>
+        <option value="--color-secondary-active-light">--color-secondary-active-light</option>
+        <option value="--color-tertiary">--color-tertiary</option>
+        <option value="--color-tertiary-active">--color-tertiary-active</option>
+        <option value="--color-tertiary-active-light">--color-tertiary-active-light</option>
+        <option value="--color-quaternary">--color-quaternary</option>
+        <option value="--color-quaternary-active">--color-quaternary-active</option>
+        <option value="--color-quaternary-active-light">--color-quaternary-active-light</option>
+        <option value="--color-quinary">--color-quinary</option>
+        <option value="--color-quinary-active">--color-quinary-active</option>
+        <option value="--color-quinary-active-light">--color-quinary-active-light</option>
+      </select>
+      <input type="text" id="color-code" placeholder="Enter color value">
+      <button type="button" id="btn-change-color" class="clr-prim">Try change</button>
     </form>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
+<!-- /*
   <h5 class="muted">Other colors</h5>
   <div class="flx-col my1">
   </div>
+*/ -->
 </section>
 <section id="utilities" class="sloth-styles">
   <h3>Utilities</h3>
@@ -1624,7 +1639,43 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <div class="w-full">
     </div>
     <div class="w-full">
-      <pre class="prettyprint"><code>
+      <pre class="prettyprint"><code>:root {
+  --base-font-size-sm: 1.4rem;
+  --base-font-size-md: 1.1667rem;
+  --base-font-size-lg: 1.1429rem;
+
+  --color-primary: #4183c4;
+  --color-primary-active: #3876b4;
+  --color-primary-active-light: rgba(46, 131, 215, 0.2);
+  --color-secondary: #00a968;
+  --color-secondary-active: #009058;
+  --color-secondary-active-light: rgba(0, 169, 104, 0.2);
+  --color-tertiary: #e8383d;
+  --color-tertiary-active: #e52127;
+  --color-tertiary-active-light: rgba(249, 39, 45, 0.2);
+  --color-quaternary: #ee7800;
+  --color-quaternary-active: #d56b00;
+  --color-quaternary-active-light: rgba(238, 120, 0, 0.2);
+  --color-quinary: #e9bc00;
+  --color-quinary-active: #d0a700;
+  --color-quinary-active-light: rgba(233, 188, 0, 0.2);
+
+  --color-code-text: #e8383d;
+
+  --external-link-content: "\f35d";
+  --external-link-font: "Font Awesome 5 Free";
+  --external-link-background: transparent;
+  --external-link-border: 0;
+  --external-link-hover-color: #4183c4;
+  --external-link-padding-left: 1em;
+
+  --navi-height-sm: 56px;
+  --navi-height-md: 56px;
+  --navi-height-lg: 56px;
+  --menu-width-sm: max-content;
+  --menu-width-md: max-content;
+  --menu-width-lg: max-content;
+}
 </code></pre>
     </div>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>

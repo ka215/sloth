@@ -131,8 +131,8 @@ a {
 }
 
 a:hover {
-  color: #1e70bf;
-  color: var(--color-primary-active, #1e70bf);
+  color: #3876b4;
+  color: var(--color-primary-active, #3876b4);
   text-decoration: underline;
 }
 
@@ -457,6 +457,8 @@ textarea {
 }
 
 .sloth a:not(.nons):hover {
+  color: #3876b4;
+  color: var(--color-primary-active, #3876b4);
   text-decoration: none;
 }
 
@@ -565,6 +567,7 @@ textarea {
   border-radius: 0.2rem;
   background-color: rgba(211, 211, 211, 0.3);
   color: #e8383d;
+  color: var(--color-code-text, #e8383d);
   font-size: 86.5%;
   font-weight: 400;
   word-break: break-word;
@@ -657,6 +660,119 @@ textarea {
   width: auto !important;
 }
 
+.sloth input:not([type]),
+.sloth input[type=date],
+.sloth input[type=datetime-local],
+.sloth input[type=email],
+.sloth input[type=file],
+.sloth input[type=number],
+.sloth input[type=password],
+.sloth input[type=search],
+.sloth input[type=tel],
+.sloth input[type=text],
+.sloth input[type=time],
+.sloth input[type=url],
+.sloth input[list],
+.sloth select,
+.sloth textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+  display: inline-block;
+  width: 100%;
+  padding: 0.3em 0.5em;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  border-radius: 0.2857rem;
+  outline: 0;
+  background: #fff;
+          box-shadow: 0 0 0 0 transparent inset;
+  color: rgba(33, 37, 41, 0.87);
+  caret-color: #4183c4;
+  caret-color: var(--color-primary, #4183c4);
+  font-size: inherit;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.sloth input:not([type]):focus,
+.sloth input[type=date]:focus,
+.sloth input[type=datetime-local]:focus,
+.sloth input[type=email]:focus,
+.sloth input[type=file]:focus,
+.sloth input[type=number]:focus,
+.sloth input[type=password]:focus,
+.sloth input[type=search]:focus,
+.sloth input[type=tel]:focus,
+.sloth input[type=text]:focus,
+.sloth input[type=time]:focus,
+.sloth input[type=url]:focus,
+.sloth input[list]:focus,
+.sloth select:focus,
+.sloth textarea:focus {
+  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  border-radius: 0.2857rem;
+  border-color: #3876b4;
+  border-color: var(--color-primary-active, #3876b4);
+  background: #fff;
+          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  color: rgba(33, 37, 41, 0.95);
+}
+
+.sloth input:not([type]):focus::-webkit-input-placeholder,
+.sloth input[type=date]:focus::-webkit-input-placeholder,
+.sloth input[type=datetime-local]:focus::-webkit-input-placeholder,
+.sloth input[type=email]:focus::-webkit-input-placeholder,
+.sloth input[type=file]:focus::-webkit-input-placeholder,
+.sloth input[type=number]:focus::-webkit-input-placeholder,
+.sloth input[type=password]:focus::-webkit-input-placeholder,
+.sloth input[type=search]:focus::-webkit-input-placeholder,
+.sloth input[type=tel]:focus::-webkit-input-placeholder,
+.sloth input[type=text]:focus::-webkit-input-placeholder,
+.sloth input[type=time]:focus::-webkit-input-placeholder,
+.sloth input[type=url]:focus::-webkit-input-placeholder,
+.sloth input[list]:focus::-webkit-input-placeholder,
+.sloth select:focus::-webkit-input-placeholder,
+.sloth textarea:focus::-webkit-input-placeholder {
+  color: #7d7d7d;
+}
+
+.sloth input:not([type]):focus::-moz-placeholder,
+.sloth input[type=date]:focus::-moz-placeholder,
+.sloth input[type=datetime-local]:focus::-moz-placeholder,
+.sloth input[type=email]:focus::-moz-placeholder,
+.sloth input[type=file]:focus::-moz-placeholder,
+.sloth input[type=number]:focus::-moz-placeholder,
+.sloth input[type=password]:focus::-moz-placeholder,
+.sloth input[type=search]:focus::-moz-placeholder,
+.sloth input[type=tel]:focus::-moz-placeholder,
+.sloth input[type=text]:focus::-moz-placeholder,
+.sloth input[type=time]:focus::-moz-placeholder,
+.sloth input[type=url]:focus::-moz-placeholder,
+.sloth input[list]:focus::-moz-placeholder,
+.sloth select:focus::-moz-placeholder,
+.sloth textarea:focus::-moz-placeholder {
+  color: #7d7d7d;
+}
+
+.sloth input:not([type]):focus:-ms-input-placeholder,
+.sloth input[type=date]:focus:-ms-input-placeholder,
+.sloth input[type=datetime-local]:focus:-ms-input-placeholder,
+.sloth input[type=email]:focus:-ms-input-placeholder,
+.sloth input[type=file]:focus:-ms-input-placeholder,
+.sloth input[type=number]:focus:-ms-input-placeholder,
+.sloth input[type=password]:focus:-ms-input-placeholder,
+.sloth input[type=search]:focus:-ms-input-placeholder,
+.sloth input[type=tel]:focus:-ms-input-placeholder,
+.sloth input[type=text]:focus:-ms-input-placeholder,
+.sloth input[type=time]:focus:-ms-input-placeholder,
+.sloth input[type=url]:focus:-ms-input-placeholder,
+.sloth input[list]:focus:-ms-input-placeholder,
+.sloth select:focus:-ms-input-placeholder,
+.sloth textarea:focus:-ms-input-placeholder {
+  color: #7d7d7d;
+}
+
 .sloth .checkbox {
   display: block;
   position: relative;
@@ -736,50 +852,62 @@ textarea {
 
 .sloth .checkbox.clr-sec input:checked ~ .indicator {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .checkbox.clr-sec input:checked:focus ~ .indicator {
-  background: #009854;
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth .checkbox.clr-sec:hover input:not([disabled]):checked ~ .indicator {
-  background: #009854;
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth .checkbox.clr-tert input:checked ~ .indicator {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .checkbox.clr-tert input:checked:focus ~ .indicator {
-  background: #d70035;
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth .checkbox.clr-tert:hover input:not([disabled]):checked ~ .indicator {
-  background: #d70035;
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth .checkbox.clr-quat input:checked ~ .indicator {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .checkbox.clr-quat input:checked:focus ~ .indicator {
-  background: #ed6d35;
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth .checkbox.clr-quat:hover input:not([disabled]):checked ~ .indicator {
-  background: #ed6d35;
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth .checkbox.clr-quin input:checked ~ .indicator {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth .checkbox.clr-quin input:checked:focus ~ .indicator {
-  background: #e5a323;
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth .checkbox.clr-quin:hover input:not([disabled]):checked ~ .indicator {
-  background: #e5a323;
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth .radio {
@@ -859,50 +987,62 @@ textarea {
 
 .sloth .radio.clr-sec input:checked ~ .indicator {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .radio.clr-sec input:checked:focus ~ .indicator {
-  background: #009854;
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth .radio.clr-sec:hover input:not([disabled]):checked ~ .indicator {
-  background: #009854;
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth .radio.clr-tert input:checked ~ .indicator {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .radio.clr-tert input:checked:focus ~ .indicator {
-  background: #d70035;
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth .radio.clr-tert:hover input:not([disabled]):checked ~ .indicator {
-  background: #d70035;
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth .radio.clr-quat input:checked ~ .indicator {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .radio.clr-quat input:checked:focus ~ .indicator {
-  background: #ed6d35;
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth .radio.clr-quat:hover input:not([disabled]):checked ~ .indicator {
-  background: #ed6d35;
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth .radio.clr-quin input:checked ~ .indicator {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth .radio.clr-quin input:checked:focus ~ .indicator {
-  background: #e5a323;
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth .radio.clr-quin:hover input:not([disabled]):checked ~ .indicator {
-  background: #e5a323;
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth .floating {
@@ -1184,9 +1324,8 @@ textarea {
 .sloth .combo-box:not(.nons) {
   display: inline-block;
   position: relative;
-  margin-bottom: 0.5rem;
   color: #7d7d7d;
-  font-size: 90%;
+  font-size: 100%;
   font-weight: 500;
   vertical-align: middle;
 }
@@ -1207,12 +1346,13 @@ textarea {
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
   outline: 0;
+  /* 90% * 111.11% = 1em */
   background: #fff;
           box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
   caret-color: var(--color-primary, #4183c4);
-  font-size: 111.11%;
+  font-size: inherit;
   transition: color 0.1s ease, border-color 0.1s ease;
 }
 
@@ -1365,18 +1505,22 @@ textarea {
 
 .sloth .tgl:not(.nons).clr-sec input[type="checkbox"]:checked + .tgl-btn {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .tgl:not(.nons).clr-tert input[type="checkbox"]:checked + .tgl-btn {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .tgl:not(.nons).clr-quat input[type="checkbox"]:checked + .tgl-btn {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .tgl:not(.nons).clr-quin input[type="checkbox"]:checked + .tgl-btn {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth .tgl:not(.nons).flat input[type="checkbox"] + .tgl-btn {
@@ -1418,38 +1562,46 @@ textarea {
 
 .sloth .tgl:not(.nons).flat.clr-sec input[type="checkbox"]:checked + .tgl-btn {
   border-color: #00a968;
+  border-color: var(--color-secondary, #00a968);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat.clr-sec input[type="checkbox"]:checked + .tgl-btn::after {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .tgl:not(.nons).flat.clr-tert input[type="checkbox"]:checked + .tgl-btn {
   border-color: #e8383d;
+  border-color: var(--color-tertiary, #e8383d);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat.clr-tert input[type="checkbox"]:checked + .tgl-btn::after {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .tgl:not(.nons).flat.clr-quat input[type="checkbox"]:checked + .tgl-btn {
   border-color: #ee7800;
+  border-color: var(--color-quaternary, #ee7800);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat.clr-quat input[type="checkbox"]:checked + .tgl-btn::after {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .tgl:not(.nons).flat.clr-quin input[type="checkbox"]:checked + .tgl-btn {
   border-color: #e9bc00;
+  border-color: var(--color-quinary, #e9bc00);
   background: transparent;
 }
 
 .sloth .tgl:not(.nons).flat.clr-quin input[type="checkbox"]:checked + .tgl-btn::after {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn {
@@ -1531,6 +1683,7 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"] + .tgl-btn::after {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"]:checked + .tgl-btn {
@@ -1539,10 +1692,12 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-sec input[type="checkbox"]:checked + .tgl-btn::after {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
 }
 
 .sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"] + .tgl-btn::after {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"]:checked + .tgl-btn {
@@ -1551,10 +1706,12 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-tert input[type="checkbox"]:checked + .tgl-btn::after {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
 }
 
 .sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"] + .tgl-btn::after {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"]:checked + .tgl-btn {
@@ -1563,10 +1720,12 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-quat input[type="checkbox"]:checked + .tgl-btn::after {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
 }
 
 .sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"] + .tgl-btn::after {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"]:checked + .tgl-btn {
@@ -1575,6 +1734,7 @@ textarea {
 
 .sloth .tgl:not(.nons).flip.clr-quin input[type="checkbox"]:checked + .tgl-btn::after {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
 }
 
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
@@ -1582,8 +1742,9 @@ textarea {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  margin: auto 1em auto 0;
   color: #7d7d7d;
-  font-size: 90%;
+  font-size: 100%;
   font-weight: 500;
 }
 
@@ -1609,7 +1770,7 @@ textarea {
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   display: inline-block;
   width: 100%;
-  margin-bottom: 0.3rem;
+  margin: auto 1em auto 0;
   padding: 0.3em 0.5em;
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
@@ -1701,6 +1862,24 @@ textarea {
   color: #7d7d7d;
 }
 
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input:not([type]),
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=date],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=datetime-local],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=email],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=file],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=number],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=password],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=search],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=tel],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=text],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=time],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=url],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[list],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + select,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + textarea {
+  margin-left: 0;
+}
+
 .sloth input[type=submit]:not(.nons),
 .sloth input[type=button]:not(.nons),
 .sloth button:not(.nons) {
@@ -1716,7 +1895,7 @@ textarea {
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 0.6em 1em calc(0.6em + 1px);
+  padding: 0.6em 1em;
   border: 0;
   border-radius: 3px;
   outline: none;
@@ -1784,52 +1963,60 @@ textarea {
 .sloth input[type=button]:not(.nons).clr-sec,
 .sloth button:not(.nons).clr-sec {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
   color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons).clr-sec:hover,
 .sloth input[type=button]:not(.nons).clr-sec:hover,
 .sloth button:not(.nons).clr-sec:hover {
-  background: rgba(0, 152, 84, 0.9);
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth input[type=submit]:not(.nons).clr-tert,
 .sloth input[type=button]:not(.nons).clr-tert,
 .sloth button:not(.nons).clr-tert {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
   color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons).clr-tert:hover,
 .sloth input[type=button]:not(.nons).clr-tert:hover,
 .sloth button:not(.nons).clr-tert:hover {
-  background: rgba(215, 0, 53, 0.9);
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth input[type=submit]:not(.nons).clr-quat,
 .sloth input[type=button]:not(.nons).clr-quat,
 .sloth button:not(.nons).clr-quat {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
   color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons).clr-quat:hover,
 .sloth input[type=button]:not(.nons).clr-quat:hover,
 .sloth button:not(.nons).clr-quat:hover {
-  background: rgba(237, 109, 53, 0.98);
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth input[type=submit]:not(.nons).clr-quin,
 .sloth input[type=button]:not(.nons).clr-quin,
 .sloth button:not(.nons).clr-quin {
   background: #e9bc00;
+  background: var(--color-quinary, #e9bc00);
   color: #fff;
 }
 
 .sloth input[type=submit]:not(.nons).clr-quin:hover,
 .sloth input[type=button]:not(.nons).clr-quin:hover,
 .sloth button:not(.nons).clr-quin:hover {
-  background: rgba(229, 163, 35, 0.86);
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth input[type=submit]:not(.nons).flat,
@@ -1875,48 +2062,56 @@ textarea {
 .sloth input[type=button]:not(.nons).flat.clr-sec,
 .sloth button:not(.nons).flat.clr-sec {
   color: #00a968;
+  color: var(--color-secondary, #00a968);
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-sec:hover,
 .sloth input[type=button]:not(.nons).flat.clr-sec:hover,
 .sloth button:not(.nons).flat.clr-sec:hover {
-  background: rgba(0, 169, 104, 0.12);
+  background: rgba(0, 169, 104, 0.2);
+  background: var(--color-secondary-active-light, rgba(0, 169, 104, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-tert,
 .sloth input[type=button]:not(.nons).flat.clr-tert,
 .sloth button:not(.nons).flat.clr-tert {
   color: #e8383d;
+  color: var(--color-tertiary, #e8383d);
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-tert:hover,
 .sloth input[type=button]:not(.nons).flat.clr-tert:hover,
 .sloth button:not(.nons).flat.clr-tert:hover {
-  background: rgba(232, 56, 61, 0.12);
+  background: rgba(249, 39, 45, 0.2);
+  background: var(--color-tertiary-active-light, rgba(249, 39, 45, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-quat,
 .sloth input[type=button]:not(.nons).flat.clr-quat,
 .sloth button:not(.nons).flat.clr-quat {
   color: #ee7800;
+  color: var(--color-quaternary, #ee7800);
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-quat:hover,
 .sloth input[type=button]:not(.nons).flat.clr-quat:hover,
 .sloth button:not(.nons).flat.clr-quat:hover {
-  background: rgba(238, 120, 0, 0.12);
+  background: rgba(238, 120, 0, 0.2);
+  background: var(--color-quaternary-active-light, rgba(238, 120, 0, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-quin,
 .sloth input[type=button]:not(.nons).flat.clr-quin,
 .sloth button:not(.nons).flat.clr-quin {
   color: #e5a323;
+  color: var(--color-quinary, #e9bc00);
 }
 
 .sloth input[type=submit]:not(.nons).flat.clr-quin:hover,
 .sloth input[type=button]:not(.nons).flat.clr-quin:hover,
 .sloth button:not(.nons).flat.clr-quin:hover {
-  background: rgba(252, 200, 0, 0.12);
+  background: rgba(233, 188, 0, 0.2);
+  background: var(--color-quinary-active-light, rgba(233, 188, 0, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).outline,
@@ -1935,8 +2130,8 @@ textarea {
 .sloth input[type=button]:not(.nons).outline:hover,
 .sloth button:not(.nons).outline:hover {
   -webkit-box-shadow: 0 0 0 0 transparent inset;
-  background: #3876b4;
-  background: var(--color-primary, #3876b4);
+  background: rgba(46, 131, 215, 0.2);
+  background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
           box-shadow: 0 0 0 0 transparent inset;
 }
 
@@ -1962,56 +2157,65 @@ textarea {
 .sloth input[type=submit]:not(.nons).outline.clr-prim:hover,
 .sloth input[type=button]:not(.nons).outline.clr-prim:hover,
 .sloth button:not(.nons).outline.clr-prim:hover {
-  background: #3876b4;
-  background: var(--color-primary, #3876b4);
+  background: rgba(46, 131, 215, 0.2);
+  background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-sec,
 .sloth input[type=button]:not(.nons).outline.clr-sec,
 .sloth button:not(.nons).outline.clr-sec {
   color: #00a968;
+  color: var(--color-secondary, #00a968);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-sec:hover,
 .sloth input[type=button]:not(.nons).outline.clr-sec:hover,
 .sloth button:not(.nons).outline.clr-sec:hover {
-  background: rgba(0, 169, 104, 0.12);
+  background: rgba(0, 169, 104, 0.2);
+  background: var(--color-primary-active-light, rgba(0, 169, 104, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-tert,
 .sloth input[type=button]:not(.nons).outline.clr-tert,
 .sloth button:not(.nons).outline.clr-tert {
   color: #e8383d;
+  color: var(--color-tertiary, #e8383d);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-tert:hover,
 .sloth input[type=button]:not(.nons).outline.clr-tert:hover,
 .sloth button:not(.nons).outline.clr-tert:hover {
-  background: rgba(232, 56, 61, 0.12);
+  background: rgba(249, 39, 45, 0.2);
+  background: var(--color-tertiary-active-light, rgba(249, 39, 45, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-quat,
 .sloth input[type=button]:not(.nons).outline.clr-quat,
 .sloth button:not(.nons).outline.clr-quat {
   color: #ee7800;
+  color: var(--color-quaternary, #ee7800);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-quat:hover,
 .sloth input[type=button]:not(.nons).outline.clr-quat:hover,
 .sloth button:not(.nons).outline.clr-quat:hover {
-  background: rgba(238, 120, 0, 0.12);
+  background: rgba(238, 120, 0, 0.2);
+  background: var(--color-quaternary-active-light, rgba(238, 120, 0, 0.2));
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-quin,
 .sloth input[type=button]:not(.nons).outline.clr-quin,
 .sloth button:not(.nons).outline.clr-quin {
-  color: #e5a323;
+  color: #e9bc00;
+  color: var(--color-quinary, #e9bc00);
 }
 
 .sloth input[type=submit]:not(.nons).outline.clr-quin:hover,
 .sloth input[type=button]:not(.nons).outline.clr-quin:hover,
 .sloth button:not(.nons).outline.clr-quin:hover {
-  background: rgba(252, 200, 0, 0.12);
+  background: rgba(233, 188, 0, 0.12);
+  background: rgba(233, 188, 0, 0.2);
+  background: var(--color-quinary-active-light, rgba(233, 188, 0, 0.2));
 }
 
 .sloth .btn-fab:not(.nons) {
@@ -2065,38 +2269,46 @@ textarea {
 
 .sloth .btn-fab:not(.nons).clr-sec {
   background: #00a968;
+  background: var(--color-secondary, #00a968);
   color: #fff;
 }
 
 .sloth .btn-fab:not(.nons).clr-sec:hover {
-  background: rgba(0, 152, 84, 0.9);
+  background: #009058;
+  background: var(--color-secondary-active, #009058);
 }
 
 .sloth .btn-fab:not(.nons).clr-tert {
   background: #e8383d;
+  background: var(--color-tertiary, #e8383d);
   color: #fff;
 }
 
 .sloth .btn-fab:not(.nons).clr-tert:hover {
-  background: rgba(215, 0, 53, 0.9);
+  background: #e52127;
+  background: var(--color-tertiary-active, #e52127);
 }
 
 .sloth .btn-fab:not(.nons).clr-quat {
   background: #ee7800;
+  background: var(--color-quaternary, #ee7800);
   color: #fff;
 }
 
 .sloth .btn-fab:not(.nons).clr-quat:hover {
-  background: rgba(237, 109, 53, 0.98);
+  background: #d56b00;
+  background: var(--color-quaternary-active, #d56b00);
 }
 
 .sloth .btn-fab:not(.nons).clr-quin {
-  background: #e9bc00;
+  background: #fcc800;
+  background: var(--color-quinary, #e9bc00);
   color: #fff;
 }
 
 .sloth .btn-fab:not(.nons).clr-quin:hover {
-  background: rgba(229, 163, 35, 0.86);
+  background: #d0a700;
+  background: var(--color-quinary-active, #d0a700);
 }
 
 .sloth table:not(.nons) {
@@ -2460,254 +2672,254 @@ textarea {
 }
 
 .ma {
-  margin: auto;
+  margin: auto !important;
 }
 
 .m0 {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .m1 {
-  margin: 1rem;
+  margin: 1rem !important;
 }
 
 .m2 {
-  margin: 2rem;
+  margin: 2rem !important;
 }
 
 .mxa {
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: auto !important;
+  margin-left: auto !important;
 }
 
 .mx0 {
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 .mx1 {
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 1rem !important;
+  margin-left: 1rem !important;
 }
 
 .mx2 {
-  margin-right: 2rem;
-  margin-left: 2rem;
+  margin-right: 2rem !important;
+  margin-left: 2rem !important;
 }
 
 .mya {
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
 }
 
 .my0 {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .my1 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .my2 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 .mt0 {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .mt1 {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 
 .mt2 {
-  margin-top: 2rem;
+  margin-top: 2rem !important;
 }
 
 .mb0 {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .mb1 {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .mb2 {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 
 .ml0 {
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 .ml1 {
-  margin-left: 1rem;
+  margin-left: 1rem !important;
 }
 
 .ml2 {
-  margin-left: 2rem;
+  margin-left: 2rem !important;
 }
 
 .mr0 {
-  margin-right: 0;
+  margin-right: 0 !important;
 }
 
 .mr1 {
-  margin-right: 1rem;
+  margin-right: 1rem !important;
 }
 
 .mr2 {
-  margin-right: 2rem;
+  margin-right: 2rem !important;
 }
 
 .p0 {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .p1 {
-  padding: 1rem;
+  padding: 1rem !important;
 }
 
 .p2 {
-  padding: 2rem;
+  padding: 2rem !important;
 }
 
 .px0 {
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 .px1 {
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
 }
 
 .px2 {
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
 }
 
 .py0 {
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .py1 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 
 .py2 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .pt0 {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 .pt1 {
-  padding-top: 1rem;
+  padding-top: 1rem !important;
 }
 
 .pt2 {
-  padding-top: 2rem;
+  padding-top: 2rem !important;
 }
 
 .pb0 {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 
 .pb1 {
-  padding-bottom: 1rem;
+  padding-bottom: 1rem !important;
 }
 
 .pb2 {
-  padding-bottom: 2rem;
+  padding-bottom: 2rem !important;
 }
 
 .pl0 {
-  padding-left: 0;
+  padding-left: 0 !important;
 }
 
 .pl1 {
-  padding-left: 1rem;
+  padding-left: 1rem !important;
 }
 
 .pl2 {
-  padding-left: 2rem;
+  padding-left: 2rem !important;
 }
 
 .pr0 {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 .pr1 {
-  padding-right: 1rem;
+  padding-right: 1rem !important;
 }
 
 .pr2 {
-  padding-right: 2rem;
+  padding-right: 2rem !important;
 }
 
 .w-full,
 .w-1 {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .w-half,
 .w-1-2 {
-  width: 50%;
-  max-width: 50%;
+  width: 50% !important;
+  max-width: 50% !important;
 }
 
 .w-1-3 {
-  width: calc(100% / 3);
-  max-width: calc(100% / 3);
+  width: calc(100% / 3) !important;
+  max-width: calc(100% / 3) !important;
 }
 
 .w-2-3 {
-  width: calc(100% / 3 * 2);
-  max-width: calc(100% / 3 * 2);
+  width: calc(100% / 3 * 2) !important;
+  max-width: calc(100% / 3 * 2) !important;
 }
 
 .w-1-4 {
-  width: calc(100% / 4);
-  max-width: calc(100% / 4);
+  width: calc(100% / 4) !important;
+  max-width: calc(100% / 4) !important;
 }
 
 .w-3-4 {
-  width: calc(100% / 4 * 3);
-  max-width: calc(100% / 4 * 3);
+  width: calc(100% / 4 * 3) !important;
+  max-width: calc(100% / 4 * 3) !important;
 }
 
 .w-1-5 {
-  width: calc(100% / 5);
-  max-width: calc(100% / 5);
+  width: calc(100% / 5) !important;
+  max-width: calc(100% / 5) !important;
 }
 
 .w-2-5 {
-  width: calc(100% / 5 * 2);
-  max-width: calc(100% / 5 * 2);
+  width: calc(100% / 5 * 2) !important;
+  max-width: calc(100% / 5 * 2) !important;
 }
 
 .w-3-5 {
-  width: calc(100% / 5 * 3);
-  max-width: calc(100% / 5 * 3);
+  width: calc(100% / 5 * 3) !important;
+  max-width: calc(100% / 5 * 3) !important;
 }
 
 .w-1-6 {
-  width: calc(100% / 6);
-  max-width: calc(100% / 6);
+  width: calc(100% / 6) !important;
+  max-width: calc(100% / 6) !important;
 }
 
 .w-5-6 {
-  width: calc(100% / 6 * 5);
-  max-width: calc(100% / 6 * 5);
+  width: calc(100% / 6 * 5) !important;
+  max-width: calc(100% / 6 * 5) !important;
 }
 
 .min-w-sm {
@@ -2723,13 +2935,13 @@ textarea {
 }
 
 .h-full {
-  height: 100%;
-  max-height: 100%;
+  height: 100% !important;
+  max-height: 100% !important;
 }
 
 .h-half {
-  height: 50%;
-  max-height: 50%;
+  height: 50% !important;
+  max-height: 50% !important;
 }
 
 .fnt-xl {
@@ -2749,15 +2961,15 @@ textarea {
 }
 
 .upper {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 .lower {
-  text-transform: lowercase;
+  text-transform: lowercase !important;
 }
 
 .capital {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 
 .flx-row {
@@ -2833,7 +3045,7 @@ textarea {
 .item-start {
   -webkit-box-align: start;
       -ms-flex-align: start;
-          align-items: start;
+          align-items: flex-start;
 }
 
 .item-center {
@@ -2845,7 +3057,7 @@ textarea {
 .item-end {
   -webkit-box-align: end;
       -ms-flex-align: end;
-          align-items: end;
+          align-items: flex-end;
 }
 
 .grid {
@@ -2880,22 +3092,27 @@ textarea {
 
 .brd-prim {
   border: solid 1px #4183c4;
+  border-color: var(--color-primary, #4183c4);
 }
 
 .brd-sec {
   border: solid 1px #00a968;
+  border-color: var(--color-secondary, #00a968);
 }
 
 .brd-tert {
   border: solid 1px #e8383d;
+  border-color: var(--color-tertiary, #e8383d);
 }
 
 .brd-quat {
   border: solid 1px #ee7800;
+  border-color: var(--color-quaternary, #ee7800);
 }
 
 .brd-quin {
   border: solid 1px #e9bc00;
+  border-color: var(--color-quinary, #e9bc00);
 }
 
 .bg-white {
@@ -2928,22 +3145,27 @@ textarea {
 
 .bg-prim {
   background-color: #4183c4;
+  background-color: var(--color-primary, #4183c4);
 }
 
 .bg-sec {
   background-color: #00a968;
+  background-color: var(--color-secondary, #00a968);
 }
 
 .bg-tert {
   background-color: #e8383d;
+  background-color: var(--color-tertiary, #e8383d);
 }
 
 .bg-quat {
   background-color: #ee7800;
+  background-color: var(--color-quaternary, #ee7800);
 }
 
 .bg-quin {
   background-color: #e9bc00;
+  background-color: var(--color-quinary, #e9bc00);
 }
 
 .txt-white {
@@ -2977,22 +3199,27 @@ textarea {
 
 .txt-prim {
   color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .txt-sec {
   color: #00a968;
+  color: var(--color-secondary, #00a968);
 }
 
 .txt-tert {
   color: #e8383d;
+  color: var(--color-tertiary, #e8383d);
 }
 
 .txt-quat {
   color: #ee7800;
+  color: var(--color-quaternary, #ee7800);
 }
 
 .txt-quin {
   color: #e9bc00;
+  color: var(--color-quinary, #e9bc00);
 }
 
 .txt-left {
