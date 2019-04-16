@@ -13,14 +13,14 @@ The Sloth supports SCSS and postCSS, and you can customize your build with the i
 
 
 Or, you can clone the source:
-```
-$ git clone https://github.com/ka215/sloth.git
+```gitattributes
+git clone https://github.com/ka215/sloth.git
 ```
 
 ## Usage
 
 The Sloth provides one CSS file `sloth.min.css` that minified. In order to use one, you can add a `<link>` in your `<head>`.
-```
+```html
 <!doctype html>
 <html>
 <head>
@@ -39,7 +39,7 @@ The Sloth provides one CSS file `sloth.min.css` that minified. In order to use o
 Marking up in the Sloth style is very easy. Basically, you can complete most of your work simply by declaring the `.sloth` class to the parent element you want to apply style to.
 
 You can apply the Sloth style on the entire page by assigning the `.sloth` class to the `<body>` element.
-```
+```html
 <body class="sloth">
  ︙
 </body>
@@ -47,14 +47,14 @@ You can apply the Sloth style on the entire page by assigning the `.sloth` class
 
 Alternatively, it is possible to apply the Sloth style only within a specific element as shown below.
 
-```
+```html
 <div class="sloth">
  ︙
 </div>
 ```
 
 Also, by using the `.nons` class in the element to which the Sloth style is applied, it is possible to exclude only a specific element from the Sloth style application.
-```
+```html
 <body class="sloth">
    ︙
   <h1 class="nons">Not Sloth Styled headline</h1>
