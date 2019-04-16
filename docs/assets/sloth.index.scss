@@ -192,6 +192,29 @@ body > *:not(.navi-menu) {
   display: flex;
   flex-direction: column;
 }
+
+.ad-block {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100px;
+  margin: 0 auto 1rem;
+}
+@media (min-width: 500px) {
+  .ad-block {
+    width: 468px;
+    height: 60px;
+  }
+}
+@media (min-width: 800px) {
+  .ad-block {
+    width: 728px;
+    height: 90px;
+    left: calc((56px / -2) - 1.5rem);
+  }
+}
+
 .exam1 {
   width: 100%;
   height: 6rem;

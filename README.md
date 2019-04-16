@@ -10,7 +10,15 @@ The Sloth supports SCSS and postCSS, and you can customize your build with the i
 
 ## Installation
 
+You can install via bower:
+```sh
+bower install --save sloth
+```
 
+Or, you can install via npm:
+```sh
+npm install --save sloth
+```
 
 Or, you can clone the source:
 ```gitattributes

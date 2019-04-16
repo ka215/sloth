@@ -440,11 +440,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email address">
-        <label for="passwd">Password</label>
-        <input type="password" id="passwd" placeholder="Enter your password">
+      <form autocomplete="off">
+        <label for="ameli">Email</label>
+        <input type="email" id="ameli" placeholder="Enter your email address" autocomplete="nope">
+        <label for="salting">Password</label>
+        <input type="password" id="salting" placeholder="Enter your password" autocomplete="new-password">
         <label for="bio">Biography</label>
         <textarea id="bio" placeholder="Tell us about yourself"></textarea>
       </form>
@@ -454,7 +454,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;label for="email">Email&lt;/label>
   &lt;input type="email" id="email" placeholder="Enter your email address">
   &lt;label for="passwd">Password&lt;/label>
-  &lt;input type="password" id="passwd" placeholder="Enter your password">
+  &lt;input type="password" id="passwd" placeholder="Enter your password" autocomplete="new-password">
   &lt;label for="bio">Biography&lt;/label>
   &lt;textarea id="bio" placeholder="Tell us about yourself">&lt;/textarea>
 &lt;/form></code></pre>

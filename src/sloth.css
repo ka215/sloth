@@ -2,7 +2,7 @@
 /*!
 Sloth CSS micro framework
 v1.0.0
-Last Updated: 2019-03-21
+Last Updated: 2019-04-16
 Author: Ka2 - https://ka2.org
 */
 /* like spectrum blue */
@@ -211,13 +211,13 @@ svg {
 }
 
 ins {
-  background-color: #ff9;
+  background-color: transparent;
   color: #212529;
   text-decoration: none;
 }
 
 mark {
-  background-color: #ff9;
+  background-color: transparent;
   color: #212529;
   font-style: italic;
   font-weight: bold;
