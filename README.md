@@ -1,4 +1,4 @@
-# Sloth
+<h1><img src="https://ka215.github.io/sloth/assets/sloth.svg" height="32"> Sloth</h1>
 
 Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
 
@@ -12,7 +12,7 @@ The Sloth supports SCSS and postCSS, and you can customize your build with the i
 
 You can install via bower:
 ```sh
-bower install --save sloth
+bower install --save sloth-css
 ```
 
 Or, you can install via npm:
