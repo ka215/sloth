@@ -56,7 +56,7 @@
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
-    <small class="muted">Latest Version: 1.0.0</small>
+    <small class="muted">Latest Version: 1.0.2</small>
   </div>
 </header>
 <article id="why-sloth" class="lead-block">
@@ -68,7 +68,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em>9.98kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec">10.1kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -261,13 +261,15 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   </aside>
   <div class="flx-row flx-wrap my1">
     <div class="w-half">
-      <p>
-        <span data-ruby="Kyōto">京都</span>
+      <p class="lh-2">
+        <span data-ruby="Kyōto">京都</span><br>
+        <span data-ruby="Xiānggǎng">香港</span>
       </p>
     </div>
     <div class="w-half">
-      <pre class="prettyprint"><code>&lt;p>
-  &lt;span data-ruby="Kyōto">京都&lt;/span>
+      <pre class="prettyprint"><code>&lt;p class="lh-2">
+  &lt;span data-ruby="Kyōto">京都&lt;/span>&lt;br>
+  &lt;span data-ruby="Xiānggǎng">香港&lt;/span>
 &lt;/p>
 </code></pre>
     </div>
@@ -739,12 +741,12 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     <div class="w-half">
       <form>
         <label for="field-1" class="floating">
-          <input type="text" id="field-1" placeholder="&nbsp;">
+          <input type="text" id="field-1" placeholder="&nbsp;" autocomplete="nope">
           <span class="label">Name</span>
           <span class="border"></span>
         </label>
         <label for="field-2" class="floating">
-          <input type="password" id="field-2" placeholder="&nbsp;">
+          <input type="password" id="field-2" placeholder="&nbsp;" autocomplete="new-password">
           <span class="label">Password</span>
           <span class="border"></span>
         </label>
@@ -1607,6 +1609,26 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 </code></pre>
     </div>
   </div>
+  <h6 class="muted">Line-height</h6>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <p class="lh-1">
+        The line-height CSS property sets the amount of space used for lines, such as in text.
+      </p>
+      <p class="lh-2">
+        The ".lh-2" class is same as "line-height: 2". That is the best size for the context that contains the ruby.
+      </p>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;p class="lh-1">
+  The line-height CSS property...
+&lt;/p>
+&lt;p class="lh-2">
+  The ".lh-2" class is...
+&lt;/p>
+</code></pre>
+    </div>
+  </div>
   <h6 class="muted">Text transforms</h6>
   <div class="flx-row my1">
     <div class="w-half">
@@ -1648,6 +1670,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   --base-font-size-sm: 1.4rem;
   --base-font-size-md: 1.1667rem;
   --base-font-size-lg: 1.1429rem;
+
+  --ruby-font-size: 0.65em;
 
   --color-primary: #4183c4;
   --color-primary-active: #3876b4;
@@ -1719,10 +1743,6 @@ window.addEventListener('load',function(){
     
     let resources = [ 'assets/sloth.min.css', 'assets/sloth.index.min.css' ]
     
-    resources.forEach( (file) => {
-        loadCSS( file )
-    })
-    
     let el1 = document.getElementById('toggle-navi-menu'),
         el2 = document.getElementById('close-navi')
     
@@ -1753,10 +1773,17 @@ window.addEventListener('load',function(){
         let item = v.split('=')
         paramArray[item[0]] = item[1]
       })
+      if ( paramArray.dev === '1' ) {
+        resources[0] = '../dist/sloth.min.css'
+      }
       if ( paramArray.navi === '1' ) {
         toggleNaviMenu( true )
       }
     }
+    
+    resources.forEach( (file) => {
+        loadCSS( file )
+    })
     
     let btn1 = document.getElementById('btn-change-color')
     btn1.addEventListener('click', () => {
@@ -1764,7 +1791,7 @@ window.addEventListener('load',function(){
         let varName = document.getElementById('override-color').value,
             color = document.getElementById('color-code').value
         if ( varName && color ) {
-console.log( varName, color, root.style.getPropertyValue( varName ) )
+          // console.log( varName, color, root.style.getPropertyValue( varName ) )
           root.style.setProperty( varName, color )
         }
     })

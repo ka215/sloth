@@ -48,7 +48,7 @@
   blockquote:not(#{$not}) {
     padding: 1rem 0 1rem 2rem;
     border-left: solid 3px $light-gray;
-    font-size: 80%;
+    font-size: 90%;
 
     cite {
       display: block;
@@ -58,8 +58,9 @@
       text-align: right;
 
       &::before {
+        position: relative;
         content: $cite-bar;
-        color: $gray;
+        color: rgba($gray, 0.75);
       }
     }
   }
@@ -81,24 +82,31 @@
     & > rt {
       font-family: monospace, serif;
       font-size: $ruby-size;
+      font-size: var(--ruby-font-size, $ruby-size);
       font-weight: 200;
     }
   }
 
   [data-ruby]:not(#{$not}) {
     position: relative;
+    display: inline-block;
 
     &::after {
       content: attr(data-ruby);
       position: absolute;
       display: inline-block;
-      left: 0;
-      top: calc(-2 * #{$ruby-size});
-      width: 100%;
+      left: 50%;
+      top: calc(-1.6 * #{$ruby-size});
+      min-width: 100%;
+      width: max-content;
       font-family: monospace, serif;
       font-size: $ruby-size;
+      font-size: var(--ruby-font-size, $ruby-size);
       font-weight: 200;
       text-align: center;
+      white-space: nowrap;
+      word-break: normal;
+      transform: translate(-50%);
     }
   }
 

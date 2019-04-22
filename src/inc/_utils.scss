@@ -327,6 +327,16 @@
 .v-middle { vertical-align: middle; }
 .v-bottom { vertical-align: bottom; }
 
+.lh-1 { line-height: 1; }
+.lh-2 { line-height: 2; }
+
+[data-lh] {
+  --current-line-height: attr(data-lh, inherit);
+
+  line-height: inherit;
+  line-height: var(--current-line-height, inherit);
+}
+
 .note {
   position: relative;
   padding-left: 1.5rem;

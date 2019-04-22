@@ -1,13 +1,13 @@
 @charset "UTF-8";
 /*!
 Sloth CSS micro framework
-v1.0.0
-Last Updated: 2019-04-16
+v1.0.2
+Last Updated: 2019-04-22
 Author: Ka2 - https://ka2.org
 */
 /* like spectrum blue */
 /* like cobalt-blue */
-/* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A", three-emdash: "\2E3B" and no-break-space: "\00A0" */
+/* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A" (ng to safari), three-emdash: "\2E3B" and no-break-space: "\00A0" */
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
 /* North East Arrow */
 *,
@@ -371,7 +371,7 @@ textarea {
 .sloth blockquote:not(.nons) {
   padding: 1rem 0 1rem 2rem;
   border-left: solid 3px #d3d3d3;
-  font-size: 80%;
+  font-size: 90%;
 }
 
 .sloth blockquote:not(.nons) cite {
@@ -383,8 +383,9 @@ textarea {
 }
 
 .sloth blockquote:not(.nons) cite::before {
-  color: #7d7d7d;
-  content: "⸺ ";
+  position: relative;
+  color: rgba(125, 125, 125, 0.75);
+  content: "— ";
 }
 
 .sloth hr:not(.nons).dotted {
@@ -407,23 +408,33 @@ textarea {
 .sloth ruby:not(.nons) > rt {
   font-family: monospace, serif;
   font-size: 0.65em;
+  font-size: var(--ruby-font-size, 0.65em);
   font-weight: 200;
 }
 
 .sloth [data-ruby]:not(.nons) {
+  display: inline-block;
   position: relative;
 }
 
 .sloth [data-ruby]:not(.nons)::after {
+  -webkit-transform: translate(-50%);
   display: inline-block;
   position: absolute;
-  top: calc(-2 * 0.65em);
-  left: 0;
-  width: 100%;
+  top: calc(-1.6 * 0.65em);
+  left: 50%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 100%;
+          transform: translate(-50%);
   font-family: monospace, serif;
   font-size: 0.65em;
+  font-size: var(--ruby-font-size, 0.65em);
   font-weight: 200;
   text-align: center;
+  white-space: nowrap;
+  word-break: normal;
   content: attr(data-ruby);
 }
 
@@ -3248,6 +3259,20 @@ textarea {
 
 .v-bottom {
   vertical-align: bottom;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.lh-2 {
+  line-height: 2;
+}
+
+[data-lh] {
+  --current-line-height: attr(data-lh, inherit);
+  line-height: inherit;
+  line-height: var(--current-line-height, inherit);
 }
 
 .note {
