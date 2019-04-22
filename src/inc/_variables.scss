@@ -86,8 +86,8 @@ $qiita:              #59bb0c;
 $pocket:             #f03e51;
 $feedly:             #6cc655;
 
-/* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A", three-emdash: "\2E3B" and no-break-space: "\00A0" */
-$cite-bar: "\2E3A \00A0";
+/* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A" (ng to safari), three-emdash: "\2E3B" and no-break-space: "\00A0" */
+$cite-bar: "\2014 \00A0";
 
 $ruby-size: 0.65em;
 

@@ -6,7 +6,7 @@ The Sloth is lightweight as it saves the effort to rely on the legacy browser. A
 
 The Sloth supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.
 
-**9.98kB gzipped** at this time.
+**10.1kB gzipped** at this time.
 
 ## Installation
 
