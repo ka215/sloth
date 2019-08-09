@@ -250,72 +250,72 @@
   border-color: var(--color-quinary, $yellow);
 }
 
-.bg-white { background-color: $white; }
-.bg-whitesmoke { background-color: $white-smoke; }
-.bg-lightgray { background-color: $light-gray; }
-.bg-fog { background-color: $fog; }
-.bg-gray { background-color: $gray; }
-.bg-darkgray { background-color: $dark-gray; }
-.bg-black { background-color: $black; }
+.bg-white { background-color: $white !important; }
+.bg-whitesmoke { background-color: $white-smoke !important; }
+.bg-lightgray { background-color: $light-gray !important; }
+.bg-fog { background-color: $fog !important; }
+.bg-gray { background-color: $gray !important; }
+.bg-darkgray { background-color: $dark-gray !important; }
+.bg-black { background-color: $black !important; }
 
 .bg-prim {
-  background-color: $blue;
-  background-color: var(--color-primary, $blue);
+  background-color: $blue !important;
+  background-color: var(--color-primary, $blue) !important;
 }
 
 .bg-sec {
-  background-color: $green;
-  background-color: var(--color-secondary, $green);
+  background-color: $green !important;
+  background-color: var(--color-secondary, $green) !important;
 }
 
 .bg-tert {
-  background-color: $signal-red;
-  background-color: var(--color-tertiary, $signal-red);
+  background-color: $signal-red !important;
+  background-color: var(--color-tertiary, $signal-red) !important;
 }
 
 .bg-quat {
-  background-color: $orange;
-  background-color: var(--color-quaternary, $orange);
+  background-color: $orange !important;
+  background-color: var(--color-quaternary, $orange) !important;
 }
 
 .bg-quin {
-  background-color: $yellow;
-  background-color: var(--color-quinary, $yellow);
+  background-color: $yellow !important;
+  background-color: var(--color-quinary, $yellow) !important;
 }
 
-.txt-white { color: $white; }
-.txt-whitesmoke { color: $white-smoke; }
-.txt-lightgray { color: $light-gray; }
-.txt-fog { color: $fog; }
+.txt-white { color: $white !important; }
+.txt-whitesmoke { color: $white-smoke !important; }
+.txt-lightgray { color: $light-gray !important; }
+.txt-fog { color: $fog !important; }
 
 .muted,
-.txt-gray { color: $gray; }
-.txt-darkgray { color: $dark-gray; }
-.txt-black { color: $black; }
+.txt-gray { color: $gray !important; }
+.txt-darkgray { color: $dark-gray !important; }
+.txt-black { color: $black !important; }
 
 .txt-prim {
-  color: $blue;
-  color: var(--color-primary, $blue);
+  color: $blue !important;
+  color: var(--color-primary, $blue) !important;
 }
 
 .txt-sec {
-  color: $green;
-  color: var(--color-secondary, $green);
+  color: $green !important;
+  color: var(--color-secondary, $green) !important;
 }
 
 .txt-tert {
-  color: $signal-red;
-  color: var(--color-tertiary, $signal-red);
+  color: $signal-red !important;
+  color: var(--color-tertiary, $signal-red) !important;
 }
 
 .txt-quat {
-  color: $orange;
-  color: var(--color-quaternary, $orange);
+  color: $orange !important;
+  color: var(--color-quaternary, $orange) !important;
 }
 
 .txt-quin {
-  color: $yellow;
-  color: var(--color-quinary, $yellow);
+  color: $yellow !important;
+  color: var(--color-quinary, $yellow) !important;
 }
 
 .txt-left { text-align: left; }

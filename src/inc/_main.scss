@@ -312,7 +312,11 @@
     button,
     select,
     textarea {
-      width: auto !important;
+      width: auto;
+    }
+
+    .upload:not(#{$not}) {
+      margin-bottom: 0 !important;
     }
   }
 
@@ -333,7 +337,7 @@
   textarea {
     appearance: none;
     display: inline-block;
-    width: 100%;
+    width: inherit;
     padding: 0.3em 0.5em;
     font-size: inherit;
     background: $white;
@@ -357,6 +361,65 @@
       &::-webkit-input-placeholder { color: $gray; }
       &::-moz-placeholder { color: $gray; }
       &:-ms-input-placeholder { color: $gray; }
+    }
+  }
+
+  .upload:not(#{$not}) {
+    input[type=file] {
+      display: none;
+    }
+  }
+
+  .tgl-view {
+    position: relative;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0;
+    background: $white;
+    border: 1px solid rgba($black, 0.15);
+    color: rgba($black, 0.87);
+    border-radius: 0.2857rem;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent inset;
+    transition: color 0.1s ease, border-color 0.1s ease;
+
+    input[type=text],
+    input[type=password] {
+      margin: 0 !important;
+      border: none !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+
+      + span {
+        display: inline-block;
+        margin: 0;
+        padding: 0.3em 0.5em;
+        font-size: inherit;
+        background: $white;
+        color: rgba($black, 0.33);
+        border: 1px solid rgba($black, 0.15);
+        border-width: 0 0 0 1px;
+        border-radius: 0.2857rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        outline: 0;
+        cursor: pointer;
+        box-shadow: 0 0 0 0 transparent inset;
+        transition: color 0.1s ease, border-color 0.1s ease;
+
+        & > * {
+          pointer-events: none;
+        }
+
+        &:hover {
+          color: rgba($black, 0.66);
+        }
+
+        &.active {
+          color: $green;
+        }
+      }
     }
   }
 
@@ -1365,7 +1428,7 @@
     }
   }
 
-  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
+  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) {
     display: inline-block;
     width: max-content;
     margin: auto 1em auto 0;
@@ -1390,7 +1453,7 @@
     ~ textarea {
       appearance: none;
       display: inline-block;
-      width: 100%;
+      width: auto;
       margin: auto 1em auto 0;
       padding: 0.3em 0.5em;
       font-size: inherit;
@@ -1437,6 +1500,7 @@
     }
   }
 
+  .upload:not(#{$not}),
   input[type=submit]:not(#{$not}),
   input[type=button]:not(#{$not}),
   button:not(#{$not}) {
