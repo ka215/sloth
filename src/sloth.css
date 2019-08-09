@@ -1,9 +1,9 @@
 @charset "UTF-8";
 /*!
 Sloth CSS micro framework
-v1.0.2
-Last Updated: 2019-04-22
-Author: Ka2 - https://ka2.org
+v1.0.3
+Last Updated: August 8,2019
+Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
 /* like cobalt-blue */
@@ -13,8 +13,7 @@ Author: Ka2 - https://ka2.org
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -253,8 +252,7 @@ th {
 }
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   display: block;
   height: 1px;
   margin: 1em 0;
@@ -418,7 +416,6 @@ textarea {
 }
 
 .sloth [data-ruby]:not(.nons)::after {
-  -webkit-transform: translate(-50%);
   display: inline-block;
   position: absolute;
   top: calc(-1.6 * 0.65em);
@@ -427,7 +424,7 @@ textarea {
   width: -moz-max-content;
   width: max-content;
   min-width: 100%;
-          transform: translate(-50%);
+  transform: translate(-50%);
   font-family: monospace, serif;
   font-size: 0.65em;
   font-size: var(--ruby-font-size, 0.65em);
@@ -439,7 +436,6 @@ textarea {
 }
 
 .sloth a:not(.nons) {
-  -webkit-transition: color 0.2s;
   -webkit-text-decoration-skip: objects;
   display: inline;
   z-index: 0;
@@ -450,16 +446,14 @@ textarea {
 }
 
 .sloth a:not(.nons)::before {
-  -webkit-transition: all 0.2s;
   -webkit-backface-visibility: hidden;
-  -webkit-transform: scaleX(0);
   position: absolute;
   top: auto;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 1px;
-          transform: scaleX(0);
+  transform: scaleX(0);
           backface-visibility: hidden;
   background-color: #4183c4;
   background-color: var(--color-primary, #4183c4);
@@ -474,8 +468,7 @@ textarea {
 }
 
 .sloth a:not(.nons):hover::before {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .sloth a:not(.nons)[target="_blank"], .sloth a:not(.nons)[rel="external"] {
@@ -517,18 +510,10 @@ textarea {
 }
 
 .sloth address:not(.nons) {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-  -ms-flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-direction: column;
-      flex-wrap: nowrap;
-          justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .sloth address:not(.nons) > *:not(.nons) {
@@ -540,15 +525,9 @@ textarea {
 }
 
 .sloth .crumbs:not(.nons) {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-  -ms-flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-direction: row;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin: 0.5rem;
   padding: 0;
   list-style: none;
@@ -628,18 +607,10 @@ textarea {
 }
 
 .sloth .inline:not(.nons) {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-  -ms-flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-direction: row;
-      flex-wrap: wrap;
-          align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 0.5rem;
   padding: 0;
   list-style: none;
@@ -668,7 +639,11 @@ textarea {
 .sloth .inline:not(.nons) button,
 .sloth .inline:not(.nons) select,
 .sloth .inline:not(.nons) textarea {
-  width: auto !important;
+  width: auto;
+}
+
+.sloth .inline:not(.nons) .upload:not(.nons) {
+  margin-bottom: 0 !important;
 }
 
 .sloth input:not([type]),
@@ -689,16 +664,14 @@ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   display: inline-block;
-  width: 100%;
+  width: inherit;
   padding: 0.3em 0.5em;
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
   outline: 0;
   background: #fff;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
   caret-color: var(--color-primary, #4183c4);
@@ -721,12 +694,11 @@ textarea {
 .sloth input[list]:focus,
 .sloth select:focus,
 .sloth textarea:focus {
-  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
   background: #fff;
-          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
 
@@ -784,6 +756,67 @@ textarea {
   color: #7d7d7d;
 }
 
+.sloth .upload:not(.nons) input[type=file] {
+  display: none;
+}
+
+.sloth .tgl-view {
+  display: flex !important;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  border-radius: 0.2857rem;
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 0 transparent inset;
+  color: rgba(33, 37, 41, 0.87);
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.sloth .tgl-view input[type=text],
+.sloth .tgl-view input[type=password] {
+  margin: 0 !important;
+  border: none !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.sloth .tgl-view input[type=text] + span,
+.sloth .tgl-view input[type=password] + span {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3em 0.5em;
+  border: 1px solid rgba(33, 37, 41, 0.15);
+  border-width: 0 0 0 1px;
+  border-radius: 0.2857rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 0 0 transparent inset;
+  color: rgba(33, 37, 41, 0.33);
+  font-size: inherit;
+  cursor: pointer;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.sloth .tgl-view input[type=text] + span > *,
+.sloth .tgl-view input[type=password] + span > * {
+  pointer-events: none;
+}
+
+.sloth .tgl-view input[type=text] + span:hover,
+.sloth .tgl-view input[type=password] + span:hover {
+  color: rgba(33, 37, 41, 0.66);
+}
+
+.sloth .tgl-view input[type=text] + span.active,
+.sloth .tgl-view input[type=password] + span.active {
+  color: #00a968;
+}
+
 .sloth .checkbox {
   display: block;
   position: relative;
@@ -805,14 +838,13 @@ textarea {
 }
 
 .sloth .checkbox .indicator::after {
-  -webkit-transform: rotate(45deg);
   display: none;
   position: absolute;
   top: 0.1rem;
   left: 0.5rem;
   width: 0.5rem;
   height: 1rem;
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   border: solid #fff;
   border-width: 0 2px 2px 0;
   content: '';
@@ -1064,12 +1096,10 @@ textarea {
 }
 
 .sloth .floating .label {
-  -webkit-transform-origin: 0 0;
-  -webkit-transition: all 0.2s ease;
   position: absolute;
   top: 1.4rem;
   left: 0;
-          transform-origin: 0 0;
+  transform-origin: 0 0;
   color: #7d7d7d;
   font-size: 1.4rem;
   font-weight: 500;
@@ -1077,16 +1107,13 @@ textarea {
 }
 
 .sloth .floating .border {
-  -webkit-transform: scaleX(0);
-  -webkit-transform-origin: 0 0;
-  -webkit-transition: all 0.15s ease;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 1px;
-          transform: scaleX(0);
-          transform-origin: 0 0;
+  transform: scaleX(0);
+  transform-origin: 0 0;
   background: #4183c4;
   background: var(--color-primary, #4183c4);
   transition: all 0.15s ease;
@@ -1096,7 +1123,6 @@ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-transition: all 0.15s ease;
   width: 100%;
   height: calc(1.4rem * 2.5);
   padding: 1.5rem 0.3rem 1rem;
@@ -1119,8 +1145,7 @@ textarea {
 }
 
 .sloth .floating input:not(:placeholder-shown) ~ .label {
-  -webkit-transform: translateY(-2.2rem) scale(0.75);
-          transform: translateY(-2.2rem) scale(0.75);
+  transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
   color: var(--color-primary, #4183c4);
 }
@@ -1132,22 +1157,19 @@ textarea {
 
 .sloth .floating input:focus ~ label,
 .sloth .floating input:focus ~ .label {
-  -webkit-transform: translateY(-2.2rem) scale(0.75);
-          transform: translateY(-2.2rem) scale(0.75);
+  transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
   color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating input:focus ~ .border {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .sloth .floating textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-transition: all 0.15s ease;
   width: 100%;
   min-height: calc(1em * 2.5);
   margin-bottom: 0;
@@ -1172,8 +1194,7 @@ textarea {
 
 .sloth .floating textarea:not(:placeholder-shown) ~ label,
 .sloth .floating textarea:not(:placeholder-shown) ~ .label {
-  -webkit-transform: translateY(-2.2rem) scale(0.75);
-          transform: translateY(-2.2rem) scale(0.75);
+  transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
   color: var(--color-primary, #4183c4);
 }
@@ -1185,15 +1206,13 @@ textarea {
 
 .sloth .floating textarea:focus ~ label,
 .sloth .floating textarea:focus ~ .label {
-  -webkit-transform: translateY(-2.2rem) scale(0.75);
-          transform: translateY(-2.2rem) scale(0.75);
+  transform: translateY(-2.2rem) scale(0.75);
   color: #4183c4;
   color: var(--color-primary, #4183c4);
 }
 
 .sloth .floating textarea:focus ~ .border {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .sloth select,
@@ -1201,8 +1220,6 @@ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   display: inline-block;
   width: 100%;
   margin-bottom: 0.3rem;
@@ -1211,7 +1228,7 @@ textarea {
   border-radius: 0.2857rem;
   outline: 0;
   background: none #fff;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: #212529;
   caret-color: #4183c4;
   caret-color: var(--color-primary, #4183c4);
@@ -1221,12 +1238,11 @@ textarea {
 
 .sloth select:focus,
 .sloth textarea:focus {
-  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
   background: #fff;
-          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
 
@@ -1282,13 +1298,12 @@ textarea {
 }
 
 .sloth .dropdown.caret::after {
-  -webkit-transform: rotate(90deg);
   z-index: 1;
   position: absolute;
   right: 0.3em;
   bottom: 0.3em;
   padding-bottom: 0.3em;
-          transform: rotate(90deg);
+  transform: rotate(90deg);
   border: solid 1px #abb1b5;
   border-width: 0 0 1px 0;
   background: transparent;
@@ -1300,14 +1315,13 @@ textarea {
 }
 
 .sloth .dropdown:not(.caret)::after {
-  -webkit-transform: rotate(45deg);
   z-index: 1;
   position: absolute;
   right: 1em;
   bottom: calc(1em + 0.3rem);
   width: 0.75em;
   height: 0.75em;
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   border: solid #abb1b5;
   border-width: 0 0.2rem 0.2rem 0;
   background: transparent;
@@ -1345,8 +1359,6 @@ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   display: inline-block;
   width: auto;
   width: -webkit-max-content;
@@ -1359,7 +1371,7 @@ textarea {
   outline: 0;
   /* 90% * 111.11% = 1em */
   background: #fff;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
   caret-color: var(--color-primary, #4183c4);
@@ -1376,14 +1388,13 @@ textarea {
 }
 
 .sloth .combo-box:not(.nons) input[list] ~ .indicator::after {
-  -webkit-transform: rotate(45deg);
   z-index: 1;
   position: absolute;
   top: 0.2em;
   left: 0;
   width: 0.5em;
   height: 0.5em;
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   border: solid #abb1b5;
   border-width: 0 0.2rem 0.2rem 0;
   background: transparent;
@@ -1392,12 +1403,11 @@ textarea {
 }
 
 .sloth .combo-box:not(.nons) input[list]:focus {
-  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
   background: #fff;
-          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
 
@@ -1445,8 +1455,15 @@ textarea {
 .sloth .tgl:not(.nons) input[type="checkbox"] *::after,
 .sloth .tgl:not(.nons) input[type="checkbox"] *::before,
 .sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.sloth .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
+.sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
+  background: none;
 }
 
 .sloth .tgl:not(.nons) input[type="checkbox"]::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::after::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::before::selection,
@@ -1461,7 +1478,6 @@ textarea {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-  -webkit-transition: all 0.4s ease;
   display: block;
   position: absolute;
   top: 0;
@@ -1487,7 +1503,6 @@ textarea {
 }
 
 .sloth .tgl:not(.nons) input[type="checkbox"] + .tgl-btn::after {
-  -webkit-transition: all 0.2s ease;
   left: 0;
   /* theme */
   border-radius: 50%;
@@ -1535,7 +1550,6 @@ textarea {
 }
 
 .sloth .tgl:not(.nons).flat input[type="checkbox"] + .tgl-btn {
-  -webkit-transition: all 0.2s ease;
   padding: 3px;
   border: 4px solid #d3d3d3;
   background: transparent;
@@ -1616,16 +1630,14 @@ textarea {
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn {
-  -webkit-perspective: 10rem;
   padding: 3px;
   background: transparent;
   font-family: inherit;
-          perspective: 10rem;
+  perspective: 10rem;
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::after, .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::before {
   -webkit-backface-visibility: hidden;
-  -webkit-transition: background 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
   display: inline-block;
   position: absolute;
   top: 0;
@@ -1637,14 +1649,11 @@ textarea {
   font-weight: 600;
   line-height: 2em;
   text-align: center;
-  transition: background 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
   transition: background 0.4s ease, transform 0.4s ease, content 0.4s ease;
-  transition: background 0.4s ease, transform 0.4s ease, content 0.4s ease, -webkit-transform 0.4s ease;
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn::after {
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
   background: #4183c4;
   background: var(--color-primary, #4183c4);
   content: attr(data-tgl-on);
@@ -1656,26 +1665,22 @@ textarea {
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"] + .tgl-btn:active::before {
-  -webkit-transform: rotateY(-20deg);
-          transform: rotateY(-20deg);
+  transform: rotateY(-20deg);
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn::before {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn::after {
-  -webkit-transform: rotateY(0);
   left: 0;
-          transform: rotateY(0);
+  transform: rotateY(0);
   background: #4183c4;
   background: var(--color-primary, #4183c4);
 }
 
 .sloth .tgl:not(.nons).flip input[type="checkbox"]:checked + .tgl-btn:active::after {
-  -webkit-transform: rotateY(20deg);
-          transform: rotateY(20deg);
+  transform: rotateY(20deg);
 }
 
 .sloth .tgl:not(.nons).flip.clr-prim input[type="checkbox"] + .tgl-btn::after {
@@ -1748,7 +1753,7 @@ textarea {
   background: var(--color-quinary, #e9bc00);
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) {
   display: inline-block;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1759,35 +1764,33 @@ textarea {
   font-weight: 500;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]),
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]),
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   display: inline-block;
-  width: 100%;
+  width: auto;
   margin: auto 1em auto 0;
   padding: 0.3em 0.5em;
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
   outline: 0;
   background: #fff;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
   caret-color: var(--color-primary, #4183c4);
@@ -1795,102 +1798,102 @@ textarea {
   transition: color 0.1s ease, border-color 0.1s ease;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus {
-  -webkit-box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]):focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list]:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select:focus,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea:focus {
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
   background: #fff;
-          box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
+  box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-webkit-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-webkit-input-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]):focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list]:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select:focus::-webkit-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea:focus::-webkit-input-placeholder {
   color: #7d7d7d;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus::-moz-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus::-moz-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]):focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list]:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select:focus::-moz-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea:focus::-moz-placeholder {
   color: #7d7d7d;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input:not([type]):focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=date]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=datetime-local]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=email]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=file]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=number]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=password]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=search]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=tel]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=text]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=time]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[type=url]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ input[list]:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ select:focus:-ms-input-placeholder,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) ~ textarea:focus:-ms-input-placeholder {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]):focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list]:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select:focus:-ms-input-placeholder,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea:focus:-ms-input-placeholder {
   color: #7d7d7d;
 }
 
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input:not([type]),
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=date],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=datetime-local],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=email],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=file],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=number],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=password],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=search],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=tel],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=text],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=time],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[type=url],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + input[list],
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + select,
-.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn) + textarea {
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input:not([type]),
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=date],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=datetime-local],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=email],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=file],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=number],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=password],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=search],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=tel],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=text],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=time],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[type=url],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + input[list],
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + select,
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + textarea {
   margin-left: 0;
 }
 
+.sloth .upload:not(.nons),
 .sloth input[type=submit]:not(.nons),
 .sloth input[type=button]:not(.nons),
 .sloth button:not(.nons) {
@@ -1900,9 +1903,7 @@ textarea {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.2s ease-out;
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1911,7 +1912,7 @@ textarea {
   border-radius: 3px;
   outline: none;
   background: #d3d3d3;
-          box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(89, 78, 82, 0.14), 0 1px 5px 0 rgba(89, 78, 82, 0.12), 0 3px 1px -2px rgba(89, 78, 82, 0.2);
   color: #594e52;
   font-size: inherit;
   font-weight: 500;
@@ -1923,6 +1924,7 @@ textarea {
           user-select: none;
 }
 
+.sloth .upload:not(.nons)[type=submit],
 .sloth input[type=submit]:not(.nons)[type=submit],
 .sloth input[type=button]:not(.nons)[type=submit],
 .sloth button:not(.nons)[type=submit] {
@@ -1931,14 +1933,15 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons):hover,
 .sloth input[type=submit]:not(.nons):hover,
 .sloth input[type=button]:not(.nons):hover,
 .sloth button:not(.nons):hover {
-  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
   background: #c6c6c6;
-          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+  box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
 }
 
+.sloth .upload:not(.nons)[type=submit]:hover,
 .sloth input[type=submit]:not(.nons)[type=submit]:hover,
 .sloth input[type=button]:not(.nons)[type=submit]:hover,
 .sloth button:not(.nons)[type=submit]:hover {
@@ -1946,15 +1949,17 @@ textarea {
   background: var(--color-primary-active, #3876b4);
 }
 
-.sloth input[type=submit]:not(.nons):active, .sloth input[type=submit]:not(.nons):focus,
+.sloth .upload:not(.nons):active, .sloth .upload:not(.nons):focus,
+.sloth input[type=submit]:not(.nons):active,
+.sloth input[type=submit]:not(.nons):focus,
 .sloth input[type=button]:not(.nons):active,
 .sloth input[type=button]:not(.nons):focus,
 .sloth button:not(.nons):active,
 .sloth button:not(.nons):focus {
-  -webkit-box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
-          box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
+  box-shadow: 0 3px 3px 0 rgba(33, 37, 41, 0.14), 0 1px 7px 0 rgba(33, 37, 41, 0.12), 0 3px 1px -2px rgba(33, 37, 41, 0.2);
 }
 
+.sloth .upload:not(.nons).clr-prim,
 .sloth input[type=submit]:not(.nons).clr-prim,
 .sloth input[type=button]:not(.nons).clr-prim,
 .sloth button:not(.nons).clr-prim {
@@ -1963,6 +1968,7 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons).clr-prim:hover,
 .sloth input[type=submit]:not(.nons).clr-prim:hover,
 .sloth input[type=button]:not(.nons).clr-prim:hover,
 .sloth button:not(.nons).clr-prim:hover {
@@ -1970,6 +1976,7 @@ textarea {
   background: var(--color-primary-active, #3876b4);
 }
 
+.sloth .upload:not(.nons).clr-sec,
 .sloth input[type=submit]:not(.nons).clr-sec,
 .sloth input[type=button]:not(.nons).clr-sec,
 .sloth button:not(.nons).clr-sec {
@@ -1978,6 +1985,7 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons).clr-sec:hover,
 .sloth input[type=submit]:not(.nons).clr-sec:hover,
 .sloth input[type=button]:not(.nons).clr-sec:hover,
 .sloth button:not(.nons).clr-sec:hover {
@@ -1985,6 +1993,7 @@ textarea {
   background: var(--color-secondary-active, #009058);
 }
 
+.sloth .upload:not(.nons).clr-tert,
 .sloth input[type=submit]:not(.nons).clr-tert,
 .sloth input[type=button]:not(.nons).clr-tert,
 .sloth button:not(.nons).clr-tert {
@@ -1993,6 +2002,7 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons).clr-tert:hover,
 .sloth input[type=submit]:not(.nons).clr-tert:hover,
 .sloth input[type=button]:not(.nons).clr-tert:hover,
 .sloth button:not(.nons).clr-tert:hover {
@@ -2000,6 +2010,7 @@ textarea {
   background: var(--color-tertiary-active, #e52127);
 }
 
+.sloth .upload:not(.nons).clr-quat,
 .sloth input[type=submit]:not(.nons).clr-quat,
 .sloth input[type=button]:not(.nons).clr-quat,
 .sloth button:not(.nons).clr-quat {
@@ -2008,6 +2019,7 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons).clr-quat:hover,
 .sloth input[type=submit]:not(.nons).clr-quat:hover,
 .sloth input[type=button]:not(.nons).clr-quat:hover,
 .sloth button:not(.nons).clr-quat:hover {
@@ -2015,6 +2027,7 @@ textarea {
   background: var(--color-quaternary-active, #d56b00);
 }
 
+.sloth .upload:not(.nons).clr-quin,
 .sloth input[type=submit]:not(.nons).clr-quin,
 .sloth input[type=button]:not(.nons).clr-quin,
 .sloth button:not(.nons).clr-quin {
@@ -2023,6 +2036,7 @@ textarea {
   color: #fff;
 }
 
+.sloth .upload:not(.nons).clr-quin:hover,
 .sloth input[type=submit]:not(.nons).clr-quin:hover,
 .sloth input[type=button]:not(.nons).clr-quin:hover,
 .sloth button:not(.nons).clr-quin:hover {
@@ -2030,28 +2044,30 @@ textarea {
   background: var(--color-quinary-active, #d0a700);
 }
 
+.sloth .upload:not(.nons).flat,
 .sloth input[type=submit]:not(.nons).flat,
 .sloth input[type=button]:not(.nons).flat,
 .sloth button:not(.nons).flat {
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
   min-height: 36px;
   margin: 0.6rem;
   margin-left: 0;
   border-radius: 0;
   background: none transparent;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: #594e52;
 }
 
+.sloth .upload:not(.nons).flat:hover,
 .sloth input[type=submit]:not(.nons).flat:hover,
 .sloth input[type=button]:not(.nons).flat:hover,
 .sloth button:not(.nons).flat:hover {
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
   background: rgba(214, 214, 214, 0.3);
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
 }
 
-.sloth input[type=submit]:not(.nons).flat[type=submit], .sloth input[type=submit]:not(.nons).flat.clr-prim,
+.sloth .upload:not(.nons).flat[type=submit], .sloth .upload:not(.nons).flat.clr-prim,
+.sloth input[type=submit]:not(.nons).flat[type=submit],
+.sloth input[type=submit]:not(.nons).flat.clr-prim,
 .sloth input[type=button]:not(.nons).flat[type=submit],
 .sloth input[type=button]:not(.nons).flat.clr-prim,
 .sloth button:not(.nons).flat[type=submit],
@@ -2060,7 +2076,9 @@ textarea {
   color: var(--color-primary, #4183c4);
 }
 
-.sloth input[type=submit]:not(.nons).flat[type=submit]:hover, .sloth input[type=submit]:not(.nons).flat.clr-prim:hover,
+.sloth .upload:not(.nons).flat[type=submit]:hover, .sloth .upload:not(.nons).flat.clr-prim:hover,
+.sloth input[type=submit]:not(.nons).flat[type=submit]:hover,
+.sloth input[type=submit]:not(.nons).flat.clr-prim:hover,
 .sloth input[type=button]:not(.nons).flat[type=submit]:hover,
 .sloth input[type=button]:not(.nons).flat.clr-prim:hover,
 .sloth button:not(.nons).flat[type=submit]:hover,
@@ -2069,6 +2087,7 @@ textarea {
   background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
 }
 
+.sloth .upload:not(.nons).flat.clr-sec,
 .sloth input[type=submit]:not(.nons).flat.clr-sec,
 .sloth input[type=button]:not(.nons).flat.clr-sec,
 .sloth button:not(.nons).flat.clr-sec {
@@ -2076,6 +2095,7 @@ textarea {
   color: var(--color-secondary, #00a968);
 }
 
+.sloth .upload:not(.nons).flat.clr-sec:hover,
 .sloth input[type=submit]:not(.nons).flat.clr-sec:hover,
 .sloth input[type=button]:not(.nons).flat.clr-sec:hover,
 .sloth button:not(.nons).flat.clr-sec:hover {
@@ -2083,6 +2103,7 @@ textarea {
   background: var(--color-secondary-active-light, rgba(0, 169, 104, 0.2));
 }
 
+.sloth .upload:not(.nons).flat.clr-tert,
 .sloth input[type=submit]:not(.nons).flat.clr-tert,
 .sloth input[type=button]:not(.nons).flat.clr-tert,
 .sloth button:not(.nons).flat.clr-tert {
@@ -2090,6 +2111,7 @@ textarea {
   color: var(--color-tertiary, #e8383d);
 }
 
+.sloth .upload:not(.nons).flat.clr-tert:hover,
 .sloth input[type=submit]:not(.nons).flat.clr-tert:hover,
 .sloth input[type=button]:not(.nons).flat.clr-tert:hover,
 .sloth button:not(.nons).flat.clr-tert:hover {
@@ -2097,6 +2119,7 @@ textarea {
   background: var(--color-tertiary-active-light, rgba(249, 39, 45, 0.2));
 }
 
+.sloth .upload:not(.nons).flat.clr-quat,
 .sloth input[type=submit]:not(.nons).flat.clr-quat,
 .sloth input[type=button]:not(.nons).flat.clr-quat,
 .sloth button:not(.nons).flat.clr-quat {
@@ -2104,6 +2127,7 @@ textarea {
   color: var(--color-quaternary, #ee7800);
 }
 
+.sloth .upload:not(.nons).flat.clr-quat:hover,
 .sloth input[type=submit]:not(.nons).flat.clr-quat:hover,
 .sloth input[type=button]:not(.nons).flat.clr-quat:hover,
 .sloth button:not(.nons).flat.clr-quat:hover {
@@ -2111,6 +2135,7 @@ textarea {
   background: var(--color-quaternary-active-light, rgba(238, 120, 0, 0.2));
 }
 
+.sloth .upload:not(.nons).flat.clr-quin,
 .sloth input[type=submit]:not(.nons).flat.clr-quin,
 .sloth input[type=button]:not(.nons).flat.clr-quin,
 .sloth button:not(.nons).flat.clr-quin {
@@ -2118,6 +2143,7 @@ textarea {
   color: var(--color-quinary, #e9bc00);
 }
 
+.sloth .upload:not(.nons).flat.clr-quin:hover,
 .sloth input[type=submit]:not(.nons).flat.clr-quin:hover,
 .sloth input[type=button]:not(.nons).flat.clr-quin:hover,
 .sloth button:not(.nons).flat.clr-quin:hover {
@@ -2125,39 +2151,42 @@ textarea {
   background: var(--color-quinary-active-light, rgba(233, 188, 0, 0.2));
 }
 
+.sloth .upload:not(.nons).outline,
 .sloth input[type=submit]:not(.nons).outline,
 .sloth input[type=button]:not(.nons).outline,
 .sloth button:not(.nons).outline {
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
   border: solid 1px #abb1b5;
   border-radius: 0.3rem;
   background: none transparent;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   color: #4183c4;
   color: var(--color-primary, #4183c4);
 }
 
+.sloth .upload:not(.nons).outline:hover,
 .sloth input[type=submit]:not(.nons).outline:hover,
 .sloth input[type=button]:not(.nons).outline:hover,
 .sloth button:not(.nons).outline:hover {
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
   background: rgba(46, 131, 215, 0.2);
   background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
 }
 
+.sloth .upload:not(.nons).outline:not([type=submit]),
 .sloth input[type=submit]:not(.nons).outline:not([type=submit]),
 .sloth input[type=button]:not(.nons).outline:not([type=submit]),
 .sloth button:not(.nons).outline:not([type=submit]) {
   color: #594e52;
 }
 
+.sloth .upload:not(.nons).outline:not([type=submit]):hover,
 .sloth input[type=submit]:not(.nons).outline:not([type=submit]):hover,
 .sloth input[type=button]:not(.nons).outline:not([type=submit]):hover,
 .sloth button:not(.nons).outline:not([type=submit]):hover {
   background: rgba(125, 125, 125, 0.12);
 }
 
+.sloth .upload:not(.nons).outline.clr-prim,
 .sloth input[type=submit]:not(.nons).outline.clr-prim,
 .sloth input[type=button]:not(.nons).outline.clr-prim,
 .sloth button:not(.nons).outline.clr-prim {
@@ -2165,6 +2194,7 @@ textarea {
   color: var(--color-primary, #4183c4);
 }
 
+.sloth .upload:not(.nons).outline.clr-prim:hover,
 .sloth input[type=submit]:not(.nons).outline.clr-prim:hover,
 .sloth input[type=button]:not(.nons).outline.clr-prim:hover,
 .sloth button:not(.nons).outline.clr-prim:hover {
@@ -2172,6 +2202,7 @@ textarea {
   background: var(--color-primary-active-light, rgba(46, 131, 215, 0.2));
 }
 
+.sloth .upload:not(.nons).outline.clr-sec,
 .sloth input[type=submit]:not(.nons).outline.clr-sec,
 .sloth input[type=button]:not(.nons).outline.clr-sec,
 .sloth button:not(.nons).outline.clr-sec {
@@ -2179,6 +2210,7 @@ textarea {
   color: var(--color-secondary, #00a968);
 }
 
+.sloth .upload:not(.nons).outline.clr-sec:hover,
 .sloth input[type=submit]:not(.nons).outline.clr-sec:hover,
 .sloth input[type=button]:not(.nons).outline.clr-sec:hover,
 .sloth button:not(.nons).outline.clr-sec:hover {
@@ -2186,6 +2218,7 @@ textarea {
   background: var(--color-primary-active-light, rgba(0, 169, 104, 0.2));
 }
 
+.sloth .upload:not(.nons).outline.clr-tert,
 .sloth input[type=submit]:not(.nons).outline.clr-tert,
 .sloth input[type=button]:not(.nons).outline.clr-tert,
 .sloth button:not(.nons).outline.clr-tert {
@@ -2193,6 +2226,7 @@ textarea {
   color: var(--color-tertiary, #e8383d);
 }
 
+.sloth .upload:not(.nons).outline.clr-tert:hover,
 .sloth input[type=submit]:not(.nons).outline.clr-tert:hover,
 .sloth input[type=button]:not(.nons).outline.clr-tert:hover,
 .sloth button:not(.nons).outline.clr-tert:hover {
@@ -2200,6 +2234,7 @@ textarea {
   background: var(--color-tertiary-active-light, rgba(249, 39, 45, 0.2));
 }
 
+.sloth .upload:not(.nons).outline.clr-quat,
 .sloth input[type=submit]:not(.nons).outline.clr-quat,
 .sloth input[type=button]:not(.nons).outline.clr-quat,
 .sloth button:not(.nons).outline.clr-quat {
@@ -2207,6 +2242,7 @@ textarea {
   color: var(--color-quaternary, #ee7800);
 }
 
+.sloth .upload:not(.nons).outline.clr-quat:hover,
 .sloth input[type=submit]:not(.nons).outline.clr-quat:hover,
 .sloth input[type=button]:not(.nons).outline.clr-quat:hover,
 .sloth button:not(.nons).outline.clr-quat:hover {
@@ -2214,6 +2250,7 @@ textarea {
   background: var(--color-quaternary-active-light, rgba(238, 120, 0, 0.2));
 }
 
+.sloth .upload:not(.nons).outline.clr-quin,
 .sloth input[type=submit]:not(.nons).outline.clr-quin,
 .sloth input[type=button]:not(.nons).outline.clr-quin,
 .sloth button:not(.nons).outline.clr-quin {
@@ -2221,6 +2258,7 @@ textarea {
   color: var(--color-quinary, #e9bc00);
 }
 
+.sloth .upload:not(.nons).outline.clr-quin:hover,
 .sloth input[type=submit]:not(.nons).outline.clr-quin:hover,
 .sloth input[type=button]:not(.nons).outline.clr-quin:hover,
 .sloth button:not(.nons).outline.clr-quin:hover {
@@ -2230,15 +2268,13 @@ textarea {
 }
 
 .sloth .btn-fab:not(.nons) {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
-  -webkit-transition: all 0.3s ease-out;
   display: block;
   width: 5.6rem;
   height: 5.6rem;
   padding: 0;
   border-radius: 50%;
   background: none #f5f5f5;
-          box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
+  box-shadow: 0 2px 2px 0 rgba(33, 37, 41, 0.12), 0 2px 2px 0 rgba(33, 37, 41, 0.24);
   color: #594e52;
   font-weight: 400;
   text-align: center;
@@ -2247,9 +2283,8 @@ textarea {
 }
 
 .sloth .btn-fab:not(.nons):hover {
-  -webkit-box-shadow: 0 4px 5px 0 rgba(33, 37, 41, 0.14), 0 1px 10px 0 rgba(33, 37, 41, 0.12), 0 2px 4px -1px rgba(33, 37, 41, 0.2);
   background: rgba(211, 211, 211, 0.5);
-          box-shadow: 0 4px 5px 0 rgba(33, 37, 41, 0.14), 0 1px 10px 0 rgba(33, 37, 41, 0.12), 0 2px 4px -1px rgba(33, 37, 41, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(33, 37, 41, 0.14), 0 1px 10px 0 rgba(33, 37, 41, 0.12), 0 2px 4px -1px rgba(33, 37, 41, 0.2);
 }
 
 .sloth .btn-fab:not(.nons):hover::before, .sloth .btn-fab:not(.nons):hover::after {
@@ -2323,7 +2358,6 @@ textarea {
 }
 
 .sloth table:not(.nons) {
-  -webkit-box-shadow: none;
   display: table;
   width: 100%;
   margin: 1rem 0;
@@ -2332,7 +2366,7 @@ textarea {
   border-collapse: separate;
   border-spacing: 0;
   background: #fff;
-          box-shadow: none;
+  box-shadow: none;
   color: rgba(33, 37, 41, 0.87);
   font-size: inherit;
   text-align: left;
@@ -2364,7 +2398,6 @@ textarea {
 
 .sloth table:not(.nons) tbody th,
 .sloth table:not(.nons) tbody td {
-  -webkit-transition: background 0.1s ease, color 0.1s ease;
   padding: 0.5rem 0.8rem;
   border-top: 1px solid rgba(33, 37, 41, 0.1);
   border-left: 1px solid rgba(33, 37, 41, 0.1);
@@ -2463,33 +2496,18 @@ textarea {
 }
 
 .sloth .vcard:not(.nons) {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-  -ms-flex-line-pack: start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
-          flex-flow: row;
-      align-content: flex-start;
-          align-items: flex-start;
-          justify-content: space-between;
+  flex-flow: row;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
 .sloth .vcard:not(.nons) figure {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-flow: column;
+  flex-flow: column;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -2520,18 +2538,10 @@ textarea {
 }
 
 .sloth .vcard:not(.nons) figure + * > .footer {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-  -ms-flex-wrap: wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-flow: row;
-      flex-wrap: wrap;
-          justify-content: flex-end;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   margin-right: 1rem;
   font-size: inherit;
   text-align: right;
@@ -2542,28 +2552,20 @@ textarea {
 }
 
 .sloth .navi-menu:not(.nons) {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-  -ms-flex-line-pack: center;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(211, 211, 211, 0.76);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   z-index: 1002;
   position: fixed;
   top: 0;
   left: 0;
-      align-content: center;
-          align-items: stretch;
-          justify-content: flex-start;
+  align-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   width: 100%;
   height: 56px;
   height: var(--navi-height-sm, 56px);
   border-bottom: solid 1px rgba(211, 211, 211, 0.87);
   background: none #fff;
-          box-shadow: 0 1px 3px 0 rgba(211, 211, 211, 0.76);
+  box-shadow: 0 1px 3px 0 rgba(211, 211, 211, 0.76);
 }
 
 .sloth .navi-menu:not(.nons) .toggle {
@@ -2576,7 +2578,6 @@ textarea {
 }
 
 .sloth .navi-menu:not(.nons) .toggle .backdrop {
-  -webkit-transition: all 0.2s;
   display: none;
   z-index: 1000;
   position: fixed;
@@ -2592,8 +2593,6 @@ textarea {
 }
 
 .sloth .navi-menu:not(.nons) .toggle .menu {
-  -webkit-box-shadow: 1px 2px 3px 0 rgba(211, 211, 211, 0.76);
-  -webkit-transition: left 0.2s, right 0.3s;
   z-index: 1001;
   position: fixed;
   top: 56px;
@@ -2613,7 +2612,7 @@ textarea {
   padding: 1.5rem;
   border-right: solid 1px rgba(211, 211, 211, 0.87);
   background-color: #fff;
-          box-shadow: 1px 2px 3px 0 rgba(211, 211, 211, 0.76);
+  box-shadow: 1px 2px 3px 0 rgba(211, 211, 211, 0.76);
   transition: left 0.2s, right 0.3s;
 }
 
@@ -2984,91 +2983,59 @@ textarea {
 }
 
 .flx-row {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-  -ms-flex-wrap: nowrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-direction: row;
-      flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .flx-col {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-  -ms-flex-wrap: nowrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-          flex-direction: column;
-      flex-wrap: nowrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 .flx-wrap {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .flx-start {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .flx-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .flx-justify {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .flx-around {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 .flx-evenly {
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .flx-end {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .item-stretch {
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  align-items: stretch;
 }
 
 .item-start {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 
 .item-center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .item-end {
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  align-items: flex-end;
 }
 
 .grid {
@@ -3127,110 +3094,110 @@ textarea {
 }
 
 .bg-white {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 .bg-whitesmoke {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
 }
 
 .bg-lightgray {
-  background-color: #d3d3d3;
+  background-color: #d3d3d3 !important;
 }
 
 .bg-fog {
-  background-color: #abb1b5;
+  background-color: #abb1b5 !important;
 }
 
 .bg-gray {
-  background-color: #7d7d7d;
+  background-color: #7d7d7d !important;
 }
 
 .bg-darkgray {
-  background-color: #594e52;
+  background-color: #594e52 !important;
 }
 
 .bg-black {
-  background-color: #212529;
+  background-color: #212529 !important;
 }
 
 .bg-prim {
-  background-color: #4183c4;
-  background-color: var(--color-primary, #4183c4);
+  background-color: #4183c4 !important;
+  background-color: var(--color-primary, #4183c4) !important;
 }
 
 .bg-sec {
-  background-color: #00a968;
-  background-color: var(--color-secondary, #00a968);
+  background-color: #00a968 !important;
+  background-color: var(--color-secondary, #00a968) !important;
 }
 
 .bg-tert {
-  background-color: #e8383d;
-  background-color: var(--color-tertiary, #e8383d);
+  background-color: #e8383d !important;
+  background-color: var(--color-tertiary, #e8383d) !important;
 }
 
 .bg-quat {
-  background-color: #ee7800;
-  background-color: var(--color-quaternary, #ee7800);
+  background-color: #ee7800 !important;
+  background-color: var(--color-quaternary, #ee7800) !important;
 }
 
 .bg-quin {
-  background-color: #e9bc00;
-  background-color: var(--color-quinary, #e9bc00);
+  background-color: #e9bc00 !important;
+  background-color: var(--color-quinary, #e9bc00) !important;
 }
 
 .txt-white {
-  color: #fff;
+  color: #fff !important;
 }
 
 .txt-whitesmoke {
-  color: #f5f5f5;
+  color: #f5f5f5 !important;
 }
 
 .txt-lightgray {
-  color: #d3d3d3;
+  color: #d3d3d3 !important;
 }
 
 .txt-fog {
-  color: #abb1b5;
+  color: #abb1b5 !important;
 }
 
 .muted,
 .txt-gray {
-  color: #7d7d7d;
+  color: #7d7d7d !important;
 }
 
 .txt-darkgray {
-  color: #594e52;
+  color: #594e52 !important;
 }
 
 .txt-black {
-  color: #212529;
+  color: #212529 !important;
 }
 
 .txt-prim {
-  color: #4183c4;
-  color: var(--color-primary, #4183c4);
+  color: #4183c4 !important;
+  color: var(--color-primary, #4183c4) !important;
 }
 
 .txt-sec {
-  color: #00a968;
-  color: var(--color-secondary, #00a968);
+  color: #00a968 !important;
+  color: var(--color-secondary, #00a968) !important;
 }
 
 .txt-tert {
-  color: #e8383d;
-  color: var(--color-tertiary, #e8383d);
+  color: #e8383d !important;
+  color: var(--color-tertiary, #e8383d) !important;
 }
 
 .txt-quat {
-  color: #ee7800;
-  color: var(--color-quaternary, #ee7800);
+  color: #ee7800 !important;
+  color: var(--color-quaternary, #ee7800) !important;
 }
 
 .txt-quin {
-  color: #e9bc00;
-  color: var(--color-quinary, #e9bc00);
+  color: #e9bc00 !important;
+  color: var(--color-quinary, #e9bc00) !important;
 }
 
 .txt-left {
