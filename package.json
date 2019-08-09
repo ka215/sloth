@@ -52,6 +52,12 @@
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "engines": {
     "node": ">=10"
   },

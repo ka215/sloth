@@ -13,11 +13,7 @@ const rename = require('gulp-rename')
 
 gulp.task('build', callback => {
     const plugin = [
-            autoprefixer({
-                browsers: [
-                    'last 2 versions'
-                ]
-            }),
+            autoprefixer(),
             cssDeclarationSorter({
                 order: 'smacss'
             }),
