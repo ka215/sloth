@@ -146,23 +146,23 @@
 
     &[target="_blank"],
     &[rel="external"] {
-      padding-left: 1em;
-      padding-left: var(--external-link-padding-left, 1em);
+      padding-left: 1.3em;
+      padding-left: var(--external-link-padding-left, 1.3em);
 
       &::after {
         position: absolute;
         display: inline-block;
-        top: 0.5em;
-        left: 0.1em;
-        width: calc(1em - 1px);
+        top: 0.2rem;
+        left: 0;
+        width: 1em;
         height: 1em;
         line-height: 1;
-        content: $external-link-content;
-        content: var(--external-link-content, $external-link-content);
+        content: url($external-link-content);
+        content: var(--external-link-content, url($external-link-content));
         font-family: $external-link-font;
         font-family: var(--external-link-font, $external-link-font);
         font-style: normal;
-        font-size: 0.75em;
+        font-size: 1em;
         font-weight: 600;
         color: $blue;
         color: var(--color-primary, $blue);
@@ -174,8 +174,8 @@
       }
 
       &:hover::after {
-        color: $white;
-        color: var(--external-link-hover-color, $white);
+        color: $blue;
+        color: var(--external-link-hover-color, $blue);
         background: $external-link-background;
         background: var(--external-link-background, $external-link-background);
         border-color: darken($blue, 5%);
@@ -280,46 +280,6 @@
     padding-left: 0;
   }
 
-  .inline:not(#{$not}) {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0.5rem;
-    padding: 0;
-
-    & > * {
-      position: relative;
-      display: inline-block;
-      margin-right: 1rem;
-      margin-bottom: 0.3rem;
-      vertical-align: middle;
-    }
-
-    input:not([type]),
-    input[type=date],
-    input[type=datetime-local],
-    input[type=email],
-    input[type=file],
-    input[type=number],
-    input[type=password],
-    input[type=search],
-    input[type=tel],
-    input[type=text],
-    input[type=time],
-    input[type=url],
-    button,
-    select,
-    textarea {
-      width: auto;
-    }
-
-    .upload:not(#{$not}) {
-      margin-bottom: 0 !important;
-    }
-  }
-
   input:not([type]),
   input[type=date],
   input[type=datetime-local],
@@ -340,7 +300,11 @@
     width: inherit;
     padding: 0.3em 0.5em;
     font-size: inherit;
-    background: $white;
+    background-color: $white;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: center right 0.5em;
     border: 1px solid rgba($black, 0.15);
     color: rgba($black, 0.87);
     caret-color: $blue;
@@ -355,18 +319,68 @@
       border-color: darken($blue, 5%);
       border-color: var(--color-primary-active, darken($blue, 5%));
       border-radius: 0.2857rem;
-      background: $white;
+      background-color: $white;
       box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
 
       &::-webkit-input-placeholder { color: $gray; }
       &::-moz-placeholder { color: $gray; }
       &:-ms-input-placeholder { color: $gray; }
     }
+
+    &.value-ok {
+      background-image: url($check) !important;
+      border-color: $green !important;
+    }
+
+    &.value-ng {
+      background-image: url($times) !important;
+      border-color: $signal-red !important;
+    }
+  }
+
+  textarea.value-ok,
+  textarea.value-ng {
+    background-position: top 0.3em right 0.5em !important;
   }
 
   .upload:not(#{$not}) {
     input[type=file] {
       display: none;
+    }
+
+    & ~ .preview-image {
+      display: inline-block;
+      margin: auto 0.5em;
+      height: 2em;
+      width: 2em;
+      background-color: rgba($fog, 0.15);
+      background-image: none;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border: 1px solid rgba($fog, 0.15);
+      color: rgba($black, 0.87);
+      border-radius: 0.2857rem;
+      outline: 0;
+      cursor: default;
+      box-shadow: 0 0 0 0 transparent inset;
+      transition: color 0.1s ease, border-color 0.1s ease;
+
+      &.active {
+        cursor: pointer;
+
+        &:hover {
+          background-color: $fog;
+          opacity: 0.65;
+        }
+      }
+    }
+
+    & ~ .upload-files {
+      border: none !important;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 
@@ -396,7 +410,7 @@
         margin: 0;
         padding: 0.3em 0.5em;
         font-size: inherit;
-        background: $white;
+        background-color: $white;
         color: rgba($black, 0.33);
         border: 1px solid rgba($black, 0.15);
         border-width: 0 0 0 1px;
@@ -410,14 +424,34 @@
 
         & > * {
           pointer-events: none;
+
+          &.eye-switch {
+            display: inline-block;
+            margin-top: 0.4rem;
+            width: 1em;
+            height: 1em;
+            background-image: url($eye);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            opacity: 0.3;
+          }
         }
 
         &:hover {
           color: rgba($black, 0.66);
+
+          & > .eye-switch {
+            opacity: 0.66;
+          }
         }
 
         &.active {
           color: $green;
+
+          & > .eye-switch {
+            opacity: 0.9;
+          }
         }
       }
     }
@@ -959,6 +993,11 @@
       width: -webkit-fill-available;
       margin-top: 0.3rem;
       font-size: 111.11%;
+
+      &.value-ok,
+      &.value-ng {
+        background-image: none !important;
+      }
     }
   }
 
@@ -999,7 +1038,7 @@
           content: '';
           position: absolute;
           z-index: 1;
-          top: 0.2em;
+          top: 0;
           left: 0;
           height: 0.5em;
           width: 0.5em;
@@ -1453,11 +1492,15 @@
     ~ textarea {
       appearance: none;
       display: inline-block;
-      width: auto;
+      width: 100%;
       margin: auto 1em auto 0;
       padding: 0.3em 0.5em;
       font-size: inherit;
-      background: $white;
+      background-color: $white;
+      background-image: none;
+      background-repeat: no-repeat;
+      background-size: 1em;
+      background-position: center right 0.5em;
       border: 1px solid rgba($black, 0.15);
       color: rgba($black, 0.87);
       caret-color: $blue;
@@ -1472,7 +1515,7 @@
         border-color: darken($blue, 5%);
         border-color: var(--color-primary-active, darken($blue, 5%));
         border-radius: 0.2857rem;
-        background: $white;
+        background-color: $white;
         box-shadow: 0 0 0 0 rgba($black, 0.35) inset;
 
         &::-webkit-input-placeholder { color: $gray; }
@@ -1497,6 +1540,24 @@
     + select,
     + textarea {
       margin-left: 0;
+    }
+
+    &.required {
+      position: relative;
+
+      &::after {
+        content: "\00A0\00A0\00A0";
+        font-size: 1rem;
+        color: $red;
+        position: relative;
+        left: 0.25em;
+        top: 50%;
+        background-image: url($astarisk);
+        background-repeat: no-repeat;
+        background-size: 10px;
+        background-position: top center;
+        transform: translateY(-50%);
+      }
     }
   }
 
@@ -1739,6 +1800,70 @@
           background: var(--color-quinary-active-light, rgba(saturate($yellow, 15%), 0.2));
         }
       }
+    }
+  }
+
+  .inline:not(#{$not}) {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0.5rem;
+    padding: 0;
+
+    & > * {
+      position: relative;
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 0.3rem;
+      vertical-align: middle;
+    }
+
+    input:not([type]),
+    input[type=date],
+    input[type=datetime-local],
+    input[type=email],
+    input[type=file],
+    input[type=number],
+    input[type=password],
+    input[type=search],
+    input[type=tel],
+    input[type=text],
+    input[type=time],
+    input[type=url],
+    button,
+    select,
+    textarea {
+      width: auto;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) {
+      ~ input:not([type]),
+      ~ input[type=date],
+      ~ input[type=datetime-local],
+      ~ input[type=email],
+      ~ input[type=file],
+      ~ input[type=number],
+      ~ input[type=password],
+      ~ input[type=search],
+      ~ input[type=tel],
+      ~ input[type=text],
+      ~ input[type=time],
+      ~ input[type=url],
+      ~ input[list],
+      ~ select,
+      ~ textarea {
+        width: auto;
+      }
+    }
+
+    .upload:not(#{$not}) {
+      margin-bottom: 0;
     }
   }
 

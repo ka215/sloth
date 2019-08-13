@@ -1,15 +1,18 @@
 @charset "UTF-8";
 /*!
-Sloth CSS micro framework
+Sloth CSS lightweight framework
 v1.0.3
-Last Updated: August 8,2019
+Last Updated: August 13,2019
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
 /* like cobalt-blue */
 /* emdash: "\2014", horizontal-bar: "\2015", two-emdash: "\2E3A" (ng to safari), three-emdash: "\2E3B" and no-break-space: "\00A0" */
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
-/* North East Arrow */
+/* North East Arrow: "\2197" */
+/* rgba($blue2, 0.9); */
+/* solid 1px $blue; */
+/* "\1F6C8"; */
 *,
 *::before,
 *::after {
@@ -472,41 +475,41 @@ textarea {
 }
 
 .sloth a:not(.nons)[target="_blank"], .sloth a:not(.nons)[rel="external"] {
-  padding-left: 1em;
-  padding-left: var(--external-link-padding-left, 1em);
+  padding-left: 1.3em;
+  padding-left: var(--external-link-padding-left, 1.3em);
 }
 
 .sloth a:not(.nons)[target="_blank"]::after, .sloth a:not(.nons)[rel="external"]::after {
   display: inline-block;
   position: absolute;
-  top: 0.5em;
-  left: 0.1em;
-  width: calc(1em - 1px);
+  top: 0.2rem;
+  left: 0;
+  width: 1em;
   height: 1em;
-  border: solid 1px #4183c4;
-  border: var(--external-link-background, solid 1px #4183c4);
+  border: none;
+  border: var(--external-link-background, none);
   border-radius: 2px;
   color: #4183c4;
   color: var(--color-primary, #4183c4);
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-family: var(--external-link-font, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
-  font-size: 0.75em;
+  font-size: 1em;
   font-style: normal;
   font-weight: 600;
   line-height: 1;
   text-align: left;
   vertical-align: top;
-  content: "↗";
-  content: var(--external-link-content, "↗");
+  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>");
+  content: var(--external-link-content, url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>"));
 }
 
 .sloth a:not(.nons)[target="_blank"]:hover::after, .sloth a:not(.nons)[rel="external"]:hover::after {
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
-  background: rgba(30, 112, 191, 0.9);
-  background: var(--external-link-background, rgba(30, 112, 191, 0.9));
-  color: #fff;
-  color: var(--external-link-hover-color, #fff);
+  background: none;
+  background: var(--external-link-background, none);
+  color: #4183c4;
+  color: var(--external-link-hover-color, #4183c4);
 }
 
 .sloth address:not(.nons) {
@@ -606,46 +609,6 @@ textarea {
   list-style: none;
 }
 
-.sloth .inline:not(.nons) {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0.5rem;
-  padding: 0;
-  list-style: none;
-}
-
-.sloth .inline:not(.nons) > * {
-  display: inline-block;
-  position: relative;
-  margin-right: 1rem;
-  margin-bottom: 0.3rem;
-  vertical-align: middle;
-}
-
-.sloth .inline:not(.nons) input:not([type]),
-.sloth .inline:not(.nons) input[type=date],
-.sloth .inline:not(.nons) input[type=datetime-local],
-.sloth .inline:not(.nons) input[type=email],
-.sloth .inline:not(.nons) input[type=file],
-.sloth .inline:not(.nons) input[type=number],
-.sloth .inline:not(.nons) input[type=password],
-.sloth .inline:not(.nons) input[type=search],
-.sloth .inline:not(.nons) input[type=tel],
-.sloth .inline:not(.nons) input[type=text],
-.sloth .inline:not(.nons) input[type=time],
-.sloth .inline:not(.nons) input[type=url],
-.sloth .inline:not(.nons) button,
-.sloth .inline:not(.nons) select,
-.sloth .inline:not(.nons) textarea {
-  width: auto;
-}
-
-.sloth .inline:not(.nons) .upload:not(.nons) {
-  margin-bottom: 0 !important;
-}
-
 .sloth input:not([type]),
 .sloth input[type=date],
 .sloth input[type=datetime-local],
@@ -670,7 +633,11 @@ textarea {
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
   outline: 0;
-  background: #fff;
+  background-color: #fff;
+  background-image: none;
+  background-position: center right 0.5em;
+  background-repeat: no-repeat;
+  background-size: 1em;
   box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
@@ -697,7 +664,7 @@ textarea {
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
@@ -756,8 +723,86 @@ textarea {
   color: #7d7d7d;
 }
 
+.sloth input:not([type]).value-ok,
+.sloth input[type=date].value-ok,
+.sloth input[type=datetime-local].value-ok,
+.sloth input[type=email].value-ok,
+.sloth input[type=file].value-ok,
+.sloth input[type=number].value-ok,
+.sloth input[type=password].value-ok,
+.sloth input[type=search].value-ok,
+.sloth input[type=tel].value-ok,
+.sloth input[type=text].value-ok,
+.sloth input[type=time].value-ok,
+.sloth input[type=url].value-ok,
+.sloth input[list].value-ok,
+.sloth select.value-ok,
+.sloth textarea.value-ok {
+  border-color: #00a968 !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%2300a968' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'></path></svg>") !important;
+}
+
+.sloth input:not([type]).value-ng,
+.sloth input[type=date].value-ng,
+.sloth input[type=datetime-local].value-ng,
+.sloth input[type=email].value-ng,
+.sloth input[type=file].value-ng,
+.sloth input[type=number].value-ng,
+.sloth input[type=password].value-ng,
+.sloth input[type=search].value-ng,
+.sloth input[type=tel].value-ng,
+.sloth input[type=text].value-ng,
+.sloth input[type=time].value-ng,
+.sloth input[type=url].value-ng,
+.sloth input[list].value-ng,
+.sloth select.value-ng,
+.sloth textarea.value-ng {
+  border-color: #e8383d !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'></path></svg>") !important;
+}
+
+.sloth textarea.value-ok,
+.sloth textarea.value-ng {
+  background-position: top 0.3em right 0.5em !important;
+}
+
 .sloth .upload:not(.nons) input[type=file] {
   display: none;
+}
+
+.sloth .upload:not(.nons) ~ .preview-image {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  margin: auto 0.5em;
+  border: 1px solid rgba(171, 177, 181, 0.15);
+  border-radius: 0.2857rem;
+  outline: 0;
+  background-color: rgba(171, 177, 181, 0.15);
+  background-image: none;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 0 0 transparent inset;
+  color: rgba(33, 37, 41, 0.87);
+  cursor: default;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.sloth .upload:not(.nons) ~ .preview-image.active {
+  cursor: pointer;
+}
+
+.sloth .upload:not(.nons) ~ .preview-image.active:hover {
+  background-color: #abb1b5;
+  opacity: 0.65;
+}
+
+.sloth .upload:not(.nons) ~ .upload-files {
+  overflow: hidden;
+  border: none !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sloth .tgl-view {
@@ -794,7 +839,7 @@ textarea {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   outline: 0;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.33);
   font-size: inherit;
@@ -807,14 +852,37 @@ textarea {
   pointer-events: none;
 }
 
+.sloth .tgl-view input[type=text] + span > *.eye-switch,
+.sloth .tgl-view input[type=password] + span > *.eye-switch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.4rem;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.3;
+}
+
 .sloth .tgl-view input[type=text] + span:hover,
 .sloth .tgl-view input[type=password] + span:hover {
   color: rgba(33, 37, 41, 0.66);
 }
 
+.sloth .tgl-view input[type=text] + span:hover > .eye-switch,
+.sloth .tgl-view input[type=password] + span:hover > .eye-switch {
+  opacity: 0.66;
+}
+
 .sloth .tgl-view input[type=text] + span.active,
 .sloth .tgl-view input[type=password] + span.active {
   color: #00a968;
+}
+
+.sloth .tgl-view input[type=text] + span.active > .eye-switch,
+.sloth .tgl-view input[type=password] + span.active > .eye-switch {
+  opacity: 0.9;
 }
 
 .sloth .checkbox {
@@ -1346,6 +1414,10 @@ textarea {
   font-size: 111.11%;
 }
 
+.sloth .dropdown select.value-ok, .sloth .dropdown select.value-ng {
+  background-image: none !important;
+}
+
 .sloth .combo-box:not(.nons) {
   display: inline-block;
   position: relative;
@@ -1390,7 +1462,7 @@ textarea {
 .sloth .combo-box:not(.nons) input[list] ~ .indicator::after {
   z-index: 1;
   position: absolute;
-  top: 0.2em;
+  top: 0;
   left: 0;
   width: 0.5em;
   height: 0.5em;
@@ -1456,14 +1528,6 @@ textarea {
 .sloth .tgl:not(.nons) input[type="checkbox"] *::before,
 .sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn {
   box-sizing: border-box;
-}
-
-.sloth .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
-  background: none;
 }
 
 .sloth .tgl:not(.nons) input[type="checkbox"]::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::after::selection, .sloth .tgl:not(.nons) input[type="checkbox"]::before::selection,
@@ -1783,13 +1847,17 @@ textarea {
      -moz-appearance: none;
           appearance: none;
   display: inline-block;
-  width: auto;
+  width: 100%;
   margin: auto 1em auto 0;
   padding: 0.3em 0.5em;
   border: 1px solid rgba(33, 37, 41, 0.15);
   border-radius: 0.2857rem;
   outline: 0;
-  background: #fff;
+  background-color: #fff;
+  background-image: none;
+  background-position: center right 0.5em;
+  background-repeat: no-repeat;
+  background-size: 1em;
   box-shadow: 0 0 0 0 transparent inset;
   color: rgba(33, 37, 41, 0.87);
   caret-color: #4183c4;
@@ -1816,7 +1884,7 @@ textarea {
   border-radius: 0.2857rem;
   border-color: #3876b4;
   border-color: var(--color-primary-active, #3876b4);
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.35) inset;
   color: rgba(33, 37, 41, 0.95);
 }
@@ -1891,6 +1959,24 @@ textarea {
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + select,
 .sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) + textarea {
   margin-left: 0;
+}
+
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload).required {
+  position: relative;
+}
+
+.sloth label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload).required::after {
+  position: relative;
+  top: 50%;
+  left: 0.25em;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z'></path></svg>");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  color: #d70035;
+  font-size: 1rem;
+  content: "\00A0\00A0\00A0";
 }
 
 .sloth .upload:not(.nons),
@@ -2265,6 +2351,82 @@ textarea {
   background: rgba(233, 188, 0, 0.12);
   background: rgba(233, 188, 0, 0.2);
   background: var(--color-quinary-active-light, rgba(233, 188, 0, 0.2));
+}
+
+.sloth .inline:not(.nons) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sloth .inline:not(.nons) > * {
+  display: inline-block;
+  position: relative;
+  margin-right: 1rem;
+  margin-bottom: 0.3rem;
+  vertical-align: middle;
+}
+
+.sloth .inline:not(.nons) input:not([type]),
+.sloth .inline:not(.nons) input[type=date],
+.sloth .inline:not(.nons) input[type=datetime-local],
+.sloth .inline:not(.nons) input[type=email],
+.sloth .inline:not(.nons) input[type=file],
+.sloth .inline:not(.nons) input[type=number],
+.sloth .inline:not(.nons) input[type=password],
+.sloth .inline:not(.nons) input[type=search],
+.sloth .inline:not(.nons) input[type=tel],
+.sloth .inline:not(.nons) input[type=text],
+.sloth .inline:not(.nons) input[type=time],
+.sloth .inline:not(.nons) input[type=url],
+.sloth .inline:not(.nons) button,
+.sloth .inline:not(.nons) select,
+.sloth .inline:not(.nons) textarea {
+  width: auto;
+}
+
+.sloth .inline:not(.nons) input:not([type]):last-child,
+.sloth .inline:not(.nons) input[type=date]:last-child,
+.sloth .inline:not(.nons) input[type=datetime-local]:last-child,
+.sloth .inline:not(.nons) input[type=email]:last-child,
+.sloth .inline:not(.nons) input[type=file]:last-child,
+.sloth .inline:not(.nons) input[type=number]:last-child,
+.sloth .inline:not(.nons) input[type=password]:last-child,
+.sloth .inline:not(.nons) input[type=search]:last-child,
+.sloth .inline:not(.nons) input[type=tel]:last-child,
+.sloth .inline:not(.nons) input[type=text]:last-child,
+.sloth .inline:not(.nons) input[type=time]:last-child,
+.sloth .inline:not(.nons) input[type=url]:last-child,
+.sloth .inline:not(.nons) button:last-child,
+.sloth .inline:not(.nons) select:last-child,
+.sloth .inline:not(.nons) textarea:last-child {
+  margin-right: 0;
+}
+
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input:not([type]),
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=date],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=datetime-local],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=email],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=file],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=number],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=password],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=search],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=tel],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=text],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=time],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[type=url],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ input[list],
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ select,
+.sloth .inline:not(.nons) label:not(.nons):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) ~ textarea {
+  width: auto;
+}
+
+.sloth .inline:not(.nons) .upload:not(.nons) {
+  margin-bottom: 0;
 }
 
 .sloth .btn-fab:not(.nons) {
@@ -2677,7 +2839,188 @@ textarea {
   margin: auto 0;
 }
 
-[hidden] {
+.sloth .sloth-notify {
+  -webkit-backface-visibility: hidden;
+  visibility: hidden;
+  z-index: 1201;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  min-width: 320px;
+  max-width: 630px;
+  height: auto;
+  max-height: 80vh;
+  transform: translateX(-50%) translateY(-50%);
+          backface-visibility: hidden;
+  /* Effect 1: Fade in and scale up (default effect) */
+  /* Effect 2: Slide from the right */
+  /* Effect 3: Slide from the bottom */
+  /* Effect 4: Slide and stick to top */
+}
+
+.sloth .sloth-notify .dialog-content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: 0.2857rem;
+  background: #fff;
+  box-shadow: 0 0 0 rgba(33, 37, 41, 0);
+}
+
+.sloth .sloth-notify .dialog-content h3 {
+  margin: 0;
+  padding: 0.4em;
+  border-radius: 0.2857rem 0.2857rem 0 0;
+  background: none rgba(33, 37, 41, 0.03);
+  font-size: 1.5em;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.sloth .sloth-notify .dialog-content h3.dialog-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sloth .sloth-notify .dialog-content > div {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: 300;
+}
+
+.sloth .sloth-notify .dialog-content > div.dialog-body {
+  height: 100%;
+  max-height: calc(80vh - 100px);
+  padding: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.sloth .sloth-notify .dialog-content > div.dialog-body .expand-image {
+  width: auto;
+  height: 100%;
+  min-height: calc(16em + 65px);
+  margin: -20px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.sloth .sloth-notify .dialog-content > div.dialog-body ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.sloth .sloth-notify .dialog-content > div.dialog-footer {
+  min-height: 2.5em;
+  padding: 0.4em;
+  border-radius: 0 0 0.2857rem 0.2857rem;
+  background: none rgba(33, 37, 41, 0.03);
+  text-align: center;
+}
+
+.sloth .sloth-notify .dialog-content > div.dialog-footer > * {
+  margin: 0 auto;
+}
+
+.sloth .sloth-notify ~ .dialog-backdrop {
+  visibility: hidden;
+  z-index: 1200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: none rgba(89, 78, 82, 0.8);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.sloth .sloth-notify.show {
+  visibility: visible;
+}
+
+.sloth .sloth-notify.show .dialog-content {
+  box-shadow: 6px 6px 12px rgba(33, 37, 41, 0.15);
+}
+
+.sloth .sloth-notify.show ~ .dialog-backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sloth .sloth-notify.effect-1 .dialog-content {
+  transform: scale(0.7);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.sloth .sloth-notify.effect-1.show .dialog-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.sloth .sloth-notify.effect-2 .dialog-content {
+  transform: translateX(20%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+.sloth .sloth-notify.effect-2.show .dialog-content {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sloth .sloth-notify.effect-3 .dialog-content {
+  transform: translateY(20%);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.sloth .sloth-notify.effect-3.show .dialog-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sloth .sloth-notify.effect-4 {
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.sloth .sloth-notify.effect-4 .dialog-content {
+  transform: translateY(-200%);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.sloth .sloth-notify.effect-4.show .dialog-content {
+  transform: translateY(0);
+  border-radius: 0 0 0.2857rem 0.2857rem;
+  opacity: 1;
+}
+
+.sloth .sloth-ruler {
+  display: inline;
+  visibility: hidden;
+  z-index: -1;
+  position: absolute;
+  top: -10000em;
+  left: -10000em;
+  margin: 0;
+  padding: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1rem;
+}
+
+[hidden],
+.hidden {
   display: none !important;
 }
 
@@ -2983,59 +3326,59 @@ textarea {
 }
 
 .flx-row {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
   flex-wrap: nowrap;
 }
 
 .flx-col {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   flex-wrap: nowrap;
 }
 
 .flx-wrap {
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
 }
 
 .flx-start {
-  justify-content: flex-start;
+  justify-content: flex-start !important;
 }
 
 .flx-center {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .flx-justify {
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 
 .flx-around {
-  justify-content: space-around;
+  justify-content: space-around !important;
 }
 
 .flx-evenly {
-  justify-content: space-evenly;
+  justify-content: space-evenly !important;
 }
 
 .flx-end {
-  justify-content: flex-end;
+  justify-content: flex-end !important;
 }
 
 .item-stretch {
-  align-items: stretch;
+  align-items: stretch !important;
 }
 
 .item-start {
-  align-items: flex-start;
+  align-items: flex-start !important;
 }
 
 .item-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .item-end {
-  align-items: flex-end;
+  align-items: flex-end !important;
 }
 
 .grid {
@@ -3244,14 +3587,15 @@ textarea {
 
 .note {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.6rem;
   color: #7d7d7d;
 }
 
 .note::before {
+  display: inline-block;
   position: absolute;
   top: 0.2em;
-  left: 0.1em;
+  left: 0;
   width: 1em;
   height: 1em;
   border: 0;
@@ -3263,19 +3607,15 @@ textarea {
 .note::after {
   display: inline-block;
   position: absolute;
-  top: calc(0.3em + 1px);
-  left: 0.3em;
+  top: 0.2em;
+  left: 0;
   width: 1em;
   height: 1em;
-  color: #7d7d7d;
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.75em;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  vertical-align: middle;
-  content: 'i';
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z'></path></svg>");
+  background-position: -2px left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "\00A0 \00A0";
 }
 
 table.fixed {
@@ -3322,13 +3662,26 @@ table.cell-right {
     max-width: var(--menu-width-md, 50%);
     height: calc(100vh - var(--navi-height-md, 56px));
   }
+  .sloth .sloth-notify {
+    width: -webkit-max-content !important;
+    width: -moz-max-content !important;
+    width: max-content !important;
+  }
+  .sloth .sloth-notify .dialog-content .dialog-body {
+    max-height: calc(80vh - 100px) !important;
+    padding: 25px !important;
+  }
+  .sloth .sloth-notify .dialog-content .dialog-body .expand-image {
+    min-height: calc(16em + 50px) !important;
+    margin: -25px !important;
+  }
   .note::before {
     top: 0.3em;
     left: 0.1rem;
   }
   .note::after {
-    top: calc(0.5em + 1px);
-    left: 0.3em;
+    top: 0.3em;
+    left: 0.1rem;
   }
 }
 
@@ -3362,12 +3715,24 @@ table.cell-right {
     max-width: var(--menu-width-lg, 50%);
     height: calc(100vh - var(--navi-height-lg, 56px));
   }
+  .sloth .sloth-notify {
+    max-width: 80vw !important;
+  }
+  .sloth .sloth-notify .dialog-content .dialog-body {
+    max-height: calc(80vh - 100px) !important;
+    padding: 25px !important;
+    overflow-y: auto !important;
+  }
+  .sloth .sloth-notify .dialog-content .dialog-body .expand-image {
+    min-height: calc(16em + 50px) !important;
+    margin: -25px !important;
+  }
   .note::before {
-    top: 0.2em;
+    top: 0.25em;
     left: 0.1em;
   }
   .note::after {
-    top: calc(0.3em + 2px);
-    left: 0.3em;
+    top: 0.25em;
+    left: 0.1em;
   }
 }
