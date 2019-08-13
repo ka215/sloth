@@ -1,12 +1,12 @@
 <h1><img src="https://ka215.github.io/sloth/assets/sloth.svg" height="32"> Sloth</h1>
 
-Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
+Mobile-first lightweight CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
 
 The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, CSS variables, and limited vendor prefixes.
 
 The Sloth supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.
 
-**10.1kB gzipped** at this time.
+**12.3kB gzipped** at this time.
 
 ## Installation
 

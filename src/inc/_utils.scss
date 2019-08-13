@@ -1,4 +1,5 @@
-[hidden] { display: none !important; }
+[hidden],
+.hidden { display: none !important; }
 
 .ma { margin: auto !important; }
 .m0 { margin: 0 !important; }
@@ -186,30 +187,30 @@
 .capital { text-transform: capitalize !important; }
 
 .flx-row {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
   flex-wrap: nowrap;
 }
 
 .flx-col {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   flex-wrap: nowrap;
 }
 
-.flx-wrap { flex-wrap: wrap; }
+.flx-wrap { flex-wrap: wrap !important; }
 
-.flx-start { justify-content: flex-start; }
-.flx-center { justify-content: center; }
-.flx-justify { justify-content: space-between; }
-.flx-around { justify-content: space-around; }
-.flx-evenly { justify-content: space-evenly; }
-.flx-end { justify-content: flex-end; }
+.flx-start { justify-content: flex-start !important; }
+.flx-center { justify-content: center !important; }
+.flx-justify { justify-content: space-between !important; }
+.flx-around { justify-content: space-around !important; }
+.flx-evenly { justify-content: space-evenly !important; }
+.flx-end { justify-content: flex-end !important; }
 
-.item-stretch { align-items: stretch; }
-.item-start { align-items: flex-start; }
-.item-center { align-items: center; }
-.item-end { align-items: flex-end; }
+.item-stretch { align-items: stretch !important; }
+.item-start { align-items: flex-start !important; }
+.item-center { align-items: center !important; }
+.item-end { align-items: flex-end !important; }
 
 .grid {
   display: grid;
@@ -339,13 +340,14 @@
 
 .note {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.6rem;
   color: $gray;
 
   &::before {
     position: absolute;
+    display: inline-block;
     top: 0.2em;
-    left: 0.1em;
+    left: 0;
     content: '';
     width: 1em;
     height: 1em;
@@ -357,19 +359,15 @@
   &::after {
     position: absolute;
     display: inline-block;
-    top: calc(0.3em + 1px);
-    left: 0.3em;
+    top: 0.2em;
+    left: 0;
     width: 1em;
     height: 1em;
-    content: 'i';
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-style: normal;
-    font-size: 0.75em;
-    font-weight: 600;
-    line-height: 1;
-    color: $gray;
-    text-align: center;
-    vertical-align: middle;
+    content: "\00A0 \00A0";
+    background-image: url($note-prefix);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: -2px left;
   }
 }
 
@@ -395,8 +393,8 @@ table {
     }
 
     &::after {
-      top: calc(0.5em + 1px);
-      left: 0.3em;
+      top: 0.3em;
+      left: 0.1rem;
     }
   }
 }
@@ -404,13 +402,13 @@ table {
 @media screen and (min-width: 768px) {
   .note {
     &::before {
-      top: 0.2em;
+      top: 0.25em;
       left: 0.1em;
     }
 
     &::after {
-      top: calc(0.3em + 2px);
-      left: 0.3em;
+      top: 0.25em;
+      left: 0.1em;
     }
   }
 }

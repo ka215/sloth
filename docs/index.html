@@ -52,11 +52,11 @@
 <header id="introduction">
   <h1 class="nons"><img src="assets/sloth.svg" height="58" style="margin-right:1rem;">Sloth</h1>
   <p class="nons">
-    Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
+    Mobile-first lightweight CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
-    <small class="muted">Latest Version: 1.0.2</small>
+    <small class="muted">Latest Version: 1.0.3</small>
   </div>
 </header>
 <article id="why-sloth" class="lead-block">
@@ -68,7 +68,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em class="txt-sec">10.1kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec">12.3kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -445,8 +445,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <form autocomplete="off">
         <label for="ameli">Email</label>
         <input type="email" id="ameli" placeholder="Enter your email address" autocomplete="nope">
-        <label for="salting">Password</label>
-        <input type="password" id="salting" placeholder="Enter your password" autocomplete="new-password">
+        <label for="salting" class="required">Password</label>
+        <input type="password" id="salting" placeholder="Enter your password" autocomplete="new-password" required>
         <label for="bio">Biography</label>
         <textarea id="bio" placeholder="Tell us about yourself"></textarea>
       </form>
@@ -455,8 +455,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <pre class="prettyprint"><code>&lt;form>
   &lt;label for="email">Email&lt;/label>
   &lt;input type="email" id="email" placeholder="Enter your email address">
-  &lt;label for="passwd">Password&lt;/label>
-  &lt;input type="password" id="passwd" placeholder="Enter your password" autocomplete="new-password">
+  &lt;label for="passwd" class="required">Password&lt;/label>
+  &lt;input type="password" id="passwd" placeholder="Enter your password" autocomplete="new-password" required>
   &lt;label for="bio">Biography&lt;/label>
   &lt;textarea id="bio" placeholder="Tell us about yourself">&lt;/textarea>
 &lt;/form></code></pre>

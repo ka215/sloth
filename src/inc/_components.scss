@@ -180,6 +180,191 @@
     }
   }
 
+  .sloth-notify {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+    max-height: 80vh;
+    z-index: 1201;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateX(-50%) translateY(-50%);
+
+    .dialog-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin: 0 auto;
+      padding: 0;
+      background: $white;
+      border: none;
+      border-radius: 0.2857rem;
+      box-shadow: 0 0 0 rgba($black, 0);
+
+      h3 {
+        margin: 0;
+        padding: 0.4em;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 400;
+        opacity: 0.8;
+        background: none rgba($black, 0.03);
+        border-radius: 0.2857rem 0.2857rem 0 0;
+
+        &.dialog-header {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+
+      & > div {
+        margin: 0;
+        font-size: 1.15em;
+        font-weight: 300;
+
+        &.dialog-body {
+          padding: 20px;
+          height: 100%;
+          max-height: calc(80vh - 100px);
+          overflow: hidden;
+          overflow-y: scroll;
+
+          .expand-image {
+            margin: -20px;
+            min-height: calc(16em + 65px);
+            height: 100%;
+            width: auto;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+
+          ul {
+            list-style-type: none;
+            margin: 0;
+          }
+        }
+
+        &.dialog-footer {
+          padding: 0.4em;
+          min-height: 2.5em;
+          text-align: center;
+          background: none rgba($black, 0.03);
+          border-radius: 0 0 0.2857rem 0.2857rem;
+
+          & > * {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    & ~ .dialog-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: none rgba($dark-gray, 0.8);
+      opacity: 0;
+      z-index: 1200;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    &.show {
+      visibility: visible;
+
+      .dialog-content {
+        box-shadow: 6px 6px 12px rgba($black, 0.15);
+      }
+
+      & ~ .dialog-backdrop {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    /* Effect 1: Fade in and scale up (default effect) */
+    &.effect-1 {
+      .dialog-content {
+        transform: scale(0.7);
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      &.show .dialog-content {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Effect 2: Slide from the right */
+    &.effect-2 {
+      .dialog-content {
+        transform: translateX(20%);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+      }
+
+      &.show .dialog-content {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Effect 3: Slide from the bottom */
+    &.effect-3 {
+      .dialog-content {
+        transform: translateY(20%);
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      &.show .dialog-content {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Effect 4: Slide and stick to top */
+    &.effect-4 {
+      top: 0;
+      transform: translateX(-50%);
+
+      .dialog-content {
+        transform: translateY(-200%);
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      &.show .dialog-content {
+        border-radius: 0 0 0.2857rem 0.2857rem;
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .sloth-ruler {
+    display: inline;
+    position: absolute;
+    top: -10000em;
+    left: -10000em;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: $font-monospace;
+    visibility: hidden;
+    z-index: -1;
+  }
+
   @media screen and (min-width: 576px) {
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);
@@ -196,6 +381,22 @@
           width: var(--menu-width-md, max-content);
           max-width: var(--menu-width-md, 50%);
           height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+        }
+      }
+    }
+
+    .sloth-notify {
+      width: max-content !important;
+
+      .dialog-content {
+        .dialog-body {
+          padding: 25px !important;
+          max-height: calc(80vh - 100px) !important;
+
+          .expand-image {
+            margin: -25px !important;
+            min-height: calc(16em + 50px) !important;
+          }
         }
       }
     }
@@ -217,6 +418,23 @@
           width: var(--menu-width-lg, max-content);
           max-width: var(--menu-width-lg, 50%);
           height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+        }
+      }
+    }
+
+    .sloth-notify {
+      max-width: 80vw !important;
+
+      .dialog-content {
+        .dialog-body {
+          padding: 25px !important;
+          max-height: calc(80vh - 100px) !important;
+          overflow-y: auto !important;
+
+          .expand-image {
+            margin: -25px !important;
+            min-height: calc(16em + 50px) !important;
+          }
         }
       }
     }
