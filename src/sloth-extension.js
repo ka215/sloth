@@ -1,21 +1,21 @@
 /*!
 Sloth CSS lightweight framework
 v1.0.3
-Last Updated: August 13,2019
+Last Updated: August 15,2019
 Author: Ka2 - https://ka2.org/
 */
-var init = function() {
+const init = function() {
     // Check whether applied the sloth styles
     if ( ! document.body.classList.contains('sloth') ) {
         return false;
     }
     
     // Apply size of shorthand to element
-    Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), function(elm) {
-        var sizes = elm.dataset.size.split(',');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), (elm) => {
+        let sizes = elm.dataset.size.split(',');
         
-        sizes.forEach(function(_v) {
-            var _tmp   = _v.split(':'),
+        sizes.forEach((_v) => {
+            let _tmp   = _v.split(':'),
                 _prop  = _tmp[0] || null,
                 _value = _tmp[1] || null;
             
@@ -38,7 +38,7 @@ var init = function() {
                     case /^\d+.*$/i.test(_value):
                         break;
                     case /^\(.*\)$/i.test(_value):
-                        _value = 'calc'+ _value;
+                        _value = `calc${_value}`;
                         break;
                     default:
                         _value = 'auto';
@@ -50,11 +50,11 @@ var init = function() {
     });
     
     // Map data of shorthand to option in select boxes (type 1)
-    Array.prototype.forEach.call(document.querySelectorAll('[data-map*="..."]'), function(elm) {
-        var vals = elm.dataset.map.split('...');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-map*="..."]'), (elm) => {
+        let vals = elm.dataset.map.split('...');
         
-        for ( var i = parseInt( vals[0], 10 ); i <= parseInt( vals[1], 10 ); i++ ) {
-            var opt = document.createElement('option');
+        for ( let i = parseInt( vals[0], 10 ); i <= parseInt( vals[1], 10 ); i++ ) {
+            let opt = document.createElement('option');
             
             opt.setAttribute('value', i);
             opt.textContent = i;
@@ -63,16 +63,16 @@ var init = function() {
     });
     
     // Map data of shorthand to option in select boxes (type 2)
-    Array.prototype.forEach.call(document.querySelectorAll('[data-map*=","]'), function(elm) {
-        var vals = elm.dataset.map.split(',');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-map*=","]'), (elm) => {
+        let vals = elm.dataset.map.split(',');
         
-        vals.forEach(function(_v, _i) {
-            var _tmp = _v.split(':'),
+        vals.forEach((_v, _i) => {
+            let _tmp = _v.split(':'),
                 _val = _tmp[1] ? _tmp[1] : _tmp[0] ? _tmp[0] : null,
                 _key = _tmp[1] ? _tmp[0] : _val ? _i + 1 : null;
             
             if ( _key && _val ) {
-                var opt = document.createElement('option');
+                let opt = document.createElement('option');
                 
                 opt.setAttribute('value', _key);
                 opt.textContent = _val;
@@ -81,32 +81,9 @@ var init = function() {
         });
     });
     
-    // Add an element of dialog for any notifications
-    if ( ! document.getElementById('sloth-notify') ) {
-        var dialog    = document.createElement('div'),
-            container = document.createElement('div'),
-            backdrop  = document.createElement('div'),
-            default_effect = document.body.dataset.dialogEffect || 1;
-        
-        dialog.classList.add('sloth-notify', 'effect-' + default_effect);
-        container.classList.add('dialog-content');
-        backdrop.classList.add('dialog-backdrop');
-        backdrop.addEventListener('click', function(evt) {
-            if ( dialog.classList.contains('show') ) {
-                dialog.classList.remove('show');
-            } else {
-                return false;
-            }
-        }, false);
-        
-        dialog.append(container);
-        document.body.append(dialog);
-        document.body.append(backdrop);
-    }
-    
     // Add a string length ruler element
     if ( ! document.getElementById('sloth-ruler') ) {
-        var ruler = document.createElement('div');
+        let ruler = document.createElement('div');
         
         ruler.classList.add('sloth-ruler');
         
@@ -114,8 +91,8 @@ var init = function() {
     }
     
     // Bind the handler of onChange event to dropdown
-    Array.prototype.forEach.call(document.getElementsByTagName('select'), function(elm) {
-        elm.addEventListener('change', function(evt) {
+    Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
+        elm.addEventListener('change', (evt) => {
             if ( evt.target.value === '' ) {
                 evt.target.classList.add('txt-fog');
             } else {
@@ -125,9 +102,9 @@ var init = function() {
     });
     
     // Password field with toggling view
-    Array.prototype.forEach.call(document.querySelectorAll('.tgl-view span'), function(elm) {
-        elm.addEventListener('click', function(evt) {
-            var self = evt.target,
+    Array.prototype.forEach.call(document.querySelectorAll('.tgl-view span'), (elm) => {
+        elm.addEventListener('click', (evt) => {
+            let self = evt.target,
                 thisClasses = self.classList,
                 input = self.offsetParent.children[0];
             
@@ -142,13 +119,13 @@ var init = function() {
     });
     
     // Optimize the rendered fields for uploading then bind the event handler
-    Array.prototype.forEach.call(document.getElementsByClassName('upload'), function(elm) {
-        var filename = document.createElement('input'),
+    Array.prototype.forEach.call(document.getElementsByClassName('upload'), (elm) => {
+        let filename = document.createElement('input'),
             preview  = document.createElement('div'),
             notes    = elm.parentNode.querySelectorAll('.note'),
             label    = elm.parentNode.firstElementChild;
         
-        Array.prototype.forEach.call(notes, function(note) {
+        Array.prototype.forEach.call(notes, (note) => {
             note.remove();
         });
         filename.setAttribute('type', 'text');
@@ -157,16 +134,16 @@ var init = function() {
         filename.setAttribute('data-switch-class', 'sm:hidden');
         filename.setAttribute('readonly', true);
         filename.style.width = 'auto';
-        filename.addEventListener('keyup', function() { return false; }, false);
-        filename.addEventListener('keydown', function() { return false; }, false);
-        filename.addEventListener('keypress', function() { return false; }, false);
+        filename.addEventListener('keyup', () => false, false);
+        filename.addEventListener('keydown', () => false, false);
+        filename.addEventListener('keypress', () => false, false);
         
         preview.classList.add('preview-image');
-        preview.addEventListener('click', function(evt) {
-            var self = evt.target;
+        preview.addEventListener('click', (evt) => {
+            let self = evt.target;
             
             if ( self.classList.contains('active') ) {
-                var dupNode = self.cloneNode(false);
+                let dupNode = self.cloneNode(false);
                 
                 dupNode.removeAttribute('class');
                 dupNode.classList.add('expand-image');
@@ -177,14 +154,14 @@ var init = function() {
         elm.style.marginBottom = 0;
         elm.parentNode.append( preview );
         elm.parentNode.append( filename );
-        Array.prototype.forEach.call(notes, function(note) {
+        Array.prototype.forEach.call(notes, (note) => {
             elm.parentNode.append( note );
         });
-        filename.style.width = 'calc(100% - '+ (label.clientWidth + elm.clientWidth + preview.clientWidth) +'px - 6em)';
+        filename.style.width = `calc(100% - ${(label.clientWidth + elm.clientWidth + preview.clientWidth)}px - 6em)`;
         filename.style.marginRight = 0;
         
-        elm.querySelector('[type=file]').addEventListener('change', function(evt) {
-            var self  = evt.target,
+        elm.querySelector('[type=file]').addEventListener('change', (evt) => {
+            let self  = evt.target,
                 path  = self.value.replace(/\\/g, '/'),
                 match = path.lastIndexOf('/'),
                 file  = self.files[0],
@@ -194,7 +171,7 @@ var init = function() {
             //console.log( evt, path, match, file );
             filename.value = match !== -1 ? path.substring(match + 1) : path;
             reader.onload = function() {
-                preview.style.backgroundImage = 'url(' + reader.result + ')';
+                preview.style.backgroundImage = `url(${reader.result})`;
                 preview.classList.add('active');
             };
             if ( file ) {
@@ -205,19 +182,19 @@ var init = function() {
     });
     
     // Check whether activate the Sloth Validator
-    Array.prototype.forEach.call(document.getElementsByTagName('form'), function(elm) {
+    Array.prototype.forEach.call(document.getElementsByTagName('form'), (elm) => {
         if ( elm.classList.contains('sloth-validation') ) {
             if ( ! elm.hasAttribute('novalidate') ) {
                 elm.setAttribute('novalidate', true);
             }
             // Bind the handler to onSubmit event
-            elm.addEventListener('submit', function(evt) {
-                var self = evt.target,
+            elm.addEventListener('submit', (evt) => {
+                let self = evt.target,
                     submits = self.querySelectorAll('[type=submit]');
                 
                 evt.preventDefault();
                 if ( slothValidator( self ) ) {
-                    Array.prototype.forEach.call(submits, function(e) {
+                    Array.prototype.forEach.call(submits, (e) => {
                         // For suppressing multiplex submission
                         e.setAttribute('disabled', true);
                     });
@@ -228,15 +205,47 @@ var init = function() {
                 }
             }, false);
             // 
-            Array.prototype.forEach.call(elm.querySelectorAll('[name]'), function(field) {
-                field.addEventListener('blur', function(evt) {
-                    var self = evt.target,
+            Array.prototype.forEach.call(elm.querySelectorAll('[name]'), (field) => {
+                field.addEventListener('blur', (evt) => {
+                    let self = evt.target,
                         formData = new FormData( elm );
                     
                     singleFieldValidator( self, formData );
                 }, false);
             });
         }
+    });
+    
+    Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=dialog]'), (elm) => {
+        elm.addEventListener('click', (evt) => {
+            let self    = evt.target,
+                title   = self.dataset.title || null,
+                content = self.dataset.content || undefined,
+                foot    = self.dataset.foot || true,
+                effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1);
+            
+console.log(title, content, foot, effect);
+            slothNotify(false, null, null, null, effect).then(() => {
+                slothNotify(true, title, content, foot);
+            });
+        }, false);
+    });
+    
+    // Binding global function
+    window.optimizeDropdown = optimizeDropdown;
+    window.adjustNotes = adjustNotes;
+    window.adjustColumnsInRow = adjustColumnsInRow;
+    window.switchElementClass = switchElementClass;
+    //window.slothNotify = slothNotify;
+    window.strLength = strLength;
+    //window.slothValidator = slothValidator;
+    window.singleFieldValidator = singleFieldValidator;
+    
+    window.test = test;
+    //window.test2 = test2;
+    
+    test().then((res) => {
+        console.log(res);
     });
     
     optimizeDropdown();
@@ -246,74 +255,74 @@ var init = function() {
     
     // Binding resize event
     window.onresize = resizeHandler;
-    
 };
 
 /*
  * Optimize the rendered select boxes
  * @public
  */
-function optimizeDropdown() {
-    Array.prototype.forEach.call(document.getElementsByTagName('select'), function(elm) {
+const optimizeDropdown = () => {
+    Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
         if ( elm.parentNode.classList.contains('dropdown') ) {
-            var optionLengths = [];
+            let optionLengths = [];
             
-            elm.childNodes.forEach(function(item) {
+            elm.childNodes.forEach((item) => {
                 if ( item.nodeName === 'OPTION' ) {
                     if ( item.textContent ) {
                         optionLengths.push( strLength( item.textContent ) );
                     }
                 }
             });
-            elm.style.width = 'calc('+ Math.max.apply( null, optionLengths ) + 'px + 3em)';
+            elm.style.width = `calc(${Math.max.apply( null, optionLengths )}px + 3em)`;
             elm.parentNode.style.marginRight = '0.5em';
         }
     });
-}
+};
+
 /*
  * Adjust for the items on form having the notes
  * @public
  */
-function adjustNotes() {
-    Array.prototype.forEach.call(document.querySelectorAll('form .note'), function(elm) {
-        var rowLabel = elm.parentNode.firstElementChild,
+const adjustNotes = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('form .note'), (elm) => {
+        let rowLabel = elm.parentNode.firstElementChild,
             indent   = null;
         
         if ( rowLabel.nodeName === 'LABEL' ) {
             indent = rowLabel.clientWidth || null;
         }
-        elm.style.width = indent ? 'calc(100% - '+ indent +'px)' : '100%';
-        elm.style.marginLeft = indent ? 'calc('+ indent +'px + 1.5em)' : 0;
+        elm.style.width = indent ? `calc(100% - ${indent}px)` : '100%';
+        elm.style.marginLeft = indent ? `calc(${indent}px + 1.5em)` : 0;
         elm.style.marginTop = '0.3rem';
     });
-}
+};
 
 /*
  * Adjust for items of columns in row
  * @public
  */
-function adjustColumnsInRow() {
-    Array.prototype.forEach.call(document.querySelectorAll('form > .flx-row, form > .inline'), function(elm) {
-        var children = Array.prototype.slice.call(elm.children);
+const adjustColumnsInRow = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('form > .flx-row, form > .inline'), (elm) => {
+        let children = Array.prototype.slice.call(elm.children);
         
-        children.forEach(function(child, i) {
+        children.forEach((child, i) => {
             if ( child.classList.contains('note') ) {
                 children.splice(i, 1);
             }
         });
         if ( children.length == 2 ) {
-            var offset  = children[0].clientWidth || null,
+            let offset  = children[0].clientWidth || null,
                 lastElm = children[1];
             
             if ( lastElm.nodeName === 'DIV' && offset ) {
-                lastElm.style.width = 'calc(100% - '+ offset +'px - 2em)';
+                lastElm.style.width = `calc(100% - ${offset}px - 2em)`;
                 lastElm.style.marginRight = 0;
             }
         } else {
-            var reverseChildren = Array.prototype.slice.call(elm.children).reverse(),
+            let reverseChildren = Array.prototype.slice.call(elm.children).reverse(),
                 skip = false;
             
-            reverseChildren.forEach(function(child) {
+            reverseChildren.forEach((child) => {
                 if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
                     child.style.marginRight = 0;
                     skip = true;
@@ -321,20 +330,20 @@ function adjustColumnsInRow() {
             });
         }
     });
-}
+};
 
-function switchElementClass() {
-    Array.prototype.forEach.call(document.querySelectorAll('[data-switch-class]'), function(elm) {
-        var _pair = elm.dataset.switchClass.split(',');
+const switchElementClass = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-switch-class]'), (elm) => {
+        let _pair = elm.dataset.switchClass.split(',');
         
         if ( _pair.length > 0 ) {
-            _pair.forEach(function(_v) {
-                var _tmp = _v.split(':'),
+            _pair.forEach((_v) => {
+                let _tmp = _v.split(':'),
                     val  = _tmp[1] ? _tmp[1].split(' ') : undefined,
                     key  = val && /^(sm|md|lg)$/i.test(_tmp[0]) ? _tmp[0].toLowerCase() : undefined;
                 
                 if ( key && val ) {
-                    var width = window.innerWidth,
+                    let width = window.innerWidth,
                         size  = 'md'; // Defaults to Medium
                     
                     if ( width < 576 ) { // Small
@@ -353,50 +362,49 @@ function switchElementClass() {
             });
         }
     });
-}
+};
 
 /*
  * Fire when resize window
  * @public
  */
-function resizeHandler() {
+const resizeHandler = () => {
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
+};
+
+const test2 = function(v) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(v * 2);
+        }, 2000);
+    });
+};
+
+const test = async () => {
+    let res = await test2(5);
+    return res + 5;
 }
 
-/*
- * Dynamically create dialog for notification and show; or hide already shown the dialog
- * @public
- * @param {string|number|boolean} state - show or hide
- * @param {?string} title
- * @param {?string|object} content
- * @param {?boolean|object} foot
- * @param {?string} effect
- */
-function slothNotify( state, title, content, foot, effect ) {
-    var backdrop  = document.getElementsByClassName('dialog-backdrop').item(0),
-        dialog    = document.getElementsByClassName('sloth-notify').item(0),
-        container = dialog.childNodes.item(0),
-        state     = state && /^(show|1|true)$/i.test( state.toString() ) ? 'show' : 'hide',
-        title     = title ? title.toString() : null,
-        content   = content ? content : undefined,
-        foot      = typeof foot !== 'undefined' ? foot : true,
-        effect = effect ? effect.toString() : (document.body.dataset.dialogEffect || 1),
+// Add an element of dialog for any notifications
+const generateDialog = function( effect ) {
+    return new Promise((resolve) => {
+    let dialog, container, backdrop,
         callback = function(mutationsList, observer) {
-            mutationsList.forEach(function(mutation) {
-                var self = mutation.target;
+            mutationsList.forEach((mutation) => {
+                let self = mutation.target;
                 switch(mutation.type) {
                     case 'childList':
-                        //console.log('mutation.type::childList:', mutation);
+                        console.log('mutation.type::childList:', mutation);
                         
                         break;
                     case 'attributes':
                         if ( mutation.oldValue && self.classList.contains(effect) ) {
-                            //console.log('mutation.type::attributes:', mutation);
-                            if ( state === 'show' ) {
-                                self.classList.add(state);
+                            console.log('mutation.type::attributes:', mutation);
+                            if ( self.getAttribute('state') === 'show' ) {
+                                self.classList.add('show');
                             } else {
                                 self.classList.remove('show');
                             }
@@ -408,18 +416,86 @@ function slothNotify( state, title, content, foot, effect ) {
         },
         observer = new MutationObserver(callback);
     
+    if ( document.getElementsByClassName('sloth-notify').length == 0 ) {
+        dialog    = document.createElement('div');
+        container = document.createElement('div');
+        backdrop  = document.createElement('div');
+        
+        dialog.classList.add('sloth-notify', effect);
+        //dialog.setAttribute('state', 'hide');
+        container.classList.add('dialog-content');
+        backdrop.classList.add('dialog-backdrop');
+        dialog.append(container);
+        document.body.append(dialog);
+        document.body.append(backdrop);
+    } else {
+        dialog    = document.getElementsByClassName('sloth-notify').item(0);
+        container = dialog.children.item(0);
+        backdrop  = document.getElementsByClassName('dialog-backdrop').item(0);
+        
+        container.innerHTML = '';
+    }
+    // observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+    backdrop.addEventListener('click', () => {
+        if ( dialog.classList.contains('show') ) {
+            dialog.classList.remove('show');
+        } else {
+            return false;
+        }
+    }, false);
+    
+    resolve(dialog);
+    });
+}
+
+/*
+ * Dynamically create dialog for notification and show; or hide already shown the dialog
+ * @public
+ * @param {string|number|boolean} state - show or hide
+ * @param {?string} title
+ * @param {?string|object} content
+ * @param {?boolean|object} foot
+ * @param {?string} effect
+ */
+const slothNotify = async ( state, title, content, foot, effect ) => {
+//async function slothNotify( state, title, content, foot, effect ) {
+    effect  = effect ? effect.toString() : (document.body.dataset.dialogEffect || 1);
+    switch(true) {
+        case /^(2|slide-?in-right)$/i.test( effect ):
+            effect = 'effect-2';
+            break;
+        case /^(3|slide-?in-bottom)$/i.test( effect ):
+            effect = 'effect-3';
+            break;
+        case /^(4|sticky-?up)$/i.test( effect ):
+            effect = 'effect-4';
+            break;
+        default:
+            effect = 'effect-1';
+            break;
+    }
+    let dialog = await generateDialog( effect );
+console.log( dialog );
+    
+    let backdrop  = document.getElementsByClassName('dialog-backdrop').item(0),
+        //dialog    = document.getElementsByClassName('sloth-notify').item(0),
+        container = dialog.childNodes.item(0);
+    
+    state   = state && /^(show|1|true)$/i.test( state.toString() ) ? 'show' : 'hide';
+    title   = title ? title.toString() : null;
+    content = content ? content : undefined;
+    foot    = foot ? foot : true;
     if ( backdrop && dialog && container ) {
         container.innerHTML = ''; // To empty as initializing the content on the dialog
-        observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
         if ( title ) {
-            var dialogHeader = document.createElement('h3');
+            let dialogHeader = document.createElement('h3');
             
             dialogHeader.classList.add('dialog-header');
             dialogHeader.innerHTML = title;
             container.append(dialogHeader);
         }
         if ( content ) {
-            var dialogBody = document.createElement('div');
+            let dialogBody = document.createElement('div');
             
             dialogBody.classList.add('dialog-body');
             if ( typeof content === 'string' ) {
@@ -439,7 +515,7 @@ console.log( content );
             container.append(dialogBody);
         }
         if ( foot ) {
-            var dialogFooter = document.createElement('div'),
+            let dialogFooter = document.createElement('div'),
                 dialogButton = document.createElement('button'),
                 dialogCallback = function(){ return true };
             
@@ -468,18 +544,23 @@ console.log( content );
             } else {
                 dialogButton.textContent = 'Close';
             }
-            dialogButton.addEventListener('click', function(evt) {
+            dialogButton.addEventListener('click', () => {
                 dialogCallback();
                 dialog.classList.remove('show');
             }, false);
             dialogFooter.append(dialogButton);
             container.append(dialogFooter);
         }
+console.log( container.childNodes.length );
         if ( container.childNodes.length == 0 ) {
             return false;
+        } else {
+            //dialog.setAttribute('state', state);
+            dialog.classList.add(state);
         }
+        /*
         // Set transition effect
-        Array.prototype.forEach.call(dialog.classList, function(e) {
+        Array.prototype.forEach.call(dialog.classList, (e) => {
             if ( /^effect-\d+$/i.test(e) ) {
                 dialog.classList.remove(e);
             }
@@ -499,6 +580,7 @@ console.log( content );
                 break;
         }
         dialog.classList.add( effect );
+        */
     }
 }
 
@@ -508,8 +590,8 @@ console.log( content );
  * @param {string} str
  * @return {number} length
  */
-function strLength( str ) {
-    var ruler  = document.getElementsByClassName('sloth-ruler').item(0),
+const strLength = (str) => {
+    let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
         length = 0;
     
     if ( ruler ) {
@@ -517,7 +599,7 @@ function strLength( str ) {
         length = ruler.clientWidth;
     }
     return length;
-}
+};
 
 /*
  * 
@@ -525,22 +607,22 @@ function strLength( str ) {
  * @param {Object} form - DOM Object of form to validate
  * @return {boolean} result
  */
-function slothValidator( form ) {
-    var result   = false,
+const slothValidator = (form) => {
+    let result   = false,
         messages = {},
         formData = new FormData(form);
     
 console.log( ...formData.entries() );
-    Array.prototype.forEach.call(form.querySelectorAll('[name]'), function(field) {
+    Array.prototype.forEach.call(form.querySelectorAll('[name]'), (field) => {
         messages = Object.assign(messages, singleFieldValidator( field, formData ));
     });
     if ( Object.keys(messages).length > 0 ) {
-        var list = document.createElement('ul');
+        let list = document.createElement('ul');
         
-        Object.keys(messages).forEach(function(_v) {
-            var item = document.createElement('li');
+        Object.keys(messages).forEach((_v) => {
+            let item = document.createElement('li');
             
-            item.innerHTML = '<label>'+ _v +':</label><span>'+ messages[_v] +'</span>';
+            item.innerHTML = `<label>${_v}:</label><span>${messages[_v]}</span>`;
             list.append(item);
         });
         list.classList.add('error-messages');
@@ -548,7 +630,7 @@ console.log( ...formData.entries() );
         slothNotify( 1, 'Please confirm incomplete submissions!', list );
     }
     return result;
-}
+};
 
 /*
  * 
@@ -557,19 +639,19 @@ console.log( ...formData.entries() );
  * @param {Object} formData - FormData Object as Iterator
  * @return {Object} messages
  */
-function singleFieldValidator( field, formData ) {
-    var isRequired  = field.hasAttribute('required'),
+const singleFieldValidator = (field, formData) => {
+    let isRequired  = field.hasAttribute('required'),
         fieldName   = field.getAttribute('name'),
-        placeholder = field.hasAttribute('placeholder') ? field.getAttribute('placeholder') : undefined,
+        //placeholder = field.hasAttribute('placeholder') ? field.getAttribute('placeholder') : undefined,
         pattern     = field.hasAttribute('pattern') ? field.getAttribute('pattern') : undefined,
         value       = formData.get(fieldName) || '', // field.value || '',
         fieldLabel  = field.dataset.dispname, //field.parentNode.firstElementChild.textContent,
         result      = false,
         messages    = {};
     
-    for (var v of formData.entries()) {
+    //for (let v of formData.entries()) {
 //console.log( v );
-    }
+//}
     switch (field.nodeName.toLowerCase()) {
         case 'input':
             if ( field.hasAttribute('type') ) {
@@ -731,7 +813,7 @@ function singleFieldValidator( field, formData ) {
         
     }
     return messages;
-}
+};
 
 /*
  * Dispatcher

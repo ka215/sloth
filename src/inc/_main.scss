@@ -1,4 +1,5 @@
-.sloth {
+.sloth:not(#{$not}),
+.sloth *:not(#{$not}) {
   line-height: 1.5;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -2104,7 +2105,7 @@
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 576px) and (max-width: 767px) {
   a:not(#{$not}) {
     &[target="_blank"],
     &[rel="external"] {

@@ -1,7 +1,10 @@
 <?php
+$_is_dev = boolval( filter_input( INPUT_GET, 'dev' ) );
+$_ary = explode( 'sloth', __DIR__ );
+$_abs_path = rtrim( array_shift( $_ary ), '\\' );
 $current_year = (int) date( 'Y' );
-$sloth_dist_path = __DIR__ . '/../dist/sloth.min.css';
-$sloth_ext_script_path = __DIR__ . '/assets/sloth-extension.js';
+$sloth_dist_path = $_is_dev ? '/sloth/dist/sloth.min.css' : '/sloth/docs/assets/sloth.min.css';
+$sloth_ext_script_path = $_is_dev ? '/sloth/dist/sloth.extension.js' : '/sloth/docs/assets/sloth.extension.min.js';
 //var_dump( file_exists( $sloth_dist_path ), file_exists( $sloth_ext_script_path ) );
 ?>
 <!doctype html>
@@ -11,8 +14,8 @@ $sloth_ext_script_path = __DIR__ . '/assets/sloth-extension.js';
   <title>Input Pattern</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" href="/sloth/dist/sloth.min.css?<?= filemtime( $sloth_dist_path ) ?>">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="<?= sprintf( '%s?v=%s', $sloth_dist_path, filemtime( $_abs_path . $sloth_dist_path ) ); ?>">
+  <link rel="shortcut icon" href="assets/sloth.ico" type="image/x-icon">
 </head>
 <body class="sloth" data-dialog-effect="1" data-dialog-button="outline">
   <form class="m1 sloth-validation">
@@ -221,7 +224,7 @@ $sloth_ext_script_path = __DIR__ . '/assets/sloth-extension.js';
     </div>
     <div class="inline mb1" data-switch-class="sm:flx-center">
       <label data-size="w:10rem" data-switch-class="sm:hidden">Agreement</label>
-      <label class="tgl flat" for="cb-1">I agree to <a href="#" rel="external">the terms of service</a>.
+      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" rel="external">the terms of service</a>.
         <input type="checkbox" id="cb-1" name="agreement" value="1" data-dispname="Agreement" required>
         <span class="tgl-btn"></span>
       </label>
@@ -229,11 +232,11 @@ $sloth_ext_script_path = __DIR__ . '/assets/sloth-extension.js';
     <hr class="dotted">
     <div class="inline">
       <button type="submit" class="outline clr-prim">Register</button>
-      <button type="button" class="outline" onclick="fillTest()">Set for TEST</button>
-      <button type="button" class="outline" onclick="slothNotify(1,'Title Of Dialog','<p>Content Of Dialog<br>...</p>',{class:'outline clr-sec',label:'<i class=\'fas fa-times\'></i> Close Me!',callback:function(){alert('Do something before hiding the dialog.')}})">Reset</button>
-      <button type="button" class="outline" onclick="slothNotify(1,'Title Of Dialog','<p>Content Of Dialog<br>...</p>','<i class=\'fas fa-times\'></i> Close')">Cancel</button>
+      <button type="button" class="outline" data-toggle="dialog" data-effect="2">Set for TEST</button>
+      <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="<p>Content Of Dialog<br>...</p>" data-foot="{class:'outline clr-sec',label:'<i class=\'fas fa-times\'></i> Close Me!',callback:function(){alert('Do something before hiding the dialog.')}}">Reset</button>
+      <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="<p>Content Of Dialog<br>...</p>" data-foot="<i class=\'fas fa-times\'></i> Close" data-effect="3">Cancel</button>
     </div>
   </form>
-  <script async src="/sloth/docs/assets/sloth-extension.js?<?= filemtime( $sloth_ext_script_path ) ?>"></script>
+  <script async src="<?= sprintf( '%s?v=%s', $sloth_ext_script_path, filemtime( $_abs_path . $sloth_ext_script_path ) ); ?>"></script>
 </body>
 </html>

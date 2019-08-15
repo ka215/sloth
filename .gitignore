@@ -1,7 +1,9 @@
 node_modules
 
 .sass-cache/
-*.css.map
+*.log
+*.orig
+__.*
 
 package-lock.json
 yarn.lock
