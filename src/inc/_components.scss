@@ -1,4 +1,5 @@
-.sloth {
+.sloth:not(#{$not}),
+.sloth *:not(#{$not}) {
   .vcard:not(#{$not}) {
     position: relative;
     display: flex;
@@ -108,6 +109,8 @@
         background-color: $white;
         border-right: solid 1px rgba($light-gray, 0.87);
         box-shadow: 1px 2px 3px 0 rgba($light-gray, 0.76);
+        overflow: hidden;
+        overflow-y: auto;
         z-index: 1001;
         transition: left 0.2s, right 0.3s;
       }
@@ -148,28 +151,18 @@
         }
       }
 
-      &::before {
-        position: absolute;
-        top: calc(50% - 2px);
-        left: 2rem;
-        content: '';
-        width: 1.5rem;
-        height: calc(14px / 2);
-        border-bottom: solid 2px $gray;
-        z-index: 1001;
-      }
-
       &::after {
         position: absolute;
-        top: -2px;
+        top: -1rem;
         left: 2rem;
-        content: '';
-        width: 1.5rem;
-        height: calc(14px - 2px);
-        border-top: solid 2px $gray;
-        border-bottom: solid 2px $gray;
-        z-index: 1001;
+        content: url($menu-arrow);
+        width: 2rem;
+        opacity: 1;
         z-index: 1002;
+      }
+
+      &:hover::after {
+        opacity: 0.85;
       }
     }
 
@@ -365,7 +358,7 @@
     z-index: -1;
   }
 
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 576px) and (max-width: 767px) {
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);
 

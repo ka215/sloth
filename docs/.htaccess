@@ -1,0 +1,22 @@
+RewriteEngine on
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}\.gz -s
+RewriteRule .+ %{REQUEST_URI}.gz
+
+# Stylesheet (.css)
+<FilesMatch "\.css\.gz$">
+  ForceType   text/css
+  AddEncoding x-gzip .gz
+</FilesMatch>
+
+# Javascript (.js)
+<FilesMatch "\.js\.gz$">
+  ForceType   application/x-javascript
+  AddEncoding x-gzip .gz
+</FilesMatch>
+
+# HTML (.html)
+<FilesMatch "\.html\.gz$">
+  ForceType   text/html
+  AddEncoding x-gzip .gz
+</FilesMatch>
