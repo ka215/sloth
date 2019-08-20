@@ -1177,6 +1177,29 @@ module.exports = function (KEY, length, exec, sham) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/forced-string-trim-method.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/core-js/internals/forced-string-trim-method.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
+  });
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/function-to-string.js":
 /*!**************************************************************!*\
   !*** ./node_modules/core-js/internals/function-to-string.js ***!
@@ -4451,6 +4474,30 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.string.trim.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.trim.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim;
+var forcedStringTrimMethod = __webpack_require__(/*! ../internals/forced-string-trim-method */ "./node_modules/core-js/internals/forced-string-trim-method.js");
+
+// `String.prototype.trim` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.symbol.description.js":
 /*!***************************************************************!*\
   !*** ./node_modules/core-js/modules/es.symbol.description.js ***!
@@ -5727,12 +5774,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19__);
 /* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.string.split */ "./node_modules/core-js/modules/es.string.split.js");
 /* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js");
-/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.string.trim */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js");
+/* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_24__);
 
 
 
@@ -5758,11 +5807,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -5775,10 +5833,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /*!
 Sloth CSS lightweight framework
 v1.0.3
-Last Updated: August 15,2019
+Last Updated: August 16,2019
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
+  var _this = this;
+
   // Check whether applied the sloth styles
   if (!document.body.classList.contains('sloth')) {
     return false;
@@ -5786,11 +5846,12 @@ var init = function init() {
 
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), function (elm) {
-    var sizes = elm.dataset.size.split(',');
+    var sizes = elm.dataset.size.split(','),
+        isInline = /^(a|abbr|b|bdi|bdo|big|button|cite|code|data|datalist|del|dfn|em|i|img|input|ins|kbd|label|mark|q|ruby|s|samp|select|small|span|strong|sub|sup|textarea|time|u|tt|var)$/i.test(elm.nodeName);
     sizes.forEach(function (_v) {
       var _tmp = _v.split(':'),
-          _prop = _tmp[0] || null,
-          _value = _tmp[1] || null;
+          _prop = _tmp[0] ? _tmp[0].trim() : null,
+          _value = _tmp[1] ? _tmp[1].trim().replace(';', '') : null;
 
       if (_prop && _value) {
         switch (true) {
@@ -5809,6 +5870,14 @@ var init = function init() {
           case /^m(|ax)-?h(|eight)$/i.test(_prop):
             _prop = 'max-height';
             break;
+
+          case /^min-?w(|idth)$/i.test(_prop):
+            _prop = 'min-width';
+            break;
+
+          case /^min-?h(|eight)$/i.test(_prop):
+            _prop = 'min-height';
+            break;
         }
 
         switch (true) {
@@ -5818,15 +5887,19 @@ var init = function init() {
           case /^\(.*\)$/i.test(_value):
             _value = "calc".concat(_value);
             break;
+        }
 
-          default:
-            _value = 'auto';
-            break;
+        if (isInline && !elm.style.display) {
+          elm.style.display = 'inline-block';
         }
 
         elm.style[_prop] = _value;
       }
     });
+
+    if (sizes.length > 0) {
+      elm.removeAttribute('data-size');
+    }
   }); // Map data of shorthand to option in select boxes (type 1)
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-map*="..."]'), function (elm) {
@@ -5837,6 +5910,10 @@ var init = function init() {
       opt.setAttribute('value', i);
       opt.textContent = i;
       elm.parentNode.append(opt);
+    }
+
+    if (vals.length > 0) {
+      elm.removeAttribute('data-map');
     }
   }); // Map data of shorthand to option in select boxes (type 2)
 
@@ -5854,6 +5931,10 @@ var init = function init() {
         elm.parentNode.append(opt);
       }
     });
+
+    if (vals.length > 0) {
+      elm.removeAttribute('data-map');
+    }
   }); // Add a string length ruler element
 
   if (!document.getElementById('sloth-ruler')) {
@@ -5893,7 +5974,8 @@ var init = function init() {
     var filename = document.createElement('input'),
         preview = document.createElement('div'),
         notes = elm.parentNode.querySelectorAll('.note'),
-        label = elm.parentNode.firstElementChild;
+        parent = elm.parentNode,
+        offset = 0;
     Array.prototype.forEach.call(notes, function (note) {
       note.remove();
     });
@@ -5920,7 +6002,7 @@ var init = function init() {
         var dupNode = self.cloneNode(false);
         dupNode.removeAttribute('class');
         dupNode.classList.add('expand-image');
-        slothNotify('show', filename.value, dupNode);
+        showDialog(filename.value, dupNode);
       }
     }, false);
     elm.style.marginBottom = 0;
@@ -5929,7 +6011,12 @@ var init = function init() {
     Array.prototype.forEach.call(notes, function (note) {
       elm.parentNode.append(note);
     });
-    filename.style.width = "calc(100% - ".concat(label.clientWidth + elm.clientWidth + preview.clientWidth, "px - 6em)");
+    Array.prototype.forEach.call(parent.children, function (child) {
+      if (!child.classList.contains('upload-files') && !child.classList.contains('note')) {
+        offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
+      }
+    });
+    filename.style.width = "calc(100% - (".concat(offset, "px + 4em))");
     filename.style.marginRight = 0;
     elm.querySelector('[type=file]').addEventListener('change', function (evt) {
       var self = evt.target,
@@ -5960,7 +6047,8 @@ var init = function init() {
 
       elm.addEventListener('submit', function (evt) {
         var self = evt.target,
-            submits = self.querySelectorAll('[type=submit]');
+            submits = self.querySelectorAll('[type=submit]'),
+            callback = self.dataset.callback || undefined;
         evt.preventDefault();
 
         if (slothValidator(self)) {
@@ -5968,12 +6056,17 @@ var init = function init() {
             // For suppressing multiplex submission
             e.setAttribute('disabled', true);
           });
-          self.method = 'post';
+
+          if (callback) {
+            Function.call(_this, "return ".concat(callback))();
+          }
+
+          self.method = self.getAttribute('method') || 'post';
           self.submit();
         } else {
           return false;
         }
-      }, false); // 
+      }, false); // Bind the handler to the focus-out event on each child fields
 
       Array.prototype.forEach.call(elm.querySelectorAll('[name]'), function (field) {
         field.addEventListener('blur', function (evt) {
@@ -5983,7 +6076,8 @@ var init = function init() {
         }, false);
       });
     }
-  });
+  }); // Bind the slothNotify dialog
+
   Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=dialog]'), function (elm) {
     elm.addEventListener('click', function (evt) {
       var self = evt.target,
@@ -5991,30 +6085,24 @@ var init = function init() {
           content = self.dataset.content || undefined,
           foot = self.dataset.foot || true,
           effect = self.dataset.effect || document.body.dataset.dialogEffect || 1;
-      console.log(title, content, foot, effect);
-      slothNotify(false, null, null, null, effect).then(function () {
-        slothNotify(true, title, content, foot);
-      });
+      showDialog(title, content, foot, effect);
     }, false);
-  }); // Binding global function
+  }); // Binding functions to global scope
+  //window.optimizeDropdown = optimizeDropdown;
+  //window.adjustNotes = adjustNotes;
+  //window.adjustColumnsInRow = adjustColumnsInRow;
+  //window.switchElementClass = switchElementClass;
+  //window.slothNotify = slothNotify;
 
-  window.optimizeDropdown = optimizeDropdown;
-  window.adjustNotes = adjustNotes;
-  window.adjustColumnsInRow = adjustColumnsInRow;
-  window.switchElementClass = switchElementClass; //window.slothNotify = slothNotify;
-
+  window.showDialog = showDialog;
   window.strLength = strLength; //window.slothValidator = slothValidator;
+  //window.singleFieldValidator = singleFieldValidator;
 
-  window.singleFieldValidator = singleFieldValidator;
-  window.test = test; //window.test2 = test2;
-
-  test().then(function (res) {
-    console.log(res);
-  });
   optimizeDropdown();
   adjustNotes();
   adjustColumnsInRow();
-  switchElementClass(); // Binding resize event
+  switchElementClass();
+  adjustTogglePasswd(); // Binding resize event
 
   window.onresize = resizeHandler;
 };
@@ -6061,6 +6149,20 @@ var adjustNotes = function adjustNotes() {
   });
 };
 /*
+ * Adjust for the toggle password field on resize window
+ * @public
+ */
+
+
+var adjustTogglePasswd = function adjustTogglePasswd() {
+  Array.prototype.forEach.call(document.querySelectorAll('.tgl-view'), function (elm) {
+    var parentWidth = elm.parentNode.clientWidth,
+        tgl_btn = elm.lastElementChild,
+        btnWidth = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
+    elm.firstElementChild.style.maxWidth = "".concat(parentWidth - btnWidth, "px");
+  });
+};
+/*
  * Adjust for items of columns in row
  * @public
  */
@@ -6095,41 +6197,64 @@ var adjustColumnsInRow = function adjustColumnsInRow() {
     }
   });
 };
+/*
+ * Switch classes according to screen size
+ * @public
+ */
+
 
 var switchElementClass = function switchElementClass() {
   Array.prototype.forEach.call(document.querySelectorAll('[data-switch-class]'), function (elm) {
-    var _pair = elm.dataset.switchClass.split(',');
+    var _pair = elm.dataset.switchClass.split(','),
+        winWidth = window.innerWidth,
+        classes = [[], [], []],
+        switchingClasses = [],
+        currentSize = 0;
 
     if (_pair.length > 0) {
+      var _elm$classList;
+
       _pair.forEach(function (_v) {
         var _tmp = _v.split(':'),
             val = _tmp[1] ? _tmp[1].split(' ') : undefined,
             key = val && /^(sm|md|lg)$/i.test(_tmp[0]) ? _tmp[0].toLowerCase() : undefined;
 
         if (key && val) {
-          var width = window.innerWidth,
-              size = 'md'; // Defaults to Medium
-
-          if (width < 576) {
+          if (winWidth < 481) {
             // Small
-            size = 'sm';
-          } else if (width >= 768) {
+            currentSize = 0;
+
+            if (key === 'sm') {
+              classes[0] = _toConsumableArray(val);
+            }
+          } else if (winWidth > 768) {
             // Large
-            size = 'lg';
-          } //console.log( key, val, width, size );
+            currentSize = 1;
 
-
-          if (key === size) {
-            var _elm$classList;
-
-            (_elm$classList = elm.classList).add.apply(_elm$classList, _toConsumableArray(val));
+            if (key === 'lg') {
+              classes[1] = _toConsumableArray(val);
+            }
           } else {
-            var _elm$classList2;
+            // Medium
+            currentSize = 2;
 
-            (_elm$classList2 = elm.classList).remove.apply(_elm$classList2, _toConsumableArray(val));
+            if (key === 'md') {
+              classes[2] = _toConsumableArray(val);
+            }
           }
+
+          switchingClasses = [].concat(_toConsumableArray(switchingClasses), _toConsumableArray(val));
         }
-      });
+      }); // console.log( winWidth, classes, switchingClasses );
+
+
+      (_elm$classList = elm.classList).remove.apply(_elm$classList, _toConsumableArray(switchingClasses));
+
+      if (classes[currentSize].length > 0) {
+        var _elm$classList2;
+
+        (_elm$classList2 = elm.classList).add.apply(_elm$classList2, _toConsumableArray(classes[currentSize]));
+      }
     }
   });
 };
@@ -6144,71 +6269,191 @@ var resizeHandler = function resizeHandler() {
   adjustNotes();
   adjustColumnsInRow();
   switchElementClass();
+  adjustTogglePasswd();
 };
+/*
+ * Create new element of dialog for any notifications
+ * @public
+ * @param {?string} title
+ * @param {?string|object} content
+ * @param {?boolean|object} foot
+ * @param {?string} effect
+ */
 
-var test2 = function test2(v) {
+
+var generateDialog = function generateDialog(title, content, foot, effect) {
+  var _this2 = this;
+
   return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve(v * 2);
-    }, 2000);
-  });
-};
+    var dialogs = document.getElementsByClassName('sloth-notify'),
+        backdrops = document.getElementsByClassName('dialog-backdrop');
 
-var test =
-/*#__PURE__*/
-function () {
-  var _ref = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee() {
-    var res;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return test2(5);
+    if (dialogs.length > 0) {
+      Array.prototype.forEach.call(dialogs, function (dialog) {
+        dialog.remove();
+      });
+    }
 
-          case 2:
-            res = _context.sent;
-            return _context.abrupt("return", res + 5);
+    if (backdrops.length > 0) {
+      Array.prototype.forEach.call(backdrops, function (backdrop) {
+        backdrop.remove();
+      });
+    }
 
-          case 4:
-          case "end":
-            return _context.stop();
-        }
+    var dialog = document.createElement('div'),
+        container = document.createElement('div'),
+        backdrop = document.createElement('div'),
+        parseObject = function parseObject(str) {
+      var newObj = {},
+          _tmp = str.slice(1, -1).split(',');
+
+      if (_tmp.length > 0) {
+        _tmp.forEach(function (_v) {
+          var _v$split = _v.split(':'),
+              _v$split2 = _slicedToArray(_v$split, 2),
+              _prop = _v$split2[0],
+              _val = _v$split2[1];
+
+          _val = _val.trim();
+          _val = _val.replace(/\\(.)/mg, "$1");
+          _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
+          _prop = _prop.trim();
+
+          if (/^callback$/i.test(_prop)) {
+            newObj[_prop] = Function.call(_this2, "return ".concat(_val))();
+          } else {
+            newObj[_prop] = _val;
+          }
+        });
       }
-    }, _callee);
-  }));
 
-  return function test() {
-    return _ref.apply(this, arguments);
-  };
-}(); // Add an element of dialog for any notifications
+      return newObj;
+    },
+        insertTitle = function insertTitle() {
+      title = title ? title.toString() : null;
 
+      if (title) {
+        var dialogHeader = document.createElement('h3');
+        dialogHeader.classList.add('dialog-header');
+        dialogHeader.innerHTML = title;
+        container.append(dialogHeader);
+      }
+    },
+        insertContent = function insertContent() {
+      content = content ? typeof content === 'string' && /^\{+.*\}$/.test(content) ? parseObject(content) : content : undefined;
 
-var generateDialog = function generateDialog(effect) {
-  return new Promise(function (resolve) {
-    var dialog,
-        container,
-        backdrop,
+      if (content) {
+        var dialogBody = document.createElement('div');
+        dialogBody.classList.add('dialog-body');
+
+        if (typeof content === 'string') {
+          dialogBody.innerHTML = content.replace(/\\(.)/mg, "$1");
+        } else if (_typeof(content) === 'object') {
+          if (content instanceof HTMLElement) {
+            dialogBody.append(content);
+          } else if (Object.keys(content).length != 0) {
+            if (content.remote && content.url) {
+              if (content.loader) {
+                dialogBody.innerHTML = content.loader.replace(/\\(.)/mg, "$1");
+              } else {
+                dialogBody.innerHTML = '<div class="txt-center txt-fog">Now Loading...</div>';
+              }
+
+              fetch(content.url, {
+                method: content.remote
+              }).then(function (res) {
+                return res.json();
+              }).then(function (response) {
+                //console.log('Success:', JSON.stringify(response));
+                dialogBody.innerHTML = response.content;
+              }).catch(function (error) {
+                console.error('Error:', error);
+              });
+            } else {
+              dialogBody.textContent = JSON.stringify(content);
+            }
+          }
+        } else {
+          dialogBody.textContent = content;
+        }
+
+        container.append(dialogBody);
+      }
+    },
+        insertFoot = function insertFoot() {
+      foot = foot ? typeof foot === 'string' && /^\{+.*\}$/.test(foot) ? parseObject(foot) : foot : true;
+
+      if (foot) {
+        var dialogFooter = document.createElement('div'),
+            dialogButton = document.createElement('button'),
+            dialogCallback = function dialogCallback() {
+          return true;
+        },
+            buttonClass = document.body.dataset.dialogButton || undefined;
+
+        dialogFooter.classList.add('dialog-footer');
+        dialogButton.setAttribute('type', 'button');
+
+        if (buttonClass) {
+          var _dialogButton$classLi;
+
+          (_dialogButton$classLi = dialogButton.classList).add.apply(_dialogButton$classLi, _toConsumableArray(buttonClass.split(' ')));
+        }
+
+        if (typeof foot === 'string') {
+          dialogButton.innerHTML = foot.replace(/\\(.)/mg, "$1");
+        } else if (_typeof(foot) === 'object') {
+          if (foot instanceof HTMLElement) {
+            dialogButton = foot;
+          } else if (Object.keys(foot).length != 0) {
+            if (Object.prototype.hasOwnProperty.call(foot, 'class')) {
+              var _dialogButton$classLi2;
+
+              dialogButton.removeAttribute('class');
+
+              (_dialogButton$classLi2 = dialogButton.classList).add.apply(_dialogButton$classLi2, _toConsumableArray(foot.class.split(' ')));
+            }
+
+            if (Object.prototype.hasOwnProperty.call(foot, 'label')) {
+              dialogButton.innerHTML = foot.label;
+            }
+
+            if (Object.prototype.hasOwnProperty.call(foot, 'callback')) {
+              dialogCallback = foot.callback;
+            }
+          }
+        } else {
+          dialogButton.textContent = 'Close';
+        }
+
+        dialogButton.addEventListener('click', function () {
+          dialogCallback();
+          dialog.classList.remove('show');
+        }, false);
+        dialogFooter.append(dialogButton);
+        container.append(dialogFooter);
+      }
+    },
         callback = function callback(mutationsList, observer) {
       mutationsList.forEach(function (mutation) {
         var self = mutation.target;
 
         switch (mutation.type) {
           case 'childList':
-            console.log('mutation.type::childList:', mutation);
+            //console.log('mutation.type::childList:', mutation);
+            Array.prototype.forEach.call(mutation.addedNodes, function (elm) {
+              if (elm.classList.contains('dialog-content')) {
+                //console.log('Created ".dialog-content" node!');
+                insertTitle();
+                insertContent();
+                insertFoot();
+                resolve(dialog);
+              }
+            });
             break;
 
           case 'attributes':
-            if (mutation.oldValue && self.classList.contains(effect)) {
-              console.log('mutation.type::attributes:', mutation);
-
-              if (self.getAttribute('state') === 'show') {
-                self.classList.add('show');
-              } else {
-                self.classList.remove('show');
-              }
+            if (mutation.oldValue && self.classList.contains(effect)) {//console.log('mutation.type::attributes:', mutation);
             }
 
             break;
@@ -6218,25 +6463,36 @@ var generateDialog = function generateDialog(effect) {
     },
         observer = new MutationObserver(callback);
 
-    if (document.getElementsByClassName('sloth-notify').length == 0) {
-      dialog = document.createElement('div');
-      container = document.createElement('div');
-      backdrop = document.createElement('div');
-      dialog.classList.add('sloth-notify', effect); //dialog.setAttribute('state', 'hide');
+    switch (true) {
+      case /^(2|slide-?in-right)$/i.test(effect):
+        effect = 'effect-2';
+        break;
 
-      container.classList.add('dialog-content');
-      backdrop.classList.add('dialog-backdrop');
-      dialog.append(container);
-      document.body.append(dialog);
-      document.body.append(backdrop);
-    } else {
-      dialog = document.getElementsByClassName('sloth-notify').item(0);
-      container = dialog.children.item(0);
-      backdrop = document.getElementsByClassName('dialog-backdrop').item(0);
-      container.innerHTML = '';
-    } // observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+      case /^(3|slide-?in-bottom)$/i.test(effect):
+        effect = 'effect-3';
+        break;
 
+      case /^(4|sticky-?up)$/i.test(effect):
+        effect = 'effect-4';
+        break;
 
+      default:
+        effect = 'effect-1';
+        break;
+    }
+
+    observer.observe(dialog, {
+      attributes: true,
+      attributeOldValue: true,
+      childList: true,
+      subtree: true
+    });
+    dialog.classList.add('sloth-notify', effect);
+    container.classList.add('dialog-content');
+    backdrop.classList.add('dialog-backdrop');
+    dialog.append(container);
+    document.body.append(dialog);
+    document.body.append(backdrop);
     backdrop.addEventListener('click', function () {
       if (dialog.classList.contains('show')) {
         dialog.classList.remove('show');
@@ -6244,13 +6500,11 @@ var generateDialog = function generateDialog(effect) {
         return false;
       }
     }, false);
-    resolve(dialog);
   });
 };
 /*
- * Dynamically create dialog for notification and show; or hide already shown the dialog
+ * Dynamically create dialog for notification and show
  * @public
- * @param {string|number|boolean} state - show or hide
  * @param {?string} title
  * @param {?string|object} content
  * @param {?boolean|object} foot
@@ -6261,149 +6515,49 @@ var generateDialog = function generateDialog(effect) {
 var slothNotify =
 /*#__PURE__*/
 function () {
-  var _ref2 = _asyncToGenerator(
+  var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(state, title, content, foot, effect) {
-    var dialog, backdrop, container, dialogHeader, dialogBody, dialogFooter, dialogButton, dialogCallback, _dialogButton$classLi;
-
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+  regeneratorRuntime.mark(function _callee(title, content, foot, effect) {
+    return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context.prev = _context.next) {
           case 0:
-            //async function slothNotify( state, title, content, foot, effect ) {
-            effect = effect ? effect.toString() : document.body.dataset.dialogEffect || 1;
-            _context2.t0 = true;
-            _context2.next = _context2.t0 === /^(2|slide-?in-right)$/i.test(effect) ? 4 : _context2.t0 === /^(3|slide-?in-bottom)$/i.test(effect) ? 6 : _context2.t0 === /^(4|sticky-?up)$/i.test(effect) ? 8 : 10;
-            break;
+            _context.next = 2;
+            return generateDialog(title, content, foot, effect);
 
-          case 4:
-            effect = 'effect-2';
-            return _context2.abrupt("break", 12);
+          case 2:
+            return _context.abrupt("return", _context.sent);
 
-          case 6:
-            effect = 'effect-3';
-            return _context2.abrupt("break", 12);
-
-          case 8:
-            effect = 'effect-4';
-            return _context2.abrupt("break", 12);
-
-          case 10:
-            effect = 'effect-1';
-            return _context2.abrupt("break", 12);
-
-          case 12:
-            _context2.next = 14;
-            return generateDialog(effect);
-
-          case 14:
-            dialog = _context2.sent;
-            console.log(dialog);
-            backdrop = document.getElementsByClassName('dialog-backdrop').item(0), container = dialog.childNodes.item(0);
-            state = state && /^(show|1|true)$/i.test(state.toString()) ? 'show' : 'hide';
-            title = title ? title.toString() : null;
-            content = content ? content : undefined;
-            foot = foot ? foot : true;
-
-            if (!(backdrop && dialog && container)) {
-              _context2.next = 32;
-              break;
-            }
-
-            container.innerHTML = ''; // To empty as initializing the content on the dialog
-
-            if (title) {
-              dialogHeader = document.createElement('h3');
-              dialogHeader.classList.add('dialog-header');
-              dialogHeader.innerHTML = title;
-              container.append(dialogHeader);
-            }
-
-            if (content) {
-              dialogBody = document.createElement('div');
-              dialogBody.classList.add('dialog-body');
-
-              if (typeof content === 'string') {
-                dialogBody.innerHTML = content;
-              } else if (_typeof(content) === 'object') {
-                if (content instanceof HTMLElement) {
-                  dialogBody.append(content);
-                } else if (Object.keys(content).length != 0) {
-                  console.log(content);
-                  dialogBody.textContent = content;
-                }
-              } else {
-                dialogBody.textContent = content;
-              }
-
-              container.append(dialogBody);
-            }
-
-            if (foot) {
-              dialogFooter = document.createElement('div'), dialogButton = document.createElement('button'), dialogCallback = function dialogCallback() {
-                return true;
-              };
-              dialogFooter.classList.add('dialog-footer');
-              dialogButton.setAttribute('type', 'button');
-              dialogButton.classList.add(document.body.dataset.dialogButton || '');
-
-              if (typeof foot === 'string') {
-                dialogButton.innerHTML = foot;
-              } else if (_typeof(foot) === 'object') {
-                if (foot instanceof HTMLElement) {
-                  dialogButton = foot;
-                } else if (Object.keys(foot).length != 0) {
-                  if (Object.prototype.hasOwnProperty.call(foot, 'class')) {
-                    dialogButton.removeAttribute('class');
-
-                    (_dialogButton$classLi = dialogButton.classList).add.apply(_dialogButton$classLi, _toConsumableArray(foot.class.split(' ')));
-                  }
-
-                  if (Object.prototype.hasOwnProperty.call(foot, 'label')) {
-                    dialogButton.innerHTML = foot.label;
-                  }
-
-                  if (Object.prototype.hasOwnProperty.call(foot, 'callback')) {
-                    dialogCallback = foot.callback;
-                  }
-                }
-              } else {
-                dialogButton.textContent = 'Close';
-              }
-
-              dialogButton.addEventListener('click', function () {
-                dialogCallback();
-                dialog.classList.remove('show');
-              }, false);
-              dialogFooter.append(dialogButton);
-              container.append(dialogFooter);
-            }
-
-            console.log(container.childNodes.length);
-
-            if (!(container.childNodes.length == 0)) {
-              _context2.next = 31;
-              break;
-            }
-
-            return _context2.abrupt("return", false);
-
-          case 31:
-            //dialog.setAttribute('state', state);
-            dialog.classList.add(state);
-
-          case 32:
+          case 3:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
       }
-    }, _callee2);
+    }, _callee);
   }));
 
-  return function slothNotify(_x, _x2, _x3, _x4, _x5) {
-    return _ref2.apply(this, arguments);
+  return function slothNotify(_x, _x2, _x3, _x4) {
+    return _ref.apply(this, arguments);
   };
 }();
+/*
+ * Show dialog as wrapper of slothNotify
+ * @public
+ * @param {?string} title
+ * @param {?string|object} content
+ * @param {?boolean|object} foot
+ * @param {?string} effect
+ */
+
+
+var showDialog = function showDialog(title, content, foot, effect) {
+  slothNotify(title, content, foot, effect).then(function (dialog) {
+    setTimeout(function () {
+      // Delay by transition animation interval
+      dialog.classList.add('show');
+    }, 300);
+  });
+};
 /*
  * Measure the length of the specified string in pixel values
  * @public
@@ -6432,13 +6586,12 @@ var strLength = function strLength(str) {
 
 
 var slothValidator = function slothValidator(form) {
-  var _console;
-
   var result = false,
+      title = form.dataset.invalidTitle || 'Incomplete Submissions!',
       messages = {},
-      formData = new FormData(form);
-
-  (_console = console).log.apply(_console, _toConsumableArray(formData.entries()));
+      foot = form.dataset.dialogFooter || true,
+      effect = form.dataset.dialogEffect || 1,
+      formData = new FormData(form); // console.log( ...formData.entries() );
 
   Array.prototype.forEach.call(form.querySelectorAll('[name]'), function (field) {
     messages = Object.assign(messages, singleFieldValidator(field, formData));
@@ -6452,7 +6605,9 @@ var slothValidator = function slothValidator(form) {
       list.append(item);
     });
     list.classList.add('error-messages');
-    slothNotify(1, 'Please confirm incomplete submissions!', list);
+    showDialog(title, list, foot, effect);
+  } else {
+    result = true;
   }
 
   return result;
@@ -6473,23 +6628,58 @@ var singleFieldValidator = function singleFieldValidator(field, formData) {
   pattern = field.hasAttribute('pattern') ? field.getAttribute('pattern') : undefined,
       value = formData.get(fieldName) || '',
       // field.value || '',
-  fieldLabel = field.dataset.dispname,
+  fieldLabel = field.dataset.dispname || fieldName,
       //field.parentNode.firstElementChild.textContent,
   result = false,
-      messages = {}; //for (let v of formData.entries()) {
-  //console.log( v );
-  //}
+      messages = {};
 
   switch (field.nodeName.toLowerCase()) {
     case 'input':
       if (field.hasAttribute('type')) {
         switch (field.getAttribute('type')) {
+          case 'file':
+            if (isRequired) {
+              if (value.name !== '' && value.size > 0) {
+                // valid Okay
+                result = true;
+              } else {
+                // Not chosen error
+                messages[fieldLabel] = 'Not chosen';
+              }
+            } else {
+              // through
+              result = null;
+            }
+
+            break;
+
+          case 'radio':
+          case 'checkbox':
+            if (isRequired) {
+              if (value !== '') {
+                // valid Okay
+                result = true;
+              } else {
+                // Not chosen error
+                messages[fieldLabel] = 'Not chosen';
+              }
+            } else {
+              // through
+              result = null;
+            }
+
+            break;
+
+          case 'hidden':
+            // through
+            result = null;
+            break;
+
           case 'text':
           case 'email':
           case 'password':
           case 'number':
-            //console.log( 'singleFieldValidator::', field, fieldLabel );
-            //console.log( fieldName, isRequired, placeholder, pattern, value );
+          default:
             field.classList.remove('value-ok', 'value-ng');
 
             if (isRequired) {
@@ -6537,55 +6727,14 @@ var singleFieldValidator = function singleFieldValidator(field, formData) {
             }
 
             break;
-
-          case 'file':
-            //console.log( fieldName, isRequired, placeholder, pattern, value );
-            if (isRequired) {
-              if (value.name !== '' && value.size > 0) {
-                // valid Okay
-                result = true;
-              } else {
-                // Not chosen error
-                messages[fieldLabel] = 'Not chosen';
-              }
-            } else {
-              // through
-              result = null;
-            }
-
-            break;
-
-          case 'radio':
-          case 'checkbox':
-            //console.log( fieldName, isRequired, placeholder, pattern, value );
-            if (isRequired) {
-              if (value !== '') {
-                // valid Okay
-                result = true;
-              } else {
-                // Not chosen error
-                messages[fieldLabel] = 'Not chosen';
-              }
-            } else {
-              // through
-              result = null;
-            }
-
-            break;
-
-          case 'hidden':
-          default:
-            //console.log( fieldName, isRequired, placeholder, pattern );
-            // through
-            result = null;
-            break;
         }
       }
 
       break;
 
     case 'select':
-      //console.log( fieldName, isRequired, placeholder, pattern, value );
+      field.classList.remove('value-ok', 'value-ng');
+
       if (isRequired) {
         if (value !== '') {
           // valid Okay
@@ -6606,13 +6755,12 @@ var singleFieldValidator = function singleFieldValidator(field, formData) {
       break;
 
     case 'textarea':
-      //console.log( fieldName, isRequired, placeholder, pattern, value );
       field.classList.remove('value-ok', 'value-ng');
 
       if (isRequired) {
         if (value !== '') {
           if (pattern) {
-            if (new RegExp(pattern, 'm').test(value)) {
+            if (new RegExp(pattern).test(value.replace(/\r?\n/g, ''))) {
               // valid Okay
               result = true;
             } else {
@@ -6629,7 +6777,7 @@ var singleFieldValidator = function singleFieldValidator(field, formData) {
         }
       } else if (pattern) {
         if (value !== '') {
-          if (new RegExp(pattern, 'm').test(value)) {
+          if (new RegExp(pattern).test(value.replace(/\r?\n/g, ''))) {
             // valid Okay
             result = true;
           } else {
@@ -6650,9 +6798,6 @@ var singleFieldValidator = function singleFieldValidator(field, formData) {
       }
 
       break;
-  }
-
-  if (!result && Object.keys(messages).length > 0) {//console.log(result, messages);
   }
 
   return messages;

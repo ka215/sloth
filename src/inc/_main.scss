@@ -2105,7 +2105,7 @@
   }
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px) {
+@media screen and (min-width: 576px) and (max-width: 768px) {
   a:not(#{$not}) {
     &[target="_blank"],
     &[rel="external"] {
@@ -2116,7 +2116,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   a:not(#{$not}) {
     &[target="_blank"],
     &[rel="external"] {

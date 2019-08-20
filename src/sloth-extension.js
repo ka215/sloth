@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
 v1.0.3
-Last Updated: August 15,2019
+Last Updated: August 16,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -12,12 +12,13 @@ const init = function() {
     
     // Apply size of shorthand to element
     Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), (elm) => {
-        let sizes = elm.dataset.size.split(',');
+        let sizes = elm.dataset.size.split(','),
+            isInline = /^(a|abbr|b|bdi|bdo|big|button|cite|code|data|datalist|del|dfn|em|i|img|input|ins|kbd|label|mark|q|ruby|s|samp|select|small|span|strong|sub|sup|textarea|time|u|tt|var)$/i.test(elm.nodeName);
         
         sizes.forEach((_v) => {
             let _tmp   = _v.split(':'),
-                _prop  = _tmp[0] || null,
-                _value = _tmp[1] || null;
+                _prop  = _tmp[0] ? _tmp[0].trim() : null,
+                _value = _tmp[1] ? _tmp[1].trim().replace(';', '') : null;
             
             if ( _prop && _value ) {
                 switch(true) {
@@ -33,6 +34,12 @@ const init = function() {
                     case /^m(|ax)-?h(|eight)$/i.test(_prop):
                         _prop = 'max-height';
                         break;
+                    case /^min-?w(|idth)$/i.test(_prop):
+                        _prop = 'min-width';
+                        break;
+                    case /^min-?h(|eight)$/i.test(_prop):
+                        _prop = 'min-height';
+                        break;
                 }
                 switch(true) {
                     case /^\d+.*$/i.test(_value):
@@ -40,13 +47,16 @@ const init = function() {
                     case /^\(.*\)$/i.test(_value):
                         _value = `calc${_value}`;
                         break;
-                    default:
-                        _value = 'auto';
-                        break;
+                }
+                if ( isInline && ! elm.style.display ) {
+                    elm.style.display = 'inline-block';
                 }
                 elm.style[_prop] = _value;
             }
         });
+        if ( sizes.length > 0 ) {
+            elm.removeAttribute('data-size');
+        }
     });
     
     // Map data of shorthand to option in select boxes (type 1)
@@ -59,6 +69,9 @@ const init = function() {
             opt.setAttribute('value', i);
             opt.textContent = i;
             elm.parentNode.append( opt );
+        }
+        if ( vals.length > 0 ) {
+            elm.removeAttribute('data-map');
         }
     });
     
@@ -79,6 +92,9 @@ const init = function() {
                 elm.parentNode.append( opt );
             }
         });
+        if ( vals.length > 0 ) {
+            elm.removeAttribute('data-map');
+        }
     });
     
     // Add a string length ruler element
@@ -123,7 +139,8 @@ const init = function() {
         let filename = document.createElement('input'),
             preview  = document.createElement('div'),
             notes    = elm.parentNode.querySelectorAll('.note'),
-            label    = elm.parentNode.firstElementChild;
+            parent   = elm.parentNode,
+            offset   = 0;
         
         Array.prototype.forEach.call(notes, (note) => {
             note.remove();
@@ -147,7 +164,7 @@ const init = function() {
                 
                 dupNode.removeAttribute('class');
                 dupNode.classList.add('expand-image');
-                slothNotify( 'show', filename.value, dupNode );
+                showDialog(filename.value, dupNode);
             }
         }, false);
         
@@ -157,7 +174,12 @@ const init = function() {
         Array.prototype.forEach.call(notes, (note) => {
             elm.parentNode.append( note );
         });
-        filename.style.width = `calc(100% - ${(label.clientWidth + elm.clientWidth + preview.clientWidth)}px - 6em)`;
+        Array.prototype.forEach.call(parent.children, (child) => {
+            if ( ! child.classList.contains('upload-files') && ! child.classList.contains('note') ) {
+                offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
+            }
+        });
+        filename.style.width = `calc(100% - (${offset}px + 4em))`;
         filename.style.marginRight = 0;
         
         elm.querySelector('[type=file]').addEventListener('change', (evt) => {
@@ -189,8 +211,9 @@ const init = function() {
             }
             // Bind the handler to onSubmit event
             elm.addEventListener('submit', (evt) => {
-                let self = evt.target,
-                    submits = self.querySelectorAll('[type=submit]');
+                let self     = evt.target,
+                    submits  = self.querySelectorAll('[type=submit]'),
+                    callback = self.dataset.callback || undefined;
                 
                 evt.preventDefault();
                 if ( slothValidator( self ) ) {
@@ -198,13 +221,16 @@ const init = function() {
                         // For suppressing multiplex submission
                         e.setAttribute('disabled', true);
                     });
-                    self.method = 'post';
+                    if ( callback ) {
+                        Function.call(this, `return ${callback}`)();
+                    }
+                    self.method = self.getAttribute('method') || 'post';
                     self.submit();
                 } else {
                     return false;
                 }
             }, false);
-            // 
+            // Bind the handler to the focus-out event on each child fields
             Array.prototype.forEach.call(elm.querySelectorAll('[name]'), (field) => {
                 field.addEventListener('blur', (evt) => {
                     let self = evt.target,
@@ -216,6 +242,7 @@ const init = function() {
         }
     });
     
+    // Bind the slothNotify dialog
     Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=dialog]'), (elm) => {
         elm.addEventListener('click', (evt) => {
             let self    = evt.target,
@@ -224,34 +251,26 @@ const init = function() {
                 foot    = self.dataset.foot || true,
                 effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1);
             
-console.log(title, content, foot, effect);
-            slothNotify(false, null, null, null, effect).then(() => {
-                slothNotify(true, title, content, foot);
-            });
+            showDialog(title, content, foot, effect);
         }, false);
     });
     
-    // Binding global function
-    window.optimizeDropdown = optimizeDropdown;
-    window.adjustNotes = adjustNotes;
-    window.adjustColumnsInRow = adjustColumnsInRow;
-    window.switchElementClass = switchElementClass;
+    // Binding functions to global scope
+    //window.optimizeDropdown = optimizeDropdown;
+    //window.adjustNotes = adjustNotes;
+    //window.adjustColumnsInRow = adjustColumnsInRow;
+    //window.switchElementClass = switchElementClass;
     //window.slothNotify = slothNotify;
+    window.showDialog = showDialog;
     window.strLength = strLength;
     //window.slothValidator = slothValidator;
-    window.singleFieldValidator = singleFieldValidator;
-    
-    window.test = test;
-    //window.test2 = test2;
-    
-    test().then((res) => {
-        console.log(res);
-    });
+    //window.singleFieldValidator = singleFieldValidator;
     
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
+    adjustTogglePasswd();
     
     // Binding resize event
     window.onresize = resizeHandler;
@@ -298,6 +317,20 @@ const adjustNotes = () => {
 };
 
 /*
+ * Adjust for the toggle password field on resize window
+ * @public
+ */
+const adjustTogglePasswd = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('.tgl-view'), (elm) => {
+        let parentWidth = elm.parentNode.clientWidth,
+            tgl_btn     = elm.lastElementChild,
+            btnWidth    = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
+        
+        elm.firstElementChild.style.maxWidth = `${(parentWidth - btnWidth)}px`;
+    });
+};
+
+/*
  * Adjust for items of columns in row
  * @public
  */
@@ -332,9 +365,17 @@ const adjustColumnsInRow = () => {
     });
 };
 
+/*
+ * Switch classes according to screen size
+ * @public
+ */
 const switchElementClass = () => {
     Array.prototype.forEach.call(document.querySelectorAll('[data-switch-class]'), (elm) => {
-        let _pair = elm.dataset.switchClass.split(',');
+        let _pair    = elm.dataset.switchClass.split(','),
+            winWidth = window.innerWidth,
+            classes  = [ [], [], [] ],
+            switchingClasses = [],
+            currentSize = 0;
         
         if ( _pair.length > 0 ) {
             _pair.forEach((_v) => {
@@ -343,23 +384,31 @@ const switchElementClass = () => {
                     key  = val && /^(sm|md|lg)$/i.test(_tmp[0]) ? _tmp[0].toLowerCase() : undefined;
                 
                 if ( key && val ) {
-                    let width = window.innerWidth,
-                        size  = 'md'; // Defaults to Medium
-                    
-                    if ( width < 576 ) { // Small
-                        size = 'sm';
+                    if ( winWidth < 481 ) { // Small
+                        currentSize = 0;
+                        if ( key === 'sm' ) {
+                            classes[0] = [...val];
+                        }
                     } else
-                    if ( width >= 768 ) { // Large
-                        size = 'lg';
+                    if ( winWidth > 768 ) { // Large
+                        currentSize = 1;
+                        if ( key === 'lg' ) {
+                            classes[1] = [...val];
+                        }
+                    } else { // Medium
+                        currentSize = 2;
+                        if ( key === 'md' ) {
+                            classes[2] = [...val];
+                        }
                     }
-                    //console.log( key, val, width, size );
-                    if ( key === size ) {
-                        elm.classList.add(...val);
-                    } else {
-                        elm.classList.remove(...val);
-                    }
+                    switchingClasses = [...switchingClasses, ...val];
                 }
             });
+            // console.log( winWidth, classes, switchingClasses );
+            elm.classList.remove(...switchingClasses);
+            if ( classes[currentSize].length > 0 ) {
+                elm.classList.add(...classes[currentSize]);
+            }
         }
     });
 };
@@ -373,198 +422,178 @@ const resizeHandler = () => {
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
+    adjustTogglePasswd();
 };
-
-const test2 = function(v) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(v * 2);
-        }, 2000);
-    });
-};
-
-const test = async () => {
-    let res = await test2(5);
-    return res + 5;
-}
-
-// Add an element of dialog for any notifications
-const generateDialog = function( effect ) {
-    return new Promise((resolve) => {
-    let dialog, container, backdrop,
-        callback = function(mutationsList, observer) {
-            mutationsList.forEach((mutation) => {
-                let self = mutation.target;
-                switch(mutation.type) {
-                    case 'childList':
-                        console.log('mutation.type::childList:', mutation);
-                        
-                        break;
-                    case 'attributes':
-                        if ( mutation.oldValue && self.classList.contains(effect) ) {
-                            console.log('mutation.type::attributes:', mutation);
-                            if ( self.getAttribute('state') === 'show' ) {
-                                self.classList.add('show');
-                            } else {
-                                self.classList.remove('show');
-                            }
-                        }
-                        break;
-                }
-            });
-            observer.disconnect();
-        },
-        observer = new MutationObserver(callback);
-    
-    if ( document.getElementsByClassName('sloth-notify').length == 0 ) {
-        dialog    = document.createElement('div');
-        container = document.createElement('div');
-        backdrop  = document.createElement('div');
-        
-        dialog.classList.add('sloth-notify', effect);
-        //dialog.setAttribute('state', 'hide');
-        container.classList.add('dialog-content');
-        backdrop.classList.add('dialog-backdrop');
-        dialog.append(container);
-        document.body.append(dialog);
-        document.body.append(backdrop);
-    } else {
-        dialog    = document.getElementsByClassName('sloth-notify').item(0);
-        container = dialog.children.item(0);
-        backdrop  = document.getElementsByClassName('dialog-backdrop').item(0);
-        
-        container.innerHTML = '';
-    }
-    // observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
-    backdrop.addEventListener('click', () => {
-        if ( dialog.classList.contains('show') ) {
-            dialog.classList.remove('show');
-        } else {
-            return false;
-        }
-    }, false);
-    
-    resolve(dialog);
-    });
-}
 
 /*
- * Dynamically create dialog for notification and show; or hide already shown the dialog
+ * Create new element of dialog for any notifications
  * @public
- * @param {string|number|boolean} state - show or hide
  * @param {?string} title
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
  */
-const slothNotify = async ( state, title, content, foot, effect ) => {
-//async function slothNotify( state, title, content, foot, effect ) {
-    effect  = effect ? effect.toString() : (document.body.dataset.dialogEffect || 1);
-    switch(true) {
-        case /^(2|slide-?in-right)$/i.test( effect ):
-            effect = 'effect-2';
-            break;
-        case /^(3|slide-?in-bottom)$/i.test( effect ):
-            effect = 'effect-3';
-            break;
-        case /^(4|sticky-?up)$/i.test( effect ):
-            effect = 'effect-4';
-            break;
-        default:
-            effect = 'effect-1';
-            break;
-    }
-    let dialog = await generateDialog( effect );
-console.log( dialog );
-    
-    let backdrop  = document.getElementsByClassName('dialog-backdrop').item(0),
-        //dialog    = document.getElementsByClassName('sloth-notify').item(0),
-        container = dialog.childNodes.item(0);
-    
-    state   = state && /^(show|1|true)$/i.test( state.toString() ) ? 'show' : 'hide';
-    title   = title ? title.toString() : null;
-    content = content ? content : undefined;
-    foot    = foot ? foot : true;
-    if ( backdrop && dialog && container ) {
-        container.innerHTML = ''; // To empty as initializing the content on the dialog
-        if ( title ) {
-            let dialogHeader = document.createElement('h3');
-            
-            dialogHeader.classList.add('dialog-header');
-            dialogHeader.innerHTML = title;
-            container.append(dialogHeader);
+const generateDialog = function( title, content, foot, effect ) {
+    return new Promise((resolve) => {
+        let dialogs = document.getElementsByClassName('sloth-notify'),
+            backdrops = document.getElementsByClassName('dialog-backdrop');
+        
+        if ( dialogs.length > 0 ) {
+            Array.prototype.forEach.call(dialogs, (dialog) => {
+                dialog.remove();
+            });
         }
-        if ( content ) {
-            let dialogBody = document.createElement('div');
-            
-            dialogBody.classList.add('dialog-body');
-            if ( typeof content === 'string' ) {
-                dialogBody.innerHTML = content;
-            } else
-            if ( typeof content === 'object' ) {
-                if ( content instanceof HTMLElement ) {
-                    dialogBody.append(content);
-                } else
-                if ( Object.keys(content).length != 0 ) {
-console.log( content );
-                    dialogBody.textContent = content;
+        if ( backdrops.length > 0 ) {
+            Array.prototype.forEach.call(backdrops, (backdrop) => {
+                backdrop.remove();
+            });
+        }
+        
+        let dialog    = document.createElement('div'),
+            container = document.createElement('div'),
+            backdrop  = document.createElement('div'),
+            parseObject = (str) => {
+                let newObj = {},
+                    _tmp   = str.slice(1, -1).split(',');
+                
+                if ( _tmp.length > 0 ) {
+                    _tmp.forEach((_v) => {
+                        let [_prop, _val] = _v.split(':');
+                        
+                        _val = _val.trim();
+                        _val = _val.replace(/\\(.)/mg, "$1");
+                        _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
+                        _prop = _prop.trim();
+                        if ( /^callback$/i.test(_prop) ) {
+                            newObj[_prop] = Function.call(this, `return ${_val}`)();
+                        } else {
+                            newObj[_prop] = _val;
+                        }
+                    });
                 }
-            } else {
-                dialogBody.textContent = content;
-            }
-            container.append(dialogBody);
-        }
-        if ( foot ) {
-            let dialogFooter = document.createElement('div'),
-                dialogButton = document.createElement('button'),
-                dialogCallback = function(){ return true };
-            
-            dialogFooter.classList.add('dialog-footer');
-            dialogButton.setAttribute('type', 'button');
-            dialogButton.classList.add(document.body.dataset.dialogButton || '');
-            if ( typeof foot === 'string' ) {
-                dialogButton.innerHTML = foot;
-            } else
-            if ( typeof foot === 'object' ) {
-                if ( foot instanceof HTMLElement ) {
-                    dialogButton = foot;
-                } else
-                if ( Object.keys(foot).length != 0 ) {
-                    if ( Object.prototype.hasOwnProperty.call(foot, 'class') ) {
-                        dialogButton.removeAttribute('class');
-                        dialogButton.classList.add( ...foot.class.split(' ') );
-                    }
-                    if ( Object.prototype.hasOwnProperty.call(foot, 'label') ) {
-                        dialogButton.innerHTML = foot.label;
-                    }
-                    if ( Object.prototype.hasOwnProperty.call(foot, 'callback') ) {
-                        dialogCallback = foot.callback;
-                    }
+                return newObj;
+            },
+            insertTitle = () => {
+                title = title ? title.toString() : null;
+                if ( title ) {
+                    let dialogHeader = document.createElement('h3');
+                    
+                    dialogHeader.classList.add('dialog-header');
+                    dialogHeader.innerHTML = title;
+                    container.append(dialogHeader);
                 }
-            } else {
-                dialogButton.textContent = 'Close';
-            }
-            dialogButton.addEventListener('click', () => {
-                dialogCallback();
-                dialog.classList.remove('show');
-            }, false);
-            dialogFooter.append(dialogButton);
-            container.append(dialogFooter);
-        }
-console.log( container.childNodes.length );
-        if ( container.childNodes.length == 0 ) {
-            return false;
-        } else {
-            //dialog.setAttribute('state', state);
-            dialog.classList.add(state);
-        }
-        /*
-        // Set transition effect
-        Array.prototype.forEach.call(dialog.classList, (e) => {
-            if ( /^effect-\d+$/i.test(e) ) {
-                dialog.classList.remove(e);
-            }
-        });
+            },
+            insertContent = () => {
+                content = content ? (typeof content === 'string' && /^\{+.*\}$/.test(content) ? parseObject(content) : content) : undefined;
+                if ( content ) {
+                    let dialogBody = document.createElement('div');
+                    
+                    dialogBody.classList.add('dialog-body');
+                    if ( typeof content === 'string' ) {
+                        dialogBody.innerHTML = content.replace(/\\(.)/mg, "$1");
+                    } else
+                    if ( typeof content === 'object' ) {
+                        if ( content instanceof HTMLElement ) {
+                            dialogBody.append(content);
+                        } else
+                        if ( Object.keys(content).length != 0 ) {
+                            if ( content.remote && content.url ) {
+                                if ( content.loader ) {
+                                    dialogBody.innerHTML = content.loader.replace(/\\(.)/mg, "$1");
+                                } else {
+                                    dialogBody.innerHTML = '<div class="txt-center txt-fog">Now Loading...</div>';
+                                }
+                                fetch(content.url, {
+                                    method: content.remote
+                                }).then((res) => res.json())
+                                .then((response) => {
+                                    //console.log('Success:', JSON.stringify(response));
+                                    dialogBody.innerHTML = response.content;
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });
+                            } else {
+                                dialogBody.textContent = JSON.stringify(content);
+                            }
+                        }
+                    } else {
+                        dialogBody.textContent = content;
+                    }
+                    container.append(dialogBody);
+                }
+            },
+            insertFoot = () => {
+                foot = foot ? (typeof foot === 'string' && /^\{+.*\}$/.test(foot) ? parseObject(foot) : foot) : true;
+                if ( foot ) {
+                    let dialogFooter = document.createElement('div'),
+                        dialogButton = document.createElement('button'),
+                        dialogCallback = function(){ return true },
+                        buttonClass = document.body.dataset.dialogButton || undefined;
+                    
+                    dialogFooter.classList.add('dialog-footer');
+                    dialogButton.setAttribute('type', 'button');
+                    if ( buttonClass ) {
+                        dialogButton.classList.add(...buttonClass.split(' '));
+                    }
+                    if ( typeof foot === 'string' ) {
+                        dialogButton.innerHTML = foot.replace(/\\(.)/mg, "$1");
+                    } else
+                    if ( typeof foot === 'object' ) {
+                        if ( foot instanceof HTMLElement ) {
+                            dialogButton = foot;
+                        } else
+                        if ( Object.keys(foot).length != 0 ) {
+                            if ( Object.prototype.hasOwnProperty.call(foot, 'class') ) {
+                                dialogButton.removeAttribute('class');
+                                dialogButton.classList.add( ...foot.class.split(' ') );
+                            }
+                            if ( Object.prototype.hasOwnProperty.call(foot, 'label') ) {
+                                dialogButton.innerHTML = foot.label;
+                            }
+                            if ( Object.prototype.hasOwnProperty.call(foot, 'callback') ) {
+                                dialogCallback = foot.callback;
+                            }
+                        }
+                    } else {
+                        dialogButton.textContent = 'Close';
+                    }
+                    dialogButton.addEventListener('click', () => {
+                        dialogCallback();
+                        dialog.classList.remove('show');
+                    }, false);
+                    dialogFooter.append(dialogButton);
+                    container.append(dialogFooter);
+                }
+            },
+            callback  = (mutationsList, observer) => {
+                mutationsList.forEach((mutation) => {
+                    let self = mutation.target;
+                    
+                    switch(mutation.type) {
+                        case 'childList':
+                            //console.log('mutation.type::childList:', mutation);
+                            Array.prototype.forEach.call(mutation.addedNodes, (elm) => {
+                                if ( elm.classList.contains('dialog-content') ) {
+                                    //console.log('Created ".dialog-content" node!');
+                                    insertTitle();
+                                    insertContent();
+                                    insertFoot();
+                                    resolve(dialog);
+                                }
+                            });
+                            break;
+                        case 'attributes':
+                            if ( mutation.oldValue && self.classList.contains(effect) ) {
+                                //console.log('mutation.type::attributes:', mutation);
+                            }
+                            break;
+                    }
+                });
+                observer.disconnect();
+            },
+            observer = new MutationObserver(callback);
+        
         switch(true) {
             case /^(2|slide-?in-right)$/i.test( effect ):
                 effect = 'effect-2';
@@ -579,10 +608,51 @@ console.log( container.childNodes.length );
                 effect = 'effect-1';
                 break;
         }
-        dialog.classList.add( effect );
-        */
-    }
+        
+        observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+        
+        dialog.classList.add('sloth-notify', effect);
+        container.classList.add('dialog-content');
+        backdrop.classList.add('dialog-backdrop');
+        dialog.append(container);
+        document.body.append(dialog);
+        document.body.append(backdrop);
+        backdrop.addEventListener('click', () => {
+            if ( dialog.classList.contains('show') ) {
+                dialog.classList.remove('show');
+            } else {
+                return false;
+            }
+        }, false);
+    });
 }
+
+/*
+ * Dynamically create dialog for notification and show
+ * @public
+ * @param {?string} title
+ * @param {?string|object} content
+ * @param {?boolean|object} foot
+ * @param {?string} effect
+ */
+const slothNotify = async ( title, content, foot, effect ) => await generateDialog( title, content, foot, effect );
+
+/*
+ * Show dialog as wrapper of slothNotify
+ * @public
+ * @param {?string} title
+ * @param {?string|object} content
+ * @param {?boolean|object} foot
+ * @param {?string} effect
+ */
+const showDialog = ( title, content, foot, effect ) => {
+    slothNotify(title, content, foot, effect).then((dialog) => {
+        setTimeout(() => {
+            // Delay by transition animation interval
+            dialog.classList.add('show');
+        }, 300);
+    });
+};
 
 /*
  * Measure the length of the specified string in pixel values
@@ -609,10 +679,13 @@ const strLength = (str) => {
  */
 const slothValidator = (form) => {
     let result   = false,
+        title    = form.dataset.invalidTitle || 'Incomplete Submissions!',
         messages = {},
+        foot     = form.dataset.dialogFooter || true,
+        effect   = form.dataset.dialogEffect || 1,
         formData = new FormData(form);
     
-console.log( ...formData.entries() );
+    // console.log( ...formData.entries() );
     Array.prototype.forEach.call(form.querySelectorAll('[name]'), (field) => {
         messages = Object.assign(messages, singleFieldValidator( field, formData ));
     });
@@ -627,7 +700,9 @@ console.log( ...formData.entries() );
         });
         list.classList.add('error-messages');
         
-        slothNotify( 1, 'Please confirm incomplete submissions!', list );
+        showDialog(title, list, foot, effect);
+    } else {
+        result = true;
     }
     return result;
 };
@@ -645,23 +720,52 @@ const singleFieldValidator = (field, formData) => {
         //placeholder = field.hasAttribute('placeholder') ? field.getAttribute('placeholder') : undefined,
         pattern     = field.hasAttribute('pattern') ? field.getAttribute('pattern') : undefined,
         value       = formData.get(fieldName) || '', // field.value || '',
-        fieldLabel  = field.dataset.dispname, //field.parentNode.firstElementChild.textContent,
+        fieldLabel  = field.dataset.dispname || fieldName, //field.parentNode.firstElementChild.textContent,
         result      = false,
         messages    = {};
     
-    //for (let v of formData.entries()) {
-//console.log( v );
-//}
     switch (field.nodeName.toLowerCase()) {
         case 'input':
             if ( field.hasAttribute('type') ) {
                 switch (field.getAttribute('type')) {
+                    case 'file':
+                        if ( isRequired ) {
+                            if ( value.name !== '' && value.size > 0 ) {
+                                // valid Okay
+                                result = true;
+                            } else {
+                                // Not chosen error
+                                messages[fieldLabel] = 'Not chosen';
+                            }
+                        } else {
+                            // through
+                            result = null;
+                        }
+                        break;
+                    case 'radio':
+                    case 'checkbox':
+                        if ( isRequired ) {
+                            if ( value !== '' ) {
+                                // valid Okay
+                                result = true;
+                            } else {
+                                // Not chosen error
+                                messages[fieldLabel] = 'Not chosen';
+                            }
+                        } else {
+                            // through
+                            result = null;
+                        }
+                        break;
+                    case 'hidden':
+                        // through
+                        result = null;
+                        break;
                     case 'text':
                     case 'email':
                     case 'password':
                     case 'number':
-//console.log( 'singleFieldValidator::', field, fieldLabel );
-//console.log( fieldName, isRequired, placeholder, pattern, value );
+                    default:
                         field.classList.remove('value-ok', 'value-ng');
                         if ( isRequired ) {
                             if ( value !== '' ) {
@@ -706,48 +810,11 @@ const singleFieldValidator = (field, formData) => {
                             }
                         }
                         break;
-                    case 'file':
-//console.log( fieldName, isRequired, placeholder, pattern, value );
-                        if ( isRequired ) {
-                            if ( value.name !== '' && value.size > 0 ) {
-                                // valid Okay
-                                result = true;
-                            } else {
-                                // Not chosen error
-                                messages[fieldLabel] = 'Not chosen';
-                            }
-                        } else {
-                            // through
-                            result = null;
-                        }
-                        break;
-                    case 'radio':
-                    case 'checkbox':
-//console.log( fieldName, isRequired, placeholder, pattern, value );
-                        if ( isRequired ) {
-                            if ( value !== '' ) {
-                                // valid Okay
-                                result = true;
-                            } else {
-                                // Not chosen error
-                                messages[fieldLabel] = 'Not chosen';
-                            }
-                        } else {
-                            // through
-                            result = null;
-                        }
-                        break;
-                    case 'hidden':
-                    default:
-//console.log( fieldName, isRequired, placeholder, pattern );
-                        // through
-                        result = null;
-                        break;
                 }
             }
             break;
         case 'select':
-//console.log( fieldName, isRequired, placeholder, pattern, value );
+            field.classList.remove('value-ok', 'value-ng');
             if ( isRequired ) {
                 if ( value !== '' ) {
                     // valid Okay
@@ -765,12 +832,11 @@ const singleFieldValidator = (field, formData) => {
             }
             break;
         case 'textarea':
-//console.log( fieldName, isRequired, placeholder, pattern, value );
             field.classList.remove('value-ok', 'value-ng');
             if ( isRequired ) {
                 if ( value !== '' ) {
                     if ( pattern ) {
-                        if ( new RegExp(pattern, 'm').test(value) ) {
+                        if ( new RegExp(pattern).test(value.replace(/\r?\n/g, '')) ) {
                             // valid Okay
                             result = true;
                         } else {
@@ -788,7 +854,7 @@ const singleFieldValidator = (field, formData) => {
             } else
             if ( pattern ) {
                 if ( value !== '' ) {
-                    if ( new RegExp(pattern, 'm').test(value) ) {
+                    if ( new RegExp(pattern).test(value.replace(/\r?\n/g, '')) ) {
                         // valid Okay
                         result = true;
                     } else {
@@ -807,10 +873,6 @@ const singleFieldValidator = (field, formData) => {
                 field.classList.add( result ? 'value-ok' : 'value-ng' );
             }
             break;
-    }
-    if ( ! result && Object.keys(messages).length > 0 ) {
-//console.log(result, messages);
-        
     }
     return messages;
 };
