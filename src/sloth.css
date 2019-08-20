@@ -1819,21 +1819,6 @@ textarea {
   box-sizing: border-box;
 }
 
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
-  background: none;
-}
-
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::selection,
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::selection,
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::selection,
@@ -4409,7 +4394,7 @@ table.cell-right {
   vertical-align: middle;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
   html {
     font-size: 12px;
   }
@@ -4419,6 +4404,41 @@ table.cell-right {
   :target::before {
     height: var(--navi-height-md, 0);
     margin-top: calc(-1 * var(--navi-height-md, 0));
+  }
+  .sloth:not(.nons) .navi-menu:not(.nons),
+  .sloth *:not(.nons) .navi-menu:not(.nons) {
+    height: var(--navi-height-md, 56px);
+  }
+  .sloth:not(.nons) .navi-menu:not(.nons) .toggle .backdrop,
+  .sloth *:not(.nons) .navi-menu:not(.nons) .toggle .backdrop {
+    top: var(--navi-height-md, 56px);
+    height: calc(100vh - var(--navi-height-md, 56px));
+  }
+  .sloth:not(.nons) .navi-menu:not(.nons) .toggle .menu,
+  .sloth *:not(.nons) .navi-menu:not(.nons) .toggle .menu {
+    top: var(--navi-height-md, 56px);
+    left: calc(-1 * var(--menu-width-md, 50%));
+    width: var(--menu-width-md, -webkit-max-content);
+    width: var(--menu-width-md, -moz-max-content);
+    width: var(--menu-width-md, max-content);
+    max-width: var(--menu-width-md, 50%);
+    height: calc(100vh - var(--navi-height-md, 56px));
+  }
+  .sloth:not(.nons) .sloth-notify,
+  .sloth *:not(.nons) .sloth-notify {
+    width: -webkit-max-content !important;
+    width: -moz-max-content !important;
+    width: max-content !important;
+  }
+  .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body,
+  .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body {
+    max-height: calc(80vh - 100px) !important;
+    padding: 25px !important;
+  }
+  .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body .expand-image,
+  .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body .expand-image {
+    min-height: calc(16em + 50px) !important;
+    margin: -25px !important;
   }
   .note::before {
     top: 0.3em;
@@ -4430,7 +4450,7 @@ table.cell-right {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   html {
     font-size: 14px;
   }
@@ -4488,43 +4508,8 @@ table.cell-right {
   }
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px) {
+@media screen and (min-width: 576px) and (max-width: 768px) {
   a:not(.nons)[target="_blank"]::after, a:not(.nons)[rel="external"]::after {
     vertical-align: middle;
-  }
-  .sloth:not(.nons) .navi-menu:not(.nons),
-  .sloth *:not(.nons) .navi-menu:not(.nons) {
-    height: var(--navi-height-md, 56px);
-  }
-  .sloth:not(.nons) .navi-menu:not(.nons) .toggle .backdrop,
-  .sloth *:not(.nons) .navi-menu:not(.nons) .toggle .backdrop {
-    top: var(--navi-height-md, 56px);
-    height: calc(100vh - var(--navi-height-md, 56px));
-  }
-  .sloth:not(.nons) .navi-menu:not(.nons) .toggle .menu,
-  .sloth *:not(.nons) .navi-menu:not(.nons) .toggle .menu {
-    top: var(--navi-height-md, 56px);
-    left: calc(-1 * var(--menu-width-md, 50%));
-    width: var(--menu-width-md, -webkit-max-content);
-    width: var(--menu-width-md, -moz-max-content);
-    width: var(--menu-width-md, max-content);
-    max-width: var(--menu-width-md, 50%);
-    height: calc(100vh - var(--navi-height-md, 56px));
-  }
-  .sloth:not(.nons) .sloth-notify,
-  .sloth *:not(.nons) .sloth-notify {
-    width: -webkit-max-content !important;
-    width: -moz-max-content !important;
-    width: max-content !important;
-  }
-  .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body,
-  .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body {
-    max-height: calc(80vh - 100px) !important;
-    padding: 25px !important;
-  }
-  .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body .expand-image,
-  .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body .expand-image {
-    min-height: calc(16em + 50px) !important;
-    margin: -25px !important;
   }
 }

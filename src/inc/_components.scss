@@ -358,7 +358,7 @@
     z-index: -1;
   }
 
-  @media screen and (min-width: 576px) and (max-width: 767px) {
+  @media screen and (min-width: 481px) and (max-width: 768px) {
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);
 
@@ -395,7 +395,7 @@
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-lg, $navi-height);
 

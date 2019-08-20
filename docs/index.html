@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta charset="utf-8">
-  <title>Sloth - Mobile First CSS Micro Framework</title>
+  <title>Sloth - Mobile First CSS Lightweight Framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="ka2">
   <meta name="description" content="Sloth has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
@@ -20,7 +20,8 @@
         <ul class="unstyled">
           <li class="pr1"><a href="#introduction"><i class="fas fa-home mr1"></i>HOME</a></li>
           <li class="pr1"><a href="#why-sloth"><i class="fas fa-question mr1"></i>Why Sloth?</a></li>
-          <li class="pr1"><a href="#get-started-sloth"><i class="fab fa-gripfire mr1"></i>Get Started Sloth!</a></li>
+          <li class="pr1"><a href="#get-started-sloth"><i class="fas fa-fire mr1"></i>Get Started Sloth!</a></li>
+          <li class="pr1"><a href="#sloth-extensions"><i class="far fa-lightbulb mr1"></i>Sloth Extensions</a></li>
           <li class="pr1"><a href="#basic-structures"><i class="fas fa-chalkboard mr1"></i>Basic Structures</a></li>
         </ul>
         <hr>
@@ -36,6 +37,10 @@
           <li class="pr1"><a href="#colors"><i class="fas fa-palette mr1"></i>Colors</a></li>
           <li class="pr1"><a href="#utilities"><i class="fas fa-toolbox mr1"></i>Utilities</a></li>
           <li class="pr1"><a href="#overriding-properties"><i class="far fa-edit mr1"></i>Overriding Properties</a></li>
+        </ul>
+        <hr>
+        <ul class="unstyled">
+          <li class="pr1"><a href="extensions.html" class="txt-tert"><i class="far fa-lightbulb mr1"></i>Extensions</a></li>
         </ul>
         <hr>
         <ul class="unstyled">
@@ -69,7 +74,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em class="txt-sec">12.3kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec">15.6kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -95,6 +100,18 @@
     </div>
   </aside>
 </article>
+<article id="sloth-extensions" class="lead-block">
+  <h2>Sloth Extensions</h2>
+  <aside>
+    Since Version 1.0.3, added new <a href="extensions.html">extension script for Sloth</a>.<br>
+    If you use that script, you can get make an easily advanced form with field validation built, and enable dialog to be popuping.<br>
+    If you want to enable this extension, you should be loaded script file as like below.<br>
+    <div class="flx-row flx-center fnt-sm my1">
+      <pre class="prettyprint"><code>&lt;script async src="dist/sloth.extension.min.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+    That script file size after gzip compression is <em class="txt-sec">21.2kB</em> at this time.<br>
+  </aside>
+</article>
 <article id="basic-structures" class="lead-block">
   <h2>Basic Structures</h2>
   <aside>
@@ -105,7 +122,7 @@
       </thead>
       <tbody>
         <tr>
-          <th>Screen Width</th><td>&lt; 576px</td><td>&gt;= 576px</td><td>&gt;= 768px</td>
+          <th>Screen Width</th><td>&lt;= 480px</td><td class="fnt-sm">481px &#x301C; 768px</td><td>&gt;= 769px</td>
         </tr>
         <tr>
           <th>1rem =</th><td>10px</td><td>12px</td><td>14px</td>

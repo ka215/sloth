@@ -3,6 +3,7 @@ node_modules
 .sass-cache/
 *.log
 *.orig
+*.php
 __.*
 
 package-lock.json
