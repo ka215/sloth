@@ -33,8 +33,9 @@
         </ul>
         <hr>
         <ul class="unstyled">
+          <li class="pr1"><a href="./index.html?navi=1"><span class="mr1" data-size="w:1rem"><i class="fas fa-home"></i></span>Sloth Core Styles</a></li>
+          <li class="pr1"><a href="./environments.html"><span class="mr1" data-size="w:1rem"><i class="far fa-window-restore"></i></span>Supported Browsers</a></li>
           <li class="pr1"><a href="./donation.html"><span class="mr1" data-size="w:1rem"><i class="fas fa-donate"></i></span>Donation</a></li>
-          <li class="pr1"><a href="./index.html?navi=1"><span class="mr1" data-size="w:1rem"><i class="fas fa-home"></i></span>Sloth Core</a></li>
           <li class="pr1"><a href="https://github.com/ka215/sloth"><span class="mr1" data-size="w:1rem"><i class="fab fa-github-alt"></i></span>Back to github</a></li>
         </ul>
       </div>
@@ -308,7 +309,7 @@
     <div class="flx-row flx-wrap mt1">
       <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
         <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog</a></p>
-        <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'//ka2.org/sloth/docs/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax</a></p>
+        <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax</a></p>
         <div class="inline mb1">
           <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 1" data-content="Fade in and scale up (default effect)" data-foot="" data-effect="1">Type 1</button>
           <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 2" data-content="Slide from the right" data-foot="" data-effect="2">Type 2</button>
@@ -319,7 +320,7 @@
       </div>
       <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
         <pre class="prettyprint"><code>&lt;a href="" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog&lt;/a>
-&lt;a href="" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'//ka2.org/sloth/docs/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax&lt;/a>
+&lt;a href="" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax&lt;/a>
 &lt;div class="inline mb1">
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 1" data-content="Fade in and scale up (default effect)" data-effect="1">Type 1&lt;/button>
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 2" data-content="Slide from the right" data-effect="2">Type 2&lt;/button>
@@ -560,7 +561,7 @@
     </div>
     <div class="inline mb1" data-switch-class="sm:flx-center">
       <label data-size="w:10rem" data-switch-class="sm:hidden">Agreement</label>
-      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'//ka2.org/sloth/docs/ajax.php?p=terms'}" rel="external">the terms of service</a>.
+      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">the terms of service</a>.
         <input type="checkbox" id="cb-1" name="agreement" value="1" data-dispname="Agreement" required>
         <span class="tgl-btn"></span>
       </label>
@@ -568,7 +569,7 @@
     <hr class="dotted">
     <div class="inline">
       <button type="submit" class="outline clr-prim">Register</button>
-      <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="{remote:'get',url:'//ka2.org/sloth/docs/ajax.php?p=test',loader:'<div class=\'txt-center my2\'><img src=\'assets/spinning-circles.svg\'></div>'}" data-effect="2">Via Ajax</button>
+      <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=test',loader:'<div class=\'txt-center my2\'><img src=\'assets/spinning-circles.svg\'></div>'}" data-effect="2">Via Ajax</button>
       <button type="button" class="outline" data-toggle="dialog" data-content='<p>You are able to set a callback to button on the dialog footer.<br>In that case, it defines an object has a "callback" property in the "data-foot" attribute. At the "callback" property, set directly function, or a function name on the global scope.</p>' data-foot="{class:'outline clr-sec',label:'<i class=\'far fa-grin-squint\'></i> Close Me!',callback:'sample'}" data-effect="3">Callback</button>
       <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="<p>Content Of Dialog<br>...</p>" data-foot="<i class=\'fas fa-times\'></i> Close" data-effect="4">Cancel</button>
     </div>

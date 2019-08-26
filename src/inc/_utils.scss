@@ -319,17 +319,40 @@
   color: var(--color-quinary, $yellow) !important;
 }
 
-.txt-left { text-align: left; }
-.txt-center { text-align: center; }
-.txt-right { text-align: right; }
-.txt-justify { text-align: justify; }
+table {
+  &.fixed { table-layout: fixed; }
 
-.v-top { vertical-align: top; }
-.v-middle { vertical-align: middle; }
-.v-bottom { vertical-align: bottom; }
+  &.cell-center {
+    th,
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
 
-.lh-1 { line-height: 1; }
-.lh-2 { line-height: 2; }
+  &.cell-right {
+    th,
+    td {
+      text-align: right;
+      vertical-align: middle;
+    }
+  }
+}
+
+.txt-left { text-align: left !important; }
+.txt-center { text-align: center !important; }
+.txt-right { text-align: right !important; }
+.txt-justify { text-align: justify !important; }
+
+.v-top { vertical-align: top !important; }
+.v-middle { vertical-align: middle !important; }
+.v-bottom { vertical-align: bottom !important; }
+
+.txt-break,
+.break-word { word-break: break-all; }
+
+.lh-1 { line-height: 1 !important; }
+.lh-2 { line-height: 2 !important; }
 
 [data-lh] {
   --current-line-height: attr(data-lh, inherit);
@@ -368,20 +391,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: -2px left;
-  }
-}
-
-table {
-  &.fixed { table-layout: fixed; }
-
-  &.cell-center {
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  &.cell-right {
-    text-align: right;
-    vertical-align: middle;
   }
 }
 

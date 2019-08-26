@@ -2102,6 +2102,24 @@
         }
       }
     }
+
+    &.fixed { table-layout: fixed; }
+
+    &.cell-center {
+      th,
+      td {
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+
+    &.cell-right {
+      th,
+      td {
+        text-align: right;
+        vertical-align: middle;
+      }
+    }
   }
 }
 

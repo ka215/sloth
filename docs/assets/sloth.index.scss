@@ -201,19 +201,20 @@ body > *:not(.navi-menu) {
   top: 0;
   left: 0;
   width: 320px;
-  height: 100px;
+  height: auto;
+  min-height: 100px;
   margin: 0 auto 1rem;
 }
 @media (min-width: 500px) {
   .ad-block {
     width: 468px;
-    height: 60px;
+    min-height: 60px;
   }
 }
 @media (min-width: 800px) {
   .ad-block {
     width: 728px;
-    height: 90px;
+    min-height: 90px;
     left: calc((56px / -2) - 1.5rem);
   }
 }
