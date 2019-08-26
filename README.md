@@ -3,21 +3,13 @@
 Mobile-first lightweight CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
 
 <div align="center">
-<table border="0">
-<tbody>
-<tr><td width="20%" align="center">
-![Sloth Pickup Styles: Forms](https://ka215.github.io/sloth/assets/sloth_ss1.jpg)
-</td><td width="20%" align="center">
-![Sloth Pickup Styles: Toggle Buttons](https://ka215.github.io/sloth/assets/sloth_ss1.jpg)
-</td><td width="20%" align="center">
-![Sloth Pickup Styles: Buttons](https://ka215.github.io/sloth/assets/sloth_ss1.jpg)
-</td><td width="20%" align="center">
-![Sloth Pickup Styles: CSS Grids](https://ka215.github.io/sloth/assets/sloth_ss1.jpg)
-</td><td width="20%" align="center">
-![Sloth Pickup Extensions: Dialog](https://ka215.github.io/sloth/assets/sloth_ss1.jpg)
-</td></tr>
-</tbody>
-</table>
+  <table border="0"><tbody><tr>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Forms" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Toggle Buttons" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Buttons" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: CSS Grids" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Extensions: Dialog" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
+  </tr></tbody></table>
 </div>
 
 The Sloth is lightweight as it saves the effort to rely on the legacy browser. Also, the Sloth can use advanced styling technology that utilizes flexbox, grid, CSS variables, and limited vendor prefixes.
