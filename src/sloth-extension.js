@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.0.3
-Last Updated: August 16,2019
+v1.0.4
+Last Updated: August 26,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -179,7 +179,7 @@ const init = function() {
                 offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
             }
         });
-        filename.style.width = `calc(100% - (${offset}px + 4em))`;
+        filename.style.width = `calc(100% - (${offset}px + 5em))`;
         filename.style.marginRight = 0;
         
         elm.querySelector('[type=file]').addEventListener('change', (evt) => {
@@ -454,22 +454,28 @@ const generateDialog = function( title, content, foot, effect ) {
             backdrop  = document.createElement('div'),
             parseObject = (str) => {
                 let newObj = {},
-                    _tmp   = str.slice(1, -1).split(',');
+                    _tmp;
                 
-                if ( _tmp.length > 0 ) {
-                    _tmp.forEach((_v) => {
-                        let [_prop, _val] = _v.split(':');
-                        
-                        _val = _val.trim();
-                        _val = _val.replace(/\\(.)/mg, "$1");
-                        _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
-                        _prop = _prop.trim();
-                        if ( /^callback$/i.test(_prop) ) {
-                            newObj[_prop] = Function.call(this, `return ${_val}`)();
-                        } else {
-                            newObj[_prop] = _val;
-                        }
-                    });
+                try {
+                    newObj = JSON.parse(str);
+                } catch( e ) {
+                    _tmp = str.slice(1, -1).split(',');
+                    if ( _tmp.length > 0 ) {
+                        _tmp.forEach((_v) => {
+                            let _prop = _v.match(/^[^:]*:/)[0],
+                                _val  = _v.replace(_prop, '');
+                            
+                            _val = _val.trim();
+                            _val = _val.replace(/\\(.)/mg, "$1");
+                            _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
+                            _prop = _prop.replace(':', '').trim();
+                            if ( /^callback$/i.test(_prop) ) {
+                                newObj[_prop] = Function.call(this, `return ${_val}`)();
+                            } else {
+                                newObj[_prop] = _val;
+                            }
+                        });
+                    }
                 }
                 return newObj;
             },
@@ -504,7 +510,11 @@ const generateDialog = function( title, content, foot, effect ) {
                                     dialogBody.innerHTML = '<div class="txt-center txt-fog">Now Loading...</div>';
                                 }
                                 fetch(content.url, {
-                                    method: content.remote
+                                    method: content.remote,
+                                    mode: content.mode || 'cors',
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest'
+                                    }
                                 }).then((res) => res.json())
                                 .then((response) => {
                                     //console.log('Success:', JSON.stringify(response));

@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.0.3
-Last Updated: August 13,2019
+v1.0.4
+Last Updated: August 26,2019
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -1819,6 +1819,21 @@ textarea {
   box-sizing: border-box;
 }
 
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
+  background: none;
+}
+
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::selection,
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::selection,
 .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::selection,
@@ -3375,6 +3390,27 @@ textarea {
   background: transparent;
 }
 
+.sloth:not(.nons) table:not(.nons).fixed,
+.sloth *:not(.nons) table:not(.nons).fixed {
+  table-layout: fixed;
+}
+
+.sloth:not(.nons) table:not(.nons).cell-center th,
+.sloth:not(.nons) table:not(.nons).cell-center td,
+.sloth *:not(.nons) table:not(.nons).cell-center th,
+.sloth *:not(.nons) table:not(.nons).cell-center td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sloth:not(.nons) table:not(.nons).cell-right th,
+.sloth:not(.nons) table:not(.nons).cell-right td,
+.sloth *:not(.nons) table:not(.nons).cell-right th,
+.sloth *:not(.nons) table:not(.nons).cell-right td {
+  text-align: right;
+  vertical-align: middle;
+}
+
 .sloth:not(.nons) .vcard:not(.nons),
 .sloth *:not(.nons) .vcard:not(.nons) {
   display: flex;
@@ -4305,40 +4341,61 @@ textarea {
   color: var(--color-quinary, #e9bc00) !important;
 }
 
-.txt-left {
-  text-align: left;
+table.fixed {
+  table-layout: fixed;
 }
 
-.txt-center {
+table.cell-center th,
+table.cell-center td {
   text-align: center;
-}
-
-.txt-right {
-  text-align: right;
-}
-
-.txt-justify {
-  text-align: justify;
-}
-
-.v-top {
-  vertical-align: top;
-}
-
-.v-middle {
   vertical-align: middle;
 }
 
+table.cell-right th,
+table.cell-right td {
+  text-align: right;
+  vertical-align: middle;
+}
+
+.txt-left {
+  text-align: left !important;
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.txt-right {
+  text-align: right !important;
+}
+
+.txt-justify {
+  text-align: justify !important;
+}
+
+.v-top {
+  vertical-align: top !important;
+}
+
+.v-middle {
+  vertical-align: middle !important;
+}
+
 .v-bottom {
-  vertical-align: bottom;
+  vertical-align: bottom !important;
+}
+
+.txt-break,
+.break-word {
+  word-break: break-all;
 }
 
 .lh-1 {
-  line-height: 1;
+  line-height: 1 !important;
 }
 
 .lh-2 {
-  line-height: 2;
+  line-height: 2 !important;
 }
 
 [data-lh] {
@@ -4378,20 +4435,6 @@ textarea {
   background-repeat: no-repeat;
   background-size: contain;
   content: "\00A0 \00A0";
-}
-
-table.fixed {
-  table-layout: fixed;
-}
-
-table.cell-center {
-  text-align: center;
-  vertical-align: middle;
-}
-
-table.cell-right {
-  text-align: right;
-  vertical-align: middle;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

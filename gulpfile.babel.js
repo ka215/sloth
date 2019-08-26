@@ -76,7 +76,9 @@ export const deploy_dev = () => src('src/sloth-extension.js')
             devtool: 'source-map',
             output: { filename: 'sloth.extension.js' }
         }), webpack, (err, stats) => {
-            console.error( err )
+            if ( err ) {
+                console.error( err )
+            }
     }))
     .pipe(dest('dist'))
     .pipe(dest('docs/assets/'))
@@ -85,7 +87,9 @@ export const deploy_prod = () => src('src/sloth-extension.js')
     .pipe(webpackStream(Object.assign(webpackConfig, {
             mode: 'production'
         }), webpack, (err, stats) => {
-            console.error( err )
+            if ( err ) {
+                console.error( err )
+            }
     }))
     .pipe(dest('dist'))
     .pipe(dest('docs/assets/'))
