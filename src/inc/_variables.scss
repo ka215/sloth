@@ -95,25 +95,26 @@ $ruby-size: 0.65em;
 
 $crumbs-default: "\2215";
 
-$chevron-down: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%23abb1b5' d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z'></path></svg>";
-$menu-arrow: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z'></path></svg>";
-$menu-normal: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z'></path></svg>";
+$chevron-down: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%23abb1b5' d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z'></path></svg>";
+$menu-arrow: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z'></path></svg>";
+$menu-normal: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z'></path></svg>";
 
 /* "\2B9E", "\2794", "\279D" with "left: -1.7rem;" */
 $crumbs-arrow: "\203A";
 $crumbs-left:  -1.1rem;
 
 /* North East Arrow: "\2197" */
-$external-link-content: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>";
+$external-link-content: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>";
 $external-link-font: $font-monospace;
 $external-link-background: none; /* rgba($blue2, 0.9); */
 $external-link-border: none; /* solid 1px $blue; */
 
 $navi-height: 56px;
 
-$note-prefix: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z'></path></svg>"; /* "\1F6C8"; */
+$note-prefix: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z'></path></svg>"; /* "\1F6C8"; */
 
-$check:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%2300a968' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'></path></svg>";
-$times:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'></path></svg>";
+$check:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%2300a968' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'></path></svg>";
+$times:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'></path></svg>";
 $astarisk: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z'></path></svg>";
-$eye:      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>";
+$eye:      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>";
+$sync:     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='var(--color-image-loader, %237d7d7d)' d='M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z'></path></svg>";
