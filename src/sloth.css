@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.0.4
-Last Updated: August 26,2019
+v1.0.6
+Last Updated: September 24,2019
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -406,14 +406,22 @@ textarea {
   content: "— ";
 }
 
+.sloth:not(.nons) hr:not(.nons),
+.sloth *:not(.nons) hr:not(.nons) {
+  position: relative;
+  border: 0;
+  border-top: 1px solid #d3d3d3;
+  outline: 0;
+}
+
 .sloth:not(.nons) hr:not(.nons).dotted,
 .sloth *:not(.nons) hr:not(.nons).dotted {
-  border-style: dotted;
+  border-top: 1px dotted #d3d3d3;
 }
 
 .sloth:not(.nons) hr:not(.nons).dashed,
 .sloth *:not(.nons) hr:not(.nons).dashed {
-  border-style: dashed;
+  border-top: 1px dashed #d3d3d3;
 }
 
 .sloth:not(.nons) hr:not(.nons).double, .sloth:not(.nons) hr:not(.nons).doubled,
@@ -421,6 +429,39 @@ textarea {
 .sloth *:not(.nons) hr:not(.nons).doubled {
   margin: 0.9em 0;
   border-top: 3px double #d3d3d3;
+}
+
+.sloth:not(.nons) hr:not(.nons).text,
+.sloth *:not(.nons) hr:not(.nons).text {
+  height: 1.5em;
+  margin: 0.5em 0;
+  border-top: 0;
+  color: #7d7d7d;
+  line-height: 1em;
+  text-align: center;
+}
+
+.sloth:not(.nons) hr:not(.nons).text::before,
+.sloth *:not(.nons) hr:not(.nons).text::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d3d3d3 25%, #d3d3d3 75%, transparent);
+  content: '';
+}
+
+.sloth:not(.nons) hr:not(.nons).text::after,
+.sloth *:not(.nons) hr:not(.nons).text::after {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.5em;
+  background-color: #f5f5f5;
+  background-color: var(--hr-text-bgcolor, #f5f5f5);
+  color: inherit;
+  line-height: 1.5em;
+  content: attr(data-content);
 }
 
 .sloth:not(.nons) ruby:not(.nons),
@@ -532,8 +573,8 @@ textarea {
   line-height: 1;
   text-align: left;
   vertical-align: top;
-  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>");
-  content: var(--external-link-content, url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>"));
+  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>");
+  content: var(--external-link-content, url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%234183c4' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z'></path></svg>"));
 }
 
 .sloth:not(.nons) a:not(.nons)[target="_blank"]:hover::after, .sloth:not(.nons) a:not(.nons)[rel="external"]:hover::after,
@@ -881,7 +922,7 @@ textarea {
 .sloth *:not(.nons) select.value-ok,
 .sloth *:not(.nons) textarea.value-ok {
   border-color: #00a968 !important;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%2300a968' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'></path></svg>") !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%2300a968' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'></path></svg>") !important;
 }
 
 .sloth:not(.nons) input:not([type]).value-ng,
@@ -915,7 +956,7 @@ textarea {
 .sloth *:not(.nons) select.value-ng,
 .sloth *:not(.nons) textarea.value-ng {
   border-color: #e8383d !important;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'></path></svg>") !important;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'></path></svg>") !important;
 }
 
 .sloth:not(.nons) textarea.value-ok,
@@ -1031,7 +1072,7 @@ textarea {
   width: 1em;
   height: 1em;
   margin-top: 0.4rem;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -3599,7 +3640,7 @@ textarea {
   top: -1rem;
   left: 2rem;
   width: 2rem;
-  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z'></path></svg>");
+  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z'></path></svg>");
   opacity: 1;
 }
 
@@ -3801,6 +3842,77 @@ textarea {
   transform: translateY(0);
   border-radius: 0 0 0.2857rem 0.2857rem;
   opacity: 1;
+}
+
+.sloth:not(.nons) span.img-wrap,
+.sloth *:not(.nons) span.img-wrap {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  background-color: #f5f5f5;
+}
+
+.sloth:not(.nons) span.img-wrap::before,
+.sloth *:not(.nons) span.img-wrap::before {
+  -webkit-animation: rotation_anime 2.4s linear infinite;
+  display: inline-block;
+  visibility: visible;
+  z-index: 1;
+  position: absolute;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+  width: 5rem;
+  height: 5rem;
+  transform-origin: 50% 50%;
+          animation: rotation_anime 2.4s linear infinite;
+  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='var(--color-image-loader, %237d7d7d)' d='M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z'></path></svg>");
+  opacity: 0.2;
+}
+
+.sloth:not(.nons) span.img-wrap[data-loaded=true] img[data-src],
+.sloth *:not(.nons) span.img-wrap[data-loaded=true] img[data-src] {
+  visibility: visible;
+  background-color: transparent;
+  opacity: 1;
+}
+
+.sloth:not(.nons) span.img-wrap[data-loaded=true]::before,
+.sloth *:not(.nons) span.img-wrap[data-loaded=true]::before {
+  visibility: hidden;
+  content: '';
+  opacity: 0;
+}
+
+.sloth:not(.nons) img[data-src],
+.sloth *:not(.nons) img[data-src] {
+  display: inline-block;
+  z-index: 2;
+  color: transparent;
+  opacity: 0;
+  transition: all 0.5s easy;
+}
+
+.sloth:not(.nons) img[data-src]:-moz-loading,
+.sloth *:not(.nons) img[data-src]:-moz-loading {
+  visibility: hidden;
+}
+
+@-webkit-keyframes rotation_anime {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation_anime {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .sloth:not(.nons) .sloth-ruler,
@@ -4430,7 +4542,7 @@ table.cell-right td {
   left: 0;
   width: 1em;
   height: 1em;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' varsion='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z'></path></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z'></path></svg>");
   background-position: -2px left;
   background-repeat: no-repeat;
   background-size: contain;

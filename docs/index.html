@@ -63,7 +63,7 @@
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
-    <small class="muted">Latest Version: 1.0.3</small>
+    <small class="muted">Latest Version: 1.0.6</small>
   </div>
 </header>
 <article id="why-sloth" class="lead-block">
@@ -75,7 +75,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em class="txt-sec">15.6kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec">16.3kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -110,7 +110,7 @@
     <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;script async src="dist/sloth.extension.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    That script file size after gzip compression is <em class="txt-sec">21.2kB</em> at this time.<br>
+    That script file size after gzip compression is <em class="txt-sec">21.7kB</em> at this time.<br>
   </aside>
 </article>
 <article id="basic-structures" class="lead-block">
@@ -240,13 +240,19 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <hr class="dotted">
       <hr class="dashed">
       <hr class="double">
+      <hr class="text" data-content="Separated">
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;hr>
 &lt;hr class="dotted">
 &lt;hr class="dashed">
-&lt;hr class="double"></code></pre>
+&lt;hr class="double">
+&lt;hr class="text" data-content="Separated"></code></pre>
     </div>
+    <p>
+      If you change the background color under the hairline that has <code>.text</code>, you can declare via named "--hr-text-bgcolor" of the CSS variables.
+    </p>
+    <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
   <hr>
   <h6 class="muted">Ruby</h6>
@@ -1689,6 +1695,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   --base-font-size-sm: 1.4rem;
   --base-font-size-md: 1.1667rem;
   --base-font-size-lg: 1.1429rem;
+
+  --hr-text-bgcolor: #f5f5f5;
 
   --ruby-font-size: 0.65em;
 

@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.0.4
-Last Updated: August 26,2019
+v1.0.6
+Last Updated: September 24,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -256,24 +256,19 @@ const init = function() {
     });
     
     // Binding functions to global scope
-    //window.optimizeDropdown = optimizeDropdown;
-    //window.adjustNotes = adjustNotes;
-    //window.adjustColumnsInRow = adjustColumnsInRow;
-    //window.switchElementClass = switchElementClass;
-    //window.slothNotify = slothNotify;
     window.showDialog = showDialog;
     window.strLength = strLength;
-    //window.slothValidator = slothValidator;
-    //window.singleFieldValidator = singleFieldValidator;
     
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
     adjustTogglePasswd();
+    lazyLoading();
     
     // Binding resize event
     window.onresize = resizeHandler;
+    window.onscroll = scrollHandler;
 };
 
 /*
@@ -418,11 +413,22 @@ const switchElementClass = () => {
  * @public
  */
 const resizeHandler = () => {
+    // console.log( 'Resizing window!' );
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
     adjustTogglePasswd();
+    lazyLoading();
+};
+
+/*
+ * Fire when scroll content in window
+ * @public
+ */
+const scrollHandler = () => {
+    // console.log( 'Scrolling content!' );
+    lazyLoading();
 };
 
 /*
@@ -658,6 +664,12 @@ const slothNotify = async ( title, content, foot, effect ) => await generateDial
 const showDialog = ( title, content, foot, effect ) => {
     slothNotify(title, content, foot, effect).then((dialog) => {
         setTimeout(() => {
+            // Bind the lazy loading to this element if it has data-src attributes in inserted content
+            if ( dialog.querySelectorAll('[data-src]').length > 0 ) {
+                dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
+                dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
+                lazyLoading('.dialog-body');
+            }
             // Delay by transition animation interval
             dialog.classList.add('show');
         }, 300);
@@ -682,7 +694,7 @@ const strLength = (str) => {
 };
 
 /*
- * 
+ * The main routine of the sloth form validation when submission
  * @public
  * @param {Object} form - DOM Object of form to validate
  * @return {boolean} result
@@ -718,7 +730,7 @@ const slothValidator = (form) => {
 };
 
 /*
- * 
+ * The sloth form validation process for individual fields
  * @public
  * @param {Object} field - DOM Object of element to validate
  * @param {Object} formData - FormData Object as Iterator
@@ -886,6 +898,68 @@ const singleFieldValidator = (field, formData) => {
     }
     return messages;
 };
+
+/*
+ * The sloth lazy loading images
+ * @public
+ * @param {?string} selector - Selector of container to apply the lazy loading
+ */
+const lazyLoading = (selector) => {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
+        // initialize to load images
+        if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
+            if ( ! /^span$/i.test( elm.parentNode.nodeName ) || ! elm.parentNode.classList.contains('img-wrap') ) {
+                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`
+            }
+        }
+    })
+    let target = selector ? `${selector} [data-src]` : '[data-src]'
+    
+    //Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
+    Array.prototype.forEach.call(document.querySelectorAll(target), (elm) => {
+        if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
+            let preloadImage = new Image(),
+                imgSrc       = elm.dataset.src || '',
+                imgLoaded    = elm.dataset.loaded || false,
+                elmRect      = elm.getBoundingClientRect(),
+                // scrollTop    = elm.closest('.dialog-body').scrollTop || document.documentElement.scrollTop || document.body.scrollTop,
+                scrollTop    = document.documentElement.scrollTop || document.body.scrollTop,
+                // viewHeight   = elm.closest('.dialog-body').clientHeight || window.innerHeight,
+                viewHeight   = window.innerHeight,
+                elmTop       = elmRect.top,
+                // elmBottom    = elmRect.bottom,
+                bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0
+            
+            // console.log( selector, elm.closest(selector) )
+            if ( elm.closest(selector) ) {
+                //console.log( elm.closest(selector).scrollTop, elm.closest(selector).scrollHeight, elm.closest(selector).clientHeight )
+                scrollTop  = elm.closest(selector).scrollTop // || document.documentElement.scrollTop
+                viewHeight = elm.closest(selector).clientHeight // || window.innerHeight
+                elmTop     = elmRect.top - scrollTop
+            }
+/*
+if ( /#4$/.test( elm.getAttribute('alt') ) ) {
+console.log( elm.getAttribute('alt'), Math.ceil(elmRect.top), Math.ceil(elmRect.bottom), scrollTop, viewHeight, Math.ceil(elmTop), bufferMargin )
+console.log( `${elmTop + bufferMargin - viewHeight} <= 0;`, elmTop + bufferMargin - viewHeight <= 0 )
+console.log( Math.ceil(elmTop) + bufferMargin, scrollTop + viewHeight )
+}
+*/
+            if ( imgSrc !== '' && ! imgLoaded ) {
+                // if ( scrollTop + viewHeight + bufferMargin > elmBottom - bufferMargin || elmTop - scrollTop + bufferMargin < viewHeight ) {
+                if ( elmTop + bufferMargin - viewHeight <= 0 ) {
+                    preloadImage.onload = () => {
+                        //console.log( `Shown image loaded::"${imgSrc}": ${elmTop} / ${viewHeight}` )//, scrollTop + viewHeight + bufferMargin, elmTop - bufferMargin, elmTop - scrollTop + bufferMargin )
+                        elm.setAttribute( 'src', preloadImage.src )
+                        elm.removeAttribute( 'data-src' )
+                        elm.removeAttribute( 'data-buffer' )
+                        elm.parentNode.setAttribute( 'data-loaded', true )
+                    }
+                    preloadImage.src = imgSrc;
+                }
+            }
+        }
+    })
+}
 
 /*
  * Dispatcher

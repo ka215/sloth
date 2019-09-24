@@ -345,6 +345,59 @@
     }
   }
 
+  span.img-wrap {
+    position: relative;
+    display: inline-block;
+    background-color: $white-smoke;
+    z-index: 1;
+
+    &::before {
+      content: url($sync);
+      position: absolute;
+      display: inline-block;
+      top: calc(50% - 2.5rem);
+      left: calc(50% - 2.5rem);
+      width: 5rem;
+      height: 5rem;
+      z-index: 1;
+      opacity: 0.2;
+      visibility: visible;
+      transform-origin: 50% 50%;
+      animation: rotation_anime 2.4s linear infinite;
+    }
+
+    &[data-loaded=true] {
+      img[data-src] {
+        background-color: transparent;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      &::before {
+        content: '';
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  img[data-src] {
+    display: inline-block;
+    color: transparent;
+    opacity: 0;
+    z-index: 2;
+    transition: all 0.5s easy;
+
+    &:-moz-loading {
+      visibility: hidden;
+    }
+  }
+
+  @keyframes rotation_anime {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
   .sloth-ruler {
     display: inline;
     position: absolute;

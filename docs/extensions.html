@@ -9,6 +9,11 @@
   <meta name="description" content="Sloth has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="shortcut icon" href="assets/sloth.ico" type="image/x-icon">
+  <style>
+:root {
+  --color-image-loader: #F03030;
+}
+</style>
 </head>
 <body id="sloth-docs" class="sloth">
 <header id="demo-navi" class="navi-menu">
@@ -30,6 +35,7 @@
           <li class="pr1"><a href="#class-switching"><span class="mr1" data-size="w:1rem"><i class="fas fa-exchange-alt"></i></span>Class Switching</a></li>
           <li class="pr1"><a href="#validation-form"><span class="mr1" data-size="w:1rem"><i class="fab fa-wpforms"></i></span>Validation Form</a></li>
           <li class="pr1"><a href="#dialog"><span class="mr1" data-size="w:1rem"><i class="far fa-window-restore"></i></span>Dialog</a></li>
+          <li class="pr1"><a href="#lazy-loading"><span class="mr1" data-size="w:1rem"><i class="far fa-window-restore"></i></span>Lazy Loading</a></li>
         </ul>
         <hr>
         <ul class="unstyled">
@@ -362,6 +368,52 @@
       </table>
     </aside>
     <small class="note">At more detail of about dialog window, please see below <a href="#sloth-extensions-demo">demo</a>.</small>
+  </section>
+  <a id="lazy-loading" data-size="h:56px"></a>
+  <section class="sloth-styles mb2">
+    <h4>Lazy Loading Images</h4>
+    <aside>
+      <p><code>&lt;img data-src="IMAGE FILE PATH"&gt;</code></p>
+      When the image tag has <code>data-src</code> attribute to apply the lazy loading, then it will be loading image resource after shown that into browser window. You can use the <code>data-buffer</code> attribute togerther that then you can get the margin to the timing of loading from scrolling head.<br>
+      Notice also you should empty or never markup the <code>src</code> attribute in an image tag if you use the lazy image loading.<br>
+    </aside>
+    <div class="flx-row flx-wrap mt1">
+      <div class="mb1 pr2" data-switch-class="sm:w-full,md:w-half,lg:w-1-3">
+        <ul class="unstyled">
+          <li><img data-src="https://placehold.jp/22/3d4070/ffffff/320x60.png?text=Sample%20Image%20%231" width="320" height="60" alt="Sample Image #1"></li>
+          <li><img data-src="https://placehold.jp/22/5e3180/ffffff/320x60.png?text=Sample%20Image%20%232" data-buffer="60" width="320" height="60" alt="Sample Image #2"></li>
+          <li class="flx-row">
+            <img data-src="https://placehold.jp/18/703180/ffffff/155x60.png?text=Sample%20Image%20%233" data-buffer="30" width="155" height="60" alt="Sample Image #3" style="margin-right: 10px">
+            <img data-src="https://placehold.jp/18/6a4773/ffffff/155x60.png?text=Sample%20Image%20%234" data-buffer="30" width="155" height="60" alt="Sample Image #4">
+          </li>
+          <li class="flx-row">
+            <img data-src="https://placehold.jp/18/992e7e/ffffff/155x60.png?text=Sample%20Image%20%235" width="155" height="60" alt="Sample Image #5" style="margin-right: 10px">
+            <img data-src="https://placehold.jp/18/9e628e/ffffff/155x60.png?text=Sample%20Image%20%236" data-buffer="60" width="155" height="60" alt="Sample Image #6">
+          </li>
+          <li><img data-src="https://placehold.jp/22/b32636/ffffff/320x60.png?text=Sample%20Image%20%237" data-buffer="90" width="320" height="60" alt="Sample Image #7"></li>
+          <li><img data-src="https://placehold.jp/22/c75d28/ffffff/320x60.png?text=Sample%20Image%20%238" data-buffer="120" width="320" height="60" alt="Sample Image #8"></li>
+        </ul>
+        <hr>
+        <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Lazy Loading Images" data-content="{remote:'get',url:'./ajax.php?p=lazyloading'}" rel="external">Show Demo on Dialog</a></p>
+      </div>
+      <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-2-3">
+        <pre class="prettyprint"><code>&lt;ul class="unstyled">
+  &lt;li>&lt;img data-src="sample_1.png" width="320" height="60" alt="Sample Image #1">&lt;/li>
+  &lt;li>&lt;img data-src="sample_2.png" data-buffer="60" width="320" height="60" alt="Sample Image #2">&lt;/li>
+  &lt;li class="flx-row">
+    &lt;img data-src="sample_3.png" data-buffer="30" width="155" height="60" alt="Sample Image #3">
+    &lt;img data-src="sample_4.png" data-buffer="30" width="155" height="60" alt="Sample Image #4">
+  &lt;/li>
+  &lt;li class="flx-row">
+    &lt;img data-src="sample_5.png" width="155" height="60" alt="Sample Image #5">
+    &lt;img data-src="sample_6.png" data-buffer="60" width="155" height="60" alt="Sample Image #6">
+  &lt;/li>
+  &lt;li>&lt;img data-src="sample_7.png" data-buffer="90" width="320" height="60" alt="Sample Image #7">&lt;/li>
+  &lt;li>&lt;img data-src="sample_8.png" data-buffer="120" width="320" height="60" alt="Sample Image #8">&lt;/li>
+&lt;/ul></code></pre>
+      </div>
+    </div>
+    <small class="note">Special thanks to <a href="https://placehold.jp/en.html" rel="external" target="_blank">placehold.jp</a> for delivering images on this demo.</small>
   </section>
   <hr>
   <a id="sloth-extensions-demo" data-size="h:56px"></a>
