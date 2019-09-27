@@ -26,7 +26,7 @@
   },
   "style": "src/sloth.css",
   "sass": "src/index.scss",
-  "main": "dist/sloth.min.css",
+  "main": "src/sloth-extension.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ka215/sloth.git"
@@ -75,8 +75,7 @@
     "node": ">=10"
   },
   "files": [
-    "dist/**/*.{css,map}",
-    "src/**/*.{scss,css}",
-    "src/**/*.{js}"
+    "dist/**/*.{css,js,map,gz}",
+    "src/**/*.{scss,css,js}"
   ]
 }
