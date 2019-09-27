@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.0.5
-Last Updated: September 24,2019
+v1.1.0
+Last Updated: September 27,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
