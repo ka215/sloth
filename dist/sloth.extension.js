@@ -5884,7 +5884,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /*!
 Sloth CSS lightweight framework
 v1.0.6
-Last Updated: September 24,2019
+Last Updated: September 27,2019
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -6908,8 +6908,8 @@ var lazyLoading = function lazyLoading(selector) {
           // viewHeight   = elm.closest('.dialog-body').clientHeight || window.innerHeight,
       viewHeight = window.innerHeight,
           elmTop = elmRect.top,
-          elmBottom = elmRect.bottom,
-          bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0; // console.log( selector, elm.closest(selector) )
+          // elmBottom    = elmRect.bottom,
+      bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0; // console.log( selector, elm.closest(selector) )
 
       if (elm.closest(selector)) {
         //console.log( elm.closest(selector).scrollTop, elm.closest(selector).scrollHeight, elm.closest(selector).clientHeight )

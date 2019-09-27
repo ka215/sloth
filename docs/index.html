@@ -63,7 +63,7 @@
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
-    <small class="muted">Latest Version: 1.0.5</small>
+    <small class="muted">Latest Version: 1.1.0</small>
   </div>
 </header>
 <article id="why-sloth" class="lead-block">
@@ -75,7 +75,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em class="txt-sec">16.3kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec">17.07kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -110,7 +110,7 @@
     <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;script async src="dist/sloth.extension.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    That script file size after gzip compression is <em class="txt-sec">21.7kB</em> at this time.<br>
+    That script file size after gzip compression is <em class="txt-sec">21.28kB</em> at this time.<br>
   </aside>
 </article>
 <article id="basic-structures" class="lead-block">
@@ -504,6 +504,29 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;/form></code></pre>
     </div>
   </div>
+  <h5 class="muted">Various Form States</h5>
+  <div class="flx-row my1">
+    <div class="w-half">
+      <form>
+        <label class="muted">Disabled</label>
+        <input type="text" disabled value="Disabled to enter this text field" class="mb1">
+        <textarea disabled class="noresize">Disabled to enter this textarea</textarea>
+        <label>Read-only</label>
+        <input type="text" readonly value="This text field read only" class="mb1">
+        <textarea readonly>This textarea read only</textarea>
+      </form>
+    </div>
+    <div class="w-half">
+      <pre class="prettyprint"><code>&lt;form>
+  &lt;label class="muted">Disabled&lt;/label>
+  &lt;input type="text" disabled value="Disabled to enter this text field">
+  &lt;textarea disabled class="noresize">Disabled to enter this textarea&lt;/textarea>
+  &lt;label>Read-only&lt;/label>
+  &lt;input type="text" readonly value="This text field read only">
+  &lt;textarea readonly>This textarea read only&lt;/textarea>
+&lt;/form></code></pre>
+    </div>
+  </div>
   <h5 class="muted">Checkboxes</h5>
   <div class="flx-row my1">
     <div class="w-half">
@@ -624,12 +647,12 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <div class="flx-row my1">
     <div class="w-half">
       <form>
-        <select>
+        <select class="mb1">
           <option>Dropdown Item 1</option>
           <option>Dropdown Item 2</option>
           <option>Dropdown Item 3</option>
         </select>
-        <label class="dropdown">Dropdown with arrowhead
+        <label class="dropdown mb1">Dropdown with arrowhead
           <select>
             <option>Dropdown Item 1</option>
             <option>Dropdown Item 2</option>

@@ -350,6 +350,18 @@
     box-shadow: 0 0 0 0 transparent inset;
     transition: color 0.1s ease, border-color 0.1s ease;
 
+    &[disabled] {
+      background-color: $white-smoke;
+      border-color: $light-gray;
+      color: $fog;
+    }
+
+    &[readonly] {
+      background-color: $white-smoke;
+      border-color: $light-gray;
+      color: $fog;
+    }
+
     &:focus {
       color: rgba($black, 0.95);
       border-color: darken($blue, 5%);
@@ -806,8 +818,8 @@
       position: absolute;
       top: 1.4rem;
       left: 0;
-      font-size: 1.4rem;
-      color: $gray;
+      font-size: 1.3rem;
+      color: $fog;
       font-weight: 500;
       transform-origin: 0 0;
       transition: all 0.2s ease;
@@ -980,7 +992,7 @@
     margin-bottom: 0.3rem;
     font-size: 90%;
     font-weight: 500;
-    color: $gray;
+    color: rgba($black, 0.87);
 
     &.caret::after {
       content: "\2039   \203A";
@@ -1509,7 +1521,7 @@
     margin: auto 1em auto 0;
     font-size: 100%;
     font-weight: 500;
-    color: $gray;
+    color: rgba($black, 0.87);
 
     ~ input:not([type]),
     ~ input[type=date],
@@ -1546,6 +1558,18 @@
       box-shadow: 0 0 0 0 transparent inset;
       transition: color 0.1s ease, border-color 0.1s ease;
 
+      &[disabled] {
+        background-color: $white-smoke;
+        border-color: $light-gray;
+        color: $fog;
+      }
+
+      &[readonly] {
+        background-color: transparent;
+        border-color: transparent;
+        color: $gray;
+      }
+
       &:focus {
         color: rgba($black, 0.95);
         border-color: darken($blue, 5%);
@@ -1557,6 +1581,10 @@
         &::-webkit-input-placeholder { color: $gray; }
         &::-moz-placeholder { color: $gray; }
         &:-ms-input-placeholder { color: $gray; }
+
+        &[readonly] {
+          background-color: rgba($white, 0.35);
+        }
       }
     }
 
