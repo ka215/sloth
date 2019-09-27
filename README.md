@@ -45,8 +45,8 @@ git clone https://github.com/ka215/sloth.git
 
 Or, you can load via CDN:
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@1.1.0/dist/sloth.min.css">
-<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@1.1.0/dist/sloth.extension.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@1.1.1/dist/sloth.min.css">
+<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@1.1.1/dist/sloth.extension.min.js"></script>
 ```
 
 ## Usage
