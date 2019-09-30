@@ -218,6 +218,11 @@
         border-color: var(--color-primary-active, darken($blue, 5%));
       }
     }
+
+    &[disabled] {
+      cursor: default;
+      pointer-events: none;
+    }
   }
 
   address:not(#{$not}) {
@@ -1865,6 +1870,12 @@
         }
       }
     }
+
+    &[disabled] {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.75;
+    }
   }
 
   .inline:not(#{$not}) {
@@ -2019,6 +2030,10 @@
         background: darken($yellow, 5%);
         background: var(--color-quinary-active, darken($yellow, 5%));
       }
+    }
+
+    &[disabled] {
+      opacity: 0.75;
     }
   }
 
