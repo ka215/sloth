@@ -229,10 +229,13 @@ body > *:not(.navi-menu) {
   height: 10rem;
 }
 
-a.override-demo {
+.sloth:not(.nons) a.override-demo:not(.nons)[rel=external],
+.sloth :not(.nons) a.override-demo:not(.nons)[rel=external],
+.sloth:not(.nons) a.override-demo:not(.nons)[target=_blank],
+.sloth :not(.nons) a.override-demo:not(.nons)[target=_blank] {
   &::after {
-    content: "\f35d" !important;
-    font-family: "Font Awesome 5 Free" !important;
+    font-family: "Font Awesome 5 Free","Font Awesome 5 Pro" !important;
+    content: "\f360" !important;
     border: 0 !important;
   }
 

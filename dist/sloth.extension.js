@@ -5883,8 +5883,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /*!
 Sloth CSS lightweight framework
-v1.0.6
-Last Updated: September 27,2019
+v1.1.2
+Last Updated: September 30,2019
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
