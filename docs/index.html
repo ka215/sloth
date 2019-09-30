@@ -7,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="ka2">
   <meta name="description" content="Sloth has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!-- Font Awesome latest -->
+  <script async src="https://kit.fontawesome.com/ee8bf0ee7e.js"></script>
   <link rel="shortcut icon" href="assets/sloth.ico" type="image/x-icon">
+  <style>body { visibility: hidden; }</style>
 </head>
 <body id="sloth-docs" class="sloth">
 <header id="demo-navi" class="navi-menu" hidden>
@@ -40,7 +42,7 @@
         </ul>
         <hr>
         <ul class="unstyled">
-          <li class="pr1"><a href="extensions.html" class="txt-tert"><i class="far fa-lightbulb mr1"></i>Extensions</a></li>
+          <li class="pr1"><a href="./extensions.html"><i class="far fa-lightbulb mr1"></i>Extensions</a></li>
           <li class="pr1"><a href="./environments.html"><i class="far fa-window-restore"></i>Supported Browsers</a></li>
         </ul>
         <hr>
@@ -63,7 +65,7 @@
   </p>
   <button type="button" class="outline clr-prim" onclick="javascript:location.href='https://github.com/ka215/sloth';"><i class="fab fa-github"></i> github</button>
   <div>
-    <small class="muted">Latest Version: 1.1.1</small>
+    <small class="muted">Latest Version: <span id="sloth-latest-version"></span></small>
   </div>
 </header>
 <article id="why-sloth" class="lead-block">
@@ -75,7 +77,7 @@
     <br>
     That supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.<br>
     <br>
-    Finally that file size after gzip compression is <em class="txt-sec">17.07kB</em> at this time.
+    Finally that file size after gzip compression is <em class="txt-sec"><span id="sloth-core-style-size"></span>kB</em> at this time.
   </aside>
 </article>
 <article id="get-started-sloth" class="lead-block">
@@ -110,7 +112,7 @@
     <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;script async src="dist/sloth.extension.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    That script file size after gzip compression is <em class="txt-sec">21.28kB</em> at this time.<br>
+    That script file size after gzip compression is <em class="txt-sec"><span id="sloth-extension-size"></span>kB</em> at this time.<br>
   </aside>
 </article>
 <article id="basic-structures" class="lead-block">
@@ -421,6 +423,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <a rel="external" href="https://github.com/ka215/sloth">Link to external</a><br>
       <a href="#head-in-page">Link in page</a><br>
       <a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link</a><br>
+      <a disabled href="https://github.com/ka215/sloth">Disabled Link</a><br>
       <hr>
       <address>
         <a href="mailto:example@sloth.link">mailto@sloth.link</a>
@@ -432,7 +435,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;a rel="external" href="https://github.com/ka215/sloth">Link to external&lt;/a>&lt;br>
 &lt;a href="#head-in-page">Link in page&lt;/a>&lt;br>
 &lt;a class="nons" href="https://github.com/ka215/sloth">Not Sloth Style link&lt;/a>&lt;br>
-&#x2E3B;
+&lt;a disabled href="https://github.com/ka215/sloth">Disabled Link&lt;/a>&lt;br>
+&mdash;&mdash;
 &lt;address>
   &lt;a href="mailto:example@sloth.link">mailto@sloth.link&lt;/a>
   &lt;a href="tel:+123-456-7890">+123-456-7890&lt;/a>
@@ -449,8 +453,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>:root {
-  --external-link-content: "\f35d";
-  --external-link-font: "Font Awesome 5 Free";
+  --external-link-content: "\f360";
+  --external-link-font: "Font Awesome 5 Pro";
   --external-link-background: transparent;
   --external-link-border: 0;
   --external-link-hover-color: #4183c4;
@@ -539,11 +543,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
           <input type="checkbox" checked="checked">
           <span class="indicator"></span>
         </label>
-        <label class="checkbox">Disabled
+        <label class="checkbox muted">Disabled
           <input type="checkbox" disabled>
           <span class="indicator"></span>
         </label>
-        <label class="checkbox">Disabled & Checked
+        <label class="checkbox muted">Disabled & Checked
           <input type="checkbox" checked="checked" disabled>
           <span class="indicator"></span>
         </label>
@@ -575,11 +579,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;input type="checkbox" checked="checked">
   &lt;span class="indicator">&lt;/span>
 &lt;/label>
-&lt;label class="checkbox">Disabled
+&lt;label class="checkbox muted">Disabled
   &lt;input type="checkbox" disabled>
   &lt;span class="indicator">&lt;/span>
 &lt;/label>
-&lt;label class="checkbox">Disabled &amp; Checked
+&lt;label class="checkbox muted">Disabled &amp; Checked
   &lt;input type="checkbox" checked="checked" disabled>
   &lt;span class="indicator">&lt;/span>
 &lt;/label></code></pre>
@@ -597,11 +601,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
           <input type="radio" checked="checked">
           <span class="indicator"></span>
         </label>
-        <label class="radio">Disabled
+        <label class="radio muted">Disabled
           <input type="radio" disabled>
           <span class="indicator"></span>
         </label>
-        <label class="radio">Disabled & Checked
+        <label class="radio muted">Disabled & Checked
           <input type="radio" checked="checked" disabled>
           <span class="indicator"></span>
         </label>
@@ -633,11 +637,11 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;input type="radio" checked="checked">
   &lt;span class="indicator">&lt;/span>
 &lt;/label>
-&lt;label class="radio">Disabled
+&lt;label class="radio muted">Disabled
   &lt;input type="radio" disabled>
   &lt;span class="indicator">&lt;/span>
 &lt;/label>
-&lt;label class="radio">Disabled &amp; Checked
+&lt;label class="radio muted">Disabled &amp; Checked
   &lt;input type="radio" checked="checked" disabled>
   &lt;span class="indicator">&lt;/span>
 &lt;/label></code></pre>
@@ -839,6 +843,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <input type="button" value="Input Button" onclick="_void(this.value)">
       <button type="submit" onclick="_void(this.textContent)">Button Submit</button>
       <button type="button" onclick="_void(this.textContent)">Button Normal</button>
+      <button type="submit" disabled onclick="_void(this.textContent)">Disabled Submit</button>
+      <button type="button" disabled onclick="_void(this.textContent)">Disabled Normal</button>
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;form>
@@ -846,6 +852,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;input type="button" value="Input Button">
   &lt;button type="submit">Button Submit&lt;/button>
   &lt;button type="button">Button Normal&lt;/button>
+  &lt;button type="submit" disabled>Disabled Submit&lt;/button>
+  &lt;button type="button" disabled>Disabled Normal&lt;/button>
 &lt;/form></code></pre>
     </div>
   </div>
@@ -857,6 +865,13 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <button type="button" class="clr-tert" onclick="_void(this.textContent)">Tertiary</button>
       <button type="button" class="clr-quat" onclick="_void(this.textContent)">Quaternary</button>
       <button type="button" class="clr-quin" onclick="_void(this.textContent)">Quinary</button>
+<!-- /*
+      <button type="button" class="clr-prim" disabled onclick="_void(this.textContent)">Primary</button>
+      <button type="button" class="clr-sec"  disabled onclick="_void(this.textContent)">Secondary</button>
+      <button type="button" class="clr-tert" disabled onclick="_void(this.textContent)">Tertiary</button>
+      <button type="button" class="clr-quat" disabled onclick="_void(this.textContent)">Quaternary</button>
+      <button type="button" class="clr-quin" disabled onclick="_void(this.textContent)">Quinary</button>
+*/ -->
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;button type="button" class="clr-prim">Primary&lt;/button>
@@ -877,6 +892,14 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <button type="button" class="outline clr-tert" onclick="_void(this.textContent)">Tertiary</button>
       <button type="button" class="outline clr-quat" onclick="_void(this.textContent)">Quaternary</button>
       <button type="button" class="outline clr-quin" onclick="_void(this.textContent)">Quinary</button>
+<!-- /*
+      <button type="button" class="outline" disabled onclick="_void(this.textContent)">Default</button>
+      <button type="button" class="outline clr-prim" disabled onclick="_void(this.textContent)">Primary</button>
+      <button type="button" class="outline clr-sec"  disabled onclick="_void(this.textContent)">Secondary</button>
+      <button type="button" class="outline clr-tert" disabled onclick="_void(this.textContent)">Tertiary</button>
+      <button type="button" class="outline clr-quat" disabled onclick="_void(this.textContent)">Quaternary</button>
+      <button type="button" class="outline clr-quin" disabled onclick="_void(this.textContent)">Quinary</button>
+*/ -->
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;button type="button" class="outline">Default&lt;/button>
@@ -898,6 +921,14 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <button type="button" class="flat clr-tert" onclick="_void(this.textContent)">Tertiary</button>
       <button type="button" class="flat clr-quat" onclick="_void(this.textContent)">Quaternary</button>
       <button type="button" class="flat clr-quin" onclick="_void(this.textContent)">Quinary</button>
+<!-- /*
+      <button type="button" class="flat" disabled onclick="_void(this.textContent)">Default</button>
+      <button type="button" class="flat clr-prim" disabled onclick="_void(this.textContent)">Primary</button>
+      <button type="button" class="flat clr-sec"  disabled onclick="_void(this.textContent)">Secondary</button>
+      <button type="button" class="flat clr-tert" disabled onclick="_void(this.textContent)">Tertiary</button>
+      <button type="button" class="flat clr-quat" disabled onclick="_void(this.textContent)">Quaternary</button>
+      <button type="button" class="flat clr-quin" disabled onclick="_void(this.textContent)">Quinary</button>
+*/ -->
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;button type="button" class="flat">Default&lt;/button>
@@ -918,6 +949,14 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
       <a class="btn-fab clr-tert mr1 mb1" href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
       <a class="btn-fab clr-quat mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
       <a class="btn-fab clr-quin mr1 mb1" href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
+<!-- /*
+      <a class="btn-fab mr1 mb1" disabled href="javascript:_void(this.textContent)"><i class="fas fa-home"></i></a>
+      <a class="btn-fab clr-prim mr1 mb1" disabled href="javascript:_void(this.textContent)"><i class="fas fa-plus"></i></a>
+      <a class="btn-fab clr-sec mr1 mb1"  disabled href="javascript:_void(this.textContent)"><i class="fas fa-star"></i></a>
+      <a class="btn-fab clr-tert mr1 mb1" disabled href="javascript:_void(this.textContent)"><i class="far fa-heart"></i></a>
+      <a class="btn-fab clr-quat mr1 mb1" disabled href="javascript:_void(this.textContent)"><i class="fas fa-pencil-alt"></i></a>
+      <a class="btn-fab clr-quin mr1 mb1" disabled href="javascript:_void(this.textContent)"><i class="fas fa-share"></i></a>
+*/ -->
     </div>
     <div class="w-full">
       <pre class="prettyprint"><code>&lt;a class="btn-fab" href="#">&lt;i class="fas fa-home">&lt;/i>&lt;/a>
@@ -1315,7 +1354,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
         <option value="--color-quinary-active-light">--color-quinary-active-light</option>
       </select>
       <input type="text" id="color-code" placeholder="Enter color value">
-      <button type="button" id="btn-change-color" class="clr-prim">Try change</button>
+      <button type="button" id="btn-change-color" class="clr-prim"><i class="fas fa-exchange-alt"></i> Try change</button>
     </form>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
@@ -1436,7 +1475,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;div class="bg-gray txt-lightgray">.bg-gray.txt-lightgray&lt;/div>
 &lt;div class="bg-darkgray txt-whitesmoke">.bg-darkgray.txt-whitesmoke&lt;/div>
 &lt;div class="bg-black txt-white">.bg-darkgray.txt-white&lt;/div>
-&#x2E3B;
+&mdash;&mdash;
 &lt;div class="bg-prim txt-quin">.bg-prim.txt-quin&lt;/div>
 &lt;div class="bg-sec txt-quat" >.bg-sec.txt-quat&lt;/div>
 &lt;div class="bg-tert txt-tert">.bg-tert.txt-tert&lt;/div>
@@ -1476,7 +1515,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   &lt;p class="txt-right">.txt-right&lt;/p>
   &lt;p class="txt-justify">.txt-justify for using to context that has some words.&lt;/p>
 &lt;/div>
-&#x2E3B;
+&mdash;&mdash;
 &lt;table class="nons fixed brd">
   &lt;tbody>&lt;tr>
     &lt;td class="v-top">.v-top&lt;/td>
@@ -1741,8 +1780,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 
   --color-code-text: #e8383d;
 
-  --external-link-content: "\f35d";
-  --external-link-font: "Font Awesome 5 Free";
+  --external-link-content: "\f360";
+  --external-link-font: "Font Awesome 5 Pro";
   --external-link-background: transparent;
   --external-link-border: 0;
   --external-link-hover-color: #4183c4;
@@ -1781,19 +1820,29 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 <script>
 window.addEventListener('load',function(){
     
-    const loadCSS = url => {
-        let style = document.createElement('link'),
-            uniqStr = ((+new Date) + Math.random()*100).toString(36)
-        
-        style.setAttribute('rel', 'stylesheet')
-        style.setAttribute('href', `${url}?nonc=${uniqStr}`)
-        
-        document.getElementsByTagName('head')[0].appendChild( style )
+    const SLOTH_LATEST_VERSION  = '1.1.2'
+    const SLOTH_CORE_STYLE_SIZE = '17.3' // unit is kB
+    const SLOTH_EXTENSION_SIZE  = '21.7' // unit is kB
+    const loadStyles = resources => {
+        return new Promise(resolve => {
+            resources.forEach(url => {
+                let style = document.createElement('link'),
+                    uniqStr = ((+new Date) + Math.random()*100).toString(36)
+                
+                style.setAttribute('rel', 'stylesheet')
+                style.setAttribute('href', `${url}?nonc=${uniqStr}`)
+                
+                document.getElementsByTagName('head')[0].appendChild( style )
+            })
+            return resolve()
+        })
+    }
+    const init = async () => {
+        await loadStyles( resources )
     }
     
-    let resources = [ 'assets/sloth.min.css', 'assets/sloth.index.min.css' ]
-    
-    let el1 = document.getElementById('toggle-navi-menu'),
+    let resources = [ 'assets/sloth.min.css', 'assets/sloth.index.min.css' ],
+        el1 = document.getElementById('toggle-navi-menu'),
         el2 = document.getElementById('close-navi')
     
     function toggleNaviMenu( show ) {
@@ -1831,10 +1880,6 @@ window.addEventListener('load',function(){
       }
     }
     
-    resources.forEach( (file) => {
-        loadCSS( file )
-    })
-    
     let btn1 = document.getElementById('btn-change-color')
     btn1.addEventListener('click', () => {
         const root = document.documentElement
@@ -1846,12 +1891,19 @@ window.addEventListener('load',function(){
         }
     })
     
+    document.getElementById('sloth-latest-version').textContent = SLOTH_LATEST_VERSION
+    document.getElementById('sloth-core-style-size').textContent = SLOTH_CORE_STYLE_SIZE
+    document.getElementById('sloth-extension-size').textContent = SLOTH_EXTENSION_SIZE
+    
+    function _void( val ) {
+        console.log( val );
+        return false;
+    }
+    
+    init().then(() => {
+        document.body.style.visibility = 'visible'
+    })
 },false)
-
-function _void( val ) {
-    console.log( val );
-    return false;
-}
 </script>
 </body>
 </html>
