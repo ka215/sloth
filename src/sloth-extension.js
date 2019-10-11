@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.1.2
-Last Updated: September 30,2019
+v1.1.3
+Last Updated: October 10,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -9,17 +9,17 @@ const init = function() {
     if ( ! document.body.classList.contains('sloth') ) {
         return false;
     }
-    
+
     // Apply size of shorthand to element
     Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), (elm) => {
         let sizes = elm.dataset.size.split(','),
             isInline = /^(a|abbr|b|bdi|bdo|big|button|cite|code|data|datalist|del|dfn|em|i|img|input|ins|kbd|label|mark|q|ruby|s|samp|select|small|span|strong|sub|sup|textarea|time|u|tt|var)$/i.test(elm.nodeName);
-        
+
         sizes.forEach((_v) => {
             let _tmp   = _v.split(':'),
                 _prop  = _tmp[0] ? _tmp[0].trim() : null,
                 _value = _tmp[1] ? _tmp[1].trim().replace(';', '') : null;
-            
+
             if ( _prop && _value ) {
                 switch(true) {
                     case /^w(|idth)$/i.test(_prop):
@@ -58,14 +58,14 @@ const init = function() {
             elm.removeAttribute('data-size');
         }
     });
-    
+
     // Map data of shorthand to option in select boxes (type 1)
     Array.prototype.forEach.call(document.querySelectorAll('[data-map*="..."]'), (elm) => {
         let vals = elm.dataset.map.split('...');
-        
+
         for ( let i = parseInt( vals[0], 10 ); i <= parseInt( vals[1], 10 ); i++ ) {
             let opt = document.createElement('option');
-            
+
             opt.setAttribute('value', i);
             opt.textContent = i;
             elm.parentNode.append( opt );
@@ -74,19 +74,19 @@ const init = function() {
             elm.removeAttribute('data-map');
         }
     });
-    
+
     // Map data of shorthand to option in select boxes (type 2)
     Array.prototype.forEach.call(document.querySelectorAll('[data-map*=","]'), (elm) => {
         let vals = elm.dataset.map.split(',');
-        
+
         vals.forEach((_v, _i) => {
             let _tmp = _v.split(':'),
                 _val = _tmp[1] ? _tmp[1] : _tmp[0] ? _tmp[0] : null,
                 _key = _tmp[1] ? _tmp[0] : _val ? _i + 1 : null;
-            
+
             if ( _key && _val ) {
                 let opt = document.createElement('option');
-                
+
                 opt.setAttribute('value', _key);
                 opt.textContent = _val;
                 elm.parentNode.append( opt );
@@ -96,16 +96,16 @@ const init = function() {
             elm.removeAttribute('data-map');
         }
     });
-    
+
     // Add a string length ruler element
     if ( ! document.getElementById('sloth-ruler') ) {
         let ruler = document.createElement('div');
-        
+
         ruler.classList.add('sloth-ruler');
-        
+
         document.body.append(ruler);
     }
-    
+
     // Bind the handler of onChange event to dropdown
     Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
         elm.addEventListener('change', (evt) => {
@@ -116,14 +116,14 @@ const init = function() {
             }
         }, false);
     });
-    
+
     // Password field with toggling view
     Array.prototype.forEach.call(document.querySelectorAll('.tgl-view span'), (elm) => {
         elm.addEventListener('click', (evt) => {
             let self = evt.target,
                 thisClasses = self.classList,
                 input = self.offsetParent.children[0];
-            
+
             if ( thisClasses.contains('active') ) {
                 self.classList.remove('active');
                 input.setAttribute('type', 'password');
@@ -133,7 +133,7 @@ const init = function() {
             }
         }, false);
     });
-    
+
     // Optimize the rendered fields for uploading then bind the event handler
     Array.prototype.forEach.call(document.getElementsByClassName('upload'), (elm) => {
         let filename = document.createElement('input'),
@@ -141,7 +141,7 @@ const init = function() {
             notes    = elm.parentNode.querySelectorAll('.note'),
             parent   = elm.parentNode,
             offset   = 0;
-        
+
         Array.prototype.forEach.call(notes, (note) => {
             note.remove();
         });
@@ -154,20 +154,20 @@ const init = function() {
         filename.addEventListener('keyup', () => false, false);
         filename.addEventListener('keydown', () => false, false);
         filename.addEventListener('keypress', () => false, false);
-        
+
         preview.classList.add('preview-image');
         preview.addEventListener('click', (evt) => {
             let self = evt.target;
-            
+
             if ( self.classList.contains('active') ) {
                 let dupNode = self.cloneNode(false);
-                
+
                 dupNode.removeAttribute('class');
                 dupNode.classList.add('expand-image');
                 showDialog(filename.value, dupNode);
             }
         }, false);
-        
+
         elm.style.marginBottom = 0;
         elm.parentNode.append( preview );
         elm.parentNode.append( filename );
@@ -181,15 +181,15 @@ const init = function() {
         });
         filename.style.width = `calc(100% - (${offset}px + 5em))`;
         filename.style.marginRight = 0;
-        
+
         elm.querySelector('[type=file]').addEventListener('change', (evt) => {
             let self  = evt.target,
                 path  = self.value.replace(/\\/g, '/'),
                 match = path.lastIndexOf('/'),
                 file  = self.files[0],
                 reader = new FileReader();
-                
-            
+
+
             //console.log( evt, path, match, file );
             filename.value = match !== -1 ? path.substring(match + 1) : path;
             reader.onload = function() {
@@ -199,10 +199,10 @@ const init = function() {
             if ( file ) {
                 reader.readAsDataURL(file);
             }
-            
+
         }, false);
     });
-    
+
     // Check whether activate the Sloth Validator
     Array.prototype.forEach.call(document.getElementsByTagName('form'), (elm) => {
         if ( elm.classList.contains('sloth-validation') ) {
@@ -214,7 +214,7 @@ const init = function() {
                 let self     = evt.target,
                     submits  = self.querySelectorAll('[type=submit]'),
                     callback = self.dataset.callback || undefined;
-                
+
                 evt.preventDefault();
                 if ( slothValidator( self ) ) {
                     Array.prototype.forEach.call(submits, (e) => {
@@ -235,13 +235,13 @@ const init = function() {
                 field.addEventListener('blur', (evt) => {
                     let self = evt.target,
                         formData = new FormData( elm );
-                    
+
                     singleFieldValidator( self, formData );
                 }, false);
             });
         }
     });
-    
+
     // Bind the slothNotify dialog
     Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=dialog]'), (elm) => {
         elm.addEventListener('click', (evt) => {
@@ -250,25 +250,39 @@ const init = function() {
                 content = self.dataset.content || undefined,
                 foot    = self.dataset.foot || true,
                 effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1);
-            
+
             showDialog(title, content, foot, effect);
         }, false);
     });
-    
+
     // Binding functions to global scope
     window.showDialog = showDialog;
     window.strLength = strLength;
-    
+    //window.lazyLoading = lazyLoading;
+
+    // Binding resize event
+    //window.onresize = resizeHandler;
+    window.addEventListener( 'resize', resize_throttle, {passive: true} );
+    // Binding scroll event
+    //window.onscroll = scrollHandler;
+    window.addEventListener( 'scroll', scroll_throttle, {passive: true} );
+
+    /*
+    Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=lazyload]'), (elm) => {
+        elm.addEventListener('resize', (evt) => { lazyLoading(evt.self) }, false);
+        elm.addEventListener('scroll', (evt) => { lazyLoading(evt.self) }, false);
+    });
+    */
+
+    // Initial firing events
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
     switchElementClass();
     adjustTogglePasswd();
-    lazyLoading();
-    
-    // Binding resize event
-    window.onresize = resizeHandler;
-    window.onscroll = scrollHandler;
+
+    initializeLazyLoading();
+    //lazyLoading();
 };
 
 /*
@@ -279,7 +293,7 @@ const optimizeDropdown = () => {
     Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
         if ( elm.parentNode.classList.contains('dropdown') ) {
             let optionLengths = [];
-            
+
             elm.childNodes.forEach((item) => {
                 if ( item.nodeName === 'OPTION' ) {
                     if ( item.textContent ) {
@@ -301,7 +315,7 @@ const adjustNotes = () => {
     Array.prototype.forEach.call(document.querySelectorAll('form .note'), (elm) => {
         let rowLabel = elm.parentNode.firstElementChild,
             indent   = null;
-        
+
         if ( rowLabel.nodeName === 'LABEL' ) {
             indent = rowLabel.clientWidth || null;
         }
@@ -320,7 +334,7 @@ const adjustTogglePasswd = () => {
         let parentWidth = elm.parentNode.clientWidth,
             tgl_btn     = elm.lastElementChild,
             btnWidth    = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
-        
+
         elm.firstElementChild.style.maxWidth = `${(parentWidth - btnWidth)}px`;
     });
 };
@@ -332,7 +346,7 @@ const adjustTogglePasswd = () => {
 const adjustColumnsInRow = () => {
     Array.prototype.forEach.call(document.querySelectorAll('form > .flx-row, form > .inline'), (elm) => {
         let children = Array.prototype.slice.call(elm.children);
-        
+
         children.forEach((child, i) => {
             if ( child.classList.contains('note') ) {
                 children.splice(i, 1);
@@ -341,7 +355,7 @@ const adjustColumnsInRow = () => {
         if ( children.length == 2 ) {
             let offset  = children[0].clientWidth || null,
                 lastElm = children[1];
-            
+
             if ( lastElm.nodeName === 'DIV' && offset ) {
                 lastElm.style.width = `calc(100% - ${offset}px - 2em)`;
                 lastElm.style.marginRight = 0;
@@ -349,7 +363,7 @@ const adjustColumnsInRow = () => {
         } else {
             let reverseChildren = Array.prototype.slice.call(elm.children).reverse(),
                 skip = false;
-            
+
             reverseChildren.forEach((child) => {
                 if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
                     child.style.marginRight = 0;
@@ -371,13 +385,13 @@ const switchElementClass = () => {
             classes  = [ [], [], [] ],
             switchingClasses = [],
             currentSize = 0;
-        
+
         if ( _pair.length > 0 ) {
             _pair.forEach((_v) => {
                 let _tmp = _v.split(':'),
                     val  = _tmp[1] ? _tmp[1].split(' ') : undefined,
                     key  = val && /^(sm|md|lg)$/i.test(_tmp[0]) ? _tmp[0].toLowerCase() : undefined;
-                
+
                 if ( key && val ) {
                     if ( winWidth < 481 ) { // Small
                         currentSize = 0;
@@ -413,7 +427,6 @@ const switchElementClass = () => {
  * @public
  */
 const resizeHandler = () => {
-    // console.log( 'Resizing window!' );
     optimizeDropdown();
     adjustNotes();
     adjustColumnsInRow();
@@ -423,12 +436,45 @@ const resizeHandler = () => {
 };
 
 /*
- * Fire when scroll content in window
+ * Common throttle for resizing
+ * @public
+ */
+window.resize_ticking = false;
+const resize_throttle = () => {
+    //console.log( 'resize_ticking:', window.resize_ticking );
+    if ( !window.resize_ticking ) {
+        requestAnimationFrame((frm) => {
+            window.resize_ticking = false;
+            console.log( 'Now resizing! frame:', frm );
+            resizeHandler();
+        });
+        window.resize_ticking = true;
+    }
+};
+
+/*
+ * Fire when scroll window or content
  * @public
  */
 const scrollHandler = () => {
-    // console.log( 'Scrolling content!' );
     lazyLoading();
+};
+
+/*
+ * Common throttle for scrolling
+ * @public
+ */
+window.scroll_ticking = false;
+const scroll_throttle = () => {
+    //console.log( 'scroll_ticking:', window.scroll_ticking );
+    if ( !window.scroll_ticking ) {
+        requestAnimationFrame((frm) => {
+            window.scroll_ticking = false;
+            console.log( 'Now scrolling! frame:', frm );
+            scrollHandler();
+        });
+        window.scroll_ticking = true;
+    }
 };
 
 /*
@@ -443,7 +489,7 @@ const generateDialog = function( title, content, foot, effect ) {
     return new Promise((resolve) => {
         let dialogs = document.getElementsByClassName('sloth-notify'),
             backdrops = document.getElementsByClassName('dialog-backdrop');
-        
+
         if ( dialogs.length > 0 ) {
             Array.prototype.forEach.call(dialogs, (dialog) => {
                 dialog.remove();
@@ -454,14 +500,14 @@ const generateDialog = function( title, content, foot, effect ) {
                 backdrop.remove();
             });
         }
-        
+
         let dialog    = document.createElement('div'),
             container = document.createElement('div'),
             backdrop  = document.createElement('div'),
             parseObject = (str) => {
                 let newObj = {},
                     _tmp;
-                
+
                 try {
                     newObj = JSON.parse(str);
                 } catch( e ) {
@@ -470,7 +516,7 @@ const generateDialog = function( title, content, foot, effect ) {
                         _tmp.forEach((_v) => {
                             let _prop = _v.match(/^[^:]*:/)[0],
                                 _val  = _v.replace(_prop, '');
-                            
+
                             _val = _val.trim();
                             _val = _val.replace(/\\(.)/mg, "$1");
                             _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
@@ -489,7 +535,7 @@ const generateDialog = function( title, content, foot, effect ) {
                 title = title ? title.toString() : null;
                 if ( title ) {
                     let dialogHeader = document.createElement('h3');
-                    
+
                     dialogHeader.classList.add('dialog-header');
                     dialogHeader.innerHTML = title;
                     container.append(dialogHeader);
@@ -499,7 +545,7 @@ const generateDialog = function( title, content, foot, effect ) {
                 content = content ? (typeof content === 'string' && /^\{+.*\}$/.test(content) ? parseObject(content) : content) : undefined;
                 if ( content ) {
                     let dialogBody = document.createElement('div');
-                    
+
                     dialogBody.classList.add('dialog-body');
                     if ( typeof content === 'string' ) {
                         dialogBody.innerHTML = content.replace(/\\(.)/mg, "$1");
@@ -546,7 +592,7 @@ const generateDialog = function( title, content, foot, effect ) {
                         dialogButton = document.createElement('button'),
                         dialogCallback = function(){ return true },
                         buttonClass = document.body.dataset.dialogButton || undefined;
-                    
+
                     dialogFooter.classList.add('dialog-footer');
                     dialogButton.setAttribute('type', 'button');
                     if ( buttonClass ) {
@@ -585,7 +631,7 @@ const generateDialog = function( title, content, foot, effect ) {
             callback  = (mutationsList, observer) => {
                 mutationsList.forEach((mutation) => {
                     let self = mutation.target;
-                    
+
                     switch(mutation.type) {
                         case 'childList':
                             //console.log('mutation.type::childList:', mutation);
@@ -609,7 +655,7 @@ const generateDialog = function( title, content, foot, effect ) {
                 observer.disconnect();
             },
             observer = new MutationObserver(callback);
-        
+
         switch(true) {
             case /^(2|slide-?in-right)$/i.test( effect ):
                 effect = 'effect-2';
@@ -624,9 +670,9 @@ const generateDialog = function( title, content, foot, effect ) {
                 effect = 'effect-1';
                 break;
         }
-        
+
         observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
-        
+
         dialog.classList.add('sloth-notify', effect);
         container.classList.add('dialog-content');
         backdrop.classList.add('dialog-backdrop');
@@ -667,7 +713,7 @@ const showDialog = ( title, content, foot, effect ) => {
             // Bind the lazy loading to this element if it has data-src attributes in inserted content
             if ( dialog.querySelectorAll('[data-src]').length > 0 ) {
                 dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
-                dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
+                //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
                 lazyLoading('.dialog-body');
             }
             // Delay by transition animation interval
@@ -685,7 +731,7 @@ const showDialog = ( title, content, foot, effect ) => {
 const strLength = (str) => {
     let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
         length = 0;
-    
+
     if ( ruler ) {
         ruler.textContent = str.toString();
         length = ruler.clientWidth;
@@ -706,22 +752,22 @@ const slothValidator = (form) => {
         foot     = form.dataset.dialogFooter || true,
         effect   = form.dataset.dialogEffect || 1,
         formData = new FormData(form);
-    
+
     // console.log( ...formData.entries() );
     Array.prototype.forEach.call(form.querySelectorAll('[name]'), (field) => {
         messages = Object.assign(messages, singleFieldValidator( field, formData ));
     });
     if ( Object.keys(messages).length > 0 ) {
         let list = document.createElement('ul');
-        
+
         Object.keys(messages).forEach((_v) => {
             let item = document.createElement('li');
-            
+
             item.innerHTML = `<label>${_v}:</label><span>${messages[_v]}</span>`;
             list.append(item);
         });
         list.classList.add('error-messages');
-        
+
         showDialog(title, list, foot, effect);
     } else {
         result = true;
@@ -745,7 +791,7 @@ const singleFieldValidator = (field, formData) => {
         fieldLabel  = field.dataset.dispname || fieldName, //field.parentNode.firstElementChild.textContent,
         result      = false,
         messages    = {};
-    
+
     switch (field.nodeName.toLowerCase()) {
         case 'input':
             if ( field.hasAttribute('type') ) {
@@ -900,61 +946,120 @@ const singleFieldValidator = (field, formData) => {
 };
 
 /*
+ * Ready to loading images
+ * @public
+ */
+const initializeLazyLoading = () => {
+    let ll_images = 0,
+        ll_containers = [];
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
+        if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
+            if ( ! /^span$/i.test( elm.parentNode.nodeName ) || ! elm.parentNode.classList.contains('img-wrap') ) {
+                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`;
+                ll_images++;
+            }
+            if ( elm.closest('.lazy-load') || elm.closest('.dialog-body') ) {
+                ll_containers.push( elm );
+            }
+        }
+    });
+    console.log( ll_images, ll_containers );
+    if ( ll_containers.length == 0 ) {
+        lazyLoading();
+    } else {
+        //lazyLoading(selector);
+    }
+};
+
+/*
+ * Common loading image
+ * @public
+ * @param {string} src - source path or uri
+ */
+const loadImage = (src) => new Promise((resolve, reject) => {
+    let img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (err) => reject(err);
+    img.src = src;
+});
+
+/*
  * The sloth lazy loading images
  * @public
  * @param {?string} selector - Selector of container to apply the lazy loading
  */
 const lazyLoading = (selector) => {
+    /*
     Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
-        // initialize to load images
+        // initialize to load an image
         if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
             if ( ! /^span$/i.test( elm.parentNode.nodeName ) || ! elm.parentNode.classList.contains('img-wrap') ) {
-                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`
+                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`;
             }
+            selector = elm.dataset.overflowContainer || selector;
         }
     })
-    let target = selector ? `${selector} [data-src]` : '[data-src]'
-    
-    //Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
-    Array.prototype.forEach.call(document.querySelectorAll(target), (elm) => {
+    */
+    let target = selector ? `${selector} [data-src]` : '[data-src]';
+
+    Array.prototype.forEach.call(document.querySelectorAll(target), async (elm) => {
         if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
-            let preloadImage = new Image(),
-                imgSrc       = elm.dataset.src || '',
-                imgLoaded    = elm.dataset.loaded || false,
+            let imgSrc       = elm.dataset.src || '',
+                imgLoaded    = elm.parentNode.dataset.loaded || false,
                 elmRect      = elm.getBoundingClientRect(),
                 // scrollTop    = elm.closest('.dialog-body').scrollTop || document.documentElement.scrollTop || document.body.scrollTop,
                 scrollTop    = document.documentElement.scrollTop || document.body.scrollTop,
+                scrollLeft   = document.documentElement.scrollLeft || document.body.scrollLeft,
                 // viewHeight   = elm.closest('.dialog-body').clientHeight || window.innerHeight,
                 viewHeight   = window.innerHeight,
-                elmTop       = elmRect.top,
-                // elmBottom    = elmRect.bottom,
-                bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0
-            
-            // console.log( selector, elm.closest(selector) )
-            if ( elm.closest(selector) ) {
+                viewWidth    = window.innerWidth,
+                elmTop       = Math.ceil( elmRect.top ),
+                elmBottom    = Math.floor( elmRect.bottom ),
+                elmLeft      = Math.ceil( elmRect.left ),
+                elmRight     = Math.floor( elmRect.right ),
+                bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0;
+
+            if ( selector && elm.closest(selector) ) {
                 //console.log( elm.closest(selector).scrollTop, elm.closest(selector).scrollHeight, elm.closest(selector).clientHeight )
-                scrollTop  = elm.closest(selector).scrollTop // || document.documentElement.scrollTop
-                viewHeight = elm.closest(selector).clientHeight // || window.innerHeight
-                elmTop     = elmRect.top - scrollTop
+                scrollTop  = elm.closest(selector).scrollTop;// || document.documentElement.scrollTop
+                scrollLeft = elm.closest(selector).scrollLeft;
+                viewHeight = elm.closest(selector).clientHeight;// || window.innerHeight
+                viewWidth  = elm.closest(selector).clientWidth;
+                console.log( scrollTop, scrollLeft, viewHeight, viewWidth );
+                //elmTop     = Math.ceil( elmRect.top )
+                //elmBottom  = Math.floor( elmRect.bottom )
+                //elm.closest(selector).addEventListener('scroll', () => { lazyLoading(selector) }, false);
             }
-/*
-if ( /#4$/.test( elm.getAttribute('alt') ) ) {
-console.log( elm.getAttribute('alt'), Math.ceil(elmRect.top), Math.ceil(elmRect.bottom), scrollTop, viewHeight, Math.ceil(elmTop), bufferMargin )
-console.log( `${elmTop + bufferMargin - viewHeight} <= 0;`, elmTop + bufferMargin - viewHeight <= 0 )
-console.log( Math.ceil(elmTop) + bufferMargin, scrollTop + viewHeight )
-}
-*/
             if ( imgSrc !== '' && ! imgLoaded ) {
-                // if ( scrollTop + viewHeight + bufferMargin > elmBottom - bufferMargin || elmTop - scrollTop + bufferMargin < viewHeight ) {
-                if ( elmTop + bufferMargin - viewHeight <= 0 ) {
-                    preloadImage.onload = () => {
+                // // if ( scrollTop + viewHeight + bufferMargin > elmBottom - bufferMargin || elmTop - scrollTop + bufferMargin < viewHeight ) {
+                // // if ( elmTop + bufferMargin - viewHeight <= 0 ) {
+                // if ( elmTop > 0 && elmTop + bufferMargin <= scrollTop + viewHeight && elmBottom > 0 && elmBottom - bufferMargin - scrollTop <= viewHeight ) {
+                //let cond_y = [];
+                //cond_y.push( elmTop >= 0 ? '画像のTOPが表示域上限以下である' : '画像のTOPが表示域より上にある（表示切れ含む）' );
+                //cond_y.push( elmTop <= viewHeight ? '画像のTOPが表示域下限以上である' : '画像のTOPが表示域より下にある' );
+                //cond_y.push( elmTop + scrollTop >= scrollTop ? '画像の絶対位置のTOPがスクロール位置上限以下である' : '画像の絶対位置のTOPがスクロール位置上限より上にある' );
+                //cond_y.push( elmBottom + scrollTop <= scrollTop + viewHeight ? '画像の絶対位置のBOTTOMがスクロール位置下限以上である' : '画像の絶対位置のBOTTOMがスクロール位置下限より下にある（表示切れ含む）' );
+                //let cond_x = [];
+                //cond_x.push( elmLeft >= 0 ? '画像の左端が表示域左端以上である' : '画像の左端が表示域より左にある（表示切れ含む）' );
+                //cond_x.push( elmLeft <= viewWidth ? '画像の左端が表示域右端以下である' : '画像の左端が表示域より右にある（表示域外）' );
+                //cond_x.push( elmRight >= 0 ? '画像の右端が表示域左端以上である（表示切れ含む）' : '画像の右端が表示域より左にある（表示域外）' );
+                //cond_x.push( elmRight <= viewWidth ? '画像の右端が表示域右端以下である' : '画像の右端が表示域より右にある（表示切れ含む）' );
+                //console.log( elm.getAttribute('alt'), cond_x.join(', '), (elmLeft >= 0 || elmRight >= 0) && (elmLeft <= viewWidth || elmRight <= viewWidth) );
+                if ( ( (elmTop + bufferMargin >= 0 || elmBottom - bufferMargin >= 0) && (elmTop + bufferMargin <= viewHeight || elmBottom - bufferMargin <= viewHeight) )
+                  && ( (elmLeft + bufferMargin >= 0 || elmRight - bufferMargin >= 0) && (elmLeft + bufferMargin <= viewWidth || elmRight - bufferMargin <= viewWidth) ) ) {
+                    await loadImage(imgSrc).then((img) => {
                         //console.log( `Shown image loaded::"${imgSrc}": ${elmTop} / ${viewHeight}` )//, scrollTop + viewHeight + bufferMargin, elmTop - bufferMargin, elmTop - scrollTop + bufferMargin )
-                        elm.setAttribute( 'src', preloadImage.src )
+                        console.log( `ロード済画像: "${elm.getAttribute('alt')}", 画像相対位置・縦（${elmTop} 〜 ${elmBottom}）, バッファ: ${bufferMargin}, 相対表示域・縦（0 〜 ${viewHeight}）` )
+                        elm.setAttribute( 'src', img.src )
                         elm.removeAttribute( 'data-src' )
                         elm.removeAttribute( 'data-buffer' )
+                        elm.removeAttribute( 'data-loadersize' )
                         elm.parentNode.setAttribute( 'data-loaded', true )
-                    }
-                    preloadImage.src = imgSrc;
+                        imgLoaded = true
+                    }).catch((err) => {
+                        console.error(err);
+                    });
                 }
             }
         }

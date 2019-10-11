@@ -428,6 +428,65 @@ table {
   resize: none;
 }
 
+.overflow-v,
+.of-v { overflow: visible; }
+
+.overflow-h,
+.of-h { overflow: hidden; }
+
+.overflow-s,
+.of-s { overflow: scroll; }
+
+.overflow-a,
+.of-a { overflow: auto; }
+
+.overflow-xv,
+.of-xv { overflow-x: visible; }
+
+.overflow-xh,
+.of-xh { overflow-x: hidden; }
+
+.overflow-xs,
+.of-xs { overflow-x: scroll; }
+
+.overflow-xa,
+.of-xa { overflow-x: auto; }
+
+.overflow-yv,
+.of-yv { overflow-y: visible; }
+
+.overflow-yh,
+.of-yh { overflow-y: hidden; }
+
+.overflow-ys,
+.of-ys { overflow-y: scroll; }
+
+.overflow-ya,
+.of-ya { overflow-y: auto; }
+
+[class^=txt-overflow-],
+[class^=txt-of-] {
+  overflow: hidden;
+  white-space: nowrap;
+
+  &.txt-overflow-v,
+  &.txt-of-v { white-space: initial; }
+
+  &.txt-overflow-c,
+  &.txt-of-c { text-overflow: clip; }
+
+  &.txt-overflow-e,
+  &.txt-of-e { text-overflow: ellipsis; }
+
+  &.txt-overflow-s,
+  &.txt-of-s {
+    --text-overflow-string: attr(data-ellipsis, '');
+
+    text-overflow: '';
+    text-overflow: var(--text-overflow-string, '');
+  }
+}
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .note {
     &::before {
