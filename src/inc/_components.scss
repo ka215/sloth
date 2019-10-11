@@ -11,7 +11,7 @@
 
     figure {
       display: flex;
-      flex-flow: column;
+      flex-flow: column nowrap;
       padding: 4px;
       width: max-content;
       margin: 0 auto;
@@ -20,9 +20,11 @@
       img {
         max-width: inherit;
         max-height: auto;
+        z-index: 1;
       }
 
       figcaption {
+        display: inline-block;
         padding: 0.2rem 0.3rem;
         font-family: inherit;
         font-style: normal;
@@ -31,6 +33,24 @@
         color: $white;
         text-align: center;
         background: none $dark-gray;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &.overlay {
+        display: block !important;
+        flex-flow: row nowrap !important;
+        position: relative !important;
+
+        figcaption {
+          position: absolute !important;
+          left: 4px;
+          bottom: 4px;
+          width: calc(100% - 8px);
+          background-color: rgba($dark-gray, 0.75);
+          z-index: 2;
+        }
       }
 
       + * {
@@ -355,10 +375,10 @@
       content: url($sync);
       position: absolute;
       display: inline-block;
-      top: calc(50% - 2.5rem);
-      left: calc(50% - 2.5rem);
-      width: 5rem;
-      height: 5rem;
+      top: calc(50% - (100% / 6));
+      left: calc(50% - (100% / 6));
+      width: calc(100% / 3);
+      height: calc(100% / 3);
       z-index: 1;
       opacity: 0.2;
       visibility: visible;
