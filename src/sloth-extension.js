@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.1.3
-Last Updated: October 10,2019
+v1.2.0
+Last Updated: October 15,2019
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -189,8 +189,6 @@ const init = function() {
                 file  = self.files[0],
                 reader = new FileReader();
 
-
-            //console.log( evt, path, match, file );
             filename.value = match !== -1 ? path.substring(match + 1) : path;
             reader.onload = function() {
                 preview.style.backgroundImage = `url(${reader.result})`;
@@ -258,21 +256,11 @@ const init = function() {
     // Binding functions to global scope
     window.showDialog = showDialog;
     window.strLength = strLength;
-    //window.lazyLoading = lazyLoading;
 
     // Binding resize event
-    //window.onresize = resizeHandler;
     window.addEventListener( 'resize', resize_throttle, {passive: true} );
     // Binding scroll event
-    //window.onscroll = scrollHandler;
     window.addEventListener( 'scroll', scroll_throttle, {passive: true} );
-
-    /*
-    Array.prototype.forEach.call(document.querySelectorAll('[data-toggle=lazyload]'), (elm) => {
-        elm.addEventListener('resize', (evt) => { lazyLoading(evt.self) }, false);
-        elm.addEventListener('scroll', (evt) => { lazyLoading(evt.self) }, false);
-    });
-    */
 
     // Initial firing events
     optimizeDropdown();
@@ -280,9 +268,7 @@ const init = function() {
     adjustColumnsInRow();
     switchElementClass();
     adjustTogglePasswd();
-
     initializeLazyLoading();
-    //lazyLoading();
 };
 
 /*
@@ -441,11 +427,10 @@ const resizeHandler = () => {
  */
 window.resize_ticking = false;
 const resize_throttle = () => {
-    //console.log( 'resize_ticking:', window.resize_ticking );
     if ( !window.resize_ticking ) {
-        requestAnimationFrame((frm) => {
+        requestAnimationFrame(() => {
             window.resize_ticking = false;
-            console.log( 'Now resizing! frame:', frm );
+            // console.log( 'Now resizing! frame:', this );
             resizeHandler();
         });
         window.resize_ticking = true;
@@ -466,11 +451,10 @@ const scrollHandler = () => {
  */
 window.scroll_ticking = false;
 const scroll_throttle = () => {
-    //console.log( 'scroll_ticking:', window.scroll_ticking );
     if ( !window.scroll_ticking ) {
-        requestAnimationFrame((frm) => {
+        requestAnimationFrame(() => {
             window.scroll_ticking = false;
-            console.log( 'Now scrolling! frame:', frm );
+            // console.log( 'Now scrolling! frame:', this );
             scrollHandler();
         });
         window.scroll_ticking = true;
@@ -712,9 +696,10 @@ const showDialog = ( title, content, foot, effect ) => {
         setTimeout(() => {
             // Bind the lazy loading to this element if it has data-src attributes in inserted content
             if ( dialog.querySelectorAll('[data-src]').length > 0 ) {
-                dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
+                //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
                 //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
-                lazyLoading('.dialog-body');
+                //lazyLoading('.dialog-body');
+                initializeLazyLoading();
             }
             // Delay by transition animation interval
             dialog.classList.add('show');
@@ -951,24 +936,45 @@ const singleFieldValidator = (field, formData) => {
  */
 const initializeLazyLoading = () => {
     let ll_images = 0,
-        ll_containers = [];
+        inner_images = 0,
+        toHash = (string, def) => {
+            let hash = def || 0,
+                len = string.length, i, chr;
+            if ( string.length === 0 ) return hash;
+            for ( i = 0; i < len; i++ ) {
+                chr   = string.charCodeAt(i);
+                hash  = ((hash << 5) - hash) + chr;
+                hash |= 0;// Convert to 32bit integer
+            }
+            // return (`0000000${(hash >>> 0)}`.toString(16)).substr(-8);
+            return hash.toString(16).replace(/^-/, '');
+        },
+        wrapSelector;
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
         if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
             if ( ! /^span$/i.test( elm.parentNode.nodeName ) || ! elm.parentNode.classList.contains('img-wrap') ) {
-                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`;
+                let hashId = `llimg-${toHash(elm.outerHTML, ll_images)}`;
+                elm.outerHTML = `<span id="${hashId}" class="img-wrap">${elm.outerHTML}</span>`;
+                let parentNode = document.getElementById(hashId).closest('.lazy-load, .dialog-body');
+                if ( parentNode ) {
+                    inner_images++;
+                    wrapSelector = parentNode.classList.contains('dialog-body') ? '.dialog-body' : '.lazy-load';
+                }
                 ll_images++;
-            }
-            if ( elm.closest('.lazy-load') || elm.closest('.dialog-body') ) {
-                ll_containers.push( elm );
             }
         }
     });
-    console.log( ll_images, ll_containers );
-    if ( ll_containers.length == 0 ) {
-        lazyLoading();
-    } else {
-        //lazyLoading(selector);
+    if ( ll_images > 0 ) {
+        if ( inner_images == 0 ) {
+            lazyLoading();
+        } else {
+            Array.prototype.forEach.call(document.querySelectorAll(wrapSelector), (elm) => {
+                elm.addEventListener('resize', () => { lazyLoading( wrapSelector ) }, false);
+                elm.addEventListener('scroll', () => { lazyLoading( wrapSelector ) }, false);
+            });
+            lazyLoading( wrapSelector );
+        }
     }
 };
 
@@ -990,28 +996,15 @@ const loadImage = (src) => new Promise((resolve, reject) => {
  * @param {?string} selector - Selector of container to apply the lazy loading
  */
 const lazyLoading = (selector) => {
-    /*
-    Array.prototype.forEach.call(document.querySelectorAll('[data-src]'), (elm) => {
-        // initialize to load an image
-        if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
-            if ( ! /^span$/i.test( elm.parentNode.nodeName ) || ! elm.parentNode.classList.contains('img-wrap') ) {
-                elm.outerHTML = `<span class="img-wrap">${elm.outerHTML}</span>`;
-            }
-            selector = elm.dataset.overflowContainer || selector;
-        }
-    })
-    */
     let target = selector ? `${selector} [data-src]` : '[data-src]';
-
+    
     Array.prototype.forEach.call(document.querySelectorAll(target), async (elm) => {
         if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
             let imgSrc       = elm.dataset.src || '',
                 imgLoaded    = elm.parentNode.dataset.loaded || false,
                 elmRect      = elm.getBoundingClientRect(),
-                // scrollTop    = elm.closest('.dialog-body').scrollTop || document.documentElement.scrollTop || document.body.scrollTop,
-                scrollTop    = document.documentElement.scrollTop || document.body.scrollTop,
-                scrollLeft   = document.documentElement.scrollLeft || document.body.scrollLeft,
-                // viewHeight   = elm.closest('.dialog-body').clientHeight || window.innerHeight,
+                //scrollTop    = document.documentElement.scrollTop || document.body.scrollTop,
+                //scrollLeft   = document.documentElement.scrollLeft || document.body.scrollLeft,
                 viewHeight   = window.innerHeight,
                 viewWidth    = window.innerWidth,
                 elmTop       = Math.ceil( elmRect.top ),
@@ -1019,44 +1012,25 @@ const lazyLoading = (selector) => {
                 elmLeft      = Math.ceil( elmRect.left ),
                 elmRight     = Math.floor( elmRect.right ),
                 bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0;
-
-            if ( selector && elm.closest(selector) ) {
-                //console.log( elm.closest(selector).scrollTop, elm.closest(selector).scrollHeight, elm.closest(selector).clientHeight )
-                scrollTop  = elm.closest(selector).scrollTop;// || document.documentElement.scrollTop
-                scrollLeft = elm.closest(selector).scrollLeft;
-                viewHeight = elm.closest(selector).clientHeight;// || window.innerHeight
-                viewWidth  = elm.closest(selector).clientWidth;
-                console.log( scrollTop, scrollLeft, viewHeight, viewWidth );
-                //elmTop     = Math.ceil( elmRect.top )
-                //elmBottom  = Math.floor( elmRect.bottom )
-                //elm.closest(selector).addEventListener('scroll', () => { lazyLoading(selector) }, false);
+            
+            if ( selector ) {
+                let wrapElm = elm.closest(selector);
+                
+                //scrollTop  = wrapElm.scrollTop;
+                //scrollLeft = wrapElm.scrollLeft;
+                viewHeight = wrapElm.clientHeight;
+                viewWidth  = wrapElm.clientWidth;
             }
             if ( imgSrc !== '' && ! imgLoaded ) {
-                // // if ( scrollTop + viewHeight + bufferMargin > elmBottom - bufferMargin || elmTop - scrollTop + bufferMargin < viewHeight ) {
-                // // if ( elmTop + bufferMargin - viewHeight <= 0 ) {
-                // if ( elmTop > 0 && elmTop + bufferMargin <= scrollTop + viewHeight && elmBottom > 0 && elmBottom - bufferMargin - scrollTop <= viewHeight ) {
-                //let cond_y = [];
-                //cond_y.push( elmTop >= 0 ? '画像のTOPが表示域上限以下である' : '画像のTOPが表示域より上にある（表示切れ含む）' );
-                //cond_y.push( elmTop <= viewHeight ? '画像のTOPが表示域下限以上である' : '画像のTOPが表示域より下にある' );
-                //cond_y.push( elmTop + scrollTop >= scrollTop ? '画像の絶対位置のTOPがスクロール位置上限以下である' : '画像の絶対位置のTOPがスクロール位置上限より上にある' );
-                //cond_y.push( elmBottom + scrollTop <= scrollTop + viewHeight ? '画像の絶対位置のBOTTOMがスクロール位置下限以上である' : '画像の絶対位置のBOTTOMがスクロール位置下限より下にある（表示切れ含む）' );
-                //let cond_x = [];
-                //cond_x.push( elmLeft >= 0 ? '画像の左端が表示域左端以上である' : '画像の左端が表示域より左にある（表示切れ含む）' );
-                //cond_x.push( elmLeft <= viewWidth ? '画像の左端が表示域右端以下である' : '画像の左端が表示域より右にある（表示域外）' );
-                //cond_x.push( elmRight >= 0 ? '画像の右端が表示域左端以上である（表示切れ含む）' : '画像の右端が表示域より左にある（表示域外）' );
-                //cond_x.push( elmRight <= viewWidth ? '画像の右端が表示域右端以下である' : '画像の右端が表示域より右にある（表示切れ含む）' );
-                //console.log( elm.getAttribute('alt'), cond_x.join(', '), (elmLeft >= 0 || elmRight >= 0) && (elmLeft <= viewWidth || elmRight <= viewWidth) );
                 if ( ( (elmTop + bufferMargin >= 0 || elmBottom - bufferMargin >= 0) && (elmTop + bufferMargin <= viewHeight || elmBottom - bufferMargin <= viewHeight) )
                   && ( (elmLeft + bufferMargin >= 0 || elmRight - bufferMargin >= 0) && (elmLeft + bufferMargin <= viewWidth || elmRight - bufferMargin <= viewWidth) ) ) {
                     await loadImage(imgSrc).then((img) => {
-                        //console.log( `Shown image loaded::"${imgSrc}": ${elmTop} / ${viewHeight}` )//, scrollTop + viewHeight + bufferMargin, elmTop - bufferMargin, elmTop - scrollTop + bufferMargin )
-                        console.log( `ロード済画像: "${elm.getAttribute('alt')}", 画像相対位置・縦（${elmTop} 〜 ${elmBottom}）, バッファ: ${bufferMargin}, 相対表示域・縦（0 〜 ${viewHeight}）` )
-                        elm.setAttribute( 'src', img.src )
-                        elm.removeAttribute( 'data-src' )
-                        elm.removeAttribute( 'data-buffer' )
-                        elm.removeAttribute( 'data-loadersize' )
-                        elm.parentNode.setAttribute( 'data-loaded', true )
-                        imgLoaded = true
+                        // console.log( `Loaded image: "${elm.getAttribute('alt')}", RelativeImagePositionV（${elmTop} 〜 ${elmBottom}）, Buffer: ${bufferMargin}, RelativeViewV（0 〜 ${viewHeight}）` );
+                        elm.setAttribute( 'src', img.src );
+                        elm.removeAttribute( 'data-src' );
+                        elm.removeAttribute( 'data-buffer' );
+                        elm.removeAttribute( 'data-loadersize' );
+                        elm.parentNode.setAttribute( 'data-loaded', true );
                     }).catch((err) => {
                         console.error(err);
                     });
