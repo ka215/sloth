@@ -5883,8 +5883,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /*!
 Sloth CSS lightweight framework
-v1.1.3
-Last Updated: October 10,2019
+v1.2.0
+Last Updated: October 15,2019
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -5990,7 +5990,7 @@ var init = function init() {
 
   if (!document.getElementById('sloth-ruler')) {
     var ruler = document.createElement('div');
-    ruler.classList.add('sloth-ruler');
+    ruler.setAttribute('id', 'sloth-ruler');
     document.body.append(ruler);
   } // Bind the handler of onChange event to dropdown
 
@@ -6144,11 +6144,11 @@ var init = function init() {
 
   window.addEventListener('resize', resize_throttle, {
     passive: true
-  }); // Binding scroll event
+  }, false); // Binding scroll event
 
   window.addEventListener('scroll', scroll_throttle, {
     passive: true
-  }); // Initial firing events
+  }, false); // Initial firing events
 
   optimizeDropdown();
   adjustNotes();
@@ -6333,8 +6333,8 @@ window.resize_ticking = false;
 
 var resize_throttle = function resize_throttle() {
   if (!window.resize_ticking) {
-    requestAnimationFrame(function (frm) {
-      window.resize_ticking = false; // console.log( 'Now resizing! frame:', frm );
+    requestAnimationFrame(function () {
+      window.resize_ticking = false; // console.log( 'Now resizing! frame:', this );
 
       resizeHandler();
     });
@@ -6360,8 +6360,8 @@ window.scroll_ticking = false;
 
 var scroll_throttle = function scroll_throttle() {
   if (!window.scroll_ticking) {
-    requestAnimationFrame(function (frm) {
-      window.scroll_ticking = false; // console.log( 'Now scrolling! frame:', frm );
+    requestAnimationFrame(function () {
+      window.scroll_ticking = false; // console.log( 'Now scrolling! frame:', this );
 
       scrollHandler();
     });
@@ -6548,20 +6548,23 @@ var generateDialog = function generateDialog(title, content, foot, effect) {
             //console.log('mutation.type::childList:', mutation);
             Array.prototype.forEach.call(mutation.addedNodes, function (elm) {
               if (elm.classList.contains('dialog-content')) {
-                //console.log('Created ".dialog-content" node!');
                 insertTitle();
                 insertContent();
-                insertFoot();
+                insertFoot(); //console.log('Created ".dialog-content" node!');
+
                 resolve(dialog);
               }
             });
             break;
 
+          /*
           case 'attributes':
-            if (mutation.oldValue && self.classList.contains(effect)) {//console.log('mutation.type::attributes:', mutation);
-            }
-
-            break;
+              console.log('mutation.type::attributes:', mutation);
+              if ( mutation.oldValue && self.classList.contains(effect) ) {
+                  console.log('mutation.type::attributes:', mutation);
+              }
+              break;
+          */
         }
       });
       observer.disconnect();
@@ -6581,14 +6584,17 @@ var generateDialog = function generateDialog(title, content, foot, effect) {
         effect = 'effect-4';
         break;
 
+      case /^(5|full-?wide)$/i.test(effect):
+        effect = 'effect-5';
+        break;
+
       default:
         effect = 'effect-1';
         break;
-    }
+    } //observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+
 
     observer.observe(dialog, {
-      attributes: true,
-      attributeOldValue: true,
       childList: true,
       subtree: true
     });
@@ -6645,6 +6651,8 @@ function () {
     return _ref.apply(this, arguments);
   };
 }();
+
+window.slothStackTimer = [];
 /*
  * Show dialog as wrapper of slothNotify
  * @public
@@ -6654,21 +6662,24 @@ function () {
  * @param {?string} effect
  */
 
-
 var showDialog = function showDialog(title, content, foot, effect) {
   slothNotify(title, content, foot, effect).then(function (dialog) {
-    setTimeout(function () {
-      // Bind the lazy loading to this element if it has data-src attributes in inserted content
-      if (dialog.querySelectorAll('[data-src]').length > 0) {
-        //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
-        //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
-        //lazyLoading('.dialog-body');
-        initializeLazyLoading();
-      } // Delay by transition animation interval
-
+    return setTimeout(function () {
+      // Re-init this extension scripts
+      document.removeEventListener('DOMContentLoaded', init, false);
+      init(); // Delay by transition animation interval
 
       dialog.classList.add('show');
     }, 300);
+  }).then(function (timerId) {
+    // Prevent the memory leak due to continue timer by setTimeout
+    window.slothStackTimer.push(timerId);
+    var loop = window.slothStackTimer.length - 1,
+        i;
+
+    for (i = 0; i < loop; i++) {
+      clearTimeout(window.slothStackTimer.shift());
+    }
   });
 };
 /*
@@ -6680,7 +6691,8 @@ var showDialog = function showDialog(title, content, foot, effect) {
 
 
 var strLength = function strLength(str) {
-  var ruler = document.getElementsByClassName('sloth-ruler').item(0),
+  //let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
+  var ruler = document.getElementById('sloth-ruler'),
       length = 0;
 
   if (ruler) {
@@ -7012,7 +7024,7 @@ var lazyLoading = function lazyLoading(selector) {
     var _ref2 = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2(elm) {
-      var imgSrc, imgLoaded, elmRect, scrollTop, scrollLeft, viewHeight, viewWidth, elmTop, elmBottom, elmLeft, elmRight, bufferMargin, wrapElm;
+      var imgSrc, imgLoaded, elmRect, viewHeight, viewWidth, elmTop, elmBottom, elmLeft, elmRight, bufferMargin, wrapElm;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -7022,12 +7034,12 @@ var lazyLoading = function lazyLoading(selector) {
                 break;
               }
 
-              imgSrc = elm.dataset.src || '', imgLoaded = elm.parentNode.dataset.loaded || false, elmRect = elm.getBoundingClientRect(), scrollTop = document.documentElement.scrollTop || document.body.scrollTop, scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft, viewHeight = window.innerHeight, viewWidth = window.innerWidth, elmTop = Math.ceil(elmRect.top), elmBottom = Math.floor(elmRect.bottom), elmLeft = Math.ceil(elmRect.left), elmRight = Math.floor(elmRect.right), bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0;
+              imgSrc = elm.dataset.src || '', imgLoaded = elm.parentNode.dataset.loaded || false, elmRect = elm.getBoundingClientRect(), viewHeight = window.innerHeight, viewWidth = window.innerWidth, elmTop = Math.ceil(elmRect.top), elmBottom = Math.floor(elmRect.bottom), elmLeft = Math.ceil(elmRect.left), elmRight = Math.floor(elmRect.right), bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0;
 
               if (selector) {
-                wrapElm = elm.closest(selector);
-                scrollTop = wrapElm.scrollTop;
-                scrollLeft = wrapElm.scrollLeft;
+                wrapElm = elm.closest(selector); //scrollTop  = wrapElm.scrollTop;
+                //scrollLeft = wrapElm.scrollLeft;
+
                 viewHeight = wrapElm.clientHeight;
                 viewWidth = wrapElm.clientWidth;
               }
