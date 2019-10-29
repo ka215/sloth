@@ -1,7 +1,7 @@
 {
   "name": "sloth-css",
   "description": "Mobile-first Micro CSS Framework that has reduced styling coding costs to a minimum with non-BEM, and through more simplified naming conventions than OOCSS.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "version_short": "1.0",
   "keywords": [
     "css",
