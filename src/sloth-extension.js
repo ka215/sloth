@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.2.0
-Last Updated: October 15,2019
+v1.2.1
+Last Updated: October 29, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -101,7 +101,7 @@ const init = function() {
     if ( ! document.getElementById('sloth-ruler') ) {
         let ruler = document.createElement('div');
 
-        ruler.classList.add('sloth-ruler');
+        ruler.setAttribute('id', 'sloth-ruler');
 
         document.body.append(ruler);
     }
@@ -258,9 +258,9 @@ const init = function() {
     window.strLength = strLength;
 
     // Binding resize event
-    window.addEventListener( 'resize', resize_throttle, {passive: true} );
+    window.addEventListener( 'resize', resize_throttle, {passive: true}, false );
     // Binding scroll event
-    window.addEventListener( 'scroll', scroll_throttle, {passive: true} );
+    window.addEventListener( 'scroll', scroll_throttle, {passive: true}, false );
 
     // Initial firing events
     optimizeDropdown();
@@ -621,19 +621,22 @@ const generateDialog = function( title, content, foot, effect ) {
                             //console.log('mutation.type::childList:', mutation);
                             Array.prototype.forEach.call(mutation.addedNodes, (elm) => {
                                 if ( elm.classList.contains('dialog-content') ) {
-                                    //console.log('Created ".dialog-content" node!');
                                     insertTitle();
                                     insertContent();
                                     insertFoot();
+                                    //console.log('Created ".dialog-content" node!');
                                     resolve(dialog);
                                 }
                             });
                             break;
+                        /*
                         case 'attributes':
+                            console.log('mutation.type::attributes:', mutation);
                             if ( mutation.oldValue && self.classList.contains(effect) ) {
-                                //console.log('mutation.type::attributes:', mutation);
+                                console.log('mutation.type::attributes:', mutation);
                             }
                             break;
+                        */
                     }
                 });
                 observer.disconnect();
@@ -650,12 +653,16 @@ const generateDialog = function( title, content, foot, effect ) {
             case /^(4|sticky-?up)$/i.test( effect ):
                 effect = 'effect-4';
                 break;
+            case /^(5|full-?wide)$/i.test( effect ):
+                effect = 'effect-5';
+                break;
             default:
                 effect = 'effect-1';
                 break;
         }
 
-        observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+        //observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
+        observer.observe(dialog, { childList: true, subtree: true });
 
         dialog.classList.add('sloth-notify', effect);
         container.classList.add('dialog-content');
@@ -683,6 +690,7 @@ const generateDialog = function( title, content, foot, effect ) {
  */
 const slothNotify = async ( title, content, foot, effect ) => await generateDialog( title, content, foot, effect );
 
+window.slothStackTimer = [];
 /*
  * Show dialog as wrapper of slothNotify
  * @public
@@ -692,18 +700,20 @@ const slothNotify = async ( title, content, foot, effect ) => await generateDial
  * @param {?string} effect
  */
 const showDialog = ( title, content, foot, effect ) => {
-    slothNotify(title, content, foot, effect).then((dialog) => {
-        setTimeout(() => {
-            // Bind the lazy loading to this element if it has data-src attributes in inserted content
-            if ( dialog.querySelectorAll('[data-src]').length > 0 ) {
-                //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'scroll', () => { lazyLoading('.dialog-body') }, false );
-                //dialog.querySelectorAll('.dialog-body').item(0).addEventListener( 'resize', () => { lazyLoading('.dialog-body') }, false );
-                //lazyLoading('.dialog-body');
-                initializeLazyLoading();
-            }
+    slothNotify(title, content, foot, effect).then((dialog) => setTimeout(() => {
+            // Re-init this extension scripts
+            document.removeEventListener( 'DOMContentLoaded', init, false );
+            init();
             // Delay by transition animation interval
             dialog.classList.add('show');
-        }, 300);
+        }, 300)
+    ).then((timerId) => {
+        // Prevent the memory leak due to continue timer by setTimeout
+        window.slothStackTimer.push( timerId );
+        let loop = window.slothStackTimer.length - 1, i;
+        for( i = 0; i < loop; i++ ) {
+            clearTimeout( window.slothStackTimer.shift() );
+        }
     });
 };
 
@@ -714,7 +724,8 @@ const showDialog = ( title, content, foot, effect ) => {
  * @return {number} length
  */
 const strLength = (str) => {
-    let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
+    //let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
+    let ruler  = document.getElementById('sloth-ruler'),
         length = 0;
 
     if ( ruler ) {
