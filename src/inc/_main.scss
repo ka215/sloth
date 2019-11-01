@@ -1042,8 +1042,7 @@
     }
 
     select {
-      width: 100%;
-      width: -webkit-fill-available;
+      width: auto;
       margin-top: 0.3rem;
       font-size: 111.11%;
 
@@ -1890,7 +1889,7 @@
     & > * {
       position: relative;
       display: inline-block;
-      margin-right: 0 !important;
+      margin-right: 0;
       margin-bottom: 0.3rem;
       vertical-align: middle;
     }

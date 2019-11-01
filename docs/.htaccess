@@ -20,3 +20,8 @@ RewriteRule .+ %{REQUEST_URI}.gz
   ForceType   text/html
   AddEncoding x-gzip .gz
 </FilesMatch>
+
+php_value error_reporting 32767
+php_flag display_errors On
+php_flag log_errors Off
+php_value error_log "./php_errors.log"

@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.2.0
-Last Updated: October 15,2019
+v1.2.2
+Last Updated: October 30, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -1791,8 +1791,7 @@ textarea {
 
 .sloth:not(.nons) .dropdown select,
 .sloth *:not(.nons) .dropdown select {
-  width: 100%;
-  width: -webkit-fill-available;
+  width: auto;
   margin-top: 0.3rem;
   font-size: 111.11%;
 }
@@ -3230,7 +3229,7 @@ textarea {
 .sloth *:not(.nons) .inline:not(.nons) > * {
   display: inline-block;
   position: relative;
-  margin-right: 0 !important;
+  margin-right: 0;
   margin-bottom: 0.3rem;
   vertical-align: middle;
 }
