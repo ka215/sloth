@@ -5,6 +5,8 @@ node_modules
 *.log
 *.orig
 *.php
+docs/pages/
+docs/.htaccess
 __.*
 
 package-lock.json
