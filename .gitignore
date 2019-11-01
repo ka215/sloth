@@ -4,9 +4,9 @@ node_modules
 .sass-cache/
 *.log
 *.orig
-*.php
-docs/pages/
-docs/.htaccess
+# *.php
+# docs/pages/
+# docs/.htaccess
 __.*
 
 package-lock.json
