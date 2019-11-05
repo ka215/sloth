@@ -445,11 +445,11 @@
     100% { transform: rotate(360deg); }
   }
 
-  .sloth-ruler {
+  #sloth-ruler {
     display: inline;
     position: absolute;
-    top: -10000em;
-    left: -10000em;
+    top: -9999px;
+    left: -9999px;
     margin: 0;
     padding: 0;
     font-size: 1rem;

@@ -1,12 +1,12 @@
 <?php
 $page = get_globals( 'page' );
-$page_type = get_page_type( $page );
+$page_cat = get_globals( 'page_cat' );
 
 ?>
 <script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <!-- Font Awesome latest -->
 <script async src="https://kit.fontawesome.com/ee8bf0ee7e.js"></script>
-<?php if ( $page_type != 1 ) : ?>
+<?php if ( preg_match( '/^(3|4|extensions|features)$/i', $page_cat ) !== false ) : ?>
 <script async src="<?= optimize_uri('dist/sloth.extension.min.js') ?>"></script>
 <script>
 function sample() {
@@ -14,7 +14,9 @@ function sample() {
 }
 </script>
 <?php endif; ?>
-<script async src="<?= optimize_uri('assets/sloth.docs.js') ?>"></script>
+<!-- Polyfill for window.scrollTo() -->
+<script async src="https://cdn.jsdelivr.net/gh/iamdustan/smoothscroll@master/src/smoothscroll.js"></script>
+<script defer src="<?= optimize_uri('assets/sloth.docs.js') ?>"></script>
 <?php /*
 <!-- Sloth Documentations Script -->
 <script>
