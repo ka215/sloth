@@ -1,3 +1,7 @@
+@charset 'UTF-8';
+
+/* Override properties for sloth */
+
 :root {
 /*
   --base-font-size-sm: 1.4rem;
@@ -18,49 +22,67 @@
   --navi-height-sm: 56px;
   --navi-height-md: 64px;
   --navi-height-lg: 72px;
-  --menu-width-sm: 180px;
-  --menu-width-md: 200px;
-  --menu-width-lg: 240px;
+  --menu-width-sm: 240px;
+  --menu-width-md: 240px;
+  --menu-width-lg: 280px;
+  --lead-width-sm: 100%;
+  --lead-width-md: 576px;
+  --lead-width-lg: 672px;
 }
-@media (min-width: 576px) {
-  /* >= 576px */
-  body > *:not(.navi-menu) {
-    max-width: 48rem;
-  }
 
-  #introduction {
-    padding: 4rem 0;
-  }
-
-  .lead-block {
-    padding: 2rem 0;
-  }
-
-  .sloth-styles {
-    padding: 2rem 0;
-  }
-}
-@media (min-width: 768px ) {
-  /* >= 768px */
-  body > *:not(.navi-menu) {
-    max-width: 54.8rem;
-  }
-}
-body > *:not(.navi-menu) {
-  position: relative;
-  max-width: 48rem;
-  margin: 0 auto;
-}
-#sloth-docs {
+html {
   width: 100vw;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
-  color: #16160e;
   overflow-x: hidden;
+  scroll-behavior: auto;
 }
-#introduction {
-  padding: 4rem 2rem;
+
+body {
+  &#sloth-docs {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #16160e;
+    overflow-x: inherit;
+    overflow-y: scroll;
+  }
+
+  main {
+    width: 100%;
+
+    &> * {
+      margin-top: var(--navi-height-sm, 60px);
+    }
+  }
+}
+
+#docs-navi {
+  .menu {
+    ul.hidden + hr {
+      display: none;
+    }
+
+    li.active {
+      background: rgba(65, 131, 196, 0.25);
+    }
+  }
+}
+
+#back-to-head {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0;
+  z-index: 9999;
+  transition: all 0.2s linear;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+#key-visual {
+  padding: 2rem 2rem 4rem;
   max-width: 100%;
   text-align: center;
   background-color: #fff;
@@ -79,9 +101,19 @@ body > *:not(.navi-menu) {
     text-align: left;
   }
 }
-.lead-block {
+
+/*
+body > *:not(.navi-menu) {
+  position: relative;
+  max-width: 48rem;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+}
+*/
+
+.lead-block {
+  max-width: var(--lead-width-sm);
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 
   h2 {
@@ -98,10 +130,9 @@ body > *:not(.navi-menu) {
     text-align: left;
   }
 }
+
 .sloth-styles {
   position: relative;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
   max-width: 100%;
   text-align: left;
   background-color: #fafafa;
@@ -244,5 +275,56 @@ body > *:not(.navi-menu) {
   &:hover::after {
     color: #4183c4 !important;
     background: transparent !important;
+  }
+}
+
+/* Declare the media queries are in below: */
+
+@media screen and (max-width: 480px) {
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* As Medium (>= 481px and <= 768px) */
+  body {
+    &> *:not(.navi-menu):not(main):not(.dialog-backdrop) {
+      max-width: 48rem;
+    }
+
+    main > * {
+      margin-top: var(--navi-height-md, 60px);
+    }
+  }
+
+  #back-to-head {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .lead-block {
+    max-width: var(--lead-width-md);
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and (min-width: 769px ) {
+  /* As Large (>= 769px) */
+  body {
+    &> *:not(.navi-menu):not(main):not(.dialog-backdrop) {
+      max-width: 54.8rem;
+    }
+
+    main > * {
+      margin-top: var(--navi-height-lg, 60px);
+    }
+  }
+
+  #back-to-head {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .lead-block {
+    max-width: var(--lead-width-lg);
+    padding: 2rem 0;
   }
 }

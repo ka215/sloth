@@ -12,7 +12,7 @@ while ( ! $_file->eof() ) {
         break;
     }
 }
-set_globals( 'page', filter_input( INPUT_POST, 'page' ) ?: 'core_intro' );
+set_globals( 'page', filter_input( INPUT_POST, 'page' ) ?: 'intr-sloth' );
 set_globals( 'body_class', filter_input( INPUT_POST, 'body_class' ) ?: 'sloth' );
 set_globals( 'body_atts', filter_input( INPUT_POST, 'body_atts' ) ?: [] );
 set_globals( 'sloth_version', $sloth_version );
@@ -36,28 +36,30 @@ function get_globals( $key ) {
     return array_key_exists( $key, $GLOBALS ) ? $GLOBALS[$key] : null;
 }
 function include_tmpl( $template_name ) {
+    if ( empty( $template_name ) ) {
+        $template_name = 'intr-sloth';
+    }
     $full_path = __DIR__ .'/pages/'. $template_name .'.php';
-    if ( ! empty( $template_name ) || file_exists( $full_path ) ) {
+    if ( file_exists( $full_path ) ) {
         include( $full_path );
         //include('./pages/'.$template_name.'.php');
+    } else {
+        echo 'Not found the page template file.';
     }
-}
-function get_page_type( $page ) {
-    switch( true ) {
-        case preg_match( '/^core_+.*$/', $page ):
-            $page_type = 1;
-            break;
-        case preg_match( '/^ext_+.*$/', $page ):
-            $page_type = 2;
-            break;
-        default:
-            $page_type = 0;
-            break;
-    }
-    return $page_type;
 }
 
-$page = get_globals( 'page' );
+/*
+// Load configure
+require_once __DIR__ .'/pages/config.php';
+
+set_globals( 'pages', $pages );
+
+$now_page = get_globals( 'page' );
+$page_tmpl = get_page_template( $now_page );
+set_globals( 'page_tmpl', $page_tmpl );
+set_globals( 'page_cat', get_page_category( $now_page, false ) );
+set_globals( 'page_menu', get_page_menu( get_page_category( $now_page ) ) );
+*/
 if ( ! empty( get_globals( 'body_atts' ) ) ) {
     $body_atts = implode( ' ', get_globals( 'body_atts' ) );
 } else {
@@ -71,7 +73,9 @@ if ( ! empty( get_globals( 'body_atts' ) ) ) {
 <?php include_tmpl( 'head' ); ?>
 <body id="sloth-docs" class="<?= get_globals( 'body_class' ); ?>" <?= $body_atts; ?>>
 <?php include_tmpl( 'navi_menu' ); ?>
+<main>
 <?php include_tmpl( $page ); ?>
+</main>
 <?php include_tmpl( 'footer' ); ?>
 <?php include_tmpl( 'scripts' ); ?>
 </body>

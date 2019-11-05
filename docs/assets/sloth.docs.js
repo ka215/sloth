@@ -1,38 +1,122 @@
 window.addEventListener('load', function() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function(elm) {
+        if ( elm.getAttribute('href').charAt(0) === '#' ) {
+            elm.addEventListener('click', function(evt){
+                evt.preventDefault()
+                let menuId = evt.target.getAttribute('id')
+                
+                if ( menuId && menuId !== 'back-to-head' ) {
+                    //console.log( menuId )
+                    document.getElementById('current-menu-hash').value = menuId
+                    activateMenuItem()
+                }
+                if ( menuId === 'back-to-head' ) {
+                    smoothScroll( document.getElementById( evt.target.getAttribute('href').replace('#', '') ) )
+                }
+            }, false)
+        }
+    })
+
     Array.prototype.forEach.call(document.querySelectorAll('[data-get-page]'), function(elm) {
         elm.addEventListener('click', function(evt){
-            let toPage   = evt.target.dataset.getPage,
-                pageType = evt.target.closest('.menu').dataset.menuType,
+            let currentPage  = document.getElementById('current-page').value,
+                nowMenuHash  = document.getElementById('current-menu-hash').value,
+                getPageTmpl  = evt.target.dataset.getPage,
+                thisMenuHash = evt.target.getAttribute('id'),
                 formData = new FormData(),
                 request  = new XMLHttpRequest()
 
-            switch(parseInt(pageType, 10)) {
-                case 1:
-                    toPage = `core_${toPage}`
-                    break
-                case 2:
-                    toPage = `ext_${toPage}`
-                    break
-            }
-            console.log(toPage, pageType)
+            //console.log(currentPage, nowMenuHash, getPageTmpl, thisMenuHash)
+            if ( currentPage !== getPageTmpl && thisMenuHash !== 'back-to-head' ) {
+                /*
+                formData.append('page', toPage)
+                formData.append('body_class', '')
+                formData.append('body_atts', [])
 
-            /*
-            formData.append('page', toPage)
-            formData.append('body_class', '')
-            formData.append('body_atts', [])
-
-            request.open('POST', './index.php', true)
-            request.onLoad = function(res) {
-                console.log(res)
+                request.open('POST', './index.php', true)
+                request.onLoad = function(res) {
+                    console.log(res)
+                }
+                request.send(formData)
+                evt.preventDefault()
+                */
+                execPost({page: getPageTmpl})
+            } else {
+                smoothScroll( document.getElementById( evt.target.getAttribute('href').replace('#', '') ) )
             }
-            request.send(formData)
-            evt.preventDefault()
-            */
-            execPost({page: toPage})
         }, false);
     })
 
+    window.addEventListener( 'scroll', toggleFab, {passive: true}, false );
+
+    activateMenuItem()
+
 }, false)
+
+function activateMenuItem() {
+    let currentPage = document.getElementById('current-page').value,
+        nowMenuHash = document.getElementById('current-menu-hash').value
+
+    Array.prototype.forEach.call(document.querySelectorAll('.menu li'), function(elm) {
+        if ( elm.childNodes.item(0).getAttribute('id') === nowMenuHash ) {
+            elm.classList.add('active')
+        } else {
+            elm.classList.remove('active')
+        }
+    })
+    Array.prototype.forEach.call(document.querySelectorAll('.menu ul'), function(elm) {
+        let menuCategory = elm.getAttribute('id').replace('navi-menu-', ''),
+            showMenu     = false
+        
+        switch( true ) {
+            case /^(intr|styl)-.*$/.test( currentPage ):
+                showMenu = /^(introduction|styles|category|links)$/.test( menuCategory )
+                break
+            case /^ext(i|s)-.*$/.test( currentPage ):
+                showMenu = /^(extensions|features|category|links)$/.test( menuCategory )
+                break
+            default:
+                showMenu = /^(category|links)$/.test( menuCategory )
+                break
+        }
+        if ( ! showMenu ) {
+            elm.classList.add('hidden')
+        } else {
+            elm.classList.remove('hidden')
+        }
+    })
+}
+
+/*
+ * Smooth scroll
+ */
+function smoothScroll( element ) {
+    const rectTop   = element.getBoundingClientRect().top
+    const offsetTop = window.pageYOffset
+    const buffer    = document.getElementById('docs-navi').clientHeight
+    let top = rectTop + offsetTop - buffer
+
+    window.scrollTo({
+        top,
+        behavior: 'smooth'
+    })
+}
+
+/*
+ * Show/hide a fab button
+ */
+function toggleFab() {
+    const offsetTop = window.pageYOffset
+    const buffer    = document.getElementById('docs-navi').clientHeight
+    let fab = document.getElementById('back-to-head')
+
+    if ( offsetTop > buffer ) {
+        fab.classList.add('show')
+    } else {
+        fab.classList.remove('show')
+    }
+}
+
 /*
  * Post data via javascript only
  */

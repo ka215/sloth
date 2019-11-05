@@ -1,97 +1,102 @@
 <?php
-$page = get_globals( 'page' );
-$page_type = get_page_type( $page );
-$style_items = [
-    'introduction' => [
-        'overview'         => [ 'fas fa-heading', 'Sloth' ],
-        'why-sloth'        => [ 'fas fa-question', 'Why Sloth?' ],
-        'get-started'      => [ 'fas fa-fire', 'Get Started Sloth!' ],
-        'about-extensions' => [ 'far fa-lightbulb', 'About Sloth Extensions' ],
-        'basic-structures' => [ 'fas fa-chalkboard', 'Basic Structures' ],
+$pages = [
+    // category slug => {array}
+    //'uncategorized' => [],
+    'introduction'  => [
+        // page slug       => [ label: {string}, icon: {string}, tmpl?: {string}, url?: {string} ],
+        'overview'         => [ 'label' => 'Sloth','icon' => 'fas fa-heading', 'tmpl' => 'intr-sloth', 'url' => 'key-visual' ],
+        'why-sloth'        => [ 'label' => 'Why Sloth?', 'icon' => 'fas fa-question', 'tmpl' => 'intr-sloth', 'url' => 'why-sloth' ],
+        'get-started'      => [ 'label' => 'Get Started Sloth!', 'icon' => 'fas fa-fire', 'tmpl' => 'intr-sloth', 'url' => 'get-started' ],
+        'sloth-extensions' => [ 'label' => 'About Sloth Extensions', 'icon' => 'far fa-lightbulb', 'tmpl' => 'intr-sloth', 'url' => 'sloth-extensions' ],
+        'basic-structures' => [ 'label' => 'Basic Structures', 'icon' => 'fas fa-chalkboard', 'tmpl' => 'intr-sloth', 'url' => 'basic-structures' ],
     ],
-    'styles' => [
-        'typograpy'             => [ 'fas fa-font', 'Typograpy' ],
-        'lists'                 => [ 'fas fa-list-ul', 'Lists' ],
-        'links'                 => [ 'fas fa-link', 'Links' ],
-        'forms'                 => [ 'fas fa-edit', 'Forms' ],
-        'buttons'               => [ 'fas fa-toggle-on', 'Buttons' ],
-        'tables'                => [ 'fas fa-table', 'Tables' ],
-        'grid-systems'          => [ 'fas fa-th', 'Grid Systems' ],
-        'components'            => [ 'far fa-address-card', 'Components' ],
-        'colors'                => [ 'fas fa-palette', 'Colors' ],
-        'utilities'             => [ 'fas fa-toolbox', 'Utilities' ],
-        'overriding-properties' => [ 'far fa-edit', 'Overriding Properties' ],
+    'styles'        => [
+        'typograpy'             => [ 'label' => 'Typograpy', 'icon' => 'fas fa-font', 'tmpl' => 'styl-typo' ],
+        'lists'                 => [ 'label' => 'Lists', 'icon' => 'fas fa-list-ul', 'tmpl' => 'styl-lists' ],
+        'links'                 => [ 'label' => 'Links', 'icon' => 'fas fa-link', 'tmpl' => 'styl-links' ],
+        'forms'                 => [ 'label' => 'Forms', 'icon' => 'fas fa-edit', 'tmpl' => 'styl-forms' ],
+        'buttons'               => [ 'label' => 'Buttons', 'icon' => 'fas fa-toggle-on', 'tmpl' => 'styl-btns' ],
+        'tables'                => [ 'label' => 'Tables', 'icon' => 'fas fa-table', 'tmpl' => 'styl-table' ],
+        'grid-systems'          => [ 'label' => 'Grid Systems', 'icon' => 'fas fa-th', 'tmpl' => 'styl-grids' ],
+        'components'            => [ 'label' => 'Components', 'icon' => 'far fa-address-card', 'tmpl' => 'styl-compo' ],
+        'colors'                => [ 'label' => 'Colors', 'icon' => 'fas fa-palette', 'tmpl' => 'styl-color' ],
+        'utilities'             => [ 'label' => 'Utilities', 'icon' => 'fas fa-toolbox', 'tmpl' => 'styl-util' ],
+        'overriding-properties' => [ 'label' => 'Overriding Properties', 'icon' => 'far fa-edit', 'tmpl' => 'styl-props' ],
     ],
-];
-$extension_items = [
-    'introduction' => [
-        'what-extensions'  => [ 'fas fa-question', 'What are Extensions?' ],
-        'about-extensions' => [ 'far fa-lightbulb', 'About Extensions' ],
+    'extensions'    => [
+        'what-extensions'  => [ 'label' => 'What are Extensions?', 'icon' => 'fas fa-question', 'tmpl' => 'exti-desc', 'url' => 'what-extensions' ],
+        'about-extensions' => [ 'label' => 'About Extensions', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exti-desc', 'url' => 'about-extensions' ],
     ],
-    'features' => [
-        'element-sizing'  => [ 'fas fa-expand-arrows-alt', 'Element Sizing' ],
-        'option-mapping'  => [ 'fas fa-align-justify', 'Option Mapping' ],
-        'toggle-password' => [ 'fas fa-low-vision', 'Toggle Password' ],
-        'image-uploader'  => [ 'fas fa-file-upload', 'Image Uploader' ],
-        'class-switching' => [ 'fas fa-exchange-alt', 'Class Switching' ],
-        'validation-form' => [ 'fab fa-wpforms', 'Validation Form' ],
-        'dialog'          => [ 'far fa-window-restore', 'Dialog Notification' ],
-        'lazy-loading'    => [ 'far fa-image', 'Lazy Loading Images' ],
-        'stick-footer'    => [ '', 'Sticky Footer' ],
-        // '' => [ '', '' ],
-        'demo-form'       => [ 'far fa-lightbulb', 'Demo Form' ]
+    'features'      => [
+        'element-sizing'  => [ 'label' => 'Element Sizing', 'icon' => 'fas fa-expand-arrows-alt', 'tmpl' => 'exts-sizes' ],
+        'option-mapping'  => [ 'label' => 'Option Mapping', 'icon' => 'fas fa-align-justify', 'tmpl' => 'exts-optmap' ],
+        'toggle-password' => [ 'label' => 'Toggle Password', 'icon' => 'fas fa-low-vision', 'tmpl' => 'exts-passwd' ],
+        'image-uploader'  => [ 'label' => 'Image Uploader', 'icon' => 'fas fa-file-upload', 'tmpl' => 'exts-upload' ],
+        'class-switching' => [ 'label' => 'Class Switching', 'icon' => 'fas fa-exchange-alt', 'tmpl' => 'exts-switch' ],
+        'validation-form' => [ 'label' => 'Validation Form', 'icon' => 'fab fa-wpforms', 'tmpl' => 'exts-valid' ],
+        'dialog'          => [ 'label' => 'Dialog Notification', 'icon' => 'far fa-window-restore', 'tmpl' => 'exts-dialog' ],
+        'lazy-loading'    => [ 'label' => 'Lazy Loading Images', 'icon' => 'far fa-image', 'tmpl' => 'exts-lazyload' ],
+        'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => '', 'tmpl' => 'exts-footer' ],
+        'demo-form'       => [ 'label' => 'Demo Form', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exts-demo1' ],
     ],
-];
-$common_items = [
-    'category' => [
-        'core-styles'      => [ 'fab fa-css3', 'Core Styles' ],
-        'sloth-extensions' => [ 'far fa-lightbulb', 'Sloth Extensions' ],
-        'supported'        => [ 'far fa-window-restore', 'Supported Browsers' ],
+    'category'      => [
+        'core-styles'      => [ 'label' => 'Core Styles', 'icon' => 'fab fa-css3', 'tmpl' => 'intr-sloth', 'url' => 'key-visual' ],
+        'sloth-extensions' => [ 'label' => 'Sloth Extensions', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exti-desc', 'url' => 'what-extensions' ],
+        'supported'        => [ 'label' => 'Supported Browsers', 'icon' => 'far fa-window-restore', 'tmpl' => 'support', 'url' => 'supported-browsers' ],
     ],
-    'links' => [
-        'https://ka215.github.io/sloth/donation.html' => [ 'fas fa-donate', 'Donation' ],
-        'https://github.com/ka215/sloth' => [ 'fab fa-github-alt', 'To github' ],
-        'https://ka2.org/' => [ 'fas fa-home', 'Back to homepage' ],
-        //'' => [ '', '' ],
+    'links'         => [
+        'donation' => [ 'label' => 'Donation', 'icon' => 'fas fa-donate', 'url' => 'https://ka215.github.io/sloth/donation.html' ],
+        'github' => [ 'label' => 'To github', 'icon' => 'fab fa-github-alt', 'url' => 'https://github.com/ka215/sloth' ],
+        'home' => [ 'label' => 'Back to homepage', 'icon' => 'fas fa-home', 'url' => 'https://ka2.org/' ],
     ],
 ];
-switch( $page_type ) {
-    case 1:
-        $menu_list = array_merge( $style_items, $common_items );
-        break;
-    case 2:
-        $menu_list = array_merge( $extension_items, $common_items );
-        break;
-    default:
-        $menu_list = array_merge( [], $common_items );
-        break;
-}
+$now_page = get_globals( 'page' );
+$current_page = '';
 ?>
 <header id="docs-navi" class="navi-menu">
   <div class="w-half flx-row">
     <label class="toggle">
       <input type="checkbox">
       <div class="backdrop"></div>
-      <div class="menu" data-menu-type="<?= $page_type ?>">
-<?php foreach( $menu_list as $ul_id => $li_items ) : ?>
-        <ul id="navi-menu-<?= $ul_id ?>" class="unstyled">
-<?php   foreach( $li_items as $li_link => $li_content ) :
-          if ( preg_match( '/^(https?:\/\/|.?\/)([-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/i', $li_link ) !== 1 ) {
-            $_atts = $ul_id === 'introduction' ? "href=\"#{$li_link}\"" : "href=\"javascript:;\" data-get-page=\"{$li_link}\"";
+      <div class="menu">
+<?php foreach( $pages as $page_cat => $page_list ) : ?>
+        <ul id="navi-menu-<?= $page_cat ?>" class="unstyled">
+<?php   foreach( $page_list as $page_slug => $page_items ) : 
+          if ( array_key_exists( 'tmpl', $page_items ) ) {
+              if ( array_key_exists( 'url', $page_items ) ) {
+                  $_atts = "href=\"#{$page_items['url']}\"";
+              } else {
+                  $_atts = "href=\"javascript:;\"";
+              }
+              $_atts .= ! empty( $page_items['tmpl'] ) ? " data-get-page=\"{$page_items['tmpl']}\"" : '';
+          } elseif ( array_key_exists( 'url', $page_items ) ) {
+              if ( preg_match( '/^(https?:\/\/|.?\/)([-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/i', $page_items['url'] ) !== false ) {
+                  $_atts = "href=\"{$page_items['url']}\"";
+              } else {
+                  $_atts = "href=\"#{$page_items['url']}\"";
+              }
           } else {
-            $_atts = "href=\"{$li_link}\"";
+            $_atts = '';
+          }
+          $_atts .= sprintf( ' id="%s"', md5( $page_slug ) );
+          if ( empty( $current_page ) && $now_page === $page_items['tmpl'] ) {
+            $current_page = md5( $page_slug );
           }
 ?>
-          <li class="pr1"><a <?= $_atts ?>><i class="<?= $li_content[0] ?> mr1"></i><?= $li_content[1] ?></a></li>
+          <li class="pr1"><a <?= $_atts ?>><i class="<?= $page_items['icon'] ?> mr1"></i><?= $page_items['label'] ?></a></li>
 <?php   endforeach; ?>
         </ul>
-        <?php if ( $ul_id !== 'links' ) : ?><hr><?php endif; ?>
+        <?php if ( $page_cat !== 'links' ) : ?><hr><?php endif; ?>
 <?php endforeach; ?>
       </div>
+      <input type="hidden" id="current-page" value="<?= $now_page ?>">
+      <input type="hidden" id="current-menu-hash" value="<?= $current_page ?>">
     </label>
-    <a href="#sloth-docs" class="brand"><img src="<?= optimize_uri( 'assets/sloth.svg' ) ?>" height="36"> Sloth</a>
+    <a id="brand-logo" href="#key-visual" class="brand" data-get-page="intr-sloth"><img src="<?= optimize_uri( 'assets/sloth.svg' ) ?>" height="36"> Sloth</a>
   </div>
   <div class="w-half flx-row flx-end pr2">
+<?php /*
     <button id="close-navi" type="button" class="outline"><i class="fas fa-times"></i> Close Navi</button>
+*/ ?>
   </div>
 </header>

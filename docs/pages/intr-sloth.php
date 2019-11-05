@@ -3,7 +3,7 @@ $sloth_version = get_globals( 'sloth_version' );
 $compressed_css_size = get_globals( 'compressed_css_size' );
 $compressed_js_size = get_globals( 'compressed_js_size' );
 ?>
-<header id="introduction">
+<div id="key-visual">
   <h1 class="nons"><img src="<?= optimize_uri( 'assets/sloth.svg' ); ?>" height="58" class="mr1">Sloth</h1>
   <p class="nons">
     Mobile-first Lightweight CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.<br>
@@ -20,7 +20,7 @@ $compressed_js_size = get_globals( 'compressed_js_size' );
      data-ad-format="auto"
      data-full-width-responsive="true"></ins></div>
 <?php endif; ?>
-</header>
+</div>
 <article id="why-sloth" class="lead-block">
   <h2>Why Sloth?</h2>
   <aside>
@@ -33,7 +33,7 @@ $compressed_js_size = get_globals( 'compressed_js_size' );
     Finally that file size after gzip compression is <em class="txt-sec"><?= (string) $compressed_css_size ?>kB</em> at this time.
   </aside>
 </article>
-<article id="get-started-sloth" class="lead-block">
+<article id="get-started" class="lead-block">
   <h2>Get Started Sloth!</h2>
   <aside>
     In order to wake up the sloth, it is necessary to read the built distribution CSS file.
@@ -59,7 +59,7 @@ $compressed_js_size = get_globals( 'compressed_js_size' );
 <article id="sloth-extensions" class="lead-block">
   <h2>Sloth Extensions</h2>
   <aside>
-    Since Version 1.0.3, added new <a href="./?page=2">extension script for Sloth</a>.<br>
+    Since Version 1.0.3, added new <a href="javascript:;" data-get-page="exti-desc">extension script for Sloth</a>.<br>
     If you use that script, you can get make an easily advanced form with field validation built, and enable dialog to be popuping.<br>
     If you want to enable this extension, you should be loaded script file as like below.<br>
     <div class="flx-row flx-center fnt-sm my1">
