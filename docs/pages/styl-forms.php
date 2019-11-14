@@ -3,8 +3,8 @@
   <aside>
     There are a wide variety of form parts provided by the Sloth style. However, please note that some parts are not compatible with older browsers.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <form autocomplete="off">
         <label for="ameli">Email</label>
         <input type="email" id="ameli" placeholder="Enter your email address" autocomplete="nope">
@@ -14,7 +14,7 @@
         <textarea id="bio" placeholder="Tell us about yourself"></textarea>
       </form>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;form>
   &lt;label for="email">Email&lt;/label>
   &lt;input type="email" id="email" placeholder="Enter your email address">
@@ -25,16 +25,16 @@
 &lt;/form></code></pre>
     </div>
   </div>
-  <h5 class="muted">Inline forms</h5>
-  <div class="flx-col my1">
-    <div class="w-full">
+  <h4 class="line-right txt-prim">Inline forms</h4>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <form class="inline">
         <label>Name</label>
         <input type="text" placeholder="First Name" size="12">
         <input type="text" placeholder="Last Name" size="12">
       </form>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;form class="inline">
   &lt;label>Name&lt;/label>
   &lt;input type="text" placeholder="First Name">
@@ -42,9 +42,9 @@
 &lt;/form></code></pre>
     </div>
   </div>
-  <h5 class="muted">Various Form States</h5>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h4 class="line-right txt-prim">Various Form States</h4>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <form>
         <label class="muted">Disabled</label>
         <input type="text" disabled value="Disabled to enter this text field" class="mb1">
@@ -54,7 +54,7 @@
         <textarea readonly>This textarea read only</textarea>
       </form>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;form>
   &lt;label class="muted">Disabled&lt;/label>
   &lt;input type="text" disabled value="Disabled to enter this text field">
@@ -65,8 +65,8 @@
 &lt;/form></code></pre>
     </div>
   </div>
-  <h5 class="muted">Checkboxes</h5>
-  <div class="flx-row my1">
+  <h4 class="line-right txt-prim">Checkboxes</h4>
+  <div class="flx-row my2">
     <div class="w-half">
       <form>
         <label class="checkbox">Unchecked
@@ -123,7 +123,7 @@
 &lt;/label></code></pre>
     </div>
   </div>
-  <h5 class="muted">Radio buttons</h5>
+  <h4 class="line-right txt-prim">Radio buttons</h4>
   <div class="flx-row my1">
     <div class="w-half">
       <form>
@@ -181,7 +181,7 @@
 &lt;/label></code></pre>
     </div>
   </div>
-  <h5 class="muted">Select boxes</h5>
+  <h4 class="line-right txt-prim">Select boxes</h4>
   <div class="flx-row my1">
     <div class="w-half">
       <form>
@@ -226,8 +226,8 @@
 &lt;/label></code></pre>
     </div>
   </div>
-  <h5 class="muted">Datalist</h5>
-  <div class="flx-col my1">
+  <h4 class="line-right txt-prim">Datalist</h4>
+  <div class="flx-col my2">
     <div class="w-full mb1">
       <form>
         <label class="combo-box">Combo box
@@ -241,7 +241,7 @@
         </label>
       </form>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;label class="combo-box">Combo box
   &lt;input type="text" name="datalist_field" list="item-list" placeholder="Choose a candidate or enter" size="27">
   &lt;datalist id="item-list">
@@ -255,8 +255,8 @@
       <small class="note">It is best to include <a href="https://github.com/mfranzke/datalist-polyfill" target="_blank">datalist-polyfill</a> if you want to support older and currently incompatible browsers as like Android webview.</small>
     </div>
   </div>
-  <h5 class="muted">Toggle switch</h5>
-  <div class="flx-col my1">
+  <h4 class="line-right txt-prim">Toggle switch</h4>
+  <div class="flx-col my2">
     <div class="w-full mb1">
       <form>
         <label class="tgl mb1">Normal type of toggle switch, firstly.
@@ -277,7 +277,7 @@
         </label><br>
       </form>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;label class="tgl">Normal type of toggle switch, firstly.
   &lt;input type="checkbox">
   &lt;span class="tgl-btn">&lt;/span>
@@ -296,10 +296,9 @@
 &lt;/label></code></pre>
     </div>
   </div>
-  <hr>
-  <h5 class="muted">Floating label</h5>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h4 class="line-right txt-prim">Floating label</h4>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <form>
         <label for="field-1" class="floating">
           <input type="text" id="field-1" placeholder="&nbsp;" autocomplete="nope">
@@ -318,7 +317,7 @@
         </label>
       </form>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;label for="field-1" class="floating">
   &lt;input type="text" id="field-1" placeholder="&amp;nbsp;">
   &lt;label>Name&lt;/label>

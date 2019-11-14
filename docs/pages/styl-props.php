@@ -3,7 +3,7 @@
   <aside>
     On the sloth style, we can override some styling properties via CSS variables without rebuild custom css. Currently overridable properties are as follows.
   </aside>
-  <div class="flx-col my1">
+  <div class="flx-col my2">
     <div class="w-full">
     </div>
     <div class="w-full">

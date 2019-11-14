@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
             elm.addEventListener('click', function(evt){
                 evt.preventDefault()
                 let menuId = evt.target.getAttribute('id')
-                
+
                 if ( menuId && menuId !== 'back-to-head' ) {
                     //console.log( menuId )
                     document.getElementById('current-menu-hash').value = menuId
@@ -47,6 +47,37 @@ window.addEventListener('load', function() {
         }, false);
     })
 
+    // For Components of core styles
+    let toggleNaviButton = document.getElementById('toggle-navi-menu')
+    if ( toggleNaviButton ) {
+        toggleNaviButton.addEventListener('change', function(evt){
+            let pageNavi = document.getElementById('docs-navi')
+
+            if ( evt.target.checked ) {
+                pageNavi.removeAttribute('hidden')
+            } else {
+                pageNavi.setAttribute('hidden', true)
+            }
+        }, false)
+    }
+
+    // For Colors of core styles
+    let changeColorButton = document.getElementById('btn-change-color')
+    if ( changeColorButton ) {
+        changeColorButton.addEventListener('click', function(evt){
+            let targetVar = document.getElementById('override-color').value,
+                newValue  = document.getElementById('color-code').value
+
+            if ( newValue ) {
+                if ( /^#?([0-9A-F]{3}){1,2}$/i.test(newValue) ) {
+                    newValue = /^#.*$/.test(newValue) ? newValue : '#' + newValue
+                }
+                document.body.style.setProperty(targetVar, newValue)
+            }
+            document.activeElement.blur()
+        }, false)
+    }
+
     window.addEventListener( 'scroll', toggleFab, {passive: true}, false );
 
     activateMenuItem()
@@ -67,7 +98,7 @@ function activateMenuItem() {
     Array.prototype.forEach.call(document.querySelectorAll('.menu ul'), function(elm) {
         let menuCategory = elm.getAttribute('id').replace('navi-menu-', ''),
             showMenu     = false
-        
+
         switch( true ) {
             case /^(intr|styl)-.*$/.test( currentPage ):
                 showMenu = /^(introduction|styles|category|links)$/.test( menuCategory )

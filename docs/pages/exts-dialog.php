@@ -8,8 +8,8 @@
     Furthermore, it is able to define the dialog's default setting as optional in the body tag. Those are a <code>data-dialog-effect</code> attribute as defaults to transition animation type, and a <code>data-dialog-button</code> attribute as defaults to button style on the dialog's footer.<br>
     The dialog is also possible to read JSON format content asynchronously from an external URL or to assign a callback to button event on the opened dialog.<br>
   </aside>
-  <div class="flx-row flx-wrap mt1">
-    <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog</a></p>
       <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax</a></p>
       <div class="inline mb1">
@@ -21,7 +21,7 @@
       </div>
       <p class="mb1"><span onmouseover="showDialog('title', 'body', 'Hi!', 2)">Try hover on this text</span></p>
     </div>
-    <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
+    <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;a href="" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog&lt;/a>
 &lt;a href="" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax&lt;/a>
 &lt;div class="inline mb1">
@@ -66,6 +66,6 @@
     </table>
   </aside>
   <div>
-    <small class="note">At more detail of about dialog window, please see below <a href="#sloth-extensions-demo">demo</a>.</small>
+    <small class="note">At more detail of about dialog window, please see below <a href="javascript:;" data-get-page="exts-demo1">demo</a>.</small>
   </div>
 </section>
