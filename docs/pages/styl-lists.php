@@ -5,12 +5,12 @@
   </aside>
   <div class="flx-row my1">
     <div class="w-half">
-      <h6 class="muted">Ordered</h6>
+      <h6 class="line-right txt-prim">Ordered</h6>
       <ol>
         <li>Ordered Item</li>
         <li>Ordered Item</li>
       </ol>
-      <h6 class="muted">Unordered</h6>
+      <h6 class="line-right txt-prim">Unordered</h6>
       <ul>
         <li>Unordered Item 1</li>
         <li>Unordered Item 2
@@ -20,12 +20,12 @@
           </ul>
         </li>
       </ul>
-      <h6 class="muted">Unstyled</h6>
+      <h6 class="line-right txt-prim">Unstyled</h6>
       <ul class="unstyled">
         <li>Unstyled Item 1</li>
         <li>Unstyled Item 2</li>
       </ul>
-      <h6 class="muted">Description list</h6>
+      <h6 class="line-right txt-prim">Description list</h6>
       <dl>
         <dt>Mathematical constant</dt>
         <dd>the base of the natural logarithm</dd>
@@ -59,9 +59,8 @@
 &lt;/dl&gt;</code></pre>
     </div>
   </div>
-  <hr>
+  <h4 class="line-right txt-prim">Inline List</h4>
   <div class="flx-col my1">
-    <h5 class="muted">Inline list</h5>
     <div>
       <ul class="inline">
         <li>taxonomy-item-1</li>
@@ -76,7 +75,9 @@
   &lt;li>taxonomy-item-3&lt;/li>
 &lt;/ul></code></pre>
     </div>
-    <h5 class="muted">Breadcrumbs</h5>
+  </div>
+  <h4 class="line-right txt-prim">Breadcrumbs</h4>
+  <div class="flx-col my1">
     <div>
       <ol id="bc-1" class="crumbs">
         <li><a href="#bc-1">Top level</a></li>

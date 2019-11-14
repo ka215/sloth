@@ -3,12 +3,12 @@
   <aside>
     Utility classes are shorthanded CSS properties that can be used with or without the <code>.sloth</code> class.
   </aside>
-  <h5 class="muted">Margin</h5>
+  <h4 class="line-right txt-prim">Margin</h4>
   <aside>
     Allowed margin values ​​are 0 to 2 and units are "rem". Also, there are provided the <code>.ma</code> as auto all margin, the <code>.mxa</code> as horizontal auto margin, the <code>.mya</code> as vertical auto margin.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half flx-col">
+  <div class="flx-col my2">
+    <div class="w-full flx-col mb2">
       <div class="bg-lightgray"><div class="m0 brd bg-white">.m0</div></div>
       <div class="bg-lightgray"><div class="m1 brd bg-white">.m1</div></div>
       <div class="bg-lightgray"><div class="m2 brd bg-white">.m2</div></div>
@@ -19,7 +19,7 @@
       <div class="bg-lightgray"><div class="mb1 brd bg-white">.mb1 (bottom only)</div></div>
       <div class="bg-lightgray"><div class="ml1 brd bg-white">.ml1 (left only)</div></div>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="m0">.m0&lt;/div>
 &lt;div class="m1">.m1&lt;/div>
 &lt;div class="m2">.m2&lt;/div>
@@ -32,10 +32,10 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Padding</h5>
+  <h4 class="line-right txt-prim">Padding</h4>
   <aside>Allowed padding values ​​are 0 to 2 and units are "rem".</aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <div class="brd bg-lightgray p0"><div class="bg-white">.p0</div></div>
       <div class="brd bg-lightgray p1"><div class="bg-white">.p1</div></div>
       <div class="brd bg-lightgray p2"><div class="bg-white">.p2</div></div>
@@ -46,7 +46,7 @@
       <div class="brd bg-lightgray pb1"><div class="bg-white">.pb1 (bottom only)</div></div>
       <div class="brd bg-lightgray pl1"><div class="bg-white">.pl1 (left only)</div></div>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="p0">.p0&lt;/div>
 &lt;div class="p1">.p1&lt;/div>
 &lt;div class="p2">.p2&lt;/div>
@@ -59,12 +59,12 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Width</h5>
-  <aside>This is able to specify block width as like the width 100% is <code>.w-1</code> or <code>.w-full</code>, 50% is <code>.w-1-2</code> or <code>.w-half</code>. Refer to section of flexboxes on the <a href="#grid-systems">Grid Systems</a>.</aside>
-  <h5 class="muted">Height</h5>
+  <h4 class="line-right txt-prim">Width</h4>
+  <aside>This is able to specify block width as like the width 100% is <code>.w-1</code> or <code>.w-full</code>, 50% is <code>.w-1-2</code> or <code>.w-half</code>. Refer to section of flexboxes on the <a href="javascript:;" data-get-page="styl-grids">Grid Systems</a>.</aside>
+  <h4 class="line-right txt-prim">Height</h4>
   <aside>This is able to specify block height as like the height 100% is <code>.h-full</code> and 50% is <code>.h-half</code>. It has only two classes about height as utility class.</aside>
-  <h5 class="muted">Border</h5>
-  <div class="flx-row my1">
+  <h4 class="line-right txt-prim">Border</h4>
+  <div class="flx-row my2">
     <div class="w-half">
       <div class="brd mb1">.brd</div>
       <div class="brd-prim mb1">.brd-prim</div>
@@ -83,10 +83,10 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Background & Text Color</h5>
+  <h4 class="line-right txt-prim">Background & Text Color</h4>
   <aside>It is also possible to use <code>.muted</code> as a shorthand only for <code>.txt-gray</code>.</aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <div class="bg-white txt-black">.bg-white.txt-black</div>
       <div class="bg-whitesmoke txt-darkgray">.bg-whitesmoke.txt-darkgray</div>
       <div class="bg-lightgray txt-gray" >.bg-lightgray.txt-gray</div>
@@ -101,7 +101,7 @@
       <div class="bg-quat txt-sec" >.bg-quat.txt-sec</div>
       <div class="bg-quin txt-prim">.bg-quin.txt-prim</div>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="bg-white txt-black">.bg-white.txt-black&lt;/div>
 &lt;div class="bg-whitesmoke txt-darkgray">.bg-whitesmoke.txt-darkgray&lt;/div>
 &lt;div class="bg-lightgray txt-gray" >.bg-lightgray.txt-gray&lt;/div>
@@ -118,20 +118,20 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Alignment</h5>
+  <h4 class="line-right txt-prim">Alignment</h4>
   <aside>
     The horizontal alignment classes (<code>.txt-*</code>) are able to apply a "text-align" property to inline elements or incontents. On the other hand the vertical alignment classes (<code>.v-*</code>) would apply a "vertical-align" property to only inline element as like the table-cell and an image tag.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
-      <h6 class="muted">Horizontal alignment</h6>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
+      <h5 class="muted">Horizontal alignment</h5>
       <div class="brd">
         <p class="txt-left">.txt-left</p>
         <p class="txt-center">.txt-center</p>
         <p class="txt-right">.txt-right</p>
         <p class="txt-justify">.txt-justify for using to context that has some words.</p>
       </div>
-      <h6 class="muted">Vertical alignment</h6>
+      <h5 class="muted">Vertical alignment</h5>
       <table class="nons fixed brd exam1">
         <tbody>
           <tr>
@@ -142,7 +142,7 @@
         </tbody>
       </table>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="brd">
   &lt;p class="txt-left">.txt-left&lt;/p>
   &lt;p class="txt-center">.txt-center&lt;/p>
@@ -164,7 +164,7 @@
     There are the alignment classes for flexbox as below. Also, it has defaults to <code>flex-wrap: nowrap</code> in the <code>.flx-row</code> and <code>.flx-col</code> classes. If you want to styling to the wrappable flexbox, you should apply with <code>.flx-wrap</code> together.
   </aside>
   <div class="flx-col my1">
-    <h6 class="muted">Case of ".flx-row" <small>(<code>flex-direction: row</code>)</small></h6>
+    <h5 class="muted">Case of ".flx-row" <small>(<code>flex-direction: row</code>)</small></h5>
     <div class="w-full">
       <div>.flx-row.flx-start<br>
         <div class="flx-row flx-start brd bg-lightgray mb1">
@@ -238,7 +238,7 @@
 </code></pre>
     </div>
   </div>
-  <h6 class="muted">Case of ".flx-col" <small>(<code>flex-direction: column</code>)</small></h6>
+  <h5 class="muted">Case of ".flx-col" <small>(<code>flex-direction: column</code>)</small></h5>
   <div class="flx-col my1">
     <div class="flx-row flx-wrap flx-evenly w-full">
       <div class="w-1-3 pr1 mb1">.flx-col.flx-start<br>
@@ -311,18 +311,18 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Text decorations</h5>
+  <h4 class="line-right txt-prim">Text decorations</h4>
   <aside>
     It has several utility classes to decorate text in context.
   </aside>
-  <h6 class="muted">Font sizes</h6>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h5 class="muted">Font sizes</h5>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <p>
         The font size can change to <span class="fnt-xl">xlarge (144%)</span>, <span class="fnt-lg">large (120%)</span>, <span class="fnt-sm">small (80%)</span>, <span class="fnt-xs">xsmall (64%)</span> from inherit size on element.
       </p>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;span class="fnt-xl">xLarge (144%)&lt;/span>
 &lt;span class="fnt-lg">Large  (120%)&lt;/span>
 &lt;span class="fnt-sm">Small  ( 80%)&lt;/span>
@@ -330,8 +330,8 @@
 </code></pre>
     </div>
   </div>
-  <h6 class="muted">Line-height</h6>
-  <div class="flx-row my1">
+  <h5 class="muted">Line-height</h5>
+  <div class="flx-row my2">
     <div class="w-half">
       <p class="lh-1">
         The line-height CSS property sets the amount of space used for lines, such as in text.
@@ -350,27 +350,27 @@
 </code></pre>
     </div>
   </div>
-  <h6 class="muted">Text transforms</h6>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h5 class="muted">Text transforms</h5>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <p>
         <span class="upper">This is uppercase.</span><br>
         <span class="lower">This is LOWERCASE.</span><br>
         <span class="capital">This is capitalize.</span>
       </p>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;span class="upper">This is uppercase.&lt;/span>
 &lt;span class="lower">This is LOWERCASE.&lt;/span>
 &lt;span class="capital">This is capitalize.&lt;/span>
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Overflow</h5>
+  <h4 class="line-right txt-prim">Overflow</h4>
   <aside>If you use those utility classes for overflowing element or text, you should specify width or height to element which is as the container. Such the case it recommends you can use <a href="./extensions.html#element-sizing">the element sizing included in the sloth extension</a>.</aside>
-  <h6 class="muted">Block elements</h6>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h5 class="muted">Block elements</h5>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <div class="of-v">Or "overflow-v" class, this is styled as "overflow: visible".</div>
       <div class="of-h" style="height:2rem">Or "overflow-h" class, this is styled as "overflow: hidden".</div>
       <div class="of-s" style="height:3rem">Or "overflow-s" class, this is styled as "overflow: scroll".</div>
@@ -384,7 +384,7 @@
       <div class="of-ys" style="height:3rem">Or "overflow-ys" class, this is styled as "overflow-y: scroll".</div>
       <div class="of-ya" style="height:2rem">Or "overflow-ya" class, this is styled as "overflow-y: auto".</div>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="of-v">Or "overflow-v" class, this is styled as "overflow: visible".&lt;/div>
 &lt;div class="of-h">Or "overflow-h" class, this is styled as "overflow: hidden".&lt;/div>
 &lt;div class="of-s">Or "overflow-s" class, this is styled as "overflow: scroll".&lt;/div>
@@ -400,28 +400,28 @@
 </code></pre>
     </div>
   </div>
-  <h6 class="muted">Text Overflow</h6>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <h5 class="muted">Text Overflow</h5>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <div class="txt-of-v">Or "txt-overflow-v" class, this is never styled to overflow text.</div>
       <div class="txt-of-c">Or "txt-overflow-c" class, this is styled as "text-overflow: clip".</div>
       <div class="txt-of-e">Or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".</div>
       <!-- div class="txt-of-s" data-ellipsis="-">Or "txt-overflow-s" class, this is styled as "text-overflow: attr(data-ellipsis, '')".</div -->
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="txt-of-v">Or "txt-overflow-v" class, this is never styled to overflow text.&lt;/div>
 &lt;div class="txt-of-c">Or "txt-overflow-c" class, this is styled as "text-overflow: clip".&lt;/div>
 &lt;div class="txt-of-e">Or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".&lt;/div>
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Note as helper text</h5>
+  <h4 class="line-right txt-prim">Note as helper text</h4>
   <aside>An information icon is displayed at the beginning of an element that has a <code>.note</code> class.</aside>
-  <div class="flx-col my1">
-    <div class="w-full mb1">
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <p class="note">You would prefer to be used this utility class for displaying text of supplementary sentence etc.</p>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;p class="note">You would prefer to be used this utility class ...&lt;/p>
 </code></pre>
     </div>

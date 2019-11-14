@@ -3,8 +3,8 @@
   <aside>
     There are 5 color presets available by default for the Sloth style. These preset colors can also override custom colors via CSS variables.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <table class="nobrd">
         <tbody><tr>
             <th>Primary</th><td><code>.*-prim</code></td><td><div class="bg-prim txt-white txt-center upper">#4183c4</div></td>
@@ -19,7 +19,7 @@
         </tr></tbody>
       </table>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>:root {
   --color-primary: #4183c4;
   --color-primary-active: #1e70bf;
@@ -35,10 +35,10 @@
 </code></pre>
     </div>
   </div>
-  <div class="flx-col mb1">
-    <h6 class="muted">Demo to override color</h6>
-    <form class="inline" _class="flx-row flx-evenly">
-      <select id="override-color">
+  <h4 class="line-right txt-prim">Demo to override color</h4>
+  <div class="flx-col my2">
+    <form class="inline mb1">
+      <select id="override-color" class="mr1">
         <option value="--color-primary">--color-primary</option>
         <option value="--color-primary-active">--color-primary-active</option>
         <option value="--color-primary-active-light">--color-primary-active-light</option>
@@ -55,7 +55,7 @@
         <option value="--color-quinary-active">--color-quinary-active</option>
         <option value="--color-quinary-active-light">--color-quinary-active-light</option>
       </select>
-      <input type="text" id="color-code" placeholder="Enter color value">
+      <input type="text" id="color-code" placeholder="Enter color value" class="mr1">
       <button type="button" id="btn-change-color" class="clr-prim">Try change</button>
     </form>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>

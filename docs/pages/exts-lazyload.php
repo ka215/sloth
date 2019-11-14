@@ -6,8 +6,8 @@
     If you want to apply the lazy loading to the inline overflow container in a page, you should add a <code>lazy-load</code> class to the overflowing parent element contains images. However, if that inline container is in dialog, you never need to add class because automatically apply by this plugin.<br>
     Notice also you should empty or never markup the <code>src</code> attribute in an image tag if you use the lazy image loading.<br>
   </aside>
-  <div class="flx-row flx-wrap mt1">
-    <div class="w-full">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <ul class="unstyled">
         <li><img data-src="https://placehold.jp/22/3d4070/ffffff/320x60.png?text=Sample%20Image%20%231" width="320" height="60" alt="Sample Image #1"></li>
         <li><img data-src="https://placehold.jp/22/5e3180/ffffff/320x60.png?text=Sample%20Image%20%232" data-buffer="60" width="320" height="60" alt="Sample Image #2"></li>
@@ -23,7 +23,7 @@
         <li><img data-src="https://placehold.jp/22/c75d28/ffffff/320x60.png?text=Sample%20Image%20%238" data-buffer="120" width="320" height="60" alt="Sample Image #8"></li>
       </ul>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;ul class="unstyled">
   &lt;li>&lt;img data-src="sample_1.png" width="320" height="60" alt="Sample Image #1">&lt;/li>
   &lt;li>&lt;img data-src="sample_2.png" data-buffer="60" width="320" height="60" alt="Sample Image #2">&lt;/li>

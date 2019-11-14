@@ -4,8 +4,8 @@
     The Sloth styled table has several option classes.<br>
     The <code>.slim</code> class can shrink the size of the whole table, the <code>.fixed</code> class can justify horizontal cell width, and the <code>.cell-center</code> or <code>.cell-right</code> classes can align text in all cells.
   </aside>
-  <div class="flx-col my1">
-    <div class="w-full">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <table>
         <thead>
           <tr><th>Name</th><th>Character</th><th>Born</th></tr>
@@ -20,7 +20,7 @@
         </tfoot>
       </table>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;table>
   &lt;thead>
     &lt;tr>&lt;th>Name&lt;/th>&lt;th>Character&lt;/th>&lt;th>Born&lt;/th>&lt;/tr>
@@ -36,9 +36,9 @@
 &lt;/table></code></pre>
     </div>
   </div>
-  <div class="flx-col my1">
-    <h5 class="muted">No borderd table</h5>
-    <div class="w-full">
+  <h4 class="line-right txt-prim">No borderd table</h4>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <table class="nobrd">
         <thead>
           <tr><th>Name</th><th>Character</th><th>Born</th></tr>
@@ -53,7 +53,7 @@
         </tfoot>
       </table>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;table class="nobrd">
   &#x22EE;
 &lt;/table></code></pre>

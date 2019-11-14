@@ -373,6 +373,75 @@ textarea {
   font-weight: 500;
 }
 
+.sloth:not(.nons) .line-left:not(.nons),
+.sloth:not(.nons) .line-right:not(.nons),
+.sloth:not(.nons) .line-both:not(.nons),
+.sloth *:not(.nons) .line-left:not(.nons),
+.sloth *:not(.nons) .line-right:not(.nons),
+.sloth *:not(.nons) .line-both:not(.nons) {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.sloth:not(.nons) .line-left:not(.nons)::before,
+.sloth:not(.nons) .line-right:not(.nons)::before,
+.sloth:not(.nons) .line-both:not(.nons)::before,
+.sloth *:not(.nons) .line-left:not(.nons)::before,
+.sloth *:not(.nons) .line-right:not(.nons)::before,
+.sloth *:not(.nons) .line-both:not(.nons)::before {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+  border-top: solid 1px #d3d3d3;
+  content: '';
+}
+
+.sloth:not(.nons) .line-left:not(.nons)::after,
+.sloth:not(.nons) .line-right:not(.nons)::after,
+.sloth:not(.nons) .line-both:not(.nons)::after,
+.sloth *:not(.nons) .line-left:not(.nons)::after,
+.sloth *:not(.nons) .line-right:not(.nons)::after,
+.sloth *:not(.nons) .line-both:not(.nons)::after {
+  flex-grow: 1;
+  margin-left: 0.5rem;
+  border-top: solid 1px #d3d3d3;
+  content: '';
+}
+
+.sloth:not(.nons) .line-left:not(.nons)[data-linecolor]::before, .sloth:not(.nons) .line-left:not(.nons)[data-linecolor]::after,
+.sloth:not(.nons) .line-right:not(.nons)[data-linecolor]::before,
+.sloth:not(.nons) .line-right:not(.nons)[data-linecolor]::after,
+.sloth:not(.nons) .line-both:not(.nons)[data-linecolor]::before,
+.sloth:not(.nons) .line-both:not(.nons)[data-linecolor]::after,
+.sloth *:not(.nons) .line-left:not(.nons)[data-linecolor]::before,
+.sloth *:not(.nons) .line-left:not(.nons)[data-linecolor]::after,
+.sloth *:not(.nons) .line-right:not(.nons)[data-linecolor]::before,
+.sloth *:not(.nons) .line-right:not(.nons)[data-linecolor]::after,
+.sloth *:not(.nons) .line-both:not(.nons)[data-linecolor]::before,
+.sloth *:not(.nons) .line-both:not(.nons)[data-linecolor]::after {
+  border-color: attr(data-linecolor, #d3d3d3);
+}
+
+.sloth:not(.nons) .line-left:not(.nons),
+.sloth *:not(.nons) .line-left:not(.nons) {
+  text-align: right;
+}
+
+.sloth:not(.nons) .line-left:not(.nons)::after,
+.sloth *:not(.nons) .line-left:not(.nons)::after {
+  display: none;
+}
+
+.sloth:not(.nons) .line-right:not(.nons),
+.sloth *:not(.nons) .line-right:not(.nons) {
+  text-align: left;
+}
+
+.sloth:not(.nons) .line-right:not(.nons)::before,
+.sloth *:not(.nons) .line-right:not(.nons)::before {
+  display: none;
+}
+
 .sloth:not(.nons) p:not(.nons),
 .sloth *:not(.nons) p:not(.nons) {
   -webkit-hyphens: auto;
@@ -1737,6 +1806,9 @@ textarea {
 .sloth *:not(.nons) .dropdown {
   display: inline-block;
   position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   margin-bottom: 0.3rem;
   color: rgba(33, 37, 41, 0.87);
   font-size: 90%;
@@ -1791,8 +1863,9 @@ textarea {
 
 .sloth:not(.nons) .dropdown select,
 .sloth *:not(.nons) .dropdown select {
-  width: auto;
+  width: 100%;
   margin-top: 0.3rem;
+  clear: both;
   font-size: 111.11%;
 }
 
@@ -3220,7 +3293,7 @@ textarea {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin: 0.5rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -3232,6 +3305,15 @@ textarea {
   margin-right: 0;
   margin-bottom: 0.3rem;
   vertical-align: middle;
+}
+
+.sloth:not(.nons) .inline:not(.nons) > li,
+.sloth:not(.nons) .inline:not(.nons) > dt,
+.sloth:not(.nons) .inline:not(.nons) > dd,
+.sloth *:not(.nons) .inline:not(.nons) > li,
+.sloth *:not(.nons) .inline:not(.nons) > dt,
+.sloth *:not(.nons) .inline:not(.nons) > dd {
+  padding-right: 1rem;
 }
 
 .sloth:not(.nons) .inline:not(.nons) input:not([type]),
@@ -4792,7 +4874,10 @@ table.cell-right td {
 }
 
 .txt-justify {
-  text-align: justify !important;
+  -moz-text-align-last: justify;
+  text-align: justify;
+       text-align-last: justify;
+  text-justify: inter-ideograph;
 }
 
 .v-top {

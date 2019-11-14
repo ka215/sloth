@@ -40,6 +40,45 @@
     font-weight: 500;
   }
 
+  .line-left:not(#{$not}),
+  .line-right:not(#{$not}),
+  .line-both:not(#{$not}) {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &::before {
+      margin-right: 0.5rem;
+      border-top: solid 1px $light-gray;
+      content: '';
+      flex-grow: 1;
+    }
+
+    &::after {
+      margin-left: 0.5rem;
+      border-top: solid 1px $light-gray;
+      content: '';
+      flex-grow: 1;
+    }
+
+    &[data-linecolor]::before,
+    &[data-linecolor]::after {
+      border-color: attr(data-linecolor, $light-gray);
+    }
+  }
+
+  .line-left:not(#{$not}) {
+    text-align: right;
+
+    &::after { display: none; }
+  }
+
+  .line-right:not(#{$not}) {
+    text-align: left;
+
+    &::before { display: none; }
+  }
+
   p:not(#{$not}) {
     font-size: inherit;
     hyphens: auto;
@@ -995,6 +1034,7 @@
     position: relative;
     display: inline-block;
     margin-bottom: 0.3rem;
+    width: max-content;
     font-size: 90%;
     font-weight: 500;
     color: rgba($black, 0.87);
@@ -1042,9 +1082,10 @@
     }
 
     select {
-      width: auto;
+      width: 100%;
       margin-top: 0.3rem;
       font-size: 111.11%;
+      clear: both;
 
       &.value-ok,
       &.value-ng {
@@ -1883,7 +1924,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    margin: 0.5rem;
+    margin: 0;
     padding: 0;
 
     & > * {
@@ -1892,6 +1933,12 @@
       margin-right: 0;
       margin-bottom: 0.3rem;
       vertical-align: middle;
+    }
+
+    & > li,
+    & > dt,
+    & > dd {
+      padding-right: 1rem;
     }
 
     input:not([type]),

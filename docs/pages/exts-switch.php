@@ -15,20 +15,20 @@
       </tbody>
     </table>
   </aside>
-  <div class="flx-row flx-wrap mt1">
-    <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
-      <p class="txt-center mx1 py1" data-switch-class="sm:bg-quin txt-black,md:bg-tert txt-whitesmoke,lg:bg-prim txt-white">Changing Colors</p>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
+      <p class="txt-center mx1 py2" data-switch-class="sm:bg-quin txt-black,md:bg-tert txt-whitesmoke,lg:bg-prim txt-white">Changing Colors</p>
       <div class="inline mx1">
         <img src="<?= optimize_uri('assets/noimage-300x300.png') ?>" data-switch-class="sm:w-full,md:w-half,lg:w-1-3">
-        <label data-switch-class="sm:hidden,md:hidden">Image Caption</label>
+        <label class="px2" data-switch-class="sm:hidden,md:hidden">Image Caption</label>
       </div>
     </div>
-    <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-half">
-      <pre class="prettyprint"><code>&lt;p class="txt-center mx1 py1" data-switch-class="sm:bg-quin txt-black,md:bg-tert txt-whitesmoke,lg:bg-prim txt-white">Changing Colors&lt;/p>
-&#x2E3B;
+    <div class="w-full mb2">
+      <pre class="prettyprint"><code>&lt;p class="txt-center mx1 py2" data-switch-class="sm:bg-quin txt-black,md:bg-tert txt-whitesmoke,lg:bg-prim txt-white">Changing Colors&lt;/p>
+&mdash;&mdash;
 &lt;div class="inline mx1">
   &lt;img src="noimage-300x300.png" data-switch-class="sm:w-full,md:w-half,lg:w-1-3">
-  &lt;label data-switch-class="sm:hidden,md:hidden">Image Caption&lt;/label>
+  &lt;label class="px2" data-switch-class="sm:hidden,md:hidden">Image Caption&lt;/label>
 &lt;/div>
 </code></pre>
     </div>

@@ -3,9 +3,9 @@
   <aside>
     The sloth style has several stylized component styles to easily express rich content.
   </aside>
-  <h5 class="muted">vCard</h5>
-  <div class="flx-col my1">
-    <div class="w-full">
+  <h4 class="line-right txt-prim">vCard</h4>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <div class="vcard">
         <figure>
           <img src="./assets/noimage-300x300.png" width="144" height="144">
@@ -41,7 +41,7 @@
         </dl>
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;div class="vcard">
   &lt;figure>
     &lt;img src="images/noimage.png" width="144" height="144">
@@ -59,18 +59,18 @@
 </code></pre>
     </div>
   </div>
-  <h5 class="muted">Navigation Menu</h5>
+  <h4 class="line-right txt-prim">Navigation Menu</h4>
   <aside>This component is header navigation with sliding left side menu that fit on the mobile page. If you want to see demo of below codes on this page, try to switch a toggle.</aside>
-  <div class="flx-col mb1">
-    <div class="w-full">
-      <form class="m1" hidden>
-        <label class="tgl">Show navigation menu demo.
-          <input type="checkbox" id="toggle-navi-menu">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
+      <form class="m1">
+        <label class="tgl">Toggle navigation menu as demo.
+          <input type="checkbox" id="toggle-navi-menu" checked>
           <span class="tgl-btn"></span>
         </label>
       </form>
     </div>
-    <div class="w-full">
+    <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;header class="navi-menu">
   &lt;div class="w-half flx-row">
     &lt;label class="toggle">
@@ -96,10 +96,10 @@
 </code></pre>
     </div>
     <small class="note">The above icon uses powered by the <a rel="external" href="https://fontawesome.com/">Font awesome</a>.</small>
-    <div class="w-full my1">
+    <div class="w-full my2">
       <aside>Also, you can override the height of the horizontal navigation block and the width of the sliding side menu by using CSS variables.</aside>
     </div>
-    <div class="w-full">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>:root {
   --navi-height-sm: 56px; /* for mobile screen */
   --navi-height-md: 64px; /* for tablet screen */

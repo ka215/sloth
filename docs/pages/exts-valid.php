@@ -7,10 +7,10 @@
     The validatable fields are any tags with a <code>name</code> and a <code>type</code> attribute that has a <code>required</code> or a <code>pattern</code> attribute.<br>
     The event that validates field will fire when you focus out from an inputting field or click a submit button before form submission. Then if your validated fields have any error, it will display a list of invalid fields via the dialog window.<br>
     You can make customize of display field name by using <code>data-dispname</code> attribute in the input field tag when will be displayed invalid fields list at occurred validation errors.
-    Also, custom processing can be inserted as a callback before submission when validation is successful. In that case, you should use a <code>data-callback</code> attribute in a form with sloth-validation class. 
+    Also, custom processing can be inserted as a callback before submission when validation is successful. In that case, you should use a <code>data-callback</code> attribute in a form with sloth-validation class.
   </aside>
-  <div class="flx-row flx-wrap mt1">
-    <div class="mb1 pr2" data-switch-class="sm:w-full,md:w-half,lg:w-1-3">
+  <div class="flx-col my2">
+    <div class="w-full mb2">
       <form action="#validation-form" class="sloth-validation" data-callback="alert('There\'s able to call user callback before sending too as like this.')">
         <label class="required">Required Field</label>
         <input type="text" name="sample_field_1" data-dispname="Display Field Name" class="mb1" required>
@@ -19,7 +19,7 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-    <div class="mb1" data-switch-class="sm:w-full,md:w-half,lg:w-2-3">
+    <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;form action="#validation-form" class="sloth-validation" data-callback="alert('There\'s able to call user callback before sending too as like this.')">
   &lt;label class="required">Required Field&lt;/label>
   &lt;input type="text" name="sample_field_1" data-dispname="Display Field Name" class="mb1" required>
@@ -31,6 +31,6 @@
     </div>
   </div>
   <div>
-    <small class="note">At more detail of about validation form, please see below <a href="#sloth-extensions-demo">demo</a>.</small>
+    <small class="note">At more detail of about validation form, please see below <a href="javascript:;" data-get-page="exts-demo1">demo</a>.</small>
   </div>
 </section>

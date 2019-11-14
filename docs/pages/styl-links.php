@@ -3,8 +3,8 @@
   <aside>
     The style for link to external is applied if the <code>&lt;a&gt;</code> tag has attribute of <code>rel="external"</code> or <code>target="_blank"</code>.
   </aside>
-  <div class="flx-row my1">
-    <div class="w-half">
+  <div class="flx-col my2">
+    <div class="w-full mb1">
       <a href="https://ka2.org/sloth/">Normal link</a><br>
       <a rel="external" href="https://github.com/ka215/sloth">Link to external</a><br>
       <a href="#head-in-page">Link in page</a><br>
@@ -16,7 +16,7 @@
         <a href="tel:+123-456-7890">+123-456-7890</a>
       </address>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;a href="https://ka2.org/sloth/">Normal link&lt;/a>&lt;br>
 &lt;a rel="external" href="https://github.com/ka215/sloth">Link to external&lt;/a>&lt;br>
 &lt;a href="#head-in-page">Link in page&lt;/a>&lt;br>
@@ -29,11 +29,11 @@
 &lt;/address></code></pre>
     </div>
   </div>
-  <h5 class="muted">Change icon for external link</h5>
+  <h4 class="line-right txt-prim">Change icon for external link</h4>
   <aside>
     You can change an icon of external link with using CSS custom properties (variables). For that you should custom stylings override to the Sloth style as below:
   </aside>
-  <div class="flx-col">
+  <div class="flx-col my2">
     <div class="w-full mb1">
       <a class="override-demo" href="https://ka2.org/sloth/" target="_blank">Example link to external</a>
     </div>

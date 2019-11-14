@@ -1,12 +1,11 @@
 <?php
 $page = get_globals( 'page' );
-$page_cat = get_globals( 'page_cat' );
-
+$isLoadExtension = preg_match( '/^ext(i|s)-.*$/i', $page ) === 1;
 ?>
 <script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <!-- Font Awesome latest -->
 <script async src="https://kit.fontawesome.com/ee8bf0ee7e.js"></script>
-<?php if ( preg_match( '/^(3|4|extensions|features)$/i', $page_cat ) !== false ) : ?>
+<?php if ( $isLoadExtension ) : ?>
 <script async src="<?= optimize_uri('dist/sloth.extension.min.js') ?>"></script>
 <script>
 function sample() {

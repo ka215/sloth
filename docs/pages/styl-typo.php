@@ -3,7 +3,8 @@
   <aside>
     The typography in the Sloth style is shown below. It is not necessary to give a class name for style at markup.
   </aside>
-  <div class="flx-row my1">
+  <h4 class="line-right txt-prim">Headings</h4>
+  <div class="flx-row my2">
     <div class="w-half">
       <hgroup>
         <h1>Heading 1</h1>
@@ -13,8 +14,6 @@
         <h5>Heading 5</h5>
         <h6>Heading 6</h6>
       </hgroup>
-      <span>Normal Text</span><br>
-      <small>Smaller Text</small>
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;hgroup&gt;
@@ -24,13 +23,24 @@
   &lt;h4&gt;Heading 4&lt;/h4&gt;
   &lt;h5&gt;Heading 5&lt;/h5&gt;
   &lt;h6&gt;Heading 6&lt;/h6&gt;
-&lt;/hgroup&gt;
-&lt;span&gt;Normal Text&lt;/span&gt;&lt;br&gt;
-&lt;small&gt;Smaller Text&lt;/small&gt;</code></pre>
+&lt;/hgroup&gt;</code></pre>
     </div>
   </div>
-  <hr>
-  <div class="flx-col my1">
+  <div class="flx-col my2">
+    <div class="w-full">
+      <h6 class="line-both">Heading with both horizontal lines</h6>
+      <h6 class="line-left">Heading with a left horizontal line</h6>
+      <h6 class="line-right">Heading with a right horizontal line</h6>
+      <!-- h6 class="line-both" data-linecolor="#ff3333">Customizable of line color</h6 -->
+    </div>
+    <div class="w-full">
+      <pre class="prettyprint"><code>&lt;h6 class="line-both">Heading with both horizontal lines&lt;/h6>
+&lt;h6 class="line-left">Heading with a left horizontal line&lt;/h6>
+&lt;h6 class="line-right">Heading with a right horizontal line&lt;/h6></code></pre>
+    </div>
+  </div>
+  <h4 class="line-right txt-prim">Decorative Tags</h4>
+  <div class="flx-col my2">
     <div class="w-full">
       <p>Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag.</p>
       <blockquote>
@@ -41,6 +51,8 @@
       Its contents have <strong>strong</strong> importance.<br>
       <b>Bring Attention</b> to element.<br>
       It is typically displayed in <i>italic</i> type.<br>
+      <span>Normal Text</span><br>
+      <small>Smaller Text</small>
     </div>
     <div class="w-full mt1">
       <pre class="prettyprint"><code>&lt;p&gt;Paragraphs are block-level elements, and notably...&lt;/p&gt;
@@ -51,12 +63,13 @@
 Marks text that has stress &lt;em&gt;emphasis&lt;/em&gt;&lt;br&gt;
 Its contents have &lt;strong&gt;strong&lt;/strong&gt; importance.&lt;br&gt;
 &lt;b&gt;Bring Attention&lt;/b&gt; to element.&lt;br&gt;
-It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></pre>
+It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;
+&lt;span&gt;Normal Text&lt;/span&gt;&lt;br&gt;
+&lt;small&gt;Smaller Text&lt;/small&gt;</code></pre>
     </div>
   </div>
-  <hr>
-  <h6 class="muted">Codes</h6>
-  <div class="flx-row flx-wrap my1">
+  <h4 class="line-right txt-prim">Codes</h4>
+  <div class="flx-row flx-wrap my2">
     <div class="w-half">
       <p>The <code>push()</code> method adds one or more elements...</p>
       <pre>
@@ -84,9 +97,8 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
 &lt;/code&gt;&lt;/pre&gt;</code></pre>
     </div>
   </div>
-  <hr>
-  <h6 class="muted">Hairlines</h6>
-  <div class="flx-row flx-wrap my1">
+  <h4 class="line-right txt-prim">Hairlines</h4>
+  <div class="flx-row flx-wrap my2">
     <div class="w-half">
       <hr>
       <hr class="dotted">
@@ -106,13 +118,12 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
     </p>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
   </div>
-  <hr>
-  <h6 class="muted">Ruby</h6>
+  <h4 class="line-right txt-prim">Ruby</h4>
   <blockquote>
     <p>Ruby characters are small, annotative glosses that are usually placed above or to the right of Chinese characters when writing languages with logographic characters such as Chinese, Japanese or Korean to show the pronunciation.</p>
     <cite><a href="https://en.wikipedia.org/wiki/Ruby_character" target="_blank">Wikipedia</a></cite>
   </blockquote>
-  <div class="flx-row flx-wrap my1">
+  <div class="flx-row flx-wrap my2">
     <div class="w-half">
       <ruby>
         東京<rp>(</rp><rt>Tōkyō</rt><rp>)</rp>
@@ -136,7 +147,7 @@ It is typically displayed in &lt;i&gt;italic&lt;/i&gt; type.&lt;br&gt;</code></p
   <aside>
     The following markup is available as a unique ruby ​​description on the Sloth styling.
   </aside>
-  <div class="flx-row flx-wrap my1">
+  <div class="flx-row flx-wrap my2">
     <div class="w-half">
       <p class="lh-2">
         <span data-ruby="Kyōto">京都</span><br>

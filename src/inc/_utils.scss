@@ -372,7 +372,12 @@ table {
 .txt-left { text-align: left !important; }
 .txt-center { text-align: center !important; }
 .txt-right { text-align: right !important; }
-.txt-justify { text-align: justify !important; }
+
+.txt-justify {
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: inter-ideograph;
+}
 
 .v-top { vertical-align: top !important; }
 .v-middle { vertical-align: middle !important; }
