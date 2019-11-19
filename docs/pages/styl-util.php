@@ -354,15 +354,15 @@
   <div class="flx-col my2">
     <div class="w-full mb1">
       <p>
-        <span class="upper">This is uppercase.</span><br>
-        <span class="lower">This is LOWERCASE.</span><br>
-        <span class="capital">This is capitalize.</span>
+        <span class="upper">By using the "upper" class, there is to uppercase strings.</span><br>
+        <span class="lower">By using the "lower" class, there is to LOWERCASE STRINGS.</span><br>
+        <span class="capital">By using the "capital" class, there is to capitalize head string.</span>
       </p>
     </div>
     <div class="w-full mb1">
-      <pre class="prettyprint"><code>&lt;span class="upper">This is uppercase.&lt;/span>
-&lt;span class="lower">This is LOWERCASE.&lt;/span>
-&lt;span class="capital">This is capitalize.&lt;/span>
+      <pre class="prettyprint"><code>&lt;span class="upper">By using the "upper" class, there is to uppercase strings.&lt;/span>
+&lt;span class="lower">By using the "lower" class, there is to LOWERCASE STRINGS.&lt;/span>
+&lt;span class="capital">By using the "capital" class, there is to capitalize head string.&lt;/span>
 </code></pre>
     </div>
   </div>
@@ -371,47 +371,51 @@
   <h5 class="muted">Block elements</h5>
   <div class="flx-col my2">
     <div class="w-full mb2">
-      <div class="of-v">Or "overflow-v" class, this is styled as "overflow: visible".</div>
-      <div class="of-h" style="height:2rem">Or "overflow-h" class, this is styled as "overflow: hidden".</div>
-      <div class="of-s" style="height:3rem">Or "overflow-s" class, this is styled as "overflow: scroll".</div>
-      <div class="of-a" style="height:2rem">Or "overflow-a" class, this is styled as "overflow: auto".</div>
-      <div class="of-xv">Or "overflow-xv" class, this is styled as "overflow-x: visible".</div>
-      <div class="of-xh" style="height:2rem">Or "overflow-xh" class, this is styled as "overflow-x: hidden".</div>
-      <div class="of-xs" style="height:3rem">Or "overflow-xs" class, this is styled as "overflow-x: scroll".</div>
-      <div class="of-xa" style="height:2rem">Or "overflow-xa" class, this is styled as "overflow-x: auto".</div>
-      <div class="of-yv">Or "overflow-yv" class, this is styled as "overflow-y: visible".</div>
-      <div class="of-yh" style="height:2rem">Or "overflow-yh" class, this is styled as "overflow-y: hidden".</div>
-      <div class="of-ys" style="height:3rem">Or "overflow-ys" class, this is styled as "overflow-y: scroll".</div>
-      <div class="of-ya" style="height:2rem">Or "overflow-ya" class, this is styled as "overflow-y: auto".</div>
+      <div class="of-v w-2-3 brd mb1">The "of-v" or "overflow-v" class, this is styled as "overflow: visible".</div>
+      <div class="of-h w-2-3 brd mb1" style="height:2rem">The "of-h" or "overflow-h" class, this is styled as "overflow: hidden".</div>
+      <div class="of-s w-2-3 brd mb1" style="height:3rem">The "of-s" or "overflow-s" class, this is styled as "overflow: scroll".</div>
+      <div class="of-a w-2-3 brd mb1" style="height:2rem">The "of-a" or "overflow-a" class, this is styled as "overflow: auto".</div>
+      <hr class="dotted">
+      <div class="of-xv w-2-3 brd mb1">The "of-xv" or "overflow-xv" class, this is styled as "overflow-x: visible".</div>
+      <div class="of-xh w-2-3 brd mb1" style="height:2rem">The "of-xh" or "overflow-xh" class, this is styled as "overflow-x: hidden".</div>
+      <div class="of-xs w-2-3 brd mb1" style="height:3rem">The "of-xs" or "overflow-xs" class, this is styled as "overflow-x: scroll".</div>
+      <div class="of-xa w-2-3 brd mb1" style="height:2rem">The "of-xa" or "overflow-xa" class, this is styled as "overflow-x: auto".</div>
+      <hr class="dotted">
+      <div class="of-yv w-2-3 brd mb1">The "of-yv" or "overflow-yv" class, this is styled as "overflow-y: visible".</div>
+      <div class="of-yh w-2-3 brd mb1" style="height:2rem">The "of-yh" or "overflow-yh" class, this is styled as "overflow-y: hidden".</div>
+      <div class="of-ys w-2-3 brd mb1" style="height:3rem">The "of-ys" or "overflow-ys" class, this is styled as "overflow-y: scroll".</div>
+      <div class="of-ya w-2-3 brd mb1" style="height:2rem">The "of-ya" or "overflow-ya" class, this is styled as "overflow-y: auto".</div>
     </div>
     <div class="w-full mb1">
-      <pre class="prettyprint"><code>&lt;div class="of-v">Or "overflow-v" class, this is styled as "overflow: visible".&lt;/div>
-&lt;div class="of-h">Or "overflow-h" class, this is styled as "overflow: hidden".&lt;/div>
-&lt;div class="of-s">Or "overflow-s" class, this is styled as "overflow: scroll".&lt;/div>
-&lt;div class="of-a">Or "overflow-a" class, this is styled as "overflow: auto".&lt;/div>
-&lt;div class="of-xv">Or "overflow-xv" class, this is styled as "overflow-x: visible".&lt;/div>
-&lt;div class="of-xh">Or "overflow-xh" class, this is styled as "overflow-x: hidden".&lt;/div>
-&lt;div class="of-xs">Or "overflow-xs" class, this is styled as "overflow-x: scroll".&lt;/div>
-&lt;div class="of-xa">Or "overflow-xa" class, this is styled as "overflow-x: auto".&lt;/div>
-&lt;div class="of-yv">Or "overflow-yv" class, this is styled as "overflow-y: visible".&lt;/div>
-&lt;div class="of-yh">Or "overflow-yh" class, this is styled as "overflow-y: hidden".&lt;/div>
-&lt;div class="of-ys">Or "overflow-ys" class, this is styled as "overflow-y: scroll".&lt;/div>
-&lt;div class="of-ya">Or "overflow-ya" class, this is styled as "overflow-y: auto".&lt;/div>
+      <pre class="prettyprint"><code>&lt;div class="of-v">The "of-v" or "overflow-v" class, this is styled as "overflow: visible".&lt;/div>
+&lt;div class="of-h">The "of-h" or "overflow-h" class, this is styled as "overflow: hidden".&lt;/div>
+&lt;div class="of-s">The "of-s" or "overflow-s" class, this is styled as "overflow: scroll".&lt;/div>
+&lt;div class="of-a">The "of-a" or "overflow-a" class, this is styled as "overflow: auto".&lt;/div>
+&mdash;&mdash;
+&lt;div class="of-xv">The "of-xv" or "overflow-xv" class, this is styled as "overflow-x: visible".&lt;/div>
+&lt;div class="of-xh">The "of-xh" or "overflow-xh" class, this is styled as "overflow-x: hidden".&lt;/div>
+&lt;div class="of-xs">The "of-xs" or "overflow-xs" class, this is styled as "overflow-x: scroll".&lt;/div>
+&lt;div class="of-xa">The "of-xa" or "overflow-xa" class, this is styled as "overflow-x: auto".&lt;/div>
+&mdash;&mdash;
+&lt;div class="of-yv">The "of-yv" or "overflow-yv" class, this is styled as "overflow-y: visible".&lt;/div>
+&lt;div class="of-yh">The "of-yh" or "overflow-yh" class, this is styled as "overflow-y: hidden".&lt;/div>
+&lt;div class="of-ys">The "of-ys" or "overflow-ys" class, this is styled as "overflow-y: scroll".&lt;/div>
+&lt;div class="of-ya">The "of-ya" or "overflow-ya" class, this is styled as "overflow-y: auto".&lt;/div>
 </code></pre>
     </div>
   </div>
   <h5 class="muted">Text Overflow</h5>
   <div class="flx-col my2">
     <div class="w-full mb2">
-      <div class="txt-of-v">Or "txt-overflow-v" class, this is never styled to overflow text.</div>
-      <div class="txt-of-c">Or "txt-overflow-c" class, this is styled as "text-overflow: clip".</div>
-      <div class="txt-of-e">Or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".</div>
-      <!-- div class="txt-of-s" data-ellipsis="-">Or "txt-overflow-s" class, this is styled as "text-overflow: attr(data-ellipsis, '')".</div -->
+      <div class="txt-of-v w-2-3 brd mb1">The "txt-of-v" or "txt-overflow-v" class, this is never styled to overflow text.</div>
+      <div class="txt-of-c w-2-3 brd mb1">The "txt-of-c" or "txt-overflow-c" class, this is styled as "text-overflow: clip".</div>
+      <div class="txt-of-e w-2-3 brd mb1">The "txt-of-e" or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".</div>
+      <!-- div class="txt-of-s" data-ellipsis="-">The "txt-of-s" or "txt-overflow-s" class, this is styled as "text-overflow: attr(data-ellipsis, '')".</div -->
     </div>
     <div class="w-full mb1">
-      <pre class="prettyprint"><code>&lt;div class="txt-of-v">Or "txt-overflow-v" class, this is never styled to overflow text.&lt;/div>
-&lt;div class="txt-of-c">Or "txt-overflow-c" class, this is styled as "text-overflow: clip".&lt;/div>
-&lt;div class="txt-of-e">Or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".&lt;/div>
+      <pre class="prettyprint"><code>&lt;div class="txt-of-v">The "txt-of-v" or "txt-overflow-v" class, this is never styled to overflow text.&lt;/div>
+&lt;div class="txt-of-c">The "txt-of-c" or "txt-overflow-c" class, this is styled as "text-overflow: clip".&lt;/div>
+&lt;div class="txt-of-e">The "txt-of-e" or "txt-overflow-e" class, this is styled as "text-overflow: ellipsis".&lt;/div>
 </code></pre>
     </div>
   </div>

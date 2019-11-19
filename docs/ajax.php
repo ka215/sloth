@@ -26,10 +26,10 @@ switch( strtolower( $postname ) ) {
 <?php
         break;
     case 'test':
-        sleep( 2 );
+        usleep( 1000000 );
 ?>
 <div class="my1">
-  <p>As a sample when content loading is delayed, the sleep process of 2 seconds has performed.</p>
+  <p>As a sample when content loading is delayed, the sleep process of about 1 second has performed.</p>
   <p>By using the "loader" property, you can view the loading content until completed content loading.</p>
 </div>
 <?php

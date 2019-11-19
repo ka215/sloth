@@ -17,15 +17,15 @@
       <th colspan="2">Mobile</th>
       </tr>
       <tr>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Chrome" src="assets/icons/chrome.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Firefox" src="assets/icons/firefox.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Safari" src="assets/icons/safari.png" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Edge" src="assets/icons/edge.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Opera" src="assets/icons/opera.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Internet Explorer 10-11" src="assets/icons/ie.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <!-- th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Android Browser" src="assets/icons/android.svg" data-size="w:100%,mw:44px,minw:20px"></th -->
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Chrome" src="assets/icons/chrome.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="iOS Safari" src="assets/icons/safari_ios.svg" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Chrome" src="assets/icons/chrome.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Firefox" src="assets/icons/firefox.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Safari" src="assets/icons/safari.png" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Edge" src="assets/icons/edge.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Opera" src="assets/icons/opera.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Internet Explorer 10-11" src="assets/icons/ie.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <!-- th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Android Browser" src="assets/icons/android.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th -->
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="Chrome" src="assets/icons/chrome.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th data-size="w:(100% / 10),minw:(100% / 10),mw:62px"><img alt="iOS Safari" src="assets/icons/safari_ios.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
       </tr>
     </thead>
     <tbody>
@@ -281,19 +281,31 @@
       <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- chrome -->
       <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- ios safari -->
       </tr>
+      <tr>
+      <th class="txt-left" data-switch-class="sm:txt-break">Sticky Footer</th>
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- chrome -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- firefox -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- safari -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- edge -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- opera -->
+      <td><i class="fas fa-question-circle txt-gray" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- ie 10-11 -->
+      <!-- td><i class="far fa-times-circle txt-tert" data-switch-class="md:fa-lg,lg:fa-lg"></i></td --><!-- android -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- chrome -->
+      <td><i class="far fa-check-circle txt-sec" data-switch-class="md:fa-lg,lg:fa-lg"></i></td><!-- ios safari -->
+      </tr>
     </tbody>
     <tfoot>
       <tr>
       <th rowspan="2"></th>
-      <th><img alt="Chrome" src="assets/icons/chrome.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="Firefox" src="assets/icons/firefox.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="Safari" src="assets/icons/safari.png" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="Edge" src="assets/icons/edge.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="Opera" src="assets/icons/opera.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="Internet Explorer 10-11" src="assets/icons/ie.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <!-- th><img alt="Android Browser" src="assets/icons/android.svg" data-size="w:100%,mw:44px,minw:20px"></th -->
-      <th><img alt="Chrome" src="assets/icons/chrome.svg" data-size="w:100%,mw:44px,minw:20px"></th>
-      <th><img alt="iOS Safari" src="assets/icons/safari_ios.svg" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Chrome" src="assets/icons/chrome.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Firefox" src="assets/icons/firefox.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Safari" src="assets/icons/safari.png" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Edge" src="assets/icons/edge.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Opera" src="assets/icons/opera.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="Internet Explorer 10-11" src="assets/icons/ie.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <!-- th><img alt="Android Browser" src="assets/icons/android.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th -->
+      <th><img alt="Chrome" src="assets/icons/chrome.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
+      <th><img alt="iOS Safari" src="assets/icons/safari_ios.svg" width="44" height="44" data-size="w:100%,mw:44px,minw:20px"></th>
       </tr>
       <tr>
       <th colspan="6">PC</th>

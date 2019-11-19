@@ -20,11 +20,13 @@ window.addEventListener('load', function() {
     Array.prototype.forEach.call(document.querySelectorAll('[data-get-page]'), function(elm) {
         elm.addEventListener('click', function(evt){
             let currentPage  = document.getElementById('current-page').value,
-                nowMenuHash  = document.getElementById('current-menu-hash').value,
+                //nowMenuHash  = document.getElementById('current-menu-hash').value,
                 getPageTmpl  = evt.target.dataset.getPage,
                 thisMenuHash = evt.target.getAttribute('id'),
-                formData = new FormData(),
-                request  = new XMLHttpRequest()
+                postDataStr  = evt.target.hasAttribute('data-post-data') ? evt.target.dataset.postData : '',
+                postData     = {}
+                //formData = new FormData(),
+                //request  = new XMLHttpRequest()
 
             //console.log(currentPage, nowMenuHash, getPageTmpl, thisMenuHash)
             if ( currentPage !== getPageTmpl && thisMenuHash !== 'back-to-head' ) {
@@ -40,7 +42,23 @@ window.addEventListener('load', function() {
                 request.send(formData)
                 evt.preventDefault()
                 */
-                execPost({page: getPageTmpl})
+                let tempObj = {}
+                
+                if ( postDataStr ) {
+                    try {
+                        tempObj = JSON.parse( postDataStr )
+                    } catch (e) {
+                        // console.error(e)
+                        tempObj = postDataStr.trim().replace(/^(\{|\[)+|(\]|\})+$/g, '').split(',')
+                        .map(x => x.split(':').map(y => y.trim()))
+                        .reduce((a, x) => {
+                            a[x[0]] = x[1]
+                            return a
+                        }, {})
+                    }
+                }
+                postData = Object.assign(tempObj, {page: getPageTmpl})
+                execPost(postData)
             } else {
                 smoothScroll( document.getElementById( evt.target.getAttribute('href').replace('#', '') ) )
             }

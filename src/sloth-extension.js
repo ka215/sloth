@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.2.1
-Last Updated: October 29, 2019 (UTC)
+v1.2.2
+Last Updated: November 18, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -164,7 +164,7 @@ const init = function() {
 
                 dupNode.removeAttribute('class');
                 dupNode.classList.add('expand-image');
-                showDialog(filename.value, dupNode);
+                showDialog(filename.value, dupNode, null, 1, false);
             }
         }, false);
 
@@ -245,17 +245,70 @@ const init = function() {
         elm.addEventListener('click', (evt) => {
             let self    = evt.target,
                 title   = self.dataset.title || null,
-                content = self.dataset.content || undefined,
-                foot    = self.dataset.foot || true,
-                effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1);
+                content = self.dataset.content || null,//undefined,
+                foot    = self.dataset.foot || null,//true,
+                effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1),
+                reinit  = self.dataset.reinit || true;
 
-            showDialog(title, content, foot, effect);
+            showDialog(title, content, foot, effect, reinit);
+        }, false);
+    });
+
+    // Prevent bubbling of click event in the container of lists on navigation menu
+    Array.prototype.forEach.call(document.querySelectorAll('.navi-menu .toggle .menu'), (menuContainer) => {
+        menuContainer.addEventListener('click', (evt) => {
+            evt.preventDefault();
+        }, false);
+    });
+
+    // Bind the sticky footer
+    Array.prototype.forEach.call(document.querySelectorAll('.sticky-footer.pullup'), (elm) => {
+        if ( elm.querySelectorAll('.toggle-switch').length == 0 ) {
+            let toggleSwitch = document.createElement('div');
+            
+            toggleSwitch.classList.add('toggle-switch');
+            toggleSwitch.innerHTML = '<span></span>';
+            toggleSwitch.setAttribute('data-toggle-open', elm.classList.contains('default-show'));
+            elm.prepend(toggleSwitch);
+        }
+        elm.addEventListener('click', (evt) => {
+            Array.prototype.forEach.call(elm.querySelectorAll('.toggle-switch'), (tgl) => {
+                if ( ! Object.prototype.hasOwnProperty.call(tgl.dataset, 'toggleOpen') ) {
+                    tgl.setAttribute('data-toggle-open', false);
+                }
+                let isOpen    = /^true$/i.test(tgl.dataset.toggleOpen) ? true : false,
+                    observer  = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if ( mutation.attributeName === 'data-toggle-open' ) {
+                                // Need to delay for behaving the transition time of style
+                                window.slothStackTimer.push(setTimeout(() => {
+                                    pullupContent();
+                                    observer.disconnect();
+                                }, 200));
+                            }
+                        });
+                    });
+
+                observer.observe(tgl, { attributes: true, attributeOldValue: true });
+                if ( isOpen && evt.target.closest('.pullup-content') ) {
+                    //evt.preventDefault()
+                } else {
+                    tgl.setAttribute('data-toggle-open', !isOpen);
+                }
+                // Prevent the memory leak due to continue timer by setTimeout
+                let loop = window.slothStackTimer.length - 1, i;
+                
+                for( i = 0; i < loop; i++ ) {
+                    clearTimeout( window.slothStackTimer.shift() );
+                }
+            })
         }, false);
     });
 
     // Binding functions to global scope
-    window.showDialog = showDialog;
-    window.strLength = strLength;
+    window.showDialog  = showDialog;
+    window.strLength   = strLength;
+    window.toggleFooter = toggleFooter;
 
     // Binding resize event
     window.addEventListener( 'resize', resize_throttle, {passive: true}, false );
@@ -462,6 +515,94 @@ const scroll_throttle = () => {
 };
 
 /*
+ * Utility function for parsing a string into a JavaScript object type
+ * @public
+ * @param {string} str
+ */
+const parseObject = function( str ) {
+    let newObj = {},
+        _tmp;
+
+    try {
+        newObj = JSON.parse(str);
+    } catch( e ) {
+        _tmp = str.trim().replace(/^(\{|\[)+|(\]|\})+$/g, '').split(',')
+        // _tmp = _tmp.map((x) => x.split(/(?<=^[^:]+?):/).map((y) => y.trim())) <- is Chrome only
+        _tmp = _tmp.map((fragmentX) => {
+            let _matches = fragmentX.match(/^[^:]*:/),
+                _retarr  = _matches ? [ _matches[0].replace(':', ''), fragmentX.replace(_matches[0], '') ] : [ fragmentX ];
+            return _retarr;
+        }).map((fragmentY) => fragmentY || fragmentY.trim());
+        _tmp = _tmp.reduce((obj, x, i) => {
+            if ( x[0] && x[1] ) {
+                let prop  = x[0].trim().replace(/^('|")+|("|')+$/g, ''),
+                    value = x[1].trim().replace(/^('|")+|("|')+$/g, '');
+                if ( /^callback$/i.test( prop ) ) {
+                    obj[prop] = Function.call(this, `return ${value}`)();
+                } else {
+                    obj[prop] = value;
+                }
+            } else
+            if ( x.length == 1 && x[0] ) {
+                let value = x[0].trim().replace(/^('|")+|("|')+$/g, '');
+                obj[i] = value;
+            } else {
+                obj = null;
+            }
+            return obj;
+        }, {});
+        newObj = _tmp ? Object.assign(newObj, _tmp) : newObj;
+    }
+    return newObj;
+}
+
+/* * /
+let testarr = [
+  null, // => null (object)
+  '', // => {} (object)
+  'string', // => {0: "string"} (object)
+  0, // => 0 (number)
+  1, // => 1 (number)
+  '0', // => 0 (number)
+  '1', // => 1 (number)
+  true, // => true (boolean)
+  false, // => false (boolean)
+  'true', // => true (boolean)
+  'false', // => false (boolean)
+  "\\:", // => {} (object)
+  ':', // => {} (object)
+  ',', // => {} (object)
+  '\\,', // => {} (object)
+  ':,:', // => {} (object)
+  'key:value', // => {key: "value"} (object)
+  'key1:value1,key2:value2', // => {key1: "value1", key2: "value2"} (object)
+  "'key':'value'", // => {key: "value"} (object)
+  "key1:'value1',key2:'value2'", // => {key1 "value1", key2: "value2"} (object)
+  '[]', // => [] (object Array)
+  '[1,2,3]', // => [1,2,3] (object Array)
+  "[arr1,arr2,arr3]", // => {0: "arr1", 1: "arr2", 2: "arr3"} (object)
+  "['arr1','arr2','arr3']", // => {0: "arr1", 1: "arr2", 2: "arr3"} (object)
+  '{}', // => {} (object)
+  '{prop:value}', // => {prop: "value"} (object)
+  "{'prop':'value'}", // => {prop: "value"} (object)
+  '{prop1:value1, prop2:value2}', // => {prop1: "value1", prop2: "value2"} (object)
+  'javascript:callback()', // => {javascript: "callback()"} (object)
+  'callback()', // => {0: "callback()"} (object)
+  //'callback:() => {console.log(this);}', // error
+  '{callback:function(){console.log(this)};}}', // => {callback: (function)} (object)
+  'http://exam.debug.com/', // => {http: "//exam.debug.com/"} (object)
+  'url:ftp://exam.debug.com/ajax.php?param=a1234', // => {ftp: "//exam.debug.com/ajax.php?param=a1234"} (object)
+  'https://www.google.com/maps/@?api=1&map_action=map&center=35.6812362,139.7649361', // => {1: "139.7649361", https: "//www.google.com/maps/@?api=1&map_action=map&center=35.6812362"} (object)
+  'url:"https://www.google.com/maps/@?api=1&map_action=map&center=35.6812362,139.7649361"', // => {1: "139.7649361", url: "https://www.google.com/maps/@?api=1&map_action=map&center=35.6812362"} (object)
+  '{url:https://www.google.com/maps/@?api=1&map_action=map&center=35.6812362%2C139.7649361}', // => {url: "https://www.google.com/maps/@?api=1&map_action=map&center=35.6812362%2C139.7649361"} (object)
+  '{url:https://exam.debug.com/test.php,datetime:2019-11-14 00:12:34.567}', // => {url: "https://exam.debug.com/test.php", time: "2019-11-14 00:12:34.567"} (object)
+];
+testarr.forEach((v) => {
+    console.log( `${v} => `, parseObject(v), `(${typeof parseObject(v)})` );
+})
+/ * */
+
+/*
  * Create new element of dialog for any notifications
  * @public
  * @param {?string} title
@@ -488,33 +629,6 @@ const generateDialog = function( title, content, foot, effect ) {
         let dialog    = document.createElement('div'),
             container = document.createElement('div'),
             backdrop  = document.createElement('div'),
-            parseObject = (str) => {
-                let newObj = {},
-                    _tmp;
-
-                try {
-                    newObj = JSON.parse(str);
-                } catch( e ) {
-                    _tmp = str.slice(1, -1).split(',');
-                    if ( _tmp.length > 0 ) {
-                        _tmp.forEach((_v) => {
-                            let _prop = _v.match(/^[^:]*:/)[0],
-                                _val  = _v.replace(_prop, '');
-
-                            _val = _val.trim();
-                            _val = _val.replace(/\\(.)/mg, "$1");
-                            _val = /^['"]+.*['"]+$/.test(_val) ? _val.slice(1, -1) : _val;
-                            _prop = _prop.replace(':', '').trim();
-                            if ( /^callback$/i.test(_prop) ) {
-                                newObj[_prop] = Function.call(this, `return ${_val}`)();
-                            } else {
-                                newObj[_prop] = _val;
-                            }
-                        });
-                    }
-                }
-                return newObj;
-            },
             insertTitle = () => {
                 title = title ? title.toString() : null;
                 if ( title ) {
@@ -526,7 +640,8 @@ const generateDialog = function( title, content, foot, effect ) {
                 }
             },
             insertContent = () => {
-                content = content ? (typeof content === 'string' && /^\{+.*\}$/.test(content) ? parseObject(content) : content) : undefined;
+                content = content ? (typeof content === 'string' && /^\{+.*\}$/.test(content) ? parseObject(content) : content) : null;//undefined;
+                //content = content ? (typeof content === 'string' ? parseObject(content) : content) : null;
                 if ( content ) {
                     let dialogBody = document.createElement('div');
 
@@ -559,8 +674,12 @@ const generateDialog = function( title, content, foot, effect ) {
                                 .catch((error) => {
                                     console.error('Error:', error);
                                 });
+                            } else
+                            if ( content[0] ) {
+                                dialogBody.innerHTML = content[0];
                             } else {
-                                dialogBody.textContent = JSON.stringify(content);
+                                // dialogBody.textContent = JSON.stringify(content);
+                                dialogBody.innerHTML = Object.values(content).join('');
                             }
                         }
                     } else {
@@ -571,19 +690,34 @@ const generateDialog = function( title, content, foot, effect ) {
             },
             insertFoot = () => {
                 foot = foot ? (typeof foot === 'string' && /^\{+.*\}$/.test(foot) ? parseObject(foot) : foot) : true;
-                if ( foot ) {
-                    let dialogFooter = document.createElement('div'),
-                        dialogButton = document.createElement('button'),
-                        dialogCallback = function(){ return true },
-                        buttonClass = document.body.dataset.dialogButton || undefined;
+                //foot = foot ? (typeof foot === 'string' ? parseObject(foot) : foot) : true;
+                let dialogFooter = document.createElement('div'),
+                    dialogButton = document.createElement('button'),
+                    dialogCallback = function(){ return true },
+                    buttonClass = document.body.dataset.dialogButton || undefined,
+                    noRender  = false,
+                    isOutside = false;
 
+                if ( foot ) {
                     dialogFooter.classList.add('dialog-footer');
                     dialogButton.setAttribute('type', 'button');
                     if ( buttonClass ) {
                         dialogButton.classList.add(...buttonClass.split(' '));
                     }
                     if ( typeof foot === 'string' ) {
-                        dialogButton.innerHTML = foot.replace(/\\(.)/mg, "$1");
+                        switch ( true ) {
+                            case /^none$/i.test( foot ):
+                                noRender = true;
+                                break;
+                            case /^dismiss-outside$/i.test( foot ):
+                                isOutside = true;
+                                dialogButton.classList.add(foot);
+                                dialogButton.innerHTML = '<span title="Close"></span>';
+                                break;
+                            default:
+                                dialogButton.innerHTML = foot.replace(/\\(.)/mg, "$1");
+                                break;
+                        }
                     } else
                     if ( typeof foot === 'object' ) {
                         if ( foot instanceof HTMLElement ) {
@@ -595,21 +729,42 @@ const generateDialog = function( title, content, foot, effect ) {
                                 dialogButton.classList.add( ...foot.class.split(' ') );
                             }
                             if ( Object.prototype.hasOwnProperty.call(foot, 'label') ) {
-                                dialogButton.innerHTML = foot.label;
+                                dialogButton.innerHTML = foot.label.replace(/\\(.)/mg, "$1");
                             }
                             if ( Object.prototype.hasOwnProperty.call(foot, 'callback') ) {
                                 dialogCallback = foot.callback;
+                            }
+                            if ( Object.prototype.hasOwnProperty.call(foot, '0') ) {
+                                switch ( true ) {
+                                    case /^none$/i.test( foot[0] ):
+                                        noRender = true;
+                                        break;
+                                    case /^dismiss-outside$/i.test( foot[0] ):
+                                        isOutside = true;
+                                        dialogButton.classList.add(foot[0]);
+                                        dialogButton.innerHTML = '<span title="Close"></span>';
+                                        break;
+                                    default:
+                                        dialogButton.innerHTML = foot[0].replace(/\\(.)/mg, "$1");
+                                        break;
+                                }
                             }
                         }
                     } else {
                         dialogButton.textContent = 'Close';
                     }
-                    dialogButton.addEventListener('click', () => {
-                        dialogCallback();
-                        dialog.classList.remove('show');
-                    }, false);
-                    dialogFooter.append(dialogButton);
-                    container.append(dialogFooter);
+                    if ( ! noRender ) {
+                        dialogButton.addEventListener('click', () => {
+                            dialogCallback();
+                            dialog.classList.remove('show');
+                        }, false);
+                        if ( ! isOutside ) {
+                            dialogFooter.append(dialogButton);
+                            container.append(dialogFooter);
+                        } else {
+                            container.append(dialogButton);
+                        }
+                    }
                 }
             },
             callback  = (mutationsList, observer) => {
@@ -618,7 +773,7 @@ const generateDialog = function( title, content, foot, effect ) {
 
                     switch(mutation.type) {
                         case 'childList':
-                            //console.log('mutation.type::childList:', mutation);
+                            //console.log('mutation.type::childList:', mutation, self.classList );
                             Array.prototype.forEach.call(mutation.addedNodes, (elm) => {
                                 if ( elm.classList.contains('dialog-content') ) {
                                     insertTitle();
@@ -687,8 +842,9 @@ const generateDialog = function( title, content, foot, effect ) {
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
+ * @param {?boolean} reinit - after shown dialog
  */
-const slothNotify = async ( title, content, foot, effect ) => await generateDialog( title, content, foot, effect );
+const slothNotify = async ( title, content, foot, effect, reinit ) => await generateDialog( title, content, foot, effect );
 
 window.slothStackTimer = [];
 /*
@@ -698,12 +854,16 @@ window.slothStackTimer = [];
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
+ * @param {?boolean} reinit - after shown dialog
  */
-const showDialog = ( title, content, foot, effect ) => {
-    slothNotify(title, content, foot, effect).then((dialog) => setTimeout(() => {
+const showDialog = ( title, content, foot, effect, reinit ) => {
+    slothNotify(title, content, foot, effect, reinit).then((dialog) => setTimeout(() => {
+//console.log(dialog);
             // Re-init this extension scripts
-            document.removeEventListener( 'DOMContentLoaded', init, false );
-            init();
+            if ( reinit == undefined || reinit === true ) {
+                document.removeEventListener( 'DOMContentLoaded', init, false );
+                init();
+            }
             // Delay by transition animation interval
             dialog.classList.add('show');
         }, 300)
@@ -1049,6 +1209,30 @@ const lazyLoading = (selector) => {
             }
         }
     })
+}
+
+/*
+ * Pull-up content on the sticky footer
+ */
+const pullupContent = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('.sticky-footer.pullup'), (elm) => {
+        let footerRect = elm.getBoundingClientRect();
+
+        elm.previousElementSibling.style.paddingBottom = `${footerRect.height}px`;
+        elm.style.position = 'sticky';
+    });
+}
+
+/*
+ * Toggle collapsible content on the sticky footer
+ */
+const toggleFooter = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('.toggle-switch'), (elm) => {
+        let evt = document.createEvent('HTMLEvents');
+        
+        evt.initEvent('click', true, true);
+        return elm.dispatchEvent(evt);
+    });
 }
 
 /*

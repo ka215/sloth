@@ -1,3 +1,6 @@
+<?php
+$ajaxBaseURL = ENV === 'dev' ? 'http://dev2.ka2.org/sloth/docs/' : 'https://ka2.org/sloth/';
+?>
 <section id="dialog" class="sloth-styles">
   <h3>Dialog</h3>
   <aside>
@@ -11,19 +14,28 @@
   <div class="flx-col my2">
     <div class="w-full mb2">
       <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog</a></p>
-      <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax</a></p>
-      <div class="inline mb1">
+      <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'<?= $ajaxBaseURL ?>ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax</a></p>
+      <hr class="dotted">
+      <div class="inline flx-justify mb1">
         <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 1" data-content="Fade in and scale up (default effect)" data-foot="" data-effect="1">Type 1</button>
         <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 2" data-content="Slide from the right" data-foot="" data-effect="2">Type 2</button>
         <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 3" data-content="Slide from the bottom" data-foot="" data-effect="3">Type 3</button>
         <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 4" data-content="Slide and stick to top" data-foot="" data-effect="4">Type 4</button>
         <button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 5" data-content="Fade in and shrink to full wide width" data-foot="" data-effect="5">Type 5</button>
       </div>
+      <hr class="dotted">
       <p class="mb1"><span onmouseover="showDialog('title', 'body', 'Hi!', 2)">Try hover on this text</span></p>
+      <hr class="dotted">
+      <div class="inline flx-justify mb1">
+        <button type="button" class="outline" data-toggle="dialog" data-content="If it displays the dialog body only, you need to hide the dialog footer with setting &quot;&lt;b>none&lt;/b>&quot; to the &lt;code>data-foot&lt;/code> attribute." data-foot="none">Dialog body only</button>
+        <button type="button" class="outline" data-toggle="dialog" data-content="You can custom the button style on the dialog footer at the &lt;code>data-foot=&quot;{label:&apos;BUTTON LABEL&apos;,class:&apos;ADD CLASSES&apos;}&quot;&lt;/code> attribute." data-foot="{label:'Custom Button',class:'flat clr-tert'}">Custom Footer Button</button>
+        <button type="button" class="outline" data-toggle="dialog" data-content="By using the &lt;code>data-foot=&quot;dismiss-outside&quot;&lt;/code>, you are able to place dismiss button to the outside of the dialog." data-foot="dismiss-outside">Dismiss to outside</button>
+      </div>
     </div>
     <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;a href="" data-toggle="dialog" data-title="Dialog's Headline" data-content="Dialog's Content Body" data-foot="Click Me!">Open Dialog&lt;/a>
-&lt;a href="" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax&lt;/a>
+&lt;a href="" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'./ajax.php?p=terms'}" rel="external">Fetch Content Via Ajax&lt;/a>
+&mdash;&mdash;
 &lt;div class="inline mb1">
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 1" data-content="Fade in and scale up (default effect)" data-effect="1">Type 1&lt;/button>
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 2" data-content="Slide from the right" data-effect="2">Type 2&lt;/button>
@@ -31,7 +43,14 @@
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 4" data-content="Slide and stick to top" data-effect="4">Type 4&lt;/button>
   &lt;button type="button" class="outline" data-toggle="dialog" data-title="Trasition Animation 5" data-content="Fade in and shrink to full wide width" data-effect="5">Type 5&lt;/button>
 &lt;/div>
+&mdash;&mdash;
 &lt;span onmouseover="showDialog('title', 'body', 'Hi!', 2)">Try hover on this text&lt;/span>
+&mdash;&mdash;
+&lt;div class="inline mb1">
+  &lt;button type="button" class="outline" data-toggle="dialog" data-content="If it displays the dialog body only, ..." data-foot="none">Dialog body only&lt;/button>
+  &lt;button type="button" class="outline" data-toggle="dialog" data-content="You can custom the button style on ..." data-foot="{label:'Custom Button',class:'flat clr-tert'}">Custom Footer Button&lt;/button>
+  &lt;button type="button" class="outline" data-toggle="dialog" data-content="Place dismiss button to the outside ..." data-foot="dismiss-outside">Dismiss to outside&lt;/button>
+&lt;/div>
 </code></pre>
     </div>
   </div>
@@ -60,7 +79,10 @@
           </td>
         </tr>
         <tr>
-          <th>data-effect</th><td>Number | String</td><td>argument 4</td><td>Index number of transition animation type (1 to 4) or animation type preset name.</td>
+          <th>data-effect</th><td>Number | String</td><td>argument 4</td><td>Index number of transition animation type (<b>1 to 5</b>) or animation type preset name.</td>
+        </tr>
+        <tr>
+          <th>data-reinit</th><td>Number | String | Boolean</td><td>argument 5</td><td>Whether fire the event that initializes the sloth extensions once more after showing this dialog. Defaults to <b>true</b>, there will re-init that. You can specify a bit value or string other than a boolean value, too.</td>
         </tr>
       </tbody>
     </table>

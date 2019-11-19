@@ -36,7 +36,7 @@ $pages = [
         'validation-form' => [ 'label' => 'Validation Form', 'icon' => 'fab fa-wpforms', 'tmpl' => 'exts-valid' ],
         'dialog'          => [ 'label' => 'Dialog Notification', 'icon' => 'far fa-window-restore', 'tmpl' => 'exts-dialog' ],
         'lazy-loading'    => [ 'label' => 'Lazy Loading Images', 'icon' => 'far fa-image', 'tmpl' => 'exts-lazyload' ],
-        'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => '', 'tmpl' => 'exts-footer' ],
+        'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => 'fas fa-shoe-prints', 'tmpl' => 'exts-footer' ],
         'demo-form'       => [ 'label' => 'Demo Form', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exts-demo1' ],
     ],
     'category'      => [

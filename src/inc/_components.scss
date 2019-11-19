@@ -276,6 +276,30 @@
           }
         }
       }
+
+      .dismiss-outside {
+        position: absolute;
+        right: 0;
+        top: -2em;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        color: #fff;
+        box-shadow: unset;
+
+        span {
+          display: inline-block;
+          position: relative;
+          color: inherit;
+          width: 24px;
+          height: 24px;
+
+          &::after {
+            content: attr(title);
+            content: url($close);
+          }
+        }
+      }
     }
 
     & ~ .dialog-backdrop {
@@ -443,6 +467,107 @@
   @keyframes rotation_anime {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .sticky-footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    padding: 0;
+    line-height: 1;
+    border-top: solid 1px rgba($light-gray, 0.87);
+    background-color: inherit;
+    cursor: row-resize;
+    z-index: 1001;
+    transition: all 0.2s linear;
+
+    &.pullup {
+      .toggle-switch {
+        position: relative;
+        width: 100%;
+        height: max-content;
+        min-height: 1rem;
+        margin: 0 auto;
+        pointer-events: none;
+        transition: all 0.2s linear;
+
+        span {
+          position: absolute;
+          display: inline-block;
+          left: 50%;
+          top: 75%;
+          text-align: center;
+          font-size: 1.4rem;
+          color: #999;
+          z-index: 1002;
+          transform: translate(-50%, 0);
+          transition: all 0.2s linear;
+
+          &::before,
+          &::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            content: "";
+            vertical-align: middle;
+          }
+
+          &::after {
+            width: 0.7rem;
+            height: 0.7rem;
+            border-top: 2px solid $fog;
+            border-left: 2px solid $fog;
+            transform: translate(-50%, 0) rotate(45deg);
+          }
+        }
+
+        &[data-toggle-open=true] span {
+          top: 50%;
+          transform: translate(-50%, 0) rotate(180deg);
+        }
+
+        &[data-toggle-open=true] ~ .pullup-content {
+          position: relative;
+          display: block;
+          visibility: visible;
+          opacity: 1;
+          height: 100%;
+          bottom: 0;
+          transform: translateY(0);
+          transition: all 0.2s linear;
+
+          & > * {
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+
+    .pullup-content {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 1px;
+      visibility: hidden;
+      opacity: 0;
+      bottom: 0;
+      overflow: hidden;
+      z-index: 1002;
+      transform: translateY(100%);
+      transition: all 0.2s linear;
+    }
+
+    & > *:not(.toggle-switch):not(.pullup-content) {
+      position: relative;
+      display: block;
+      width: 100%;
+      background-color: inherit;
+      z-index: 1003;
+    }
   }
 
   #sloth-ruler {

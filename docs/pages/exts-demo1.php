@@ -1,3 +1,6 @@
+<?php
+$ajaxBaseURL = ENV === 'dev' ? './' : 'https://ka2.org/sloth/';
+?>
 <section id="demo-form" class="sloth-styles">
   <form class="sloth-validation">
     <h2 class="fnt-lg mb1">Sloth style forms with validation as an extension Demo</h2>
@@ -197,16 +200,16 @@
     </div>
     <div class="inline mb1" data-switch-class="sm:flx-center">
       <label data-size="w:10rem" data-switch-class="sm:hidden">Agreement</label>
-      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=terms'}" rel="external">the terms of service</a>.
+      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'<?= $ajaxBaseURL ?>ajax.php?p=terms'}" rel="external">the terms of service</a>.
         <input type="checkbox" id="cb-1" name="agreement" value="1" data-dispname="Agreement" required>
         <span class="tgl-btn"></span>
       </label>
     </div>
     <hr class="dotted">
-    <div class="inline">
-      <button type="submit" class="outline clr-prim">Register</button>
-      <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=test&t=<?= mt_rand() ?>',loader:'<div class=\'txt-center my2\'><img src=\'spinning-circles.svg\'></div>'}" data-effect="2">Via Ajax</button>
-      <button type="button" class="outline" data-toggle="dialog" data-content='<p>You are able to set a callback to button on the dialog footer.<br>In that case, it defines an object has a "callback" property in the "data-foot" attribute. At the "callback" property, set directly function, or a function name on the global scope.</p>' data-foot="{class:'outline clr-sec',label:'<i class=\'far fa-grin-squint\'></i> Close Me!',callback:'sample'}" data-effect="3">Callback</button>
+    <div class="inline mb2">
+      <button type="submit" class="outline clr-prim mr1">Register</button>
+      <button type="button" class="outline mr1" data-toggle="dialog" data-title="Title Of Dialog" data-content="{remote:'get',url:'<?= $ajaxBaseURL ?>ajax.php?p=test&t=<?= mt_rand() ?>',loader:'<div class=\'txt-center my2\'><img src=\'<?= $ajaxBaseURL ?>assets/spinning-circles.svg\'></div>'}" data-effect="2">Via Ajax</button>
+      <button type="button" class="outline mr1" data-toggle="dialog" data-content='<p>You are able to set a callback to button on the dialog footer.<br>In that case, it defines an object has a "callback" property in the "data-foot" attribute. At the "callback" property, set directly function, or a function name on the global scope.</p>' data-foot="{class:'outline clr-sec',label:'<i class=\'far fa-grin-squint\'></i> Close Me!',callback:'sample'}" data-effect="3">Callback</button>
       <button type="button" class="outline" data-toggle="dialog" data-title="Title Of Dialog" data-content="<p>Content Of Dialog<br>...</p>" data-foot="<i class=\'fas fa-times\'></i> Close" data-effect="4">Cancel</button>
     </div>
   </form>

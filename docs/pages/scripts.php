@@ -1,12 +1,13 @@
 <?php
 $page = get_globals( 'page' );
-$isLoadExtension = preg_match( '/^ext(i|s)-.*$/i', $page ) === 1;
+$isLoadExtension = preg_match( '/^(ext(i|s)-.*|support)$/i', $page ) === 1;
+$extensionScript = 'dist/sloth.extension'. (DEV ? '' : '.min') .'.js';
 ?>
 <script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <!-- Font Awesome latest -->
 <script async src="https://kit.fontawesome.com/ee8bf0ee7e.js"></script>
 <?php if ( $isLoadExtension ) : ?>
-<script async src="<?= optimize_uri('dist/sloth.extension.min.js') ?>"></script>
+<script async src="<?= optimize_uri($extensionScript) ?>"></script>
 <script>
 function sample() {
     alert( 'Do something before hiding the dialog.' );

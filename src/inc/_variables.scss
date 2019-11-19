@@ -95,6 +95,10 @@ $ruby-size: 0.65em;
 
 $crumbs-default: "\2215";
 
+/*
+ * See: http://materialdesignicons.com/
+ */
+
 $chevron-down: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%23abb1b5' d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z'></path></svg>";
 $menu-arrow: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z'></path></svg>";
 $menu-normal: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%237d7d7d' d='M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z'></path></svg>";
@@ -118,3 +122,4 @@ $times:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='
 $astarisk: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23e8383d' d='M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z'></path></svg>";
 $eye:      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='14px' height='14px' viewBox='0 0 24 24'><path fill='%23212529' d='M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z'></path></svg>";
 $sync:     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='var(--color-image-loader, %237d7d7d)' d='M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z'></path></svg>";
+$close:    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='%23ffffff' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17lM19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M17,8.4L13.4,12L17,15.6L15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4Z'></path></svg>";

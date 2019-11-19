@@ -1,13 +1,6 @@
 <?php
-$_is_dev = boolval( filter_input( INPUT_GET, 'dev' ) );
-$_is_hori = boolval( filter_input( INPUT_GET, 'hori' ) );
-$_is_innr = boolval( filter_input( INPUT_GET, 'innr' ) );
-$_ary = explode( 'sloth', __DIR__ );
-$_abs_path = rtrim( array_shift( $_ary ), '\\' );
-$current_year = (int) date( 'Y' );
-$sloth_dist_path = $_is_dev ? '/sloth/dist/sloth.min.css' : '/sloth/docs/assets/sloth.min.css';
-$sloth_ext_script_path = $_is_dev ? '/sloth/dist/sloth.extension.js' : '/sloth/docs/assets/sloth.extension.min.js';
-//var_dump( file_exists( $sloth_dist_path ), file_exists( $sloth_ext_script_path ) );
+$_is_hori = boolval( filter_input( INPUT_POST, 'hori' ) );
+$_is_innr = boolval( filter_input( INPUT_POST, 'innr' ) );
 
 /**
  * Retrieve dummy image from the placehold.jp for using as mockup
@@ -58,26 +51,22 @@ function randColorSet( $luminance = 128 ) {
 }
 
 ?>
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Lazy Loading Images | Sloth</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php /* link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" */ ?>
-  <link rel="stylesheet" href="<?= sprintf( '%s?v=%s', $sloth_dist_path, filemtime( $_abs_path . $sloth_dist_path ) ); ?>">
-  <link rel="shortcut icon" href="assets/sloth.ico" type="image/x-icon">
-</head>
-<body class="sloth" data-dialog-effect="1" data-dialog-button="outline">
-  <div>
-    <h2 class="px2 txt-fog">Lazy Loading Images</h2>
+<section id="lazyloading-demo" class="sloth-styles">
+  <h3>Lazy Loading Images: DEMO</h3>
+  <h5 class="line-right txt-prim"><?php 
+if ( $_is_innr ) {
+    echo $_is_hori ? 'On the inline horizontal scrolling container' : 'On the inline vertical scrolling container';
+} else {
+    echo $_is_hori ? 'On the horizontal scrolling page' : 'On the vertical scrolling page';
+}
+?></h5>
 <?php if ( $_is_innr ) : ?>
-    <div class="mx2 brd of-a lazy-load" data-size="h:(100vh - 5em)">
+  <div class="mxa brd of-a lazy-load txt-center" data-size="h:(100vh - 300px)">
 <?php endif; ?>
 <?php if ( $_is_hori ) : ?>
-    <div class="flx-row px2">
+    <div class="flx-row mxa px2">
 <?php else : ?>
-    <div class="mxa px2" data-size="mw:480px">
+    <div class="mxa px2" _data-size="mw:480px">
 <?php endif; ?>
 <?php
 $is_random_size = true;//false;
@@ -108,10 +97,11 @@ for ( $i = 1; $i <= $max_images; $i++ ) {
 }
 ?>
     </div>
-    <?php if ( $_is_innr ) : ?>
-      </div><!-- /.of-a -->
-    <?php endif; ?>
+<?php if ( $_is_innr ) : ?>
+  </div><!-- /.of-a -->
+<?php endif; ?>
+  <hr>
+  <div class="txt-center">
+    <a href="javascript:;" data-get-page="exts-lazyload">Back to Lazy Loading Images</a>
   </div>
-  <script async src="<?= sprintf( '%s?v=%s', $sloth_ext_script_path, filemtime( $_abs_path . $sloth_ext_script_path ) ); ?>"></script>
-</body>
-</html>
+</section>
