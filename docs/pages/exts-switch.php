@@ -22,6 +22,7 @@
         <img src="<?= optimize_uri('assets/noimage-300x300.png') ?>" data-switch-class="sm:w-full,md:w-half,lg:w-1-3">
         <label class="px2" data-switch-class="sm:hidden,md:hidden">Image Caption</label>
       </div>
+      <small class="note">There will switch the view of the above elements when you resize this browser window width.</small>
     </div>
     <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;p class="txt-center mx1 py2" data-switch-class="sm:bg-quin txt-black,md:bg-tert txt-whitesmoke,lg:bg-prim txt-white">Changing Colors&lt;/p>

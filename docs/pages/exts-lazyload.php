@@ -1,3 +1,6 @@
+<?php
+$demoBaseURL = ENV === 'dev' ? './' : 'https://ka2.org/sloth/';
+?>
 <section id="lazy-loading" class="sloth-styles">
   <h3>Lazy Loading Images</h3>
   <aside>
@@ -47,12 +50,12 @@
     <div class="mb1 w-full">
       <hr class="text" data-content="Other Demos">
       <ul class="unstyled">
-        <li><a href="./ll-test.php">Demo on the vertical scrolling page</a></li>
-        <li><a href="./ll-test.php?hori=1">Demo on the horizontal scrolling page</a></li>
-        <li><a href="./ll-test.php?innr=1">Demo on the inline vertical scrolling container</a></li>
-        <li><a href="./ll-test.php?hori=1&innr=1">Demo on the inline horizontal scrolling container</a></li>
+        <li><a href="javascript:;" data-get-page="exts-lazyload2">Demo on the vertical scrolling page</a></li>
+        <li><a href="javascript:;" data-get-page="exts-lazyload2" data-post-data="{hori:1,main:overflow}">Demo on the horizontal scrolling page</a></li>
+        <li><a href="javascript:;" data-get-page="exts-lazyload2" data-post-data="innr:1">Demo on the inline vertical scrolling container</a></li>
+        <li><a href="javascript:;" data-get-page="exts-lazyload2" data-post-data="hori:1,innr:1">Demo on the inline horizontal scrolling container</a></li>
       </ul>
-      <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Lazy Loading Images" data-content="{remote:'get',url:'https://ka2.org/sloth/ajax.php?p=lazyloading'}">Show Demo on Dialog</a></p>
+      <p class="mb1"><a href="javascript:;" data-toggle="dialog" data-title="Lazy Loading Images" data-content="{remote:'get',url:'<?= $demoBaseURL ?>ajax.php?p=lazyloading'}">Show Demo on Dialog</a></p>
     </div>
   </div>
   <div>

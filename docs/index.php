@@ -1,7 +1,7 @@
 <?php
 define('DOCROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ENV', preg_match( '/\A(127.0.0.|::)[0-9]{1,3}\z/', $_SERVER['SERVER_ADDR'] ) === 1 ? 'dev' : 'prod' );
-//var_dump(ENV);
+define('DEV', false ); // On/Off debug mode
 $sloth_version = 'unknown';
 $_file = new SplFileObject(__DIR__ . '/dist/sloth.min.css', 'r');
 $_file->setFlags( SplFileObject::SKIP_EMPTY );
@@ -73,7 +73,7 @@ if ( ! empty( get_globals( 'body_atts' ) ) ) {
 <?php include_tmpl( 'head' ); ?>
 <body id="sloth-docs" class="<?= get_globals( 'body_class' ); ?>" <?= $body_atts; ?>>
 <?php include_tmpl( 'navi_menu' ); ?>
-<main>
+<main<?php if ( isset( $_POST['main'] ) && $_POST['main'] === 'overflow' ) : ?> class="lazy-load of-xs"<?php endif; ?>>
 <?php include_tmpl( $page ); ?>
 </main>
 <?php include_tmpl( 'footer' ); ?>
