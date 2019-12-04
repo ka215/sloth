@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.2.2
-Last Updated: November 18, 2019 (UTC)
+v1.2.3
+Last Updated: December 4, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -265,7 +265,7 @@ const init = function() {
     Array.prototype.forEach.call(document.querySelectorAll('.sticky-footer.pullup'), (elm) => {
         if ( elm.querySelectorAll('.toggle-switch').length == 0 ) {
             let toggleSwitch = document.createElement('div');
-            
+
             toggleSwitch.classList.add('toggle-switch');
             toggleSwitch.innerHTML = '<span></span>';
             toggleSwitch.setAttribute('data-toggle-open', elm.classList.contains('default-show'));
@@ -297,7 +297,7 @@ const init = function() {
                 }
                 // Prevent the memory leak due to continue timer by setTimeout
                 let loop = window.slothStackTimer.length - 1, i;
-                
+
                 for( i = 0; i < loop; i++ ) {
                     clearTimeout( window.slothStackTimer.shift() );
                 }
@@ -309,6 +309,7 @@ const init = function() {
     window.showDialog  = showDialog;
     window.strLength   = strLength;
     window.toggleFooter = toggleFooter;
+    window.initializeStickyFooter = initializeStickyFooter;
 
     // Binding resize event
     window.addEventListener( 'resize', resize_throttle, {passive: true}, false );
@@ -322,6 +323,7 @@ const init = function() {
     switchElementClass();
     adjustTogglePasswd();
     initializeLazyLoading();
+    initializeStickyFooter();
 };
 
 /*
@@ -769,7 +771,7 @@ const generateDialog = function( title, content, foot, effect ) {
             },
             callback  = (mutationsList, observer) => {
                 mutationsList.forEach((mutation) => {
-                    let self = mutation.target;
+                    //let self = mutation.target;
 
                     switch(mutation.type) {
                         case 'childList':
@@ -842,9 +844,8 @@ const generateDialog = function( title, content, foot, effect ) {
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
- * @param {?boolean} reinit - after shown dialog
  */
-const slothNotify = async ( title, content, foot, effect, reinit ) => await generateDialog( title, content, foot, effect );
+const slothNotify = async ( title, content, foot, effect ) => await generateDialog( title, content, foot, effect );
 
 window.slothStackTimer = [];
 /*
@@ -857,7 +858,7 @@ window.slothStackTimer = [];
  * @param {?boolean} reinit - after shown dialog
  */
 const showDialog = ( title, content, foot, effect, reinit ) => {
-    slothNotify(title, content, foot, effect, reinit).then((dialog) => setTimeout(() => {
+    slothNotify(title, content, foot, effect).then((dialog) => setTimeout(() => {
 //console.log(dialog);
             // Re-init this extension scripts
             if ( reinit == undefined || reinit === true ) {
@@ -1168,7 +1169,7 @@ const loadImage = (src) => new Promise((resolve, reject) => {
  */
 const lazyLoading = (selector) => {
     let target = selector ? `${selector} [data-src]` : '[data-src]';
-    
+
     Array.prototype.forEach.call(document.querySelectorAll(target), async (elm) => {
         if ( /^(img)$/i.test( elm.nodeName ) && elm.dataset.src !== 'null' && !elm.getAttribute('src') ) {
             let imgSrc       = elm.dataset.src || '',
@@ -1183,10 +1184,10 @@ const lazyLoading = (selector) => {
                 elmLeft      = Math.ceil( elmRect.left ),
                 elmRight     = Math.floor( elmRect.right ),
                 bufferMargin = elm.dataset.buffer ? parseInt(elm.dataset.buffer, 10) : 0;
-            
+
             if ( selector ) {
                 let wrapElm = elm.closest(selector);
-                
+
                 //scrollTop  = wrapElm.scrollTop;
                 //scrollLeft = wrapElm.scrollLeft;
                 viewHeight = wrapElm.clientHeight;
@@ -1229,9 +1230,23 @@ const pullupContent = () => {
 const toggleFooter = () => {
     Array.prototype.forEach.call(document.querySelectorAll('.toggle-switch'), (elm) => {
         let evt = document.createEvent('HTMLEvents');
-        
+
         evt.initEvent('click', true, true);
         return elm.dispatchEvent(evt);
+    });
+}
+
+/*
+ * Initialize for the sticky footer
+ */
+const initializeStickyFooter = () => {
+    Array.prototype.forEach.call(document.querySelectorAll('.sticky-footer'), (elm) => {
+        let parentClasses = elm.parentNode.classList;
+
+        if ( !parentClasses.contains('of-s') && !parentClasses.contains('of-a') && !parentClasses.contains('of-ys') && !parentClasses.contains('of-ya') ) {
+            elm.parentNode.style.overflowY = 'auto';
+            elm.parentNode.style.height = '100vh';
+        }
     });
 }
 
