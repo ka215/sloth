@@ -85,4 +85,13 @@
 </code></pre>
     </div>
   </div>
+  <div class="flx-col my2">
+    <p>You can try to toggle the footer of this demo page from below switch for example.</p>
+    <div>
+      <label class="tgl">Toggle this page's footer as sticky.
+        <input type="checkbox" id="toggle-sticky-footer">
+        <span class="tgl-btn"></span>
+      </label>
+    </div>
+  </div>
 </section>

@@ -43,7 +43,7 @@ window.addEventListener('load', function() {
                 evt.preventDefault()
                 */
                 let tempObj = {}
-                
+
                 if ( postDataStr ) {
                     try {
                         tempObj = JSON.parse( postDataStr )
@@ -93,6 +93,21 @@ window.addEventListener('load', function() {
                 document.body.style.setProperty(targetVar, newValue)
             }
             document.activeElement.blur()
+        }, false)
+    }
+
+    // For Sticky Footer of extensions
+    let toggleStickyFooter = document.getElementById('toggle-sticky-footer')
+    if ( toggleStickyFooter ) {
+        toggleStickyFooter.addEventListener('click', function(evt){
+            let demoFooter = document.getElementById('demo-footer')
+
+            if ( evt.target.checked ) {
+                demoFooter.classList.add('sticky-footer', 'pt1')
+            } else {
+                demoFooter.classList.remove('sticky-footer', 'pt1')
+            }
+            window.initializeStickyFooter()
         }, false)
     }
 
