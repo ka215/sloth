@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.2.3
-Last Updated: December 4, 2019 (UTC)
+v1.3.0
+Last Updated: December 11, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -142,6 +142,9 @@ const init = function() {
             parent   = elm.parentNode,
             offset   = 0;
 
+        if ( elm.dataset.uploadable ) {
+            return;
+        }
         Array.prototype.forEach.call(notes, (note) => {
             note.remove();
         });
@@ -174,6 +177,7 @@ const init = function() {
         Array.prototype.forEach.call(notes, (note) => {
             elm.parentNode.append( note );
         });
+        elm.setAttribute('data-uploadable', true);
         Array.prototype.forEach.call(parent.children, (child) => {
             if ( ! child.classList.contains('upload-files') && ! child.classList.contains('note') ) {
                 offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
@@ -196,6 +200,9 @@ const init = function() {
             };
             if ( file ) {
                 reader.readAsDataURL(file);
+            } else {
+                preview.style.backgroundImage = 'none';
+                preview.classList.remove('active');
             }
 
         }, false);
@@ -305,11 +312,78 @@ const init = function() {
         }, false);
     });
 
+    // Bind the Table Of Contents
+    Array.prototype.forEach.call(document.querySelectorAll('[data-toc]'), (elm) => {
+        let selector   = elm.dataset.toc,
+            cascading  = elm.dataset.tocCascade || false,
+            targetElms = document.querySelectorAll(selector);
+
+        if ( targetElms.length > 0 ) {
+//console.log( selector, cascading, targetElms[0] );
+            let matches = targetElms[0].querySelectorAll('h1, h2, h3, h4, h5, h6'),
+                ul   = document.createElement('ul'),
+                list = [],
+                lilv = 6;
+
+            Array.prototype.forEach.call(matches, (headline) => {
+                let id   = headline.id,
+                    hlv  = parseInt( headline.tagName.replace('H', ''), 10 ),
+                    li   = document.createElement('li'),
+                    a    = document.createElement('a');
+
+                if ( id === '' ) {
+                    id = makeId( headline.textContent );
+                    headline.id = id;
+                    headline.insertAdjacentHTML( 'afterbegin', `<a name="${id}"></a>` );
+                }
+                lilv = hlv < lilv ? hlv : lilv;
+//console.log(headline.tagName, hlv, lilv, headline.textContent, headline.id);
+                a.innerHTML = headline.textContent;
+                a.href = `#${id}`;
+                li.appendChild(a);
+                li.setAttribute( 'data-indent', hlv );
+                list.push(li);
+            });
+//console.log( list, lilv );
+            list.forEach((li_elm) => {
+                let indent = parseInt( li_elm.dataset.indent, 10 ) - lilv;
+
+                if ( cascading && indent > 0 ) {
+                    li_elm.classList.add( `idt-${indent}` );
+                }
+                li_elm.removeAttribute( 'data-indent' );
+                ul.appendChild(li_elm);
+            });
+//console.log( ul );
+            ul.classList.add( 'toc' );
+            elm.appendChild( ul );
+
+            Array.prototype.forEach.call(elm.querySelectorAll('a[href*="#"]'), (link) => {
+                link.addEventListener('click', (evt) => {
+                    let href = evt.target.getAttribute( 'href' ),
+                        _tmp = href.split('#'),
+                        targetId = _tmp[1],
+                        target = document.getElementById( targetId );
+
+//console.log(href, target);
+                    //location.hash = href;
+                    if ( target ) {
+                        smoothScroll( target );
+                    } else {
+                        return false;
+                    }
+                    //return false;
+                }, false);
+            });
+        }
+    });
+
     // Binding functions to global scope
     window.showDialog  = showDialog;
     window.strLength   = strLength;
     window.toggleFooter = toggleFooter;
     window.initializeStickyFooter = initializeStickyFooter;
+    //window.smoothScroll = smoothScroll;
 
     // Binding resize event
     window.addEventListener( 'resize', resize_throttle, {passive: true}, false );
@@ -1248,6 +1322,46 @@ const initializeStickyFooter = () => {
             elm.parentNode.style.height = '100vh';
         }
     });
+}
+
+/*
+ * Generate unique id as like hash
+ */
+const makeId = (str) => {
+    let hash = str.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0);
+    return `note-${Math.abs(hash)}`;
+}
+
+/*
+ * Smooth Scroll for Table Of Contents
+ */
+const smoothScroll = (target) => {
+    const divisor    = 8;
+    const range      = (divisor / 2) + 1;
+    let nowY   = window.pageYOffset,
+        offset = 0,
+        toY;
+
+    Array.prototype.forEach.call(document.querySelectorAll('.navi-menu'), (elm) => {
+        offset += elm.getBoundingClientRect().height;
+    });
+    const targetRect = target.getBoundingClientRect();
+    const targetY    = targetRect.top + nowY - offset;
+    const loop = () => {
+        toY = nowY + Math.round((targetY - nowY) / divisor);
+        window.scrollTo(0, toY);
+        nowY = toY;
+        if ( document.body.clientHeight - window.innerHeight < toY ) {
+            window.scrollTo(0, document.body.clientHeight);
+            return;
+        }
+        if ( toY >= targetY + range || toY <= targetY - range ) {
+            window.setTimeout(loop, 10);
+        } else {
+            window.scrollTo(0, targetY);
+        }
+    };
+    loop();
 }
 
 /*

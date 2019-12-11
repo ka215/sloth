@@ -1,7 +1,7 @@
 <?php
 define('DOCROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ENV', preg_match( '/\A(127.0.0.|::)[0-9]{1,3}\z/', $_SERVER['SERVER_ADDR'] ) === 1 ? 'dev' : 'prod' );
-define('DEV', false ); // On/Off debug mode
+define('DEV', true ); // On/Off debug mode
 $sloth_version = 'unknown';
 $_file = new SplFileObject(__DIR__ . '/dist/sloth.min.css', 'r');
 $_file->setFlags( SplFileObject::SKIP_EMPTY );

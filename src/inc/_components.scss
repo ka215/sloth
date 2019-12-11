@@ -583,6 +583,23 @@
     z-index: -1;
   }
 
+  .toc {
+    list-style-type: none;
+    margin: 0.5rem 0;
+    padding: 0;
+    padding-left: 0.5rem !important;
+    font-size: 1rem;
+
+    li {
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   @media screen and (min-width: 481px) and (max-width: 768px) {
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);

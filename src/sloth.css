@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.2.3
-Last Updated: December 4, 2019 (UTC)
+v1.3.0
+Last Updated: December 11, 2019 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -4403,6 +4403,26 @@ textarea {
   font-size: 1rem;
 }
 
+.sloth:not(.nons) .toc,
+.sloth *:not(.nons) .toc {
+  margin: 0.5rem 0;
+  padding: 0;
+  padding-left: 0.5rem !important;
+  font-size: 1rem;
+  list-style-type: none;
+}
+
+.sloth:not(.nons) .toc li,
+.sloth *:not(.nons) .toc li {
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+.sloth:not(.nons) .toc li:last-child,
+.sloth *:not(.nons) .toc li:last-child {
+  margin-bottom: 0;
+}
+
 [hidden],
 .hidden {
   display: none !important;
@@ -5180,6 +5200,30 @@ table.cell-right td {
   --text-overflow-string: attr(data-ellipsis, '');
   text-overflow: '';
   text-overflow: var(--text-overflow-string, "");
+}
+
+.idt-1 {
+  text-indent: 1em;
+}
+
+.idt-2 {
+  text-indent: 2em;
+}
+
+.idt-3 {
+  text-indent: 3em;
+}
+
+.idt-4 {
+  text-indent: 4em;
+}
+
+.idt-5 {
+  text-indent: 5em;
+}
+
+.idt-6 {
+  text-indent: 6em;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

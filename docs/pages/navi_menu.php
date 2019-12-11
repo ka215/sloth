@@ -37,6 +37,7 @@ $pages = [
         'dialog'          => [ 'label' => 'Dialog Notification', 'icon' => 'far fa-window-restore', 'tmpl' => 'exts-dialog' ],
         'lazy-loading'    => [ 'label' => 'Lazy Loading Images', 'icon' => 'far fa-image', 'tmpl' => 'exts-lazyload' ],
         'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => 'fas fa-shoe-prints', 'tmpl' => 'exts-footer' ],
+        'toc'             => [ 'label' => 'Table Of Contents', 'icon' => 'fas fa-stream', 'tmpl' => 'exts-toc' ],
         'demo-form'       => [ 'label' => 'Demo Form', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exts-demo1' ],
     ],
     'category'      => [
@@ -61,7 +62,7 @@ $current_page = '';
       <div class="menu">
 <?php foreach( $pages as $page_cat => $page_list ) : ?>
         <ul id="navi-menu-<?= $page_cat ?>" class="unstyled">
-<?php   foreach( $page_list as $page_slug => $page_items ) : 
+<?php   foreach( $page_list as $page_slug => $page_items ) :
           if ( array_key_exists( 'tmpl', $page_items ) ) {
               if ( array_key_exists( 'url', $page_items ) ) {
                   $_atts = "href=\"#{$page_items['url']}\"";

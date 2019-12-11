@@ -419,6 +419,29 @@
 </code></pre>
     </div>
   </div>
+  <h4 class="line-right txt-prim">Indent text</h4>
+  <aside>The <code>.idt-*</code> classes depress the start of the text content in the element by any number of characters.</aside>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
+      <p>This text is not indented.</p>
+      <p class="idt-1">The text is indented by 1em.</p>
+      <p class="idt-2">The text is indented by 2em.</p>
+      <p class="idt-3">The text is indented by 3em.</p>
+      <p class="idt-4">The text is indented by 4em.</p>
+      <p class="idt-5">The text is indented by 5em.</p>
+      <p class="idt-6">The text is indented by 6em.</p>
+    </div>
+    <div class="flx-full mb2">
+      <pre class="prettyprint"><code>&lt;p>This text is not indented.&lt;/p>
+&lt;p class="idt-1">The text is indented by 1em.&lt;/p>
+&lt;p class="idt-2">The text is indented by 2em.&lt;/p>
+&lt;p class="idt-3">The text is indented by 3em.&lt;/p>
+&lt;p class="idt-4">The text is indented by 4em.&lt;/p>
+&lt;p class="idt-5">The text is indented by 5em.&lt;/p>
+&lt;p class="idt-6">The text is indented by 6em.&lt;/p>
+</code></pre>
+    </div>
+  </div>
   <h4 class="line-right txt-prim">Note as helper text</h4>
   <aside>An information icon is displayed at the beginning of an element that has a <code>.note</code> class.</aside>
   <div class="flx-col my2">

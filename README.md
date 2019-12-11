@@ -16,7 +16,7 @@ The Sloth is lightweight as it saves the effort to rely on the legacy browser. A
 
 The Sloth supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.
 
-**18.45kB gzipped** at this time.
+**18.8kB gzipped** at this time.
 
 Also since version 1.0.3, it has been added the sloth extensions script that enhances your mark-up the components on the HTML. By using this extension, you get usable the advanced validation form or the popping dialog window, etc.
 
@@ -45,8 +45,8 @@ git clone https://github.com/ka215/sloth.git
 
 Or, you can load via CDN:
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@latest/dist/sloth.min.css">
-<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@latest/dist/sloth.extension.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@master/dist/sloth.min.css">
+<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@master/dist/sloth.extension.min.js"></script>
 ```
 
 ## Usage
@@ -100,9 +100,6 @@ You would prefer to see the following URL for a list of all elements and compone
 
 <https://ka2.org/sloth/>
 
-- [About Sloth Styles](https://ka2.org/sloth/?navi=1)
-- [About Sloth Extensions](https://ka2.org/sloth/?page=2)
-- [Supported Browsers](https://ka2.org/sloth/?page=3)
 
 ## Contributions
 
