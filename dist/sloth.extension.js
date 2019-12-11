@@ -6015,8 +6015,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /*!
 Sloth CSS lightweight framework
+<<<<<<< HEAD
 v1.3.0
 Last Updated: December 11, 2019 (UTC)
+=======
+v1.2.2
+Last Updated: November 18, 2019 (UTC)
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -6159,11 +6164,14 @@ var init = function init() {
         notes = elm.parentNode.querySelectorAll('.note'),
         parent = elm.parentNode,
         offset = 0;
+<<<<<<< HEAD
 
     if (elm.dataset.uploadable) {
       return;
     }
 
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(notes, function (note) {
       note.remove();
     });
@@ -6199,7 +6207,10 @@ var init = function init() {
     Array.prototype.forEach.call(notes, function (note) {
       elm.parentNode.append(note);
     });
+<<<<<<< HEAD
     elm.setAttribute('data-uploadable', true);
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(parent.children, function (child) {
       if (!child.classList.contains('upload-files') && !child.classList.contains('note')) {
         offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
@@ -6222,9 +6233,12 @@ var init = function init() {
 
       if (file) {
         reader.readAsDataURL(file);
+<<<<<<< HEAD
       } else {
         preview.style.backgroundImage = 'none';
         preview.classList.remove('active');
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
       }
     }, false);
   }); // Check whether activate the Sloth Validator
@@ -6335,6 +6349,7 @@ var init = function init() {
         }
       });
     }, false);
+<<<<<<< HEAD
   }); // Bind the Table Of Contents
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-toc]'), function (elm) {
@@ -6400,13 +6415,19 @@ var init = function init() {
         }, false);
       });
     }
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
   }); // Binding functions to global scope
 
   window.showDialog = showDialog;
   window.strLength = strLength;
   window.toggleFooter = toggleFooter;
+<<<<<<< HEAD
   window.initializeStickyFooter = initializeStickyFooter; //window.smoothScroll = smoothScroll;
   // Binding resize event
+=======
+  window.initializeStickyFooter = initializeStickyFooter; // Binding resize event
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
 
   window.addEventListener('resize', resize_throttle, {
     passive: true
@@ -7500,6 +7521,7 @@ var initializeStickyFooter = function initializeStickyFooter() {
   });
 };
 /*
+<<<<<<< HEAD
  * Generate unique id as like hash
  */
 
@@ -7547,6 +7569,8 @@ var smoothScroll = function smoothScroll(target) {
   loop();
 };
 /*
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
  * Dispatcher
  */
 
