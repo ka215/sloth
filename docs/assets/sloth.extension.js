@@ -6015,8 +6015,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /*!
 Sloth CSS lightweight framework
+<<<<<<< HEAD
+v1.3.0
+Last Updated: December 11, 2019 (UTC)
+=======
 v1.2.2
 Last Updated: November 18, 2019 (UTC)
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -6159,6 +6164,14 @@ var init = function init() {
         notes = elm.parentNode.querySelectorAll('.note'),
         parent = elm.parentNode,
         offset = 0;
+<<<<<<< HEAD
+
+    if (elm.dataset.uploadable) {
+      return;
+    }
+
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(notes, function (note) {
       note.remove();
     });
@@ -6194,6 +6207,10 @@ var init = function init() {
     Array.prototype.forEach.call(notes, function (note) {
       elm.parentNode.append(note);
     });
+<<<<<<< HEAD
+    elm.setAttribute('data-uploadable', true);
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(parent.children, function (child) {
       if (!child.classList.contains('upload-files') && !child.classList.contains('note')) {
         offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
@@ -6216,6 +6233,12 @@ var init = function init() {
 
       if (file) {
         reader.readAsDataURL(file);
+<<<<<<< HEAD
+      } else {
+        preview.style.backgroundImage = 'none';
+        preview.classList.remove('active');
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
       }
     }, false);
   }); // Check whether activate the Sloth Validator
@@ -6326,12 +6349,85 @@ var init = function init() {
         }
       });
     }, false);
+<<<<<<< HEAD
+  }); // Bind the Table Of Contents
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-toc]'), function (elm) {
+    var selector = elm.dataset.toc,
+        cascading = elm.dataset.tocCascade || false,
+        targetElms = document.querySelectorAll(selector);
+
+    if (targetElms.length > 0) {
+      //console.log( selector, cascading, targetElms[0] );
+      var matches = targetElms[0].querySelectorAll('h1, h2, h3, h4, h5, h6'),
+          ul = document.createElement('ul'),
+          list = [],
+          lilv = 6;
+      Array.prototype.forEach.call(matches, function (headline) {
+        var id = headline.id,
+            hlv = parseInt(headline.tagName.replace('H', ''), 10),
+            li = document.createElement('li'),
+            a = document.createElement('a');
+
+        if (id === '') {
+          id = makeId(headline.textContent);
+          headline.id = id;
+          headline.insertAdjacentHTML('afterbegin', "<a name=\"".concat(id, "\"></a>"));
+        }
+
+        lilv = hlv < lilv ? hlv : lilv; //console.log(headline.tagName, hlv, lilv, headline.textContent, headline.id);
+
+        a.innerHTML = headline.textContent;
+        a.href = "#".concat(id);
+        li.appendChild(a);
+        li.setAttribute('data-indent', hlv);
+        list.push(li);
+      }); //console.log( list, lilv );
+
+      list.forEach(function (li_elm) {
+        var indent = parseInt(li_elm.dataset.indent, 10) - lilv;
+
+        if (cascading && indent > 0) {
+          li_elm.classList.add("idt-".concat(indent));
+        }
+
+        li_elm.removeAttribute('data-indent');
+        ul.appendChild(li_elm);
+      }); //console.log( ul );
+
+      ul.classList.add('toc');
+      elm.appendChild(ul);
+      Array.prototype.forEach.call(elm.querySelectorAll('a[href*="#"]'), function (link) {
+        link.addEventListener('click', function (evt) {
+          var href = evt.target.getAttribute('href'),
+              _tmp = href.split('#'),
+              targetId = _tmp[1],
+              target = document.getElementById(targetId); //console.log(href, target);
+          //location.hash = href;
+
+
+          if (target) {
+            smoothScroll(target);
+          } else {
+            return false;
+          } //return false;
+
+        }, false);
+      });
+    }
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
   }); // Binding functions to global scope
 
   window.showDialog = showDialog;
   window.strLength = strLength;
   window.toggleFooter = toggleFooter;
+<<<<<<< HEAD
+  window.initializeStickyFooter = initializeStickyFooter; //window.smoothScroll = smoothScroll;
+  // Binding resize event
+=======
   window.initializeStickyFooter = initializeStickyFooter; // Binding resize event
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
 
   window.addEventListener('resize', resize_throttle, {
     passive: true
@@ -7425,6 +7521,56 @@ var initializeStickyFooter = function initializeStickyFooter() {
   });
 };
 /*
+<<<<<<< HEAD
+ * Generate unique id as like hash
+ */
+
+
+var makeId = function makeId(str) {
+  var hash = str.split('').reduce(function (a, b) {
+    return (a << 5) - a + b.charCodeAt(0) | 0;
+  }, 0);
+  return "note-".concat(Math.abs(hash));
+};
+/*
+ * Smooth Scroll for Table Of Contents
+ */
+
+
+var smoothScroll = function smoothScroll(target) {
+  var divisor = 8;
+  var range = divisor / 2 + 1;
+  var nowY = window.pageYOffset,
+      offset = 0,
+      toY;
+  Array.prototype.forEach.call(document.querySelectorAll('.navi-menu'), function (elm) {
+    offset += elm.getBoundingClientRect().height;
+  });
+  var targetRect = target.getBoundingClientRect();
+  var targetY = targetRect.top + nowY - offset;
+
+  var loop = function loop() {
+    toY = nowY + Math.round((targetY - nowY) / divisor);
+    window.scrollTo(0, toY);
+    nowY = toY;
+
+    if (document.body.clientHeight - window.innerHeight < toY) {
+      window.scrollTo(0, document.body.clientHeight);
+      return;
+    }
+
+    if (toY >= targetY + range || toY <= targetY - range) {
+      window.setTimeout(loop, 10);
+    } else {
+      window.scrollTo(0, targetY);
+    }
+  };
+
+  loop();
+};
+/*
+=======
+>>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
  * Dispatcher
  */
 

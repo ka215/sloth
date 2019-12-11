@@ -492,6 +492,13 @@ table {
   }
 }
 
+.idt-1 { text-indent: 1em; }
+.idt-2 { text-indent: 2em; }
+.idt-3 { text-indent: 3em; }
+.idt-4 { text-indent: 4em; }
+.idt-5 { text-indent: 5em; }
+.idt-6 { text-indent: 6em; }
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .note {
     &::before {
