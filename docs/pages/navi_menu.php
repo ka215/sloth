@@ -38,6 +38,7 @@ $pages = [
         'lazy-loading'    => [ 'label' => 'Lazy Loading Images', 'icon' => 'far fa-image', 'tmpl' => 'exts-lazyload' ],
         'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => 'fas fa-shoe-prints', 'tmpl' => 'exts-footer' ],
         'toc'             => [ 'label' => 'Table Of Contents', 'icon' => 'fas fa-stream', 'tmpl' => 'exts-toc' ],
+        'fixed-backdrop'  => [ 'label' => 'Fixed Backdrop', 'icon' => 'fas fa-hammer', 'tmpl' => 'exts-backdrop' ],
         'demo-form'       => [ 'label' => 'Demo Form', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exts-demo1' ],
     ],
     'category'      => [
@@ -55,7 +56,7 @@ $now_page = get_globals( 'page' );
 $current_page = '';
 ?>
 <header id="docs-navi" class="navi-menu">
-  <div class="w-half flx-row">
+  <div class="slide-l">
     <label class="toggle">
       <input type="checkbox">
       <div class="backdrop"></div>
@@ -84,7 +85,7 @@ $current_page = '';
             $current_page = md5( $page_slug );
           }
 ?>
-          <li class="pr1"><a <?= $_atts ?>><i class="<?= $page_items['icon'] ?> mr1"></i><?= $page_items['label'] ?></a></li>
+          <li class="pr1"><a <?= $_atts ?>><i class="<?= $page_items['icon'] ?>" style="position:relative;width:24px;margin-right:.3rem;text-align:center;"></i><?= $page_items['label'] ?></a></li>
 <?php   endforeach; ?>
         </ul>
         <?php if ( $page_cat !== 'links' ) : ?><hr><?php endif; ?>
@@ -93,11 +94,13 @@ $current_page = '';
       <input type="hidden" id="current-page" value="<?= $now_page ?>">
       <input type="hidden" id="current-menu-hash" value="<?= $current_page ?>">
     </label>
-    <a id="brand-logo" href="#key-visual" class="brand" data-get-page="intr-sloth"><img src="<?= optimize_uri( 'assets/sloth.svg' ) ?>" height="36"> Sloth</a>
+    <div class="txt-center">
+      <a id="brand-logo" href="#key-visual" class="brand" data-get-page="intr-sloth"><img src="<?= optimize_uri( 'assets/sloth.svg' ) ?>" height="36"> Sloth</a>
+    </div>
   </div>
-  <div class="w-half flx-row flx-end pr2">
 <?php /*
+  <div class="w-half flx-row flx-end pr2">
     <button id="close-navi" type="button" class="outline"><i class="fas fa-times"></i> Close Navi</button>
-*/ ?>
   </div>
+*/ ?>
 </header>

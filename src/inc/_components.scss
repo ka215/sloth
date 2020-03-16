@@ -90,105 +90,287 @@
     box-shadow: 0 1px 3px 0 rgba($light-gray, 0.76);
     z-index: 1002;
 
-    .toggle {
+    [class^=slide-] {
       position: relative;
-      margin: auto 0;
-      padding-left: 5rem;
-      font-size: inherit;
-      cursor: pointer;
-      z-index: 1002;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
 
-      .backdrop {
-        display: none;
-        position: fixed;
-        top: $navi-height;
-        top: var(--navi-height-sm, $navi-height);
-        left: 0;
-        width: 100%;
-        height: calc(100vh - #{$navi-height});
-        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
-        background: none $dark-gray;
-        opacity: 0;
-        z-index: 1000;
-        transition: all 0.2s;
-      }
+      .toggle {
+        position: relative;
+        margin: auto 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: inherit;
+        cursor: pointer;
+        z-index: 1003;
 
-      .menu {
-        position: fixed;
-        top: $navi-height;
-        top: var(--navi-height-sm, $navi-height);
-        left: -50%;
-        left: calc(-1 * var(--menu-width-sm, 50%));
-        width: max-content;
-        width: var(--menu-width-sm, max-content);
-        max-width: 50%;
-        max-width: var(--menu-width-sm, 50%);
-        height: calc(100vh - #{$navi-height});
-        height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
-        padding: 1.5rem;
-        background-color: $white;
-        border-right: solid 1px rgba($light-gray, 0.87);
-        box-shadow: 1px 2px 3px 0 rgba($light-gray, 0.76);
-        overflow: hidden;
-        overflow-y: auto;
-        z-index: 1001;
-        transition: left 0.2s, right 0.3s;
-      }
-
-      input[type=checkbox] {
-        display: none;
-
-        &:checked ~ .backdrop {
-          display: block;
-          opacity: 0.4;
-        }
-
-        &:checked ~ .menu {
-          /* pointer-events: none; */
+        .backdrop {
+          display: none;
+          position: fixed;
+          top: $navi-height;
+          top: var(--navi-height-sm, $navi-height);
           left: 0;
+          width: 100%;
+          height: calc(100vh - #{$navi-height});
+          height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+          background: none $dark-gray;
+          opacity: 0;
+          z-index: 1000;
+          transition: all 0.2s;
         }
-      }
 
-      ~ * {
-        margin: auto 0;
+        .menu {
+          position: fixed;
+          top: $navi-height;
+          top: var(--navi-height-sm, $navi-height);
+          width: max-content;
+          width: var(--menu-width-sm, max-content);
+          max-width: 50%;
+          max-width: var(--menu-width-sm, 50%);
+          height: calc(100vh - #{$navi-height});
+          height: calc(100vh - var(--navi-height-sm, #{$navi-height}));
+          padding: 1.5rem;
+          background-color: $white;
+          overflow: hidden;
+          overflow-y: auto;
+          z-index: 1001;
+        }
 
-        &.brand {
-          font-style: normal;
-          font-size: $h2;
-          font-weight: 600;
-          color: $black;
+        input[type=checkbox] {
+          display: none;
 
-          &:hover,
-          &:active,
-          &:focus {
-            text-decoration: none;
+          &:checked ~ .backdrop {
+            display: block;
+            opacity: 0.4;
+          }
+        }
 
-            &::before,
-            &::after {
-              display: none;
+        ~ * {
+          position: relative;
+          margin: auto;
+          order: 1;
+          z-index: 1002;
+
+          .brand {
+            font-style: normal;
+            font-size: $h2;
+            font-weight: 600;
+            color: $black;
+
+            &:hover,
+            &:active,
+            &:focus {
+              text-decoration: none;
+
+              &::before,
+              &::after {
+                display: none;
+              }
             }
           }
         }
-      }
 
-      &::after {
-        position: absolute;
-        top: -1rem;
-        left: 2rem;
-        content: url($menu-arrow);
-        width: 2rem;
-        opacity: 1;
-        z-index: 1002;
-      }
+        &::before,
+        &::after {
+          position: absolute;
+          width: 2rem;
+          opacity: 1;
+          z-index: 1002;
+        }
 
-      &:hover::after {
-        opacity: 0.85;
+        &::after {
+          content: '';
+        }
+
+        &:hover::before,
+        &:hover::after {
+          opacity: 0.85;
+        }
       }
     }
 
-    > *:nth-child(n + 1) {
-      > * {
-        margin: auto 0;
+    .slide-l .toggle {
+      order: -1;
+
+      .menu {
+        left: -50%;
+        left: calc(-1 * var(--menu-width-sm, 50%));
+        right: auto;
+        border-right: solid 1px rgba($light-gray, 0.87);
+        box-shadow: 1px 2px 3px 0 rgba($light-gray, 0.76);
+        transition: left 0.2s, right 0.3s;
+      }
+
+      input[type=checkbox]:checked ~ .menu {
+        left: 0;
+      }
+
+      ~ * {
+        left: calc(-1 * #{$navi-height});
+        left: calc(-1 * var(--navi-height-sm, #{$navi-height}));
+        right: 0;
+      }
+
+      &::before {
+        content: url($menu-arrow);
+        top: calc(50% - 1rem);
+        bottom: auto;
+        left: -1rem;
+        right: auto;
+      }
+    }
+
+    .slide-r .toggle {
+      order: 99;
+
+      .menu {
+        left: auto;
+        right: -50%;
+        right: calc(-1 * var(--menu-width-sm, 50%));
+        border-left: solid 1px rgba($light-gray, 0.87);
+        box-shadow: -1px 2px 3px 0 rgba($light-gray, 0.76);
+        transition: right 0.2s, left 0.3s;
+      }
+
+      input[type=checkbox]:checked ~ .menu {
+        right: 0;
+      }
+
+      ~ * {
+        left: 0;
+        right: calc(-1 * #{$navi-height});
+        right: calc(-1 * var(--navi-height-sm, #{$navi-height}));
+      }
+
+      &::before {
+        content: url($menu-arrow);
+        top: auto;
+        bottom: calc(50% - 1rem);
+        left: auto;
+        right: -1rem;
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  .fixed-backdrop {
+    position: fixed;
+    top: auto;
+  }
+
+  .bq-oneliner {
+    display: block;
+    padding: 1rem !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    border-color: $light-gray !important;
+    border-radius: 3px;
+    background-color: $white-smoke;
+
+    * {
+      display: inline !important;
+      margin: 0 0 0 0.5rem;
+      padding: 0;
+      line-height: 1.5;
+
+      &:first-child {
+        margin-left: 0;
+
+        &::before,
+        &::after {
+          font-weight: 600;
+          font-size: 1rem;
+          color: $gray;
+        }
+
+        &::before {
+          content: "\201C";
+          margin-right: 0.2rem;
+        }
+
+        &::after {
+          content: "\201D";
+          margin-left: 0.2rem;
+        }
+      }
+    }
+
+    cite {
+      margin-top: 0 !important;
+      font-size: 100% !important;
+    }
+
+    &.inverse {
+      border-color: $gray !important;
+      background-color: $gray;
+
+      *:first-child {
+        color: $white;
+
+        &::before,
+        &::after {
+          color: $light-gray;
+        }
+      }
+
+      cite {
+        color: $light-gray;
+
+        &::before { color: $light-gray; }
+      }
+    }
+  }
+
+  .bq-block {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem !important;
+    border: 0 !important;
+    border-radius: 3px;
+    background-color: rgba($light-gray, 0.5);
+
+    * {
+      display: inline-block;
+      margin: 0 0.5rem;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    cite {
+      position: relative;
+      display: inline-block;
+      margin-top: 1.75rem !important;
+      width: 100%;
+      text-align: center !important;
+
+      &::before {
+        position: absolute !important;
+        top: calc((1.75rem / -2) + 1px);
+        left: calc((100% - (100% / 1.618)) / 2);
+        content: "\00A0" !important;
+        background-color: $light-gray;
+        width: calc(100% / 1.618);
+        height: 1px;
+        font-size: 1px !important;
+      }
+    }
+
+    &.inverse {
+      background-color: $gray;
+
+      * { color: $white; }
+
+      cite {
+        color: $light-gray;
+
+        &::before { background-color: rgba($light-gray, 0.5); }
       }
     }
   }
@@ -604,19 +786,30 @@
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-md, $navi-height);
 
-      .toggle {
-        .backdrop {
-          top: var(--navi-height-md, $navi-height);
-          height: calc(100vh - var(--navi-height-md, #{$navi-height}));
-        }
+      [class^=slide-] {
+        .toggle {
+          .backdrop {
+            top: var(--navi-height-md, $navi-height);
+            height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+          }
 
-        .menu {
-          top: var(--navi-height-md, $navi-height);
-          left: calc(-1 * var(--menu-width-md, 50%));
-          width: var(--menu-width-md, max-content);
-          max-width: var(--menu-width-md, 50%);
-          height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+          .menu {
+            top: var(--navi-height-md, $navi-height);
+            width: var(--menu-width-md, max-content);
+            max-width: var(--menu-width-md, 50%);
+            height: calc(100vh - var(--navi-height-md, #{$navi-height}));
+          }
         }
+      }
+
+      .slide-l .toggle {
+        .menu { left: calc(-1 * var(--menu-width-md, 50%)); }
+        ~ * { left: calc(-1 * var(--navi-height-md, #{$navi-height})); }
+      }
+
+      .slide-r .toggle {
+        .menu { right: calc(-1 * var(--menu-width-md, 50%)); }
+        ~ * { right: calc(-1 * var(--navi-height-md, #{$navi-height})); }
       }
     }
 
@@ -641,19 +834,30 @@
     .navi-menu:not(#{$not}) {
       height: var(--navi-height-lg, $navi-height);
 
-      .toggle {
-        .backdrop {
-          top: var(--navi-height-lg, $navi-height);
-          height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
-        }
+      [class^=slide-] {
+        .toggle {
+          .backdrop {
+            top: var(--navi-height-lg, $navi-height);
+            height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+          }
 
-        .menu {
-          top: var(--navi-height-lg, $navi-height);
-          left: calc(-1 * var(--menu-width-lg, 50%));
-          width: var(--menu-width-lg, max-content);
-          max-width: var(--menu-width-lg, 50%);
-          height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+          .menu {
+            top: var(--navi-height-lg, $navi-height);
+            width: var(--menu-width-lg, max-content);
+            max-width: var(--menu-width-lg, 50%);
+            height: calc(100vh - var(--navi-height-lg, #{$navi-height}));
+          }
         }
+      }
+
+      .slide-l .toggle {
+        .menu { left: calc(-1 * var(--menu-width-lg, 50%)); }
+        ~ * { left: calc(-1 * var(--navi-height-lg, #{$navi-height})); }
+      }
+
+      .slide-r .toggle {
+        .menu { right: calc(-1 * var(--menu-width-lg, 50%)); }
+        ~ * { right: calc(-1 * var(--navi-height-lg, #{$navi-height})); }
       }
     }
 

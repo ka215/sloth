@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.3.0
-Last Updated: December 11, 2019 (UTC)
+v1.4.0
+Last Updated: March 16, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -261,6 +261,14 @@ const init = function() {
         }, false);
     });
 
+    // Prevent scrolling of overlay backdrop when shown menu on navigation menu
+    Array.prototype.forEach.call(document.querySelectorAll('.navi-menu .toggle input[type=checkbox]'), (elm) => {
+        elm.addEventListener('change', (evt) => {
+            // Is on menu: evt.target.checked
+            fixedBackdrop(evt.target.checked);
+        }, false);
+    });
+
     // Prevent bubbling of click event in the container of lists on navigation menu
     Array.prototype.forEach.call(document.querySelectorAll('.navi-menu .toggle .menu'), (menuContainer) => {
         menuContainer.addEventListener('click', (evt) => {
@@ -379,11 +387,12 @@ const init = function() {
     });
 
     // Binding functions to global scope
-    window.showDialog  = showDialog;
-    window.strLength   = strLength;
-    window.toggleFooter = toggleFooter;
+    window.showDialog             = showDialog;
+    window.strLength              = strLength;
+    window.toggleFooter           = toggleFooter;
     window.initializeStickyFooter = initializeStickyFooter;
-    //window.smoothScroll = smoothScroll;
+    //window.fixedBackdrop          = fixedBackdrop;
+    //window.smoothScroll           = smoothScroll;
 
     // Binding resize event
     window.addEventListener( 'resize', resize_throttle, {passive: true}, false );
@@ -451,6 +460,35 @@ const adjustTogglePasswd = () => {
             btnWidth    = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
 
         elm.firstElementChild.style.maxWidth = `${(parentWidth - btnWidth)}px`;
+    });
+};
+
+/*
+ * Fix the position of backdrop under the overlay filter
+ * @public
+ * @param {boolean} isFixed
+ */
+const fixedBackdrop = (isFixed) => {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-onmenu-fixed]'), (elm) => {
+        let nowY       = window.pageYOffset,
+            nowX       = window.pageXOffset,
+            targetRect = elm.getBoundingClientRect(),
+            targetX    = targetRect.left + nowX,
+            targetY    = targetRect.top + nowY,
+            enabled    = /^(true|1)$/i.test(elm.dataset.onmenuFixed);
+        // console.log(isFixed, nowY, targetRect, targetY, enabled);
+        if ( ! enabled ) {
+            return;
+        }
+        if ( isFixed ) {
+            elm.classList.add('fixed-backdrop');
+            elm.style.top  = `${-1 * nowY}px`;
+            elm.style.left = `${-1 * nowX}px`;
+        } else {
+            elm.classList.remove('fixed-backdrop');
+            elm.removeAttribute('style');
+            window.scrollTo(-1 * targetX, -1 * targetY);
+        }
     });
 };
 
@@ -833,6 +871,7 @@ const generateDialog = function( title, content, foot, effect ) {
                         dialogButton.addEventListener('click', () => {
                             dialogCallback();
                             dialog.classList.remove('show');
+                            fixedBackdrop(false);
                         }, false);
                         if ( ! isOutside ) {
                             dialogFooter.append(dialogButton);
@@ -904,6 +943,7 @@ const generateDialog = function( title, content, foot, effect ) {
         backdrop.addEventListener('click', () => {
             if ( dialog.classList.contains('show') ) {
                 dialog.classList.remove('show');
+                fixedBackdrop(false);
             } else {
                 return false;
             }
@@ -941,6 +981,7 @@ const showDialog = ( title, content, foot, effect, reinit ) => {
             }
             // Delay by transition animation interval
             dialog.classList.add('show');
+            fixedBackdrop(true);
         }, 300)
     ).then((timerId) => {
         // Prevent the memory leak due to continue timer by setTimeout
@@ -1277,8 +1318,8 @@ const lazyLoading = (selector) => {
                         elm.removeAttribute( 'data-buffer' );
                         elm.removeAttribute( 'data-loadersize' );
                         elm.parentNode.setAttribute( 'data-loaded', true );
-                    }).catch((err) => {
-                        console.error(err);
+                    }).catch((error) => {
+                        console.error('Error:', error);
                     });
                 }
             }

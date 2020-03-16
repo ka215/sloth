@@ -64,7 +64,7 @@
   <div class="flx-col my2">
     <div class="w-full mb1">
       <form class="m1">
-        <label class="tgl">Toggle navigation menu as demo.
+        <label class="tgl">Toggle navigation menu showing now.
           <input type="checkbox" id="toggle-navi-menu" checked>
           <span class="tgl-btn"></span>
         </label>
@@ -72,7 +72,7 @@
     </div>
     <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;header class="navi-menu">
-  &lt;div class="w-half flx-row">
+  &lt;div class="slide-l">
     &lt;label class="toggle">
       &lt;input type="checkbox">
       &lt;div class="backdrop">&lt;/div>
@@ -87,10 +87,26 @@
           &#x22EE;
       &lt;/div>
     &lt;/label>
-    &lt;a href="#sloth-docs" class="brand">&lt;img src="images/sloth.svg" height="36"> Sloth&lt;/a>
+    &lt;div class="txt-center">
+      &lt;a href="#sloth-docs" class="brand">&lt;img src="images/sloth.svg" height="36"> Sloth&lt;/a>
+    &lt;/div>
   &lt;/div>
-  &lt;div class="w-half flx-row flx-end pr2">
-    &lt;button type="button" class="outline mb0">&lt;i class="fas fa-times">&lt;/i> Close Navi&lt;/button>
+&lt;/header>
+</code></pre>
+    </div>
+    <aside>The moving direction of the slide menu and the position of the toggle switch of this component are able to change to the left or right side on the navigation container.</aside>
+    <div class="w-full mb1">
+      <form class="m1">
+        <label class="tgl">Toggle to navigation menu that has the slide right.
+          <input type="checkbox" id="toggle-navi-menu-right">
+          <span class="tgl-btn"></span>
+        </label>
+      </form>
+    </div>
+    <div class="w-full mb2">
+      <pre class="prettyprint"><code>&lt;header class="navi-menu">
+  &lt;div class="slide-r">
+    &#x22EE;
   &lt;/div>
 &lt;/header>
 </code></pre>
@@ -111,5 +127,48 @@
 </code></pre>
     </div>
     <small class="note">It does not work in browsers like Internet Explorer etc which do not correspond to the CSS variables (<code>var()</code>).</small>
+    <div class="w-full my2">
+      <aside>
+        If you want to fix without scrolling the content under the overlay backdrop when it's shown menu, you should add the <code>data-onmenu-fixed="true"</code> attribute to the elements that prevent scrolling. And furthermore, you must remember to need the sloth extension scripts to do one.<br>
+        For more information, refer to the <a href="javascript:;" data-get-page="exts-backdrop">Fixed Backdrop</a>.
+      </aside>
+    </div>
+  </div>
+  <h4 class="line-right txt-prim">Blockquote</h4>
+  <aside></aside>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
+      <blockquote class="bq-oneliner">
+        <p>The possession of great power necessarily implies great responsibility.</p>
+        <cite>William Lamb</cite>
+      </blockquote>
+      <blockquote class="bq-oneliner inverse">
+        <p>I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.</p>
+        <cite>Maya Angelou</cite>
+      </blockquote>
+      <blockquote class="bq-block">
+        <p>We are what we pretend to be, so we must be careful about what we pretend to be.</p>
+        <cite>Kurl Vonnegut, Jr.</cite>
+      </blockquote>
+      <blockquote class="bq-block inverse">
+        <p>Because a strong man who has known power all his life may lose respect for that power. But a weak man knows the value of strength. And knows compassion.</p>
+        <cite>Steve Rogers</cite>
+      </blockquote>
+    </div>
+    <div class="w-full mb1">
+      <pre class="prettyprint"><code>&lt;blockquote class="bq-oneliner">
+  &lt;p>The possession of great power necessarily implies great responsibility.&lt;/p>
+  &lt;cite>William Lamb&lt;/cite>
+&lt;/blockquote>
+&lt;blockquote class="bq-oneliner inverse">
+  &#x22EE;
+&lt;/blockquote>
+&lt;blockquote class="bq-block">
+  &#x22EE;
+&lt;/blockquote>
+&lt;blockquote class="bq-block inverse">
+  &#x22EE;
+&lt;/blockquote>
+</code></pre>
   </div>
 </section>

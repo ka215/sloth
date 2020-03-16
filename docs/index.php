@@ -1,7 +1,7 @@
 <?php
 define('DOCROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ENV', preg_match( '/\A(127.0.0.|::)[0-9]{1,3}\z/', $_SERVER['SERVER_ADDR'] ) === 1 ? 'dev' : 'prod' );
-define('DEV', false ); // On/Off debug mode
+define('DEV', true ); // On/Off debug mode
 $sloth_version = 'unknown';
 $_file = new SplFileObject(__DIR__ . '/dist/sloth.min.css', 'r');
 $_file->setFlags( SplFileObject::SKIP_EMPTY );
@@ -12,7 +12,8 @@ while ( ! $_file->eof() ) {
         break;
     }
 }
-set_globals( 'page', filter_input( INPUT_POST, 'page' ) ?: 'intr-sloth' );
+$default_page = filter_input( INPUT_GET, 'p' ) ?: 'intr-sloth';
+set_globals( 'page', filter_input( INPUT_POST, 'page' ) ?: $default_page );
 set_globals( 'body_class', filter_input( INPUT_POST, 'body_class' ) ?: 'sloth' );
 set_globals( 'body_atts', filter_input( INPUT_POST, 'body_atts' ) ?: [] );
 set_globals( 'sloth_version', $sloth_version );
@@ -44,12 +45,14 @@ function include_tmpl( $template_name ) {
         include( $full_path );
         //include('./pages/'.$template_name.'.php');
     } else {
-        echo 'Not found the page template file.';
+        printf(
+            '<div class="w-full flx-row flx-center item-center" style="height: calc(100vh - 133px);"><h2 class="muted">%s</h2></div>',
+            'Not found the page template file.'
+        );
     }
 }
 
 /*
-// Load configure
 require_once __DIR__ .'/pages/config.php';
 
 set_globals( 'pages', $pages );

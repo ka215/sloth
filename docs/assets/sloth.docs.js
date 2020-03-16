@@ -14,6 +14,15 @@ window.addEventListener('load', function() {
                     smoothScroll( document.getElementById( evt.target.getAttribute('href').replace('#', '') ) )
                 }
             }, false)
+        } else {
+            elm.addEventListener('click', function(evt){
+                evt.preventDefault()
+                if ( evt.target.href ) {
+                    location.href = evt.target.href
+                } else {
+                    return false
+                }
+            }, false)
         }
     })
 
@@ -66,8 +75,9 @@ window.addEventListener('load', function() {
     })
 
     // For Components of core styles
-    let toggleNaviButton = document.getElementById('toggle-navi-menu')
-    if ( toggleNaviButton ) {
+    let toggleNaviButton = document.getElementById('toggle-navi-menu'),
+        toggleNaviRight  = document.getElementById('toggle-navi-menu-right')
+    if ( toggleNaviButton && toggleNaviRight ) {
         toggleNaviButton.addEventListener('change', function(evt){
             let pageNavi = document.getElementById('docs-navi')
 
@@ -75,6 +85,16 @@ window.addEventListener('load', function() {
                 pageNavi.removeAttribute('hidden')
             } else {
                 pageNavi.setAttribute('hidden', true)
+            }
+        }, false)
+        toggleNaviRight.addEventListener('change', function(evt){
+            let pageNavi = document.getElementById('docs-navi')
+
+            pageNavi.firstElementChild.classList.remove('slide-l', 'slide-r')
+            if ( evt.target.checked ) {
+                pageNavi.firstElementChild.classList.add('slide-r')
+            } else {
+                pageNavi.firstElementChild.classList.add('slide-l')
             }
         }, false)
     }
@@ -94,6 +114,30 @@ window.addEventListener('load', function() {
             }
             document.activeElement.blur()
         }, false)
+    }
+
+    // Toggle Fixed Backdrop
+    let toggleFixedBackdrop = document.getElementById('toggle-fixed-backdrop')
+    if ( toggleFixedBackdrop ) {
+        toggleFixedBackdrop.addEventListener('click', function(evt){
+            let fixedElems = document.querySelectorAll('#docs-navi ~ main')
+
+            fixedElems[0].removeAttribute('style')
+            if ( evt.target.checked ) {
+                fixedElems[0].setAttribute('data-onmenu-fixed', true)
+            } else {
+                fixedElems[0].removeAttribute('data-onmenu-fixed')
+            }
+        }, false)
+    }
+
+    // For Dialog of extensions
+    let isDialogPage = document.getElementById('dialog'),
+        isDemoForm   = document.getElementById('demo-form')
+    if ( isDialogPage || isDemoForm ) {
+        let fixedElems = document.querySelectorAll('#docs-navi ~ main')
+
+        fixedElems[0].setAttribute('data-onmenu-fixed', true)
     }
 
     // For Sticky Footer of extensions

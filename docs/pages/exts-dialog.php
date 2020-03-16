@@ -88,6 +88,7 @@ $ajaxBaseURL = ENV === 'dev' ? 'http://dev2.ka2.org/sloth/docs/' : 'https://ka2.
     </table>
   </aside>
   <div>
+    <small class="note">If there is an element that has the "data-onmenu-fixed" attribute on that page when it has been shown dialog, the <a href="javascript:;" data-get-page="exts-backdrop">Fixed Backdrop</a> work to enable. </small><br>
     <small class="note">At more detail of about dialog window, please see below <a href="javascript:;" data-get-page="exts-demo1">demo</a>.</small>
   </div>
 </section>

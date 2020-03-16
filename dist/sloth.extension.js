@@ -6015,13 +6015,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /*!
 Sloth CSS lightweight framework
-<<<<<<< HEAD
-v1.3.0
-Last Updated: December 11, 2019 (UTC)
-=======
-v1.2.2
-Last Updated: November 18, 2019 (UTC)
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
+v1.4.0
+Last Updated: March 12, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -6164,14 +6159,11 @@ var init = function init() {
         notes = elm.parentNode.querySelectorAll('.note'),
         parent = elm.parentNode,
         offset = 0;
-<<<<<<< HEAD
 
     if (elm.dataset.uploadable) {
       return;
     }
 
-=======
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(notes, function (note) {
       note.remove();
     });
@@ -6207,10 +6199,7 @@ var init = function init() {
     Array.prototype.forEach.call(notes, function (note) {
       elm.parentNode.append(note);
     });
-<<<<<<< HEAD
     elm.setAttribute('data-uploadable', true);
-=======
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
     Array.prototype.forEach.call(parent.children, function (child) {
       if (!child.classList.contains('upload-files') && !child.classList.contains('note')) {
         offset += child.clientWidth + (child.style.marginLeft || 0) + (child.style.marginRight || 0);
@@ -6233,12 +6222,9 @@ var init = function init() {
 
       if (file) {
         reader.readAsDataURL(file);
-<<<<<<< HEAD
       } else {
         preview.style.backgroundImage = 'none';
         preview.classList.remove('active');
-=======
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
       }
     }, false);
   }); // Check whether activate the Sloth Validator
@@ -6295,6 +6281,13 @@ var init = function init() {
           reinit = self.dataset.reinit || true;
       showDialog(title, content, foot, effect, reinit);
     }, false);
+  }); // Prevent scrolling of overlay backdrop when shown menu on navigation menu
+
+  Array.prototype.forEach.call(document.querySelectorAll('.navi-menu .toggle input[type=checkbox]'), function (elm) {
+    elm.addEventListener('change', function (evt) {
+      // Is on menu: evt.target.checked
+      fixedBackdrop(evt.target.checked);
+    }, false);
   }); // Prevent bubbling of click event in the container of lists on navigation menu
 
   Array.prototype.forEach.call(document.querySelectorAll('.navi-menu .toggle .menu'), function (menuContainer) {
@@ -6349,7 +6342,6 @@ var init = function init() {
         }
       });
     }, false);
-<<<<<<< HEAD
   }); // Bind the Table Of Contents
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-toc]'), function (elm) {
@@ -6415,19 +6407,14 @@ var init = function init() {
         }, false);
       });
     }
-=======
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
   }); // Binding functions to global scope
 
   window.showDialog = showDialog;
   window.strLength = strLength;
   window.toggleFooter = toggleFooter;
-<<<<<<< HEAD
-  window.initializeStickyFooter = initializeStickyFooter; //window.smoothScroll = smoothScroll;
+  window.initializeStickyFooter = initializeStickyFooter; //window.fixedBackdrop          = fixedBackdrop;
+  //window.smoothScroll           = smoothScroll;
   // Binding resize event
-=======
-  window.initializeStickyFooter = initializeStickyFooter; // Binding resize event
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
 
   window.addEventListener('resize', resize_throttle, {
     passive: true
@@ -6499,6 +6486,37 @@ var adjustTogglePasswd = function adjustTogglePasswd() {
         tgl_btn = elm.lastElementChild,
         btnWidth = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
     elm.firstElementChild.style.maxWidth = "".concat(parentWidth - btnWidth, "px");
+  });
+};
+/*
+ * Fix the position of backdrop under the overlay filter
+ * @public
+ * @param {boolean} isFixed
+ */
+
+
+var fixedBackdrop = function fixedBackdrop(isFixed) {
+  Array.prototype.forEach.call(document.querySelectorAll('[data-onmenu-fixed]'), function (elm) {
+    var nowY = window.pageYOffset,
+        nowX = window.pageXOffset,
+        targetRect = elm.getBoundingClientRect(),
+        targetX = targetRect.left + nowX,
+        targetY = targetRect.top + nowY,
+        enabled = /^(true|1)$/i.test(elm.dataset.onmenuFixed); // console.log(isFixed, nowY, targetRect, targetY, enabled);
+
+    if (!enabled) {
+      return;
+    }
+
+    if (isFixed) {
+      elm.classList.add('fixed-backdrop');
+      elm.style.top = "".concat(-1 * nowY, "px");
+      elm.style.left = "".concat(-1 * nowX, "px");
+    } else {
+      elm.classList.remove('fixed-backdrop');
+      elm.removeAttribute('style');
+      window.scrollTo(-1 * targetX, -1 * targetY);
+    }
   });
 };
 /*
@@ -6926,6 +6944,7 @@ var generateDialog = function generateDialog(title, content, foot, effect) {
           dialogButton.addEventListener('click', function () {
             dialogCallback();
             dialog.classList.remove('show');
+            fixedBackdrop(false);
           }, false);
 
           if (!isOutside) {
@@ -7004,6 +7023,7 @@ var generateDialog = function generateDialog(title, content, foot, effect) {
     backdrop.addEventListener('click', function () {
       if (dialog.classList.contains('show')) {
         dialog.classList.remove('show');
+        fixedBackdrop(false);
       } else {
         return false;
       }
@@ -7072,6 +7092,7 @@ var showDialog = function showDialog(title, content, foot, effect, reinit) {
 
 
       dialog.classList.add('show');
+      fixedBackdrop(true);
     }, 300);
   }).then(function (timerId) {
     // Prevent the memory leak due to continue timer by setTimeout
@@ -7464,8 +7485,8 @@ var lazyLoading = function lazyLoading(selector) {
                 elm.removeAttribute('data-buffer');
                 elm.removeAttribute('data-loadersize');
                 elm.parentNode.setAttribute('data-loaded', true);
-              }).catch(function (err) {
-                console.error(err);
+              }).catch(function (error) {
+                console.error('Error:', error);
               });
 
             case 7:
@@ -7521,7 +7542,6 @@ var initializeStickyFooter = function initializeStickyFooter() {
   });
 };
 /*
-<<<<<<< HEAD
  * Generate unique id as like hash
  */
 
@@ -7569,8 +7589,6 @@ var smoothScroll = function smoothScroll(target) {
   loop();
 };
 /*
-=======
->>>>>>> d97d92fd49a9b25bc3416be0473dfa37dcfa2445
  * Dispatcher
  */
 

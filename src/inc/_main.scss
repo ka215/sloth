@@ -204,9 +204,20 @@
       background-color: $blue;
       background-color: var(--color-primary, $blue);
       content: '';
-      transition: all 0.2s;
       backface-visibility: hidden;
       transform: scaleX(0);
+      transform-origin: center top;
+      transition: transform 0.2s;
+    }
+
+    &.r2l::before {
+      transform-origin: left top;
+      transition: transform 0.3s;
+    }
+
+    &.l2r::before {
+      transform-origin: right top;
+      transition: transform 0.3s;
     }
 
     &:hover {
@@ -216,6 +227,14 @@
 
       &::before {
         transform: scaleX(1);
+      }
+
+      &.r2l::before {
+        transform-origin: right top;
+      }
+
+      &.l2r::before {
+        transform-origin: left top;
       }
     }
 
@@ -227,7 +246,7 @@
       &::after {
         position: absolute;
         display: inline-block;
-        top: 0.2rem;
+        bottom: 1px;
         left: 0;
         width: 1em;
         height: 1em;
@@ -1010,7 +1029,6 @@
   }
 
   select {
-    appearance: button;
     text-indent: 0.01rem;
     text-overflow: '';
     vertical-align: middle;
@@ -1020,8 +1038,6 @@
       background: $white;
       color: $black;
     }
-
-    &::-ms-expand { display: none; }
 
     &:-moz-focusring {
       color: transparent;
@@ -1082,10 +1098,13 @@
     }
 
     select {
+      appearance: none;
       width: 100%;
       margin-top: 0.3rem;
       font-size: 111.11%;
       clear: both;
+
+      &::-ms-expand { display: none; }
 
       &.value-ok,
       &.value-ng {
@@ -1560,7 +1579,7 @@
     }
   }
 
-  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload) {
+  label:not(#{$not}):not(.floating):not(.checkbox):not(.radio):not(.dropdown):not(.combo-box):not(.tgl-btn):not(.upload):not(.toggle) {
     display: inline-block;
     width: max-content;
     margin: auto 1em auto 0;
