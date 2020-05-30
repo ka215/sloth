@@ -39,6 +39,7 @@ $pages = [
         'stick-footer'    => [ 'label' => 'Sticky Footer', 'icon' => 'fas fa-shoe-prints', 'tmpl' => 'exts-footer' ],
         'toc'             => [ 'label' => 'Table Of Contents', 'icon' => 'fas fa-stream', 'tmpl' => 'exts-toc' ],
         'fixed-backdrop'  => [ 'label' => 'Fixed Backdrop', 'icon' => 'fas fa-hammer', 'tmpl' => 'exts-backdrop' ],
+        'follow-color'    => [ 'label' => 'Follow Color', 'icon' => 'fas fa-brush', 'tmpl' => 'exts-follow' ],
         'demo-form'       => [ 'label' => 'Demo Form', 'icon' => 'far fa-lightbulb', 'tmpl' => 'exts-demo1' ],
     ],
     'category'      => [

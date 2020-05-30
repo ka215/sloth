@@ -3,7 +3,8 @@ define('DOCROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ENV', preg_match( '/\A(127.0.0.|::)[0-9]{1,3}\z/', $_SERVER['SERVER_ADDR'] ) === 1 ? 'dev' : 'prod' );
 define('DEV', true ); // On/Off debug mode
 $sloth_version = 'unknown';
-$_file = new SplFileObject(__DIR__ . '/dist/sloth.min.css', 'r');
+$_assets_dir = __DIR__ . ( @file_exists( __DIR__ . '/dist/sloth.min.css' ) ? '/dist/' : '/assets/' );
+$_file = new SplFileObject( $_assets_dir . 'sloth.min.css', 'r' );
 $_file->setFlags( SplFileObject::SKIP_EMPTY );
 while ( ! $_file->eof() ) {
     $_row = $_file->fgets();
@@ -17,18 +18,27 @@ set_globals( 'page', filter_input( INPUT_POST, 'page' ) ?: $default_page );
 set_globals( 'body_class', filter_input( INPUT_POST, 'body_class' ) ?: 'sloth' );
 set_globals( 'body_atts', filter_input( INPUT_POST, 'body_atts' ) ?: [] );
 set_globals( 'sloth_version', $sloth_version );
-set_globals( 'compressed_css_size', file_exists( __DIR__ . '/dist/sloth.min.compress.css.gz' ) ? round( filesize( __DIR__ . '/dist/sloth.min.compress.css.gz' ) / 1024, 2 ) : 'unknown' );
-set_globals( 'compressed_js_size', file_exists( __DIR__ . '/dist/sloth.extension.min.compress.js.gz' ) ? round( filesize( __DIR__ . '/dist/sloth.extension.min.compress.js.gz' ) / 1024, 2 ) : 'unknown' );
+set_globals( 'compressed_css_size', file_exists( $_assets_dir . 'sloth.min.compress.css.gz' ) ? round( filesize( $_assets_dir . 'sloth.min.compress.css.gz' ) / 1024, 2 ) : 'unknown' );
+set_globals( 'compressed_js_size', file_exists( $_assets_dir . 'sloth.extension.min.compress.js.gz' ) ? round( filesize( $_assets_dir . 'sloth.extension.min.compress.js.gz' ) / 1024, 2 ) : 'unknown' );
 
-function optimize_uri( $resource_absolute_path=null ) {
-    //$docroot = $_SERVER['DOCUMENT_ROOT'];
-    //$current = '/sloth/';
-    //$full_path = $docroot . $current . $resource_absolute_path;
-    $full_path = __DIR__ .'/'. $resource_absolute_path;
-    if ( ! empty( $resource_absolute_path ) && file_exists( $full_path ) ) {
-        $resource_absolute_path .= '?' . filemtime( $full_path );
+function optimize_uri( $resource_filename = null ) {
+    if ( empty( $resource_filename ) ) {
+        return '';
     }
-    return $resource_absolute_path;
+    $_dirname = DEV ? '../dist' : '../*/assets';
+    $_match_path = glob( "{$_dirname}/{$resource_filename}", GLOB_MARK );
+    if ( empty( $_match_path ) ) {
+        $_match_path = glob( "../*/assets/{$resource_filename}", GLOB_MARK );
+        if ( empty( $_match_path ) ) {
+            return $resource_filename;
+        }
+    }
+    $_full_path = __DIR__ .'/'. $_match_path[0];
+    if ( @file_exists( $_full_path ) ) {
+        return $_match_path[0] .'?'. filemtime( $_full_path );
+    } else {
+        return $resource_filename;
+    }
 }
 function set_globals( $key, $value ) {
     $GLOBALS[$key] = $value;
@@ -74,7 +84,7 @@ if ( ! empty( get_globals( 'body_atts' ) ) ) {
 <!DOCTYPE html>
 <html lang="en">
 <?php include_tmpl( 'head' ); ?>
-<body id="sloth-docs" class="<?= get_globals( 'body_class' ); ?>" <?= $body_atts; ?>>
+<body id="sloth-docs" class="<?= get_globals( 'body_class' ); ?>" <?= $body_atts; ?> data-standby="shown">
 <?php include_tmpl( 'navi_menu' ); ?>
 <main<?php if ( isset( $_POST['main'] ) && $_POST['main'] === 'overflow' ) : ?> class="lazy-load of-xs"<?php endif; ?>>
 <?php include_tmpl( $page ); ?>

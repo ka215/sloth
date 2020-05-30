@@ -16,7 +16,7 @@ The Sloth is lightweight as it saves the effort to rely on the legacy browser. A
 
 The Sloth supports SCSS and postCSS, and you can customize your build with the included gulp file. Then the Sloth is providing at only distributed css file without dependenting JavaScript.
 
-**19.5kB gzipped** at the latest version.
+**19.8kB gzipped** at the latest version.
 
 Also since version 1.0.3, it has been added the sloth extensions script that enhances your mark-up the components on the HTML. By using this extension, you get usable the advanced validation form or the popping dialog window, etc.
 

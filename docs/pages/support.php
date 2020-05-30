@@ -1,4 +1,14 @@
 <?php
+if ( ! function_exists( "array_key_last" ) ) {
+    // For PHP <= 7.3.0
+    function array_key_last( $array ) {
+        if ( ! is_array( $array ) || empty( $array ) ) {
+            return NULL;
+        }
+        
+        return array_keys( $array )[count( $array ) - 1];
+    }
+}
 $support_browsers = [
     'PC' => [
         'cp' => [ 'label' => 'Chrome', 'icon_src' => 'assets/icons/chrome.svg' ],
@@ -44,6 +54,7 @@ $status = [
         'Sticky Footer'   => [ 'cp' => 1, 'ff' => 1, 'sp' => 1, 'eg' => 1, 'op' => 1, 'ie' => 3, 'cm' => 1, 'sm' => 1 ],
         'Table Of Contents' => [ 'cp' => 1, 'ff' => 1, 'sp' => 1, 'eg' => 1, 'op' => 1, 'ie' => 3, 'cm' => 1, 'sm' => 1 ],
         'Fixed Backdrop'  => [ 'cp' => 1, 'ff' => 1, 'sp' => 1, 'eg' => 1, 'op' => 1, 'ie' => 3, 'cm' => 1, 'sm' => 1 ],
+        'Follow Color'    => [ 'cp' => 1, 'ff' => 1, 'sp' => 1, 'eg' => 1, 'op' => 1, 'ie' => 1, 'cm' => 1, 'sm' => 1 ],
         //'' => [ 'cp' => 1, 'ff' => 1, 'sp' => 1, 'eg' => 1, 'op' => 1, 'ie' => 1, 'cm' => 1, 'sm' => 1 ],
     ],
 ];

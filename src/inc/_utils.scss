@@ -1,6 +1,11 @@
 [hidden],
 .hidden { display: none !important; }
 
+[data-standby=shown] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 .ma { margin: auto !important; }
 .m0 { margin: 0 !important; }
 .mh { margin: 0.5rem !important; }
@@ -143,17 +148,21 @@
 }
 
 .w-half,
-.w-1-2 {
+.w-1-2,
+.w-2-4,
+.w-3-6 {
   width: 50% !important;
   max-width: 50% !important;
 }
 
-.w-1-3 {
+.w-1-3,
+.w-2-6 {
   width: calc(100% / 3) !important;
   max-width: calc(100% / 3) !important;
 }
 
-.w-2-3 {
+.w-2-3,
+.w-4-6 {
   width: calc(100% / 3 * 2) !important;
   max-width: calc(100% / 3 * 2) !important;
 }
@@ -211,6 +220,16 @@
 .fnt-lg { font-size: 120% !important; }
 .fnt-sm { font-size: 80% !important; }
 .fnt-xs { font-size: 64% !important; }
+
+.fw100 { font-weight: 100; }
+.fw200 { font-weight: 200; }
+.fw300 { font-weight: 300; }
+.fw400 { font-weight: 400; }
+.fw500 { font-weight: 500; }
+.fw600 { font-weight: 600; }
+.fw700 { font-weight: 700; }
+.fw800 { font-weight: 800; }
+.fw900 { font-weight: 900; }
 
 .upper { text-transform: uppercase !important; }
 .lower { text-transform: lowercase !important; }
@@ -280,6 +299,17 @@
   border: solid 1px $yellow;
   border-color: var(--color-quinary, $yellow);
 }
+
+.brd-h,
+.brd-x { border-width: 1px 0 1px 0; }
+
+.brd-v,
+.brd-y { border-width: 0 1px 0 1px; }
+
+.brd-t { border-width: 1px 0 0 0; }
+.brd-r { border-width: 0 1px 0 0; }
+.brd-b { border-width: 0 0 1px 0; }
+.brd-l { border-width: 0 0 0 1px; }
 
 .bg-white { background-color: $white !important; }
 .bg-whitesmoke { background-color: $white-smoke !important; }
@@ -387,6 +417,7 @@ table {
 .break-word { word-break: break-all; }
 
 .lh-1 { line-height: 1 !important; }
+.lh-1h { line-height: 1.5 !important; }
 .lh-2 { line-height: 2 !important; }
 
 [data-lh] {
@@ -498,6 +529,21 @@ table {
 .idt-4 { text-indent: 4em; }
 .idt-5 { text-indent: 5em; }
 .idt-6 { text-indent: 6em; }
+
+.clf,
+.clearfix {
+  position: relative !important;
+  display: block !important;
+  width: 100%;
+  height: 0;
+  margin-bottom: 0;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .note {

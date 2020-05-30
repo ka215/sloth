@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.4.0
-Last Updated: March 16, 2020 (UTC)
+v1.4.1
+Last Updated: May 30, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -9,6 +9,16 @@ const init = function() {
     if ( ! document.body.classList.contains('sloth') ) {
         return false;
     }
+
+    // Check data-standby attributes
+    Array.prototype.forEach.call(document.querySelectorAll('[data-standby]'), (elm) => {
+        let standbyEvent = elm.dataset.standby,
+            timeoutId;
+        
+        if ( 'shown' === standbyEvent ) {
+            timeoutId = window.setTimeout( () => { elm.removeAttribute('data-standby'); window.clearTimeout(timeoutId); }, 500 );
+        }
+    });
 
     // Apply size of shorthand to element
     Array.prototype.forEach.call(document.querySelectorAll('[data-size]'), (elm) => {
@@ -226,11 +236,22 @@ const init = function() {
                         // For suppressing multiplex submission
                         e.setAttribute('disabled', true);
                     });
+                    let response = true;
                     if ( callback ) {
-                        Function.call(this, `return ${callback}`)();
+                        if ( ! /\(.*\)$/g.test(callback) && ! callback.endsWith(')') ) {
+                            callback += '()';
+                        }
+                        response = Function.call(this, `return ${callback}`)();
+                        if ( response == undefined ) {
+                            response = true;
+                        }
                     }
-                    self.method = self.getAttribute('method') || 'post';
-                    self.submit();
+                    if ( callback && ! response ) {
+                        return false;
+                    } else {
+                        self.method = self.getAttribute('method') || 'post';
+                        self.submit();
+                    }
                 } else {
                     return false;
                 }
@@ -384,6 +405,69 @@ const init = function() {
                 }, false);
             });
         }
+    });
+
+    // Bind the Follow Color
+    Array.prototype.forEach.call(document.querySelectorAll('[data-follow-color]'), (elm) => {
+        let input  = elm.querySelector('input'),
+            followColor = ( elm ) => {
+                let color    = elm.dataset.followColor,
+                    classes  = elm.classList,
+                    active   = elm.querySelector('input') && elm.querySelector('input').checked ? true : false,
+                    followed = false;
+                
+                if ( 'inherit' === color ) {
+                    classes.forEach( (_val, _key) => {
+                        if ( ! followed ) {
+                            switch(true) {
+                                case /^clr-.*$/i.test(_val):
+                                    if ( active ) {
+                                        elm.classList.add(_val.replace('clr','txt'));
+                                    } else {
+                                        elm.classList.remove(_val.replace('clr','txt'));
+                                    }
+                                    followed = true;
+                                    break;
+                                case /^muted/i.test(_val):
+                                    followed = true;
+                                    break;
+                                case /^txt-.*$/i.test(_val):
+                                default:
+                                    break;
+                            }
+                        }
+                    });
+                    if ( ! followed ) {
+                        if ( active && ! elm.classList.contains('txt-prim') ) {
+                            elm.classList.add('txt-prim');
+                        } else {
+                            elm.classList.remove('txt-prim');
+                        }
+                    }
+                } else
+                if ( '' !== color ) {
+                    if ( active && elm.style.color !== color ) {
+                        elm.style.color = color;
+                    } else {
+                        elm.style.color = 'unset';
+                    }
+                }
+            };// end: followColor()
+        
+        if ( input == undefined ) {
+            return;
+        }
+        input.addEventListener('change', (evt) => {
+            if ( 'radio' === evt.target.type && evt.target.name != undefined && evt.target.name != '' ) {
+                Array.prototype.forEach.call(document.querySelectorAll(`input[name=${evt.target.name}]`), (radioElm) => {
+                    followColor(radioElm.closest('label'));
+                });
+            } else {
+                followColor(evt.target.closest('label'));
+            }
+        }, false);
+        
+        followColor(elm);
     });
 
     // Binding functions to global scope

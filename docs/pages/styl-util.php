@@ -5,7 +5,8 @@
   </aside>
   <h4 class="line-right txt-prim">Margin</h4>
   <aside>
-    Allowed margin values ​​are 0 to 2 and units are "rem". Also, there are provided the <code>.ma</code> as auto all margin, the <code>.mxa</code> as horizontal auto margin, the <code>.mya</code> as vertical auto margin.
+    Allowed margin values ​​are 0 to 2 and units are "rem". Also, there are provided the <code>.ma</code> as auto all margin, the <code>.mxa</code> as horizontal auto margin, the <code>.mya</code> as vertical auto margin.<br>
+    Since version 1.4.0, there added classes for margin with half of 1 rem as <code>.mh</code>, <code>.mxh</code>, <code>.myh</code>, <code>.mth</code> etc.
   </aside>
   <div class="flx-col my2">
     <div class="w-full flx-col mb2">
@@ -33,7 +34,10 @@
     </div>
   </div>
   <h4 class="line-right txt-prim">Padding</h4>
-  <aside>Allowed padding values ​​are 0 to 2 and units are "rem".</aside>
+  <aside>
+    Allowed padding values ​​are 0 to 2 and units are "rem".<br>
+    Since version 1.4.0, there added classes for padding with half of 1 rem as <code>.ph</code>, <code>.pxh</code>, <code>.pyh</code>, <code>.pth</code> etc.
+  </aside>
   <div class="flx-col my2">
     <div class="w-full mb2">
       <div class="brd bg-lightgray p0"><div class="bg-white">.p0</div></div>
@@ -64,6 +68,9 @@
   <h4 class="line-right txt-prim">Height</h4>
   <aside>This is able to specify block height as like the height 100% is <code>.h-full</code> and 50% is <code>.h-half</code>. It has only two classes about height as utility class.</aside>
   <h4 class="line-right txt-prim">Border</h4>
+  <aside>
+    Since version 1.4.0, a class that specifies the borders on all sides of the element block has been added.<br>
+  </aside>
   <div class="flx-row my2">
     <div class="w-half">
       <div class="brd mb1">.brd</div>
@@ -72,6 +79,13 @@
       <div class="brd-tert mb1">.brd-tert</div>
       <div class="brd-quat mb1">.brd-quat</div>
       <div class="brd-quin mb1">.brd-quin</div>
+      <div class="brd brd-h mb1">.brd.brd-h or .brd.brd-x</div>
+      <div class="brd brd-v mb1">.brd.brd-v or .brd.brd-y</div>
+      <div class="brd brd-t mb1">.brd.brd-t</div>
+      <div class="brd brd-r mb1">.brd.brd-r</div>
+      <div class="brd brd-b mb1">.brd.brd-b</div>
+      <div class="brd brd-l mb1">.brd.brd-l</div>
+      <div class="brd-prim brd-x mb1">.brd-prim.brd-x</div>
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;div class="brd">.brd&lt;/div>
@@ -80,6 +94,14 @@
 &lt;div class="brd-tert">.brd-tert&lt;/div>
 &lt;div class="brd-quat">.brd-quat&lt;/div>
 &lt;div class="brd-quin">.brd-quin&lt;/div>
+&mdash;&mdash;
+&lt;div class="brd brd-h">.brd.brd-h or .brd.brd-x&lt;/div>
+&lt;div class="brd brd-v">.brd.brd-v or .brd.brd-y&lt;/div>
+&lt;div class="brd brd-t">.brd.brd-t&lt;/div>
+&lt;div class="brd brd-r">.brd.brd-r&lt;/div>
+&lt;div class="brd brd-b">.brd.brd-b&lt;/div>
+&lt;div class="brd brd-l">.brd.brd-l&lt;/div>
+&lt;div class="brd-prim brd-x">.brd-prim.brd-x&lt;/div>
 </code></pre>
     </div>
   </div>
@@ -330,6 +352,35 @@
 </code></pre>
     </div>
   </div>
+  <h5 class="muted">Font weight</h5>
+  <aside>
+    Basically, a normal font has a weight of <code>400</code> and a bold font has a weight of <code>700</code>. Other weights are applied only when the variable font in use corresponds to the weight of the specified value.
+  </aside>
+  <div class="flx-row my2">
+    <div class="w-half flx-col mb1">
+      <span class="fw100">Font weight: 100</span>
+      <span class="fw200">Font weight: 200</span>
+      <span class="fw300">Font weight: 300</span>
+      <span class="fw400">Font weight: 400</span>
+      <span class="fw500">Font weight: 500</span>
+      <span class="fw600">Font weight: 600</span>
+      <span class="fw700">Font weight: 700</span>
+      <span class="fw800">Font weight: 800</span>
+      <span class="fw900">Font weight: 900</span>
+    </div>
+    <div class="w-half mb1">
+      <pre class="prettyprint"><code>&lt;span class="fw100">Font weight: 100&lt;/span>
+&lt;span class="fw200">Font weight: 200&lt;/span>
+&lt;span class="fw300">Font weight: 300&lt;/span>
+&lt;span class="fw400">Font weight: 400&lt;/span>
+&lt;span class="fw500">Font weight: 500&lt;/span>
+&lt;span class="fw600">Font weight: 600&lt;/span>
+&lt;span class="fw700">Font weight: 700&lt;/span>
+&lt;span class="fw800">Font weight: 800&lt;/span>
+&lt;span class="fw900">Font weight: 900&lt;/span>
+</code></pre>
+    </div>
+  </div>
   <h5 class="muted">Line-height</h5>
   <div class="flx-row my2">
     <div class="w-half">
@@ -339,6 +390,9 @@
       <p class="lh-2">
         The ".lh-2" class is same as "line-height: 2". That is the best size for the context that contains the ruby.
       </p>
+      <p class="lh-1h">
+        The ".lh-1h" class has been added since version 1.4.1. "Line-height: 1.5" applies to this class.
+      </p>
     </div>
     <div class="w-half">
       <pre class="prettyprint"><code>&lt;p class="lh-1">
@@ -346,6 +400,9 @@
 &lt;/p>
 &lt;p class="lh-2">
   The ".lh-2" class is...
+&lt;/p>
+&lt;p class="lh-1h">
+  The ".lh-1h" class has been...
 &lt;/p>
 </code></pre>
     </div>
@@ -431,7 +488,7 @@
       <p class="idt-5">The text is indented by 5em.</p>
       <p class="idt-6">The text is indented by 6em.</p>
     </div>
-    <div class="flx-full mb2">
+    <div class="w-full mb2">
       <pre class="prettyprint"><code>&lt;p>This text is not indented.&lt;/p>
 &lt;p class="idt-1">The text is indented by 1em.&lt;/p>
 &lt;p class="idt-2">The text is indented by 2em.&lt;/p>
@@ -439,6 +496,30 @@
 &lt;p class="idt-4">The text is indented by 4em.&lt;/p>
 &lt;p class="idt-5">The text is indented by 5em.&lt;/p>
 &lt;p class="idt-6">The text is indented by 6em.&lt;/p>
+</code></pre>
+    </div>
+  </div>
+  <h4 class="line-right txt-prim">Clearfix</h4>
+  <aside>
+    This is a class that can be used when you want to cancel the floating of the element or when you want to force a line break between inline elements.<br>
+    It can be used with either the short class name <code>.clf</code> or <code>.clearfix</code>.
+  </aside>
+  <div class="flx-row my2">
+    <div class="w-half mb2">
+      <span>Statement A</span>
+      <span>Statement B</span>
+      <span class="clf"></span>
+      <span>Statement C</span>
+      <span>Statement D</span>
+      <span>Statement E; there is an example of a statement that follows such that.</span>
+    </div>
+    <div class="w-half mb2">
+      <pre class="prettyprint"><code>&lt;span>Statement A&lt;/span>
+&lt;span>Statement B&lt;/span>
+&lt;span class="clf">&lt;/span>
+&lt;span>Statement C&lt;/span>
+&lt;span>Statement D&lt;/span>
+&lt;span>Statement E; there is...&lt;/span>
 </code></pre>
     </div>
   </div>

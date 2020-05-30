@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.4.0
-Last Updated: March 16, 2020 (UTC)
+v1.4.1
+Last Updated: May 30, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -1657,6 +1657,18 @@ textarea {
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
 }
 
+.sloth:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
+.sloth:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
 .sloth:not(.nons) .floating input:not(:placeholder-shown) ~ .label,
 .sloth *:not(.nons) .floating input:not(:placeholder-shown) ~ .label {
   transform: translateY(-2.2rem) scale(0.75);
@@ -1710,6 +1722,18 @@ textarea {
 .sloth *:not(.nons) .floating textarea:hover {
   background: rgba(123, 169, 214, 0.1);
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
+}
+
+.sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
+.sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth:not(.nons) .floating textarea:not(:placeholder-shown) ~ label,
@@ -2033,18 +2057,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
   background: none;
 }
 
@@ -3330,6 +3343,7 @@ textarea {
   position: relative;
   margin-right: 0;
   margin-bottom: 0.3rem;
+  margin-left: 0;
   vertical-align: middle;
 }
 
@@ -4534,8 +4548,12 @@ textarea {
   border-top: solid 1px rgba(211, 211, 211, 0.87);
   background-color: inherit;
   line-height: 1;
-  cursor: row-resize;
   transition: all 0.2s linear;
+}
+
+.sloth:not(.nons) .sticky-footer.pullup,
+.sloth *:not(.nons) .sticky-footer.pullup {
+  cursor: row-resize;
 }
 
 .sloth:not(.nons) .sticky-footer.pullup .toggle-switch,
@@ -4670,6 +4688,11 @@ textarea {
 [hidden],
 .hidden {
   display: none !important;
+}
+
+[data-standby=shown] {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .ma {
@@ -4933,17 +4956,21 @@ textarea {
 }
 
 .w-half,
-.w-1-2 {
+.w-1-2,
+.w-2-4,
+.w-3-6 {
   width: 50% !important;
   max-width: 50% !important;
 }
 
-.w-1-3 {
+.w-1-3,
+.w-2-6 {
   width: calc(100% / 3) !important;
   max-width: calc(100% / 3) !important;
 }
 
-.w-2-3 {
+.w-2-3,
+.w-4-6 {
   width: calc(100% / 3 * 2) !important;
   max-width: calc(100% / 3 * 2) !important;
 }
@@ -5019,6 +5046,42 @@ textarea {
 
 .fnt-xs {
   font-size: 64% !important;
+}
+
+.fw100 {
+  font-weight: 100;
+}
+
+.fw200 {
+  font-weight: 200;
+}
+
+.fw300 {
+  font-weight: 300;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.fw800 {
+  font-weight: 800;
+}
+
+.fw900 {
+  font-weight: 900;
 }
 
 .upper {
@@ -5142,6 +5205,32 @@ textarea {
 .brd-quin {
   border: solid 1px #e9bc00;
   border-color: var(--color-quinary, #e9bc00);
+}
+
+.brd-h,
+.brd-x {
+  border-width: 1px 0 1px 0;
+}
+
+.brd-v,
+.brd-y {
+  border-width: 0 1px 0 1px;
+}
+
+.brd-t {
+  border-width: 1px 0 0 0;
+}
+
+.brd-r {
+  border-width: 0 1px 0 0;
+}
+
+.brd-b {
+  border-width: 0 0 1px 0;
+}
+
+.brd-l {
+  border-width: 0 0 0 1px;
 }
 
 .bg-white {
@@ -5307,6 +5396,10 @@ table.cell-right td {
   line-height: 1 !important;
 }
 
+.lh-1h {
+  line-height: 1.5 !important;
+}
+
 .lh-2 {
   line-height: 2 !important;
 }
@@ -5468,6 +5561,22 @@ table.cell-right td {
 
 .idt-6 {
   text-indent: 6em;
+}
+
+.clf,
+.clearfix {
+  display: block !important;
+  position: relative !important;
+  width: 100%;
+  height: 0;
+  margin-bottom: 0;
+}
+
+.clf::after,
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: '';
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
