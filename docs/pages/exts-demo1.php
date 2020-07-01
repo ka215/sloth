@@ -200,7 +200,7 @@ $ajaxBaseURL = ENV === 'dev' ? './' : 'https://ka2.org/sloth/';
     </div>
     <div class="inline mb1" data-switch-class="sm:flx-center">
       <label data-size="w:10rem" data-switch-class="sm:hidden">Agreement</label>
-      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'<?= $ajaxBaseURL ?>ajax.php?p=terms'}" rel="external">the terms of service</a>.
+      <label class="tgl flat" for="cb-1">I agree to <a href="javascript:;" data-toggle="dialog" data-title="Terms Of Service" data-content="{remote:'get',url:'<?= $ajaxBaseURL ?>ajax.php?p=terms'}" data-dialog-size="lg">the terms of service <i class="far fa-clone"></i></a>.
         <input type="checkbox" id="cb-1" name="agreement" value="1" data-dispname="Agreement" required>
         <span class="tgl-btn"></span>
       </label>

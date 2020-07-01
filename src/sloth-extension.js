@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.4.1
-Last Updated: May 30, 2020 (UTC)
+v1.4.2
+Last Updated: July 1, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -14,7 +14,7 @@ const init = function() {
     Array.prototype.forEach.call(document.querySelectorAll('[data-standby]'), (elm) => {
         let standbyEvent = elm.dataset.standby,
             timeoutId;
-        
+
         if ( 'shown' === standbyEvent ) {
             timeoutId = window.setTimeout( () => { elm.removeAttribute('data-standby'); window.clearTimeout(timeoutId); }, 500 );
         }
@@ -107,15 +107,6 @@ const init = function() {
         }
     });
 
-    // Add a string length ruler element
-    if ( ! document.getElementById('sloth-ruler') ) {
-        let ruler = document.createElement('div');
-
-        ruler.setAttribute('id', 'sloth-ruler');
-
-        document.body.append(ruler);
-    }
-
     // Bind the handler of onChange event to dropdown
     Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
         elm.addEventListener('change', (evt) => {
@@ -177,7 +168,7 @@ const init = function() {
 
                 dupNode.removeAttribute('class');
                 dupNode.classList.add('expand-image');
-                showDialog(filename.value, dupNode, null, 1, false);
+                showDialog(filename.value, dupNode, null, 1, null, false);
             }
         }, false);
 
@@ -276,9 +267,10 @@ const init = function() {
                 content = self.dataset.content || null,//undefined,
                 foot    = self.dataset.foot || null,//true,
                 effect  = self.dataset.effect || (document.body.dataset.dialogEffect || 1),
+                size    = self.dataset.dialogSize || null,
                 reinit  = self.dataset.reinit || true;
 
-            showDialog(title, content, foot, effect, reinit);
+            showDialog(title, content, foot, effect, size, reinit);
         }, false);
     });
 
@@ -415,9 +407,9 @@ const init = function() {
                     classes  = elm.classList,
                     active   = elm.querySelector('input') && elm.querySelector('input').checked ? true : false,
                     followed = false;
-                
+
                 if ( 'inherit' === color ) {
-                    classes.forEach( (_val, _key) => {
+                    classes.forEach( (_val) => {
                         if ( ! followed ) {
                             switch(true) {
                                 case /^clr-.*$/i.test(_val):
@@ -453,7 +445,7 @@ const init = function() {
                     }
                 }
             };// end: followColor()
-        
+
         if ( input == undefined ) {
             return;
         }
@@ -466,7 +458,7 @@ const init = function() {
                 followColor(evt.target.closest('label'));
             }
         }, false);
-        
+
         followColor(elm);
     });
 
@@ -807,8 +799,9 @@ testarr.forEach((v) => {
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
+ * @param {?string} size
  */
-const generateDialog = function( title, content, foot, effect ) {
+const generateDialog = function( title, content, foot, effect, size ) {
     return new Promise((resolve) => {
         let dialogs = document.getElementsByClassName('sloth-notify'),
             backdrops = document.getElementsByClassName('dialog-backdrop');
@@ -997,6 +990,7 @@ const generateDialog = function( title, content, foot, effect ) {
             },
             observer = new MutationObserver(callback);
 
+        // Set class of dialog transition effect
         switch(true) {
             case /^(2|slide-?in-right)$/i.test( effect ):
                 effect = 'effect-2';
@@ -1015,10 +1009,32 @@ const generateDialog = function( title, content, foot, effect ) {
                 break;
         }
 
+        // Set class of dialog size
+        switch(true) {
+            case /^(xl|xlarge)$/i.test( size ):
+                size = 'size-xl';
+                break;
+            case /^(lg|large)$/i.test( size ):
+                size = 'size-lg';
+                break;
+            case /^(md|medium)$/i.test( size ):
+                size = 'size-md';
+                break;
+            case /^(sm|small)$/i.test( size ):
+                size = 'size-sm';
+                break;
+            default:
+                size = '';
+                break;
+        }
+
         //observer.observe(dialog, { attributes: true, attributeOldValue: true, childList: true, subtree: true });
         observer.observe(dialog, { childList: true, subtree: true });
 
         dialog.classList.add('sloth-notify', effect);
+        if ( size !== '' ) {
+            dialog.classList.add(size);
+        }
         container.classList.add('dialog-content');
         backdrop.classList.add('dialog-backdrop');
         dialog.append(container);
@@ -1042,8 +1058,9 @@ const generateDialog = function( title, content, foot, effect ) {
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
+ * @param {?string} size
  */
-const slothNotify = async ( title, content, foot, effect ) => await generateDialog( title, content, foot, effect );
+const slothNotify = async ( title, content, foot, effect, size ) => await generateDialog( title, content, foot, effect, size );
 
 window.slothStackTimer = [];
 /*
@@ -1053,10 +1070,11 @@ window.slothStackTimer = [];
  * @param {?string|object} content
  * @param {?boolean|object} foot
  * @param {?string} effect
+ * @param {?string} size
  * @param {?boolean} reinit - after shown dialog
  */
-const showDialog = ( title, content, foot, effect, reinit ) => {
-    slothNotify(title, content, foot, effect).then((dialog) => setTimeout(() => {
+const showDialog = ( title, content, foot, effect, size, reinit ) => {
+    slothNotify(title, content, foot, effect, size).then((dialog) => setTimeout(() => {
 //console.log(dialog);
             // Re-init this extension scripts
             if ( reinit == undefined || reinit === true ) {
@@ -1081,18 +1099,32 @@ const showDialog = ( title, content, foot, effect, reinit ) => {
  * Measure the length of the specified string in pixel values
  * @public
  * @param {string} str
- * @return {number} length
+ * @param {?boolean} width - defaults to true
+ * @param {?string} fs - base font size; defaults to "1rem"
+ * @return {number|object} - return number if width is true
  */
-const strLength = (str) => {
-    //let ruler  = document.getElementsByClassName('sloth-ruler').item(0),
-    let ruler  = document.getElementById('sloth-ruler'),
-        length = 0;
+const strLength = (str, width=true, fs='1rem') => {
+    let size = { width: 0, height: 0 },
+        ruler;
 
-    if ( ruler ) {
-        ruler.textContent = str.toString();
-        length = ruler.clientWidth;
+    // Add a string length ruler element
+    if ( ! document.getElementById('sloth-ruler') ) {
+        ruler = document.createElement('span');
+
+        ruler.setAttribute('id', 'sloth-ruler');
+
+        document.body.append(ruler);
+    } else {
+        ruler = document.getElementById('sloth-ruler');
     }
-    return length;
+
+    ruler.style.fontSize = fs;
+    ruler.textContent = str.toString();
+    size.width  = ruler.clientWidth;
+    size.height = ruler.clientHeight;
+    ruler.parentElement.removeChild(ruler);
+
+    return width ? size.width : size;
 };
 
 /*

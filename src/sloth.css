@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
 Sloth CSS lightweight framework
-v1.4.1
-Last Updated: May 30, 2020 (UTC)
+v1.4.2
+Last Updated: July 1, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 /* like spectrum blue */
@@ -1657,18 +1657,6 @@ textarea {
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
 }
 
-.sloth:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label {
-  transform: translateY(-2.2rem) scale(0.75);
-  color: #4183c4;
-  color: var(--color-primary, #4183c4);
-}
-
-.sloth:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label {
-  transform: translateY(-2.2rem) scale(0.75);
-  color: #4183c4;
-  color: var(--color-primary, #4183c4);
-}
-
 .sloth:not(.nons) .floating input:not(:placeholder-shown) ~ .label,
 .sloth *:not(.nons) .floating input:not(:placeholder-shown) ~ .label {
   transform: translateY(-2.2rem) scale(0.75);
@@ -1722,18 +1710,6 @@ textarea {
 .sloth *:not(.nons) .floating textarea:hover {
   background: rgba(123, 169, 214, 0.1);
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
-}
-
-.sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label {
-  transform: translateY(-2.2rem) scale(0.75);
-  color: #4183c4;
-  color: var(--color-primary, #4183c4);
-}
-
-.sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label {
-  transform: translateY(-2.2rem) scale(0.75);
-  color: #4183c4;
-  color: var(--color-primary, #4183c4);
 }
 
 .sloth:not(.nons) .floating textarea:not(:placeholder-shown) ~ label,
@@ -1861,7 +1837,7 @@ textarea {
 .sloth *:not(.nons) .dropdown.caret::after {
   z-index: 1;
   position: absolute;
-  right: 0.3em;
+  right: 1.3em;
   bottom: 0.3em;
   padding-bottom: 0.3em;
   transform: rotate(90deg);
@@ -1909,6 +1885,7 @@ textarea {
      -moz-appearance: none;
           appearance: none;
   width: 100%;
+  max-width: 100%;
   margin-top: 0.3rem;
   clear: both;
   font-size: 111.11%;
@@ -1923,6 +1900,11 @@ textarea {
 .sloth *:not(.nons) .dropdown select.value-ok,
 .sloth *:not(.nons) .dropdown select.value-ng {
   background-image: none !important;
+}
+
+.sloth:not(.nons) .dropdown.caret select,
+.sloth *:not(.nons) .dropdown.caret select {
+  width: calc(100% - 1rem);
 }
 
 .sloth:not(.nons) .combo-box:not(.nons),
@@ -2057,7 +2039,18 @@ textarea {
   box-sizing: border-box;
 }
 
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
+.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
   background: none;
 }
 
@@ -4221,20 +4214,47 @@ textarea {
   visibility: hidden;
   z-index: 1201;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  min-width: 320px;
-  max-width: 630px;
-  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 65vw;
+  /* 630px; */
+  min-width: 40vw;
+  max-width: 90vw;
+  /* 320px; */
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   max-height: 80vh;
-  transform: translateX(-50%) translateY(-50%);
+  margin: auto;
+  transform: none;
           backface-visibility: hidden;
   /* Effect 1: Fade in and scale up (default effect) */
   /* Effect 2: Slide from the right */
   /* Effect 3: Slide from the bottom */
   /* Effect 4: Slide and stick to top */
   /* Effect 5: Fade in and shrink to full width wide */
+}
+
+.sloth:not(.nons) .sloth-notify.size-xl,
+.sloth *:not(.nons) .sloth-notify.size-xl {
+  width: 90vw;
+}
+
+.sloth:not(.nons) .sloth-notify.size-lg,
+.sloth *:not(.nons) .sloth-notify.size-lg {
+  width: 80vw;
+}
+
+.sloth:not(.nons) .sloth-notify.size-md,
+.sloth *:not(.nons) .sloth-notify.size-md {
+  width: 50vw;
+}
+
+.sloth:not(.nons) .sloth-notify.size-sm,
+.sloth *:not(.nons) .sloth-notify.size-sm {
+  width: 40vw;
 }
 
 .sloth:not(.nons) .sloth-notify .dialog-content,
@@ -4415,8 +4435,7 @@ textarea {
 
 .sloth:not(.nons) .sloth-notify.effect-4,
 .sloth *:not(.nons) .sloth-notify.effect-4 {
-  top: 0;
-  transform: translateX(-50%);
+  bottom: unset;
 }
 
 .sloth:not(.nons) .sloth-notify.effect-4 .dialog-content,
@@ -4659,10 +4678,12 @@ textarea {
   position: absolute;
   top: -9999px;
   left: -9999px;
+  width: auto;
   margin: 0;
   padding: 0;
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1rem;
+  white-space: nowrap;
 }
 
 .sloth:not(.nons) .toc,
@@ -5563,6 +5584,16 @@ table.cell-right td {
   text-indent: 6em;
 }
 
+.fl {
+  margin-right: 1rem;
+  float: left;
+}
+
+.fr {
+  margin-left: 1rem;
+  float: right;
+}
+
 .clf,
 .clearfix {
   display: block !important;
@@ -5570,6 +5601,7 @@ table.cell-right td {
   width: 100%;
   height: 0;
   margin-bottom: 0;
+  clear: both;
 }
 
 .clf::after,
@@ -5626,9 +5658,7 @@ table.cell-right td {
   }
   .sloth:not(.nons) .sloth-notify,
   .sloth *:not(.nons) .sloth-notify {
-    width: -webkit-max-content !important;
-    width: -moz-max-content !important;
-    width: max-content !important;
+    /* width: max-content !important; */
   }
   .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body,
   .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body {
@@ -5700,7 +5730,7 @@ table.cell-right td {
   }
   .sloth:not(.nons) .sloth-notify,
   .sloth *:not(.nons) .sloth-notify {
-    max-width: 80vw !important;
+    /* max-width: 80vw !important; */
   }
   .sloth:not(.nons) .sloth-notify .dialog-content .dialog-body,
   .sloth *:not(.nons) .sloth-notify .dialog-content .dialog-body {

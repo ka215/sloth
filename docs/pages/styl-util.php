@@ -499,6 +499,24 @@
 </code></pre>
     </div>
   </div>
+  <h4 class="line-right txt-prim">Floating</h4>
+  <aside>
+    Use the <code>.fl</code> and <code>.fr</code> classes to float the content of the block element.<br>
+    See the Clearfix section below for information on un-floating.<br>
+  </aside>
+  <div class="flx-col my2">
+    <div class="w-full mb2">
+      <img src="./assets/noimage-300x300.png" class="fr" width="128px" title="Right Floating Image">
+      <img src="./assets/noimage-300x300.png" class="fl" width="128px" title="Left Floating Image">
+      <p>This content is an element that is parallel to the floating element and that does not have a floating designation.</p>
+    </div>
+    <div class="w-full mb2">
+      <pre class="prettyprint"><code>&lt;img src="noimage.png" class="fr" title="Right Floating Image">
+&lt;img src="noimage.png" class="fl" title="Left Floating Image">
+&lt;p>This content is an element...&lt;/p>
+</code></pre>
+    </div>
+  </div>
   <h4 class="line-right txt-prim">Clearfix</h4>
   <aside>
     This is a class that can be used when you want to cancel the floating of the element or when you want to force a line break between inline elements.<br>
@@ -511,7 +529,12 @@
       <span class="clf"></span>
       <span>Statement C</span>
       <span>Statement D</span>
-      <span>Statement E; there is an example of a statement that follows such that.</span>
+      <span>Statement E</span>
+      <hr class="dotted">
+      <img src="./assets/noimage-300x300.png" class="fr" width="128px">
+      <p>The content of this block element is affected by the previous floating element.</p>
+      <br class="clearfix">
+      <p>After applying the clearfix, the block element is no longer floating and returns to the normal content display.</p>
     </div>
     <div class="w-half mb2">
       <pre class="prettyprint"><code>&lt;span>Statement A&lt;/span>
@@ -519,7 +542,12 @@
 &lt;span class="clf">&lt;/span>
 &lt;span>Statement C&lt;/span>
 &lt;span>Statement D&lt;/span>
-&lt;span>Statement E; there is...&lt;/span>
+&lt;span>Statement E&lt;/span>
+&mdash;&mdash;
+&lt;img src="noimage.png" class="fr">
+&lt;p>The content of this block...&lt;/p>
+&lt;br class="clearfix">
+&lt;p>After applying clearfix, ...&lt;/p>
 </code></pre>
     </div>
   </div>

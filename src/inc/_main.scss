@@ -1060,7 +1060,7 @@
       position: absolute;
       padding-bottom: 0.3em;
       z-index: 1;
-      right: 0.3em;
+      right: 1.3em;
       bottom: 0.3em;
       font-size: 1.2em;
       font-weight: 700;
@@ -1100,6 +1100,7 @@
     select {
       appearance: none;
       width: 100%;
+      max-width: 100%;
       margin-top: 0.3rem;
       font-size: 111.11%;
       clear: both;
@@ -1111,6 +1112,8 @@
         background-image: none !important;
       }
     }
+
+    &.caret select { width: calc(100% - 1rem); }
   }
 
   .combo-box:not(#{$not}) {

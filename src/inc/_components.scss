@@ -377,17 +377,25 @@
 
   .sloth-notify {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    max-width: 630px;
-    min-width: 320px;
-    height: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 65vw;
+    max-width: 90vw;/* 630px; */
+    min-width: 40vw;/* 320px; */
+    height: max-content;
     max-height: 80vh;
     z-index: 1201;
     visibility: hidden;
     backface-visibility: hidden;
-    transform: translateX(-50%) translateY(-50%);
+    transform: none;
+
+    &.size-xl { width: 90vw; }
+    &.size-lg { width: 80vw; }
+    &.size-md { width: 50vw; }
+    &.size-sm { width: 40vw; }
 
     .dialog-content {
       position: relative;
@@ -554,8 +562,7 @@
 
     /* Effect 4: Slide and stick to top */
     &.effect-4 {
-      top: 0;
-      transform: translateX(-50%);
+      bottom: unset;
 
       .dialog-content {
         transform: translateY(-200%);
@@ -760,8 +767,10 @@
     left: -9999px;
     margin: 0;
     padding: 0;
+    width: auto;
     font-size: 1rem;
     font-family: $font-monospace;
+    white-space: nowrap;
     visibility: hidden;
     z-index: -1;
   }
@@ -815,7 +824,7 @@
     }
 
     .sloth-notify {
-      width: max-content !important;
+      /* width: max-content !important; */
 
       .dialog-content {
         .dialog-body {
@@ -863,7 +872,7 @@
     }
 
     .sloth-notify {
-      max-width: 80vw !important;
+      /* max-width: 80vw !important; */
 
       .dialog-content {
         .dialog-body {
