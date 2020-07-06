@@ -20,9 +20,11 @@ The Sloth supports SCSS and postCSS, and you can customize your build with the i
 
 Also since version 1.0.3, it has been added the sloth extensions script that enhances your mark-up the components on the HTML. By using this extension, you get usable the advanced validation form or the popping dialog window, etc.
 
+**I support the Black Lives Matter movement, so I changed the default branch name to main since version 1.5.0.**
+
 ![GitHub release](https://img.shields.io/github/release/ka215/sloth.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/ka215/sloth/total.svg)
-[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://raw.githubusercontent.com/ka215/sloth/master/LICENSE)
+[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://raw.githubusercontent.com/ka215/sloth/main/LICENSE)
 
 <br>
 
@@ -45,8 +47,8 @@ git clone https://github.com/ka215/sloth.git
 
 Or, you can load via CDN:
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@master/dist/sloth.min.css">
-<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@master/dist/sloth.extension.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ka215/sloth@main/dist/sloth.min.css">
+<script async src="https://cdn.jsdelivr.net/gh/ka215/sloth@main/dist/sloth.extension.min.js"></script>
 ```
 
 ## Usage

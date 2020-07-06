@@ -40,6 +40,10 @@ $compressed_js_size = get_globals( 'compressed_js_size' );
     <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;link rel="stylesheet" href="dist/sloth.min.css"&gt;</code></pre>
     </div>
+    Oops, shouldn't be forgetting the spell to apply responsive styles for smart devices. Let's include the following Viewport settings in your <code>&lt;head&gt;</code>.
+    <div class="flx-row flx-center fnt-sm my1">
+      <pre class="prettyprint"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    </div>
     Marking up in the Sloth style is very easy. Basically, you can complete most of your work simply by declaring the <code class="fnt-sm">.sloth</code> class to the parent element you want to apply style to.
     <div class="flx-row fnt-sm my1">
       <pre class="prettyprint"><code>&lt;body class="sloth"&gt;
@@ -60,8 +64,9 @@ $compressed_js_size = get_globals( 'compressed_js_size' );
   <h2>Sloth Extensions</h2>
   <aside>
     Since Version 1.0.3, added new <a href="javascript:;" data-get-page="exti-desc">extension script for Sloth</a>.<br>
-    If you use that script, you can get make an easily advanced form with field validation built, and enable dialog to be popuping.<br>
-    If you want to enable this extension, you should be loaded script file as like below.<br>
+    This script makes it easy to create advanced forms with built-in field validation, enable dialog pop-ups, and many other benefits.<br>
+    Also, since the script is coded in native JavaScript, it can be used that without depending on anything else.<br>
+    If you want to enable this extension, load the script file as follows.<br>
     <div class="flx-row flx-center fnt-sm my1">
       <pre class="prettyprint"><code>&lt;script async src="dist/sloth.extension.min.js"&gt;&lt;/script&gt;</code></pre>
     </div>

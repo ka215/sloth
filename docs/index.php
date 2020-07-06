@@ -86,7 +86,7 @@ if ( ! empty( get_globals( 'body_atts' ) ) ) {
 <?php include_tmpl( 'head' ); ?>
 <body id="sloth-docs" class="<?= get_globals( 'body_class' ); ?>" <?= $body_atts; ?> data-standby="shown">
 <?php include_tmpl( 'navi_menu' ); ?>
-<main<?php if ( isset( $_POST['main'] ) && $_POST['main'] === 'overflow' ) : ?> class="lazy-load of-xs"<?php endif; ?>>
+<main<?php if ( isset( $_POST['main'] ) && $_POST['main'] === 'overflow' ) : ?> class="lazy-load of-xs"<?php else : ?><?php endif; ?>>
 <?php include_tmpl( $page ); ?>
 </main>
 <?php include_tmpl( 'footer' ); ?>
