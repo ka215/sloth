@@ -1,14 +1,14 @@
-<h1><img src="https://ka215.github.io/sloth/assets/sloth.svg" height="32"> Sloth</h1>
+<h1><img src="https://ka2.org/sloth/assets/sloth.svg" height="32"> Sloth</h1>
 
 Mobile-first lightweight CSS Framework that has reduced styling coding costs to a minimum with non-BEM and simpler naming conventions than OOCSS.
 
 <div align="center">
   <table border="0"><tbody><tr>
-  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Forms" src="https://ka215.github.io/sloth/assets/sloth_ss1.jpg"></td>
-  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Toggle Buttons" src="https://ka215.github.io/sloth/assets/sloth_ss2.jpg"></td>
-  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Buttons" src="https://ka215.github.io/sloth/assets/sloth_ss3.jpg"></td>
-  <td width="20%" align="center"><img alt="Sloth Pickup Styles: CSS Grids" src="https://ka215.github.io/sloth/assets/sloth_ss4.jpg"></td>
-  <td width="20%" align="center"><img alt="Sloth Pickup Extensions: Dialog" src="https://ka215.github.io/sloth/assets/sloth_ss5.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Forms" src="https://ka2.org/sloth/assets/sloth_ss1.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Toggle Buttons" src="https://ka2.org/sloth/assets/sloth_ss2.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: Buttons" src="https://ka2.org/sloth/assets/sloth_ss3.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Styles: CSS Grids" src="https://ka2.org/sloth/assets/sloth_ss4.jpg"></td>
+  <td width="20%" align="center"><img alt="Sloth Pickup Extensions: Dialog" src="https://ka2.org/sloth/assets/sloth_ss5.jpg"></td>
   </tr></tbody></table>
 </div>
 
@@ -119,7 +119,7 @@ You would prefer to see the following URL for a list of all elements and compone
 
 Your donations for supporting the Sloth style will help me.
 
-Donate URL:  <https://ka215.github.io/sloth/donation.html>
+Donate URL:  <https://ka2.org/sloth/donation.html>
 
 ## Special Thanks
 
