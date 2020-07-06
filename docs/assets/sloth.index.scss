@@ -25,9 +25,6 @@
   --menu-width-sm: 240px;
   --menu-width-md: 240px;
   --menu-width-lg: 280px;
-  --lead-width-sm: 100%;
-  --lead-width-md: 576px;
-  --lead-width-lg: 672px;
 }
 
 html {
@@ -49,6 +46,8 @@ body {
 
   main {
     width: 100%;
+    margin: 0;
+    padding: 0;
 
     &> * {
       margin-top: var(--navi-height-sm, 60px);
@@ -103,9 +102,9 @@ body {
 }
 
 .lead-block {
-  max-width: var(--lead-width-sm);
+  max-width: calc(100% - 3rem);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 0;
   text-align: center;
 
   h2 {
@@ -125,13 +124,14 @@ body {
 
 .sloth-styles {
   position: relative;
-  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 3rem);
   text-align: left;
   background-color: #fafafa;
   z-index: 1;
 
   > * {
-    max-width: 48rem;
     margin: 1rem auto;
     z-index: 1;
   }
@@ -228,10 +228,16 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  width: 320px;
+  width: 360px;
+  max-width: 100vw;
   height: auto;
   min-height: 100px;
-  margin: 0 auto 1rem;
+  margin: 0 auto;
+}
+
+.adsbygoogle {
+  margin-top: 1em !important;
+  margin-bottom: 0 !important;
 }
 
 @media (min-width: 500px) {
@@ -284,11 +290,15 @@ body {
   /* As Medium (>= 481px and <= 768px) */
   body {
     &> *:not(.navi-menu):not(main):not(.dialog-backdrop) {
-      max-width: 48rem;
+      max-width: 100vw;
     }
 
-    main > * {
-      margin-top: var(--navi-height-md, 60px);
+    main {
+      padding: 0;
+
+      &> * {
+        margin-top: var(--navi-height-md, 60px);
+      }
     }
   }
 
@@ -298,8 +308,11 @@ body {
   }
 
   .lead-block {
-    max-width: var(--lead-width-md);
-    padding: 2rem 1rem;
+    max-width: calc(100% - 4rem);
+  }
+
+  .sloth-styles {
+    width: calc(100% - 4rem);
   }
 }
 
@@ -307,11 +320,15 @@ body {
   /* As Large (>= 769px) */
   body {
     &> *:not(.navi-menu):not(main):not(.dialog-backdrop) {
-      max-width: 54.8rem;
+      max-width: 960px;
     }
 
-    main > * {
-      margin-top: var(--navi-height-lg, 60px);
+    main {
+      padding: 0;
+
+      &> * {
+        margin-top: var(--navi-height-lg, 60px);
+      }
     }
   }
 
@@ -321,7 +338,11 @@ body {
   }
 
   .lead-block {
-    max-width: var(--lead-width-lg);
-    padding: 2rem 0;
+    max-width: 760px;
+  }
+
+  .sloth-styles {
+    width: calc(100% - 4rem);
+    max-width: 960px;
   }
 }

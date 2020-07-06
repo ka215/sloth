@@ -1,13 +1,56 @@
 /*!
 Sloth CSS lightweight framework
-v1.4.2
-Last Updated: July 1, 2020 (UTC)
+v1.4.3
+Last Updated: July 2, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
     // Check whether applied the sloth styles
     if ( ! document.body.classList.contains('sloth') ) {
         return false;
+    }
+
+    // Optimize for iOS
+    const isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
+    if ( isIOS ) {
+        /*
+        let setVendorPrefix = (element, property, value) => {
+                element.style[`webkit${property}`] = value;
+                element.style[`moz${property}`] = value;
+                element.style[`ms${property}`] = value;
+                element.style[`o${property}`] = value;
+                element.style[property.toLowerCase()] = value;
+            };
+        */
+        let updateStyles = (element) => {
+                let fs = parseInt(window.getComputedStyle(element).fontSize),
+                    pd = {
+                        top:    parseInt(window.getComputedStyle(element).paddingTop),
+                        right:  parseInt(window.getComputedStyle(element).paddingRight),
+                        bottom: parseInt(window.getComputedStyle(element).paddingBottom),
+                        left:   parseInt(window.getComputedStyle(element).paddingLeft)
+                    };
+                if ( fs < 16 ) {
+                    element.style.fontSize = '16px';
+                    element.style.paddingTop    = `${pd.top - ((16 - fs) / 2)}px`;
+                    element.style.paddingRight  = `${pd.right - ((16 - fs) / 2)}px`;
+                    element.style.paddingBottom = `${pd.bottom - ((16 - fs) / 2)}px`;
+                    element.style.paddingLeft   = `${pd.left - ((16 - fs) / 2)}px`;
+                }
+            };
+        Array.prototype.forEach.call(document.querySelectorAll('input'), (elm) => {
+            let type = elm.type;
+
+            if ( ! /(hidden|checkbox|radio|file|button|submit|cancel|reset)/i.test(type) ) {
+                updateStyles(elm);
+            }
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('select'), (elm) => {
+            updateStyles(elm);
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('textarea'), (elm) => {
+            updateStyles(elm);
+        });
     }
 
     // Check data-standby attributes
@@ -492,17 +535,24 @@ const init = function() {
 const optimizeDropdown = () => {
     Array.prototype.forEach.call(document.getElementsByTagName('select'), (elm) => {
         if ( elm.parentNode.classList.contains('dropdown') ) {
-            let optionLengths = [];
+            let optionSizes = [],
+                maxLength;
 
             elm.childNodes.forEach((item) => {
                 if ( item.nodeName === 'OPTION' ) {
                     if ( item.textContent ) {
-                        optionLengths.push( strLength( item.textContent ) );
+                        optionSizes.push( strLength( item.textContent ) );
                     }
                 }
             });
-            elm.style.width = `calc(${Math.max.apply( null, optionLengths )}px + 3em)`;
-            elm.parentNode.style.marginRight = '0.5em';
+            maxLength = Math.max.apply( null, optionSizes );
+            //console.log(elm.name, parseInt(window.getComputedStyle(elm).width), maxLength, elm.parentNode.nextElementSibling);
+            elm.style.width = `${maxLength + parseInt(window.getComputedStyle(elm).fontSize) * 3}px`;
+            /*
+            if ( elm.parentNode.nextElementSibling ) {
+                elm.parentNode.style.marginRight = '0.25em';
+            }
+            */
         }
     });
 };
@@ -573,30 +623,40 @@ const fixedBackdrop = (isFixed) => {
  * @public
  */
 const adjustColumnsInRow = () => {
-    Array.prototype.forEach.call(document.querySelectorAll('form > .flx-row, form > .inline'), (elm) => {
+    Array.prototype.forEach.call(document.querySelectorAll('form .flx-row, form .inline'), (elm) => {
         let children = Array.prototype.slice.call(elm.children);
 
         children.forEach((child, i) => {
             if ( child.classList.contains('note') ) {
                 children.splice(i, 1);
+            } else {
+                child.style.marginRight = 0;
+                child.style.marginLeft  = 0;
             }
         });
+//console.log(children);
         if ( children.length == 2 ) {
             let offset  = children[0].clientWidth || null,
                 lastElm = children[1];
 
-            if ( lastElm.nodeName === 'DIV' && offset ) {
-                lastElm.style.width = `calc(100% - ${offset}px - 2em)`;
-                lastElm.style.marginRight = 0;
+//console.log(offset, elm.clientWidth, window.getComputedStyle(elm).width);
+            if ( /^label$/i.test(children[0].nodeName) ) {
+                children[0].style.marginRight = `1rem`;
+            }
+            if ( /^(div|textarea)$/i.test(lastElm.nodeName) && offset ) {
+                lastElm.style.width = `${elm.clientWidth - offset}px`;
             }
         } else {
-            let reverseChildren = Array.prototype.slice.call(elm.children).reverse(),
-                skip = false;
+            //let reverseChildren = Array.prototype.slice.call(elm.children).reverse(),
+            //    skip = false;
 
-            reverseChildren.forEach((child) => {
-                if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
-                    child.style.marginRight = 0;
-                    skip = true;
+            //reverseChildren.forEach((child) => {
+            children.forEach((child, i) => {
+console.log(child, i, children.length);
+                //if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
+                if ( /^(input|select|textarea|label)$/i.test(child.nodeName) && ! child.classList.contains('dropdown') && i + 1 != children.length ) {
+                    child.style.marginRight = `1rem`;
+                    //skip = true;
                 }
             });
         }
@@ -817,9 +877,11 @@ const generateDialog = function( title, content, foot, effect, size ) {
             });
         }
 
-        let dialog    = document.createElement('div'),
-            container = document.createElement('div'),
-            backdrop  = document.createElement('div'),
+        let dialog     = document.createElement('div'),
+            container  = document.createElement('div'),
+            backdrop   = document.createElement('div'),
+            viewWidth  = window.innerWidth,
+            // viewHeight = window.innerHeight,
             insertTitle = () => {
                 title = title ? title.toString() : null;
                 if ( title ) {
@@ -1023,8 +1085,16 @@ const generateDialog = function( title, content, foot, effect, size ) {
             case /^(sm|small)$/i.test( size ):
                 size = 'size-sm';
                 break;
+            case /^auto$/i.test( size ):
             default:
-                size = '';
+                if ( viewWidth < 481 ) { // Small
+                    size = 'size-xl';
+                } else
+                if ( viewWidth > 768 ) { // Large
+                    size = '';
+                } else { // Medium
+                    size = 'size-lg';
+                }
                 break;
         }
 

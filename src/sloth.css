@@ -1657,6 +1657,18 @@ textarea {
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
 }
 
+.sloth:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating input:not(:-moz-placeholder-shown) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
+.sloth:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating input:not(:-ms-input-placeholder) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
 .sloth:not(.nons) .floating input:not(:placeholder-shown) ~ .label,
 .sloth *:not(.nons) .floating input:not(:placeholder-shown) ~ .label {
   transform: translateY(-2.2rem) scale(0.75);
@@ -1710,6 +1722,18 @@ textarea {
 .sloth *:not(.nons) .floating textarea:hover {
   background: rgba(123, 169, 214, 0.1);
   background: var(--color-primary-active-light, rgba(123, 169, 214, 0.1));
+}
+
+.sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ label, .sloth *:not(.nons) .floating textarea:not(:-moz-placeholder-shown) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
+}
+
+.sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ label, .sloth *:not(.nons) .floating textarea:not(:-ms-input-placeholder) ~ .label {
+  transform: translateY(-2.2rem) scale(0.75);
+  color: #4183c4;
+  color: var(--color-primary, #4183c4);
 }
 
 .sloth:not(.nons) .floating textarea:not(:placeholder-shown) ~ label,
@@ -2039,18 +2063,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection,
-.sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
+.sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"]::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::after::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] *::before::-moz-selection, .sloth *:not(.nons) .tgl:not(.nons) input[type="checkbox"] ~ .tgl-btn::-moz-selection {
   background: none;
 }
 
@@ -5622,6 +5635,9 @@ table.cell-right td {
     height: var(--navi-height-md, 0);
     margin-top: calc(-1 * var(--navi-height-md, 0));
   }
+  a:not(.nons)[target="_blank"]::after, a:not(.nons)[rel="external"]::after {
+    vertical-align: middle;
+  }
   .sloth:not(.nons) .navi-menu:not(.nons),
   .sloth *:not(.nons) .navi-menu:not(.nons) {
     height: var(--navi-height-md, 56px);
@@ -5750,11 +5766,5 @@ table.cell-right td {
   .note::after {
     top: 0.25em;
     left: 0.1em;
-  }
-}
-
-@media screen and (min-width: 576px) and (max-width: 768px) {
-  a:not(.nons)[target="_blank"]::after, a:not(.nons)[rel="external"]::after {
-    vertical-align: middle;
   }
 }

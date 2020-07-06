@@ -182,9 +182,9 @@
     </div>
   </div>
   <h4 class="line-right txt-prim">Select boxes</h4>
-  <div class="flx-row my1">
-    <div class="w-half">
-      <form>
+  <div class="flx-col my2">
+    <div class="w-full mb1">
+      <form class="flx-col flx-justify item-start">
         <select class="mb1">
           <option>Dropdown Item 1</option>
           <option>Dropdown Item 2</option>
@@ -206,7 +206,7 @@
         </label>
       </form>
     </div>
-    <div class="w-half">
+    <div class="w-full mb1">
       <pre class="prettyprint"><code>&lt;select>
   &lt;option>Dropdown Item 1&lt;/option>
   &lt;option>Dropdown Item 2&lt;/option>

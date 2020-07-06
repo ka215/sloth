@@ -43,7 +43,7 @@ $ajaxBaseURL = ENV === 'dev' ? 'http://dev2.ka2.org/sloth/docs/' : 'https://ka2.
       <div class="inline flx-justify mb1">
           <button type="button" class="outline" data-toggle="dialog" data-title="Small Dialog" data-content="The width of the small size is <b>40vw</b>." data-dialog-size="sm">Small</button>
           <button type="button" class="outline" data-toggle="dialog" data-title="Medium Dialog" data-content="The width of the medium size is <b>50vw</b>." data-dialog-size="md">Medium</button>
-          <button type="button" class="outline" data-toggle="dialog" data-title="Normal Dialog" data-content="The width of default size is <b>65vw</b>.">Normal(Default)</button>
+          <button type="button" class="outline" data-toggle="dialog" data-title="Normal Dialog" data-content="The default dialog size is automatically optimized according to the browser's view width. The threshold is between <b>65vw</b> and <b>90vw</b>." data-dialog-size="auto">Normal(Default)</button>
           <button type="button" class="outline" data-toggle="dialog" data-title="Large Dialog" data-content="The width of the large size is <b>80vw</b>." data-dialog-size="lg">Large</button>
           <button type="button" class="outline" onclick="showDialog('X-Large Dialog', 'The width of the x-large size is <b>90vw</b>.', null, 1, 'xl')">X-Large</button>
       </div>
@@ -72,7 +72,7 @@ $ajaxBaseURL = ENV === 'dev' ? 'http://dev2.ka2.org/sloth/docs/' : 'https://ka2.
 &mdash;&mdash; Dialog Sizing &mdash;&mdash;
 &lt;button type="button" class="outline" data-toggle="dialog" data-title="Small Dialog" data-content="The width of the small size is &lt;b>40vw&lt;/b>." data-dialog-size="sm">Small&lt;/button>
 &lt;button type="button" class="outline" data-toggle="dialog" data-title="Medium Dialog" data-content="The width of the medium size is &lt;b>50vw&lt;/b>." data-dialog-size="md">Medium&lt;/button>
-&lt;button type="button" class="outline" data-toggle="dialog" data-title="Normal Dialog" data-content="The width of default size is &lt;b>65vw&lt;/b>.">Normal(Default)&lt;/button>
+&lt;button type="button" class="outline" data-toggle="dialog" data-title="Normal Dialog" data-content="The default dialog size is automatically optimized according to the browser's view width. The threshold is between &lt;b>65vw&lt;/b> and &lt;b>90vw&lt;/b>." data-dialog-size="auto">Normal(Default)&lt;/button>
 &lt;button type="button" class="outline" data-toggle="dialog" data-title="Large Dialog" data-content="The width of the large size is &lt;b>80vw&lt;/b>." data-dialog-size="lg">Large&lt;/button>
 &lt;button type="button" class="outline" onclick="showDialog('X-Large Dialog', 'The width of the x-large size is &lt;b>90vw&lt;/b>.', null, 1, 'xl')">X-Large&lt;/button>
 </code></pre>
@@ -106,7 +106,9 @@ $ajaxBaseURL = ENV === 'dev' ? 'http://dev2.ka2.org/sloth/docs/' : 'https://ka2.
           <th>data-effect</th><td>Number | String</td><td>argument 4</td><td>Index number of transition animation type (<b>1 to 5</b>) or animation type preset name.</td>
         </tr>
         <tr>
-          <th>data-size</th><td>String</td><td>argument 5</td><td>Specifies the size of the width of the dialog to be displayed by presets. There are four valid preset values: "<b>xl</b>(90vw)", "<b>lg</b>(80vw)", "<b>md</b>(50vw)", and "<b>sm</b>(40vw)", or the default size of 65vw if the value is invalid or unspecified.</td>
+          <th>data-size</th><td>String</td><td>argument 5</td><td>
+            Specifies the size of the width of the dialog to be displayed by presets. There are four valid preset values: "<b>xl</b>(90vw)", "<b>lg</b>(80vw)", "<b>md</b>(50vw)", and "<b>sm</b>(40vw)", or the default size of automatically optimized if the value is "<b>auto</b>", invalid or unspecified.
+          </td>
         </tr>
         <tr>
           <th>data-reinit</th><td>Number | String |Boolean</td><td>argument 6</td><td>Whether fire the event that initializes the sloth extensions once more after showing this dialog. Defaults to <b>true</b>, there will re-init that. You can specify a bit value or string other than a boolean value, too.</td>
