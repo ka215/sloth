@@ -1,6 +1,6 @@
 /*!
 Sloth CSS lightweight framework
-v1.5.0
+v1.5.1
 Last Updated: July 6, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
