@@ -6543,8 +6543,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /*!
 Sloth CSS lightweight framework
-v1.4.3
-Last Updated: July 2, 2020 (UTC)
+v1.5.0
+Last Updated: July 6, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 var init = function init() {
@@ -7129,14 +7129,16 @@ var optimizeDropdown = function optimizeDropdown() {
 var adjustNotes = function adjustNotes() {
   Array.prototype.forEach.call(document.querySelectorAll('form .note'), function (elm) {
     var rowLabel = elm.parentNode.firstElementChild,
-        indent = null;
+        paddingL = parseInt(window.getComputedStyle(elm).paddingLeft) / 1.4,
+        indent = paddingL;
 
     if (rowLabel.nodeName === 'LABEL') {
-      indent = rowLabel.clientWidth || null;
+      indent += rowLabel.clientWidth || 0;
     }
 
-    elm.style.width = indent ? "calc(100% - ".concat(indent, "px)") : '100%';
-    elm.style.marginLeft = indent ? "calc(".concat(indent, "px + 1.5em)") : 0;
+    elm.style.width = indent ? "calc(100% - ".concat(indent, "px)") : '100%'; //elm.style.marginLeft = indent ? `calc(${indent}px + 1.5em)` : 0;
+
+    elm.style.marginLeft = indent ? "".concat(indent, "px") : 0;
     elm.style.marginTop = '0.3rem';
   });
 };
@@ -7150,8 +7152,14 @@ var adjustTogglePasswd = function adjustTogglePasswd() {
   Array.prototype.forEach.call(document.querySelectorAll('.tgl-view'), function (elm) {
     var parentWidth = elm.parentNode.clientWidth,
         tgl_btn = elm.lastElementChild,
-        btnWidth = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
-    elm.firstElementChild.style.maxWidth = "".concat(parentWidth - btnWidth, "px");
+        btnWidth = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0),
+        maxWidth = parentWidth - btnWidth - parseInt(window.getComputedStyle(document.body).fontSize) * 2;
+
+    if (elm.parentNode.classList.contains('inline') && elm.previousElementSibling.nodeName === 'LABEL') {
+      maxWidth -= elm.previousElementSibling.clientWidth;
+    }
+
+    elm.firstElementChild.style.maxWidth = "".concat(maxWidth, "px");
   });
 };
 /*
@@ -7162,15 +7170,16 @@ var adjustTogglePasswd = function adjustTogglePasswd() {
 
 
 var fixedBackdrop = function fixedBackdrop(isFixed) {
+  var isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
   Array.prototype.forEach.call(document.querySelectorAll('[data-onmenu-fixed]'), function (elm) {
     var nowY = window.pageYOffset,
         nowX = window.pageXOffset,
         targetRect = elm.getBoundingClientRect(),
         targetX = targetRect.left + nowX,
         targetY = targetRect.top + nowY,
-        enabled = /^(true|1)$/i.test(elm.dataset.onmenuFixed); // console.log(isFixed, nowY, targetRect, targetY, enabled);
+        enabled = /^(true|1)$/i.test(elm.dataset.onmenuFixed);
 
-    if (!enabled) {
+    if (!enabled || isIOS) {
       return;
     }
 
@@ -7205,11 +7214,14 @@ var adjustColumnsInRow = function adjustColumnsInRow() {
 
     if (children.length == 2) {
       var offset = children[0].clientWidth || null,
-          lastElm = children[1]; //console.log(offset, elm.clientWidth, window.getComputedStyle(elm).width);
+          oneRem = parseInt(window.getComputedStyle(document.body).fontSize),
+          lastElm = children[1];
 
       if (/^label$/i.test(children[0].nodeName)) {
-        children[0].style.marginRight = "1rem";
-      }
+        children[0].style.marginRight = "".concat(oneRem, "px");
+        offset += oneRem;
+      } //console.log(offset, children[0].outerWidth, window.getComputedStyle(document.body).fontSize);
+
 
       if (/^(div|textarea)$/i.test(lastElm.nodeName) && offset) {
         lastElm.style.width = "".concat(elm.clientWidth - offset, "px");
@@ -7219,8 +7231,8 @@ var adjustColumnsInRow = function adjustColumnsInRow() {
       //    skip = false;
       //reverseChildren.forEach((child) => {
       children.forEach(function (child, i) {
-        console.log(child, i, children.length); //if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
-
+        //console.log(child, i, children.length);
+        //if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
         if (/^(input|select|textarea|label)$/i.test(child.nodeName) && !child.classList.contains('dropdown') && i + 1 != children.length) {
           child.style.marginRight = "1rem"; //skip = true;
         }

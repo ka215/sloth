@@ -90,7 +90,7 @@ $ajaxBaseURL = ENV === 'dev' ? './' : 'https://ka2.org/sloth/';
     </div>
     <div class="inline mb1">
       <label for="tf-22" class="required" data-size="w:11rem">Display Name</label>
-      <input type="text" id="tf-22" name="display_name" placeholder="Display Name" pattern="^.{0,100}$" data-size="w:15em" data-dispname="Display Name" required>
+      <input type="text" id="tf-22" name="display_name" placeholder="Display Name" pattern="^.{0,100}$" data-dispname="Display Name" required>
       <small class="note">Strings at least 3 letters and more</small>
     </div>
     <div class="inline mb1">

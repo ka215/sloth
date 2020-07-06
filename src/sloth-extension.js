@@ -1,7 +1,7 @@
 /*!
 Sloth CSS lightweight framework
-v1.4.3
-Last Updated: July 2, 2020 (UTC)
+v1.5.0
+Last Updated: July 6, 2020 (UTC)
 Author: Ka2 - https://ka2.org/
 */
 const init = function() {
@@ -564,13 +564,15 @@ const optimizeDropdown = () => {
 const adjustNotes = () => {
     Array.prototype.forEach.call(document.querySelectorAll('form .note'), (elm) => {
         let rowLabel = elm.parentNode.firstElementChild,
-            indent   = null;
+            paddingL = parseInt(window.getComputedStyle(elm).paddingLeft) / 1.4,
+            indent   = paddingL;
 
         if ( rowLabel.nodeName === 'LABEL' ) {
-            indent = rowLabel.clientWidth || null;
+            indent += rowLabel.clientWidth || 0;
         }
         elm.style.width = indent ? `calc(100% - ${indent}px)` : '100%';
-        elm.style.marginLeft = indent ? `calc(${indent}px + 1.5em)` : 0;
+        //elm.style.marginLeft = indent ? `calc(${indent}px + 1.5em)` : 0;
+        elm.style.marginLeft = indent ? `${indent}px` : 0;
         elm.style.marginTop = '0.3rem';
     });
 };
@@ -583,9 +585,13 @@ const adjustTogglePasswd = () => {
     Array.prototype.forEach.call(document.querySelectorAll('.tgl-view'), (elm) => {
         let parentWidth = elm.parentNode.clientWidth,
             tgl_btn     = elm.lastElementChild,
-            btnWidth    = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0) + 3;
+            btnWidth    = tgl_btn.clientWidth + (tgl_btn.style.marginLeft || 0) + (tgl_btn.style.marginRight || 0),
+            maxWidth    = parentWidth - btnWidth - parseInt(window.getComputedStyle(document.body).fontSize) * 2;
 
-        elm.firstElementChild.style.maxWidth = `${(parentWidth - btnWidth)}px`;
+        if ( elm.parentNode.classList.contains('inline') && elm.previousElementSibling.nodeName === 'LABEL' ) {
+            maxWidth -= elm.previousElementSibling.clientWidth;
+        }
+        elm.firstElementChild.style.maxWidth = `${maxWidth}px`;
     });
 };
 
@@ -595,6 +601,7 @@ const adjustTogglePasswd = () => {
  * @param {boolean} isFixed
  */
 const fixedBackdrop = (isFixed) => {
+    let isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
     Array.prototype.forEach.call(document.querySelectorAll('[data-onmenu-fixed]'), (elm) => {
         let nowY       = window.pageYOffset,
             nowX       = window.pageXOffset,
@@ -602,8 +609,8 @@ const fixedBackdrop = (isFixed) => {
             targetX    = targetRect.left + nowX,
             targetY    = targetRect.top + nowY,
             enabled    = /^(true|1)$/i.test(elm.dataset.onmenuFixed);
-        // console.log(isFixed, nowY, targetRect, targetY, enabled);
-        if ( ! enabled ) {
+        
+        if ( ! enabled || isIOS ) {
             return;
         }
         if ( isFixed ) {
@@ -637,12 +644,14 @@ const adjustColumnsInRow = () => {
 //console.log(children);
         if ( children.length == 2 ) {
             let offset  = children[0].clientWidth || null,
+                oneRem  = parseInt(window.getComputedStyle(document.body).fontSize),
                 lastElm = children[1];
 
-//console.log(offset, elm.clientWidth, window.getComputedStyle(elm).width);
             if ( /^label$/i.test(children[0].nodeName) ) {
-                children[0].style.marginRight = `1rem`;
+                children[0].style.marginRight = `${oneRem}px`;
+                offset += oneRem;
             }
+//console.log(offset, children[0].outerWidth, window.getComputedStyle(document.body).fontSize);
             if ( /^(div|textarea)$/i.test(lastElm.nodeName) && offset ) {
                 lastElm.style.width = `${elm.clientWidth - offset}px`;
             }
@@ -652,7 +661,7 @@ const adjustColumnsInRow = () => {
 
             //reverseChildren.forEach((child) => {
             children.forEach((child, i) => {
-console.log(child, i, children.length);
+//console.log(child, i, children.length);
                 //if ( /^(input|select|textarea)$/i.test(child.nodeName) && ! skip ) {
                 if ( /^(input|select|textarea|label)$/i.test(child.nodeName) && ! child.classList.contains('dropdown') && i + 1 != children.length ) {
                     child.style.marginRight = `1rem`;
