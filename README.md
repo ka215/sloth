@@ -24,6 +24,7 @@ Also since version 1.0.3, it has been added the sloth extensions script that enh
 
 ![GitHub release](https://img.shields.io/github/release/ka215/sloth.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/ka215/sloth/total.svg)
+![npm download](https://img.shields.io/npm/dt/sloth-css?label=npm%20download)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://raw.githubusercontent.com/ka215/sloth/main/LICENSE)
 
 <br>
